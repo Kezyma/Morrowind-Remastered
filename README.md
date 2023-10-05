@@ -1,7 +1,7 @@
 # Pre-Install Instructions
 - Install Morrowind through either Steam or GOG.
 - Download Wabbajack: https://www.wabbajack.org/
-- Download the wabbajack files from this repository.
+- Download the wabbajack files from this repository: https://github.com/Kezyma/Morrowind-Remastered/releases
 - Run Wabbajack.exe
 - Click 'Install From Disk'
 - In the 'Target Modlist' field, select the wabbajack file downloaded from this repository.
