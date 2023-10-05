@@ -1,5 +1,18 @@
+# Pre-Install Instructions
+- Install Morrowind through either Steam or GOG.
+- Download Wabbajack: https://www.wabbajack.org/
+- Download the wabbajack files from this repository.
+- Run Wabbajack.exe
+- Click 'Install From Disk'
+- In the 'Target Modlist' field, select the wabbajack file downloaded from this repository.
+- In the 'Modlist Installation Location' field, select an empty folder to install the modlist.
+- Click the button on the right to start installing.
+- If you do not have a NexusMods premium account, you may be directed to download each file in the modlist through popups.
+
 # Post-Install Instructions
 - Run ModOrganizer.exe as an administrator.
+- Click 'OK' on the error popup.
+- Select Morrowind in the game list, if Morrowind isn't listed, scroll to the bottom, click 'Browse...' and locate your Morrowind folder.
 
 ## Morrowind Code Patch
 - Select 'Morrowind Code Patch' in the application list (top right section of Mod Organizer).
