@@ -7,6 +7,7 @@
 - In the 'Target Modlist' field, select the wabbajack file downloaded from this repository.
 - In the 'Modlist Installation Location' field, select an empty folder to install the modlist.
 - Click the button on the right to start installing.
+- Log in to your NexusMods account.
 - If you do not have a NexusMods premium account, you may be directed to download each file in the modlist through popups.
 
 # Post-Install Instructions
