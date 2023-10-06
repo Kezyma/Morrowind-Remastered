@@ -52,6 +52,7 @@
 - [MGE XE - Distant Land Generation Texture Error Fix](https://www.nexusmods.com/morrowind/mods/45588)
 - [MWSE](https://github.com/MWSE/MWSE/releases)
 - [TES3Merge](https://www.nexusmods.com/morrowind/mods/46870)
+- [Wrye Mash - Polemos fork - 2021](https://www.nexusmods.com/morrowind/mods/45439)
 ## Post-Processing
 - [Morrowind Graphics Guide Shaders](https://www.nexusmods.com/morrowind/mods/46158)
 - [Enhanced Water Shader for MGE XE](https://www.nexusmods.com/morrowind/mods/45432)
