@@ -52,7 +52,6 @@
 - [MGE XE - Distant Land Generation Texture Error Fix](https://www.nexusmods.com/morrowind/mods/45588)
 - [MWSE](https://github.com/MWSE/MWSE/releases)
 - [TES3Merge](https://www.nexusmods.com/morrowind/mods/46870)
-- [mlox](https://www.nexusmods.com/morrowind/mods/43001)
 ## Post-Processing
 - [Morrowind Graphics Guide Shaders](https://www.nexusmods.com/morrowind/mods/46158)
 - [Enhanced Water Shader for MGE XE](https://www.nexusmods.com/morrowind/mods/45432)
