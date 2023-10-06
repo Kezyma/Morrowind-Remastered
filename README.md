@@ -1,4 +1,5 @@
-# Pre-Install Instructions
+# Wabbajack Install
+## Pre-Install Instructions
 - Install Morrowind through either Steam or GOG.
 - Download Wabbajack: https://www.wabbajack.org/
 - Download the wabbajack files from this repository: https://github.com/Kezyma/Morrowind-Remastered/releases
@@ -10,19 +11,19 @@
 - Log in to your NexusMods account.
 - If you do not have a NexusMods premium account, you may be directed to download each file in the modlist through popups.
 
-# Post-Install Instructions
+## Post-Install Instructions
 - Run ModOrganizer.exe as an administrator.
 - Click 'OK' on the error popup.
 - Select Morrowind in the game list, if Morrowind isn't listed, scroll to the bottom, click 'Browse...' and locate your Morrowind folder.
 
-## Morrowind Code Patch
+### Morrowind Code Patch
 - Select 'Morrowind Code Patch' in the application list (top right section of Mod Organizer).
 - Click 'Run'.
 - Click 'Apply chosen patches'.
 - When the log says 'Patch succeeded' close the Morrowind Code Patch window.
 - (Optional) Scroll to the bottom of the mod list, right-click 'Overwrite', click 'Create Mod', enter a name (eg. 'Morrowind.exe Patched') and click 'OK'. Check the box next to this new mod to enable it in the mod list.
 
-## MGE XE
+### MGE XE
 - Select 'MGE XE' in the application list.
 - Click 'Run'.
 - If any warnings pop up, click 'OK' on all of them.
@@ -36,7 +37,52 @@
 - Close the MGE XE window.
 - (Optional) Scroll to the bottom of the mod list, right-click 'Overwrite', click 'Create Mod', enter a name (eg. 'Generated Distant Land') and click 'OK'. Check the box next to this new mod to enable it in the mod list.
 
-## Morrowind
+### Morrowind
 - Select 'Morrowind' in the application list.
 - Click 'Run'.
 - Click 'Yes to all'.
+
+# Full Modlist
+## Mod Organizer
+- [Mod Organizer 2](https://www.nexusmods.com/skyrimspecialedition/mods/6194)
+- [Root Builder for Mod Organizer 2](https://www.nexusmods.com/skyrimspecialedition/mods/31720)
+## Tools & Utilities
+- [Morrowind Code Patch](https://www.nexusmods.com/morrowind/mods/19510)
+- [MGE XE](https://www.nexusmods.com/morrowind/mods/41102)
+- [MGE XE - Distant Land Generation Texture Error Fix](https://www.nexusmods.com/morrowind/mods/45588)
+- [MWSE](https://github.com/MWSE/MWSE/releases)
+- [TES3Merge](https://www.nexusmods.com/morrowind/mods/46870)
+- [mlox](https://www.nexusmods.com/morrowind/mods/43001)
+## Post-Processing
+- [Morrowind Graphics Guide Shaders](https://www.nexusmods.com/morrowind/mods/46158)
+- [Enhanced Water Shader for MGE XE](https://www.nexusmods.com/morrowind/mods/45432)
+- [Krokantor's Enhanced Water Shader Updated](https://www.nexusmods.com/morrowind/mods/49964)
+## Patches & Fixes
+- [Patch for Purists](https://www.nexusmods.com/morrowind/mods/45096)
+- [Unofficial Morrowind Official Plugins Patched](https://www.nexusmods.com/morrowind/mods/43931)
+- [The Publicans](https://www.nexusmods.com/morrowind/mods/45410)
+- [Great Service](https://www.nexusmods.com/morrowind/mods/47767)
+- [No More Stage Diving - Desele's Dancing Girls](https://www.nexusmods.com/morrowind/mods/47738)
+- [Creature VFX Restoration](https://www.nexusmods.com/morrowind/mods/46194)
+- [Buoyant Lord Vivec](https://www.nexusmods.com/morrowind/mods/48312)
+- [Glowing Flames](https://www.nexusmods.com/morrowind/mods/46124)
+- [Negative Lights Remover](https://www.nexusmods.com/morrowind/mods/42306)
+- [Dubdilla Location Fix](https://www.nexusmods.com/morrowind/mods/46720)
+- [Daedric Sanctuary Fix](https://www.nexusmods.com/morrowind/mods/42107)
+- [Tel Fyr Amulet Fix](https://www.nexusmods.com/morrowind/mods/45209)
+- [IMMERSIVE RUN FIX](https://www.nexusmods.com/morrowind/mods/45947)
+- [Quest Skill Reward Fix](https://www.nexusmods.com/morrowind/mods/48269)
+- [Skill Increase GMST Fix](https://www.nexusmods.com/morrowind/mods/48029)
+- [Loading Doors Lock Tune](https://www.nexusmods.com/morrowind/mods/46094)
+- [Actually Unlimited Skeleton Key](https://www.nexusmods.com/morrowind/mods/47972)
+- [Expeditious Exit](https://www.nexusmods.com/morrowind/mods/45634)
+- [Expansion Delay](https://www.nexusmods.com/morrowind/mods/47588)
+## Gameplay Tweaks
+- [MWSE Magicka Regen](https://www.nexusmods.com/morrowind/mods/48129)
+- [Putting Power In Willpower 2 - Antimagic Boogaloo](https://www.nexusmods.com/morrowind/mods/45742)
+- [Improved Vanilla Leveling](https://www.nexusmods.com/morrowind/mods/48065)
+- [Torch Hotkey](https://www.nexusmods.com/morrowind/mods/45747)
+- [Security Enhanced](https://www.nexusmods.com/morrowind/mods/47038)
+- [Quick Equip](https://www.nexusmods.com/morrowind/mods/48341)
+- [Easy Escort](https://www.nexusmods.com/morrowind/mods/45712)
+- [Glancing Blows and Crits - MWSE](https://www.nexusmods.com/morrowind/mods/49541)
