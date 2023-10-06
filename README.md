@@ -52,7 +52,6 @@
 - [MGE XE - Distant Land Generation Texture Error Fix](https://www.nexusmods.com/morrowind/mods/45588)
 - [MWSE](https://github.com/MWSE/MWSE/releases)
 - [TES3Merge](https://www.nexusmods.com/morrowind/mods/46870)
-- [mlox](https://www.nexusmods.com/morrowind/mods/43001)
 ## Post-Processing
 - [Morrowind Graphics Guide Shaders](https://www.nexusmods.com/morrowind/mods/46158)
 - [Enhanced Water Shader for MGE XE](https://www.nexusmods.com/morrowind/mods/45432)
@@ -77,6 +76,7 @@
 - [Actually Unlimited Skeleton Key](https://www.nexusmods.com/morrowind/mods/47972)
 - [Expeditious Exit](https://www.nexusmods.com/morrowind/mods/45634)
 - [Expansion Delay](https://www.nexusmods.com/morrowind/mods/47588)
+- [Doors Anti Stuck](https://www.nexusmods.com/morrowind/mods/50931)
 ## Gameplay Tweaks
 - [MWSE Magicka Regen](https://www.nexusmods.com/morrowind/mods/48129)
 - [Putting Power In Willpower 2 - Antimagic Boogaloo](https://www.nexusmods.com/morrowind/mods/45742)
@@ -86,6 +86,7 @@
 - [Quick Equip](https://www.nexusmods.com/morrowind/mods/48341)
 - [Easy Escort](https://www.nexusmods.com/morrowind/mods/45712)
 - [Glancing Blows and Crits - MWSE](https://www.nexusmods.com/morrowind/mods/49541)
+- [The Midnight Oil - Lighting Overhaul](https://www.nexusmods.com/morrowind/mods/48293)
 ## Immersion Tweaks
 - [Graphic Herbalism - MWSE and OpenMW Edition](https://www.nexusmods.com/morrowind/mods/46599)
 - [Glow in the Dahrk](https://www.nexusmods.com/morrowind/mods/45886)
@@ -113,6 +114,7 @@
 - [Silt Strider Animation Restored](https://www.nexusmods.com/morrowind/mods/44150)
 - [Voiced Vivec and Yakety Yagrum - Merged and Improved](https://www.nexusmods.com/morrowind/mods/53098)
 - [Sound Spell Sound Effect](https://www.nexusmods.com/morrowind/mods/43300)
+- [Store Entrance Chimes](https://www.nexusmods.com/morrowind/mods/44586)
 ## Mesh Improvements
 - [Correct Meshes](https://www.nexusmods.com/morrowind/mods/39348)
 - [Mesh Fix](https://www.nexusmods.com/morrowind/mods/42134)
@@ -144,6 +146,7 @@
 - [Quickloot](https://www.nexusmods.com/morrowind/mods/46283)
 - [Continue](https://www.nexusmods.com/morrowind/mods/45952)
 - [Ownership Indicator](https://www.nexusmods.com/morrowind/mods/45940)
+- [Smart Journal](https://www.nexusmods.com/morrowind/mods/47492)
 - [Kezyma's UI Remastered](https://www.nexusmods.com/morrowind/mods/48987)
 - [HUD Weapon Charge](https://www.nexusmods.com/morrowind/mods/47962)
 - [Right Click Menu Exit](https://www.nexusmods.com/morrowind/mods/48458)
