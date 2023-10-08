@@ -16,6 +16,10 @@
 - Click 'OK' on the error popup.
 - Select Morrowind in the game list, if Morrowind isn't listed, scroll to the bottom, click 'Browse...' and locate your Morrowind folder.
 
+### MWSE
+- Select 'MWSE Install' in the application list (top right section of Mod Organizer).
+- Click 'Run'.
+
 ### Morrowind Code Patch
 - Select 'Morrowind Code Patch' in the application list (top right section of Mod Organizer).
 - Click 'Run'.
@@ -24,7 +28,7 @@
 - (Optional) Scroll to the bottom of the mod list, right-click 'Overwrite', click 'Create Mod', enter a name (eg. 'Morrowind.exe Patched') and click 'OK'. Check the box next to this new mod to enable it in the mod list.
 
 ### MGE XE
-- Select 'MGE XE' in the application list.
+- Select 'MGE XE' in the application list (top right section of Mod Organizer).
 - Click 'Run'.
 - If any warnings pop up, click 'OK' on all of them.
 - Click 'Select screen resolution'.
@@ -40,7 +44,7 @@
 ### Morrowind
 - Select 'Morrowind' in the application list.
 - Click 'Run'.
-- Click 'Yes to all'.
+- Click 'Yes to all' if any errors appear.
 
 # Full Modlist
 ## Mod Organizer
@@ -142,6 +146,8 @@
 - [Oriental Mesh Improvements](https://www.nexusmods.com/morrowind/mods/29906)
 - [Adamantium Claymore Replacer](https://www.nexusmods.com/morrowind/mods/46790)
 - [Adamantium Axe Replacer](https://www.nexusmods.com/morrowind/mods/46791)
+## Audio
+- [Kezyma's Voices of Vvardenfell](https://www.nexusmods.com/morrowind/mods/52279)
 ## User Interface
 - [UI Expansion](https://www.nexusmods.com/morrowind/mods/46071)
 - [Quickloot](https://www.nexusmods.com/morrowind/mods/46283)
