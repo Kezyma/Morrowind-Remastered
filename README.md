@@ -1,3 +1,5 @@
+![Kezyma's Morrowind Remastered](https://raw.githubusercontent.com/Kezyma/Morrowind-Remastered/main/Nexus%20Header%20Image.png)
+
 # Wabbajack Install
 ## Pre-Install Instructions
 - Install Morrowind through either Steam or GOG.
@@ -12,6 +14,7 @@
 - If you do not have a NexusMods premium account, you may be directed to download each file in the modlist through popups.
 
 ## Post-Install Instructions
+- Once Wabbajack completes the installation, click the 'Install Folder' button.
 - Run ModOrganizer.exe as an administrator.
 - Click 'OK' on the error popup.
 - Select Morrowind in the game list, if Morrowind isn't listed, scroll to the bottom, click 'Browse...' and locate your Morrowind folder.
@@ -95,14 +98,13 @@
 - [Expansion Delay](https://www.nexusmods.com/morrowind/mods/47588)
 - [Doors Anti Stuck](https://www.nexusmods.com/morrowind/mods/50931)
 ## Gameplay Tweaks
-- [MWSE Magicka Regen](https://www.nexusmods.com/morrowind/mods/48129)
+- [Kezyma's Mechanics Remastered](https://www.nexusmods.com/morrowind/mods/53606)
 - [Putting Power In Willpower 2 - Antimagic Boogaloo](https://www.nexusmods.com/morrowind/mods/45742)
 - [Improved Vanilla Leveling](https://www.nexusmods.com/morrowind/mods/48065)
 - [Torch Hotkey](https://www.nexusmods.com/morrowind/mods/45747)
 - [Security Enhanced](https://www.nexusmods.com/morrowind/mods/47038)
 - [Quick Equip](https://www.nexusmods.com/morrowind/mods/48341)
 - [Easy Escort](https://www.nexusmods.com/morrowind/mods/45712)
-- [Glancing Blows and Crits - MWSE](https://www.nexusmods.com/morrowind/mods/49541)
 - [The Midnight Oil - Lighting Overhaul](https://www.nexusmods.com/morrowind/mods/48293)
 ## Immersion Tweaks
 - [Graphic Herbalism - MWSE and OpenMW Edition](https://www.nexusmods.com/morrowind/mods/46599)
@@ -150,7 +152,6 @@
 - [Better Waterfalls](https://www.nexusmods.com/morrowind/mods/45424)
 ## Texture Improvements
 - [Morrowind Enhanced Textures](https://www.nexusmods.com/morrowind/mods/46221)
-- [Familiar Faces by Caleb (Updated)](https://www.nexusmods.com/morrowind/mods/50093)
 ## Groundcover
 - [Remiros' Groundcover](https://www.nexusmods.com/morrowind/mods/46733)
 ## Equipment Improvements
@@ -158,6 +159,9 @@
 - [Oriental Mesh Improvements](https://www.nexusmods.com/morrowind/mods/29906)
 - [Adamantium Claymore Replacer](https://www.nexusmods.com/morrowind/mods/46790)
 - [Adamantium Axe Replacer](https://www.nexusmods.com/morrowind/mods/46791)
+## NPCs
+- [VSBR Vanilla style body replacer](https://www.nexusmods.com/morrowind/mods/45993)
+- [Familiar Faces by Caleb (Updated)](https://www.nexusmods.com/morrowind/mods/50093)
 ## Audio
 - [Kezyma's Voices of Vvardenfell](https://www.nexusmods.com/morrowind/mods/52279)
 ## User Interface
