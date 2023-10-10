@@ -16,6 +16,18 @@
 - Click 'OK' on the error popup.
 - Select Morrowind in the game list, if Morrowind isn't listed, scroll to the bottom, click 'Browse...' and locate your Morrowind folder.
 
+### Sort Mods
+- On the right side panel of Mod Organizer, switch to the 'Plugins' tab (if not currently on that tab).
+- Click the 'Sort' button at the top of the tab.
+- Click 'Yes'.
+- When LOOT has finished running, click 'Close'.
+
+### Back-Date BSAs
+- On the Mod Organizer toolbar, click 'Tools', then click 'Settings...'.
+- Switch to the 'Workarounds' tab in the Settings window.
+- Click 'Back-date BSAs'.
+- Click 'OK'.
+
 ### MWSE
 - Select 'MWSE Install' in the application list (top right section of Mod Organizer).
 - Click 'Run'.
@@ -40,18 +52,6 @@
 - When distant land has finished generating, click 'Finish'.
 - Close the MGE XE window.
 - (Optional) Scroll to the bottom of the mod list, right-click 'Overwrite', click 'Create Mod', enter a name (eg. 'Generated Distant Land') and click 'OK'. Check the box next to this new mod to enable it in the mod list.
-
-### Sort Mods
-- On the right side panel of Mod Organizer, switch to the 'Plugins' tab (if not currently on that tab).
-- Click the 'Sort' button at the top of the tab.
-- Click 'Yes'.
-- When LOOT has finished running, click 'Close'.
-
-### Back-Date BSAs
-- On the Mod Organizer toolbar, click 'Tools', then click 'Settings...'.
-- Switch to the 'Workarounds' tab in the Settings window.
-- Click 'Back-date BSAs'.
-- Click 'OK'.
 
 ### Morrowind
 - Select 'Morrowind' in the application list.
