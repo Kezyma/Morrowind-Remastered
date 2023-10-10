@@ -14,6 +14,7 @@
 - If you do not have a NexusMods premium account, you may be directed to download each file in the modlist through popups.
 
 ## Post-Install Instructions
+- Once Wabbajack completes the installation, click the 'Install Folder' button.
 - Run ModOrganizer.exe as an administrator.
 - Click 'OK' on the error popup.
 - Select Morrowind in the game list, if Morrowind isn't listed, scroll to the bottom, click 'Browse...' and locate your Morrowind folder.
