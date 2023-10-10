@@ -1,3 +1,5 @@
+![Kezyma's Morrowind Remastered](https://raw.githubusercontent.com/Kezyma/Morrowind-Remastered/main/Nexus%20Header%20Image.png)
+
 # Wabbajack Install
 ## Pre-Install Instructions
 - Install Morrowind through either Steam or GOG.
