@@ -2,10 +2,10 @@
 ## Pre-Install Instructions
 - Install Morrowind through either Steam or GOG.
 - Download Wabbajack: https://www.wabbajack.org/
-- Download the wabbajack files from this repository: https://github.com/Kezyma/Morrowind-Remastered/releases
+- Download the Wabbajack files from this repository: https://github.com/Kezyma/Morrowind-Remastered/releases
 - Run Wabbajack.exe
 - Click 'Install From Disk'
-- In the 'Target Modlist' field, select the wabbajack file downloaded from this repository.
+- In the 'Target Modlist' field, select the Wabbajack file downloaded from this repository.
 - In the 'Modlist Installation Location' field, select an empty folder to install the modlist.
 - Click the button on the right to start installing.
 - Log in to your NexusMods account.
@@ -40,6 +40,18 @@
 - When distant land has finished generating, click 'Finish'.
 - Close the MGE XE window.
 - (Optional) Scroll to the bottom of the mod list, right-click 'Overwrite', click 'Create Mod', enter a name (eg. 'Generated Distant Land') and click 'OK'. Check the box next to this new mod to enable it in the mod list.
+
+### Sort Mods
+- On the right side panel of Mod Organizer, switch to the 'Plugins' tab (if not currently on that tab).
+- Click the 'Sort' button at the top of the tab.
+- Click 'Yes'.
+- When LOOT has finished running, click 'Close'.
+
+### Back-Date BSAs
+- On the Mod Organizer toolbar, click 'Tools', then click 'Settings...'.
+- Switch to the 'Workarounds' tab in the Settings window.
+- Click 'Back-date BSAs'.
+- Click 'OK'.
 
 ### Morrowind
 - Select 'Morrowind' in the application list.
