@@ -76,6 +76,7 @@
 - [Morrowind Graphics Guide Shaders](https://www.nexusmods.com/morrowind/mods/46158)
 - [Enhanced Water Shader for MGE XE](https://www.nexusmods.com/morrowind/mods/45432)
 - [Krokantor's Enhanced Water Shader Updated](https://www.nexusmods.com/morrowind/mods/49964)
+- [Heat Haze - A MGE XE Shader Mod](https://www.nexusmods.com/morrowind/mods/48973)
 ## Patches & Fixes
 - [Patch for Purists](https://www.nexusmods.com/morrowind/mods/45096)
 - [Unofficial Morrowind Official Plugins Patched](https://www.nexusmods.com/morrowind/mods/43931)
@@ -134,6 +135,12 @@
 - [Voiced Vivec and Yakety Yagrum - Merged and Improved](https://www.nexusmods.com/morrowind/mods/53098)
 - [Sound Spell Sound Effect](https://www.nexusmods.com/morrowind/mods/43300)
 - [Store Entrance Chimes](https://www.nexusmods.com/morrowind/mods/44586)
+- [Watch the Skies - Dynamic Weather and Sky Effects](https://www.nexusmods.com/morrowind/mods/48636)
+- [RainSplash](https://www.nexusmods.com/morrowind/mods/43124)
+- [Vapourmist - A Cloud and Mist Mod](https://www.nexusmods.com/morrowind/mods/50517)
+- [Wonders of Water](https://www.nexusmods.com/morrowind/mods/52815)
+- [Flies](https://www.nexusmods.com/morrowind/mods/43481)
+- [Cave Drips](https://www.nexusmods.com/morrowind/mods/43488)
 ## Mesh Improvements
 - [Correct Meshes](https://www.nexusmods.com/morrowind/mods/39348)
 - [Mesh Fix](https://www.nexusmods.com/morrowind/mods/42134)
@@ -152,6 +159,7 @@
 - [Better Waterfalls](https://www.nexusmods.com/morrowind/mods/45424)
 ## Texture Improvements
 - [Morrowind Enhanced Textures](https://www.nexusmods.com/morrowind/mods/46221)
+- [Signposts Retextured](https://www.nexusmods.com/morrowind/mods/42126)
 ## Groundcover
 - [Remiros' Groundcover](https://www.nexusmods.com/morrowind/mods/46733)
 ## Equipment Improvements
@@ -164,6 +172,7 @@
 - [Familiar Faces by Caleb (Updated)](https://www.nexusmods.com/morrowind/mods/50093)
 ## Audio
 - [Kezyma's Voices of Vvardenfell](https://www.nexusmods.com/morrowind/mods/52279)
+- [AURA - A Sound Overhaul Mod](https://www.nexusmods.com/morrowind/mods/48255)
 ## User Interface
 - [UI Expansion](https://www.nexusmods.com/morrowind/mods/46071)
 - [Quickloot](https://www.nexusmods.com/morrowind/mods/46283)
