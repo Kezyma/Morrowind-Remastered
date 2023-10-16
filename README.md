@@ -159,6 +159,7 @@
 - [Better Waterfalls](https://www.nexusmods.com/morrowind/mods/45424)
 ## Texture Improvements
 - [Morrowind Enhanced Textures](https://www.nexusmods.com/morrowind/mods/46221)
+- [Signposts Retextured](https://www.nexusmods.com/morrowind/mods/42126)
 ## Groundcover
 - [Remiros' Groundcover](https://www.nexusmods.com/morrowind/mods/46733)
 ## Equipment Improvements
