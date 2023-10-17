@@ -101,7 +101,6 @@
 ## Gameplay Tweaks
 - [Kezyma's Mechanics Remastered](https://www.nexusmods.com/morrowind/mods/53606)
 - [Putting Power In Willpower 2 - Antimagic Boogaloo](https://www.nexusmods.com/morrowind/mods/45742)
-- [Improved Vanilla Leveling](https://www.nexusmods.com/morrowind/mods/48065)
 - [Torch Hotkey](https://www.nexusmods.com/morrowind/mods/45747)
 - [Security Enhanced](https://www.nexusmods.com/morrowind/mods/47038)
 - [Quick Equip](https://www.nexusmods.com/morrowind/mods/48341)
@@ -169,6 +168,7 @@
 - [Adamantium Axe Replacer](https://www.nexusmods.com/morrowind/mods/46791)
 ## NPCs
 - [VSBR Vanilla style body replacer](https://www.nexusmods.com/morrowind/mods/45993)
+- [New Beast Bodies by Liztail](https://www.nexusmods.com/morrowind/mods/47678)
 - [Familiar Faces by Caleb (Updated)](https://www.nexusmods.com/morrowind/mods/50093)
 ## Audio
 - [Kezyma's Voices of Vvardenfell](https://www.nexusmods.com/morrowind/mods/52279)
