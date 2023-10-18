@@ -20,11 +20,11 @@
             "$type": "Links, Wabbajack.Lib",
             "image": "https://raw.githubusercontent.com/Kezyma/Morrowind-Remastered/main/Nexus%20Header%20Image.png",
             "readme": "https://github.com/Kezyma/Morrowind-Remastered/blob/main/README.md",
-            "download": "https://github.com/Kezyma/Morrowind-Remastered/releases/download/v1.6/Kezyma.s.Morrowind.Remastered.wabbajack",
+            "download": "https://github.com/Kezyma/Morrowind-Remastered/releases/download/v1.7/Kezyma.s.Morrowind.Remastered.wabbajack",
             "machineURL": "morrowindremastered",
             "discordURL": "https://discord.com/invite/kPA3RrxAYz"
         },
-        "download_metadata": {"Hash":"hch1p0vnxb4=","Size":6363973,"NumberOfArchives":129,"SizeOfArchives":7653657470,"NumberOfInstalledFiles":55990,"SizeOfInstalledFiles":10489336418},
-        "version": "1.6"
+        "download_metadata": {"Hash":"P2nPgqmoa7w=","Size":6562331,"NumberOfArchives":135,"SizeOfArchives":7925444800,"NumberOfInstalledFiles":61844,"SizeOfInstalledFiles":11124297207},
+        "version": "1.7"
     }
 ]
