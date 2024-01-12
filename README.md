@@ -67,6 +67,8 @@
 - [Root Builder for Mod Organizer 2](https://www.nexusmods.com/skyrimspecialedition/mods/31720)
 ## Tools & Utilities
 - [Morrowind Code Patch](https://www.nexusmods.com/morrowind/mods/19510)
+- [MWSE Magicka Regen](https://www.nexusmods.com/morrowind/mods/48129)
+- [Improved Vanilla Leveling](https://www.nexusmods.com/morrowind/mods/48065)
 - [MGE XE](https://www.nexusmods.com/morrowind/mods/41102)
 - [MGE XE - Distant Land Generation Texture Error Fix](https://www.nexusmods.com/morrowind/mods/45588)
 - [MWSE](https://github.com/MWSE/MWSE/releases)
