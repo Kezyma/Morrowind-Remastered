@@ -25,12 +25,12 @@
             "discordURL": "https://discord.com/invite/kPA3RrxAYz"
         },
         "download_metadata": {
-            "Hash": "+XT8CuFGKg0=",
-            "Size": 6619256,
+            "Hash": "jGCgMyxdKCI=",
+            "Size": 6616686,
             "NumberOfArchives": 142,
             "SizeOfArchives": 8393593562,
-            "NumberOfInstalledFiles": 63252,
-            "SizeOfInstalledFiles": 11606199314
+            "NumberOfInstalledFiles": 63250,
+            "SizeOfInstalledFiles": 11606194610
         },
         "version": "2.1"
     }
