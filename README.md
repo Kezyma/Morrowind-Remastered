@@ -18,8 +18,9 @@
 - Run MOWJUI.exe as an administrator.
 - Follow the steps in the application to finish setting up your game.
 
-### Obsolete
-## Manual Setup
+
+
+# Obsolete Manual Setup
 - Run ModOrganizer.exe as an administrator.
 - Click 'OK' on the error popup.
 - Select <Edit...> in the game list and change the 'Binary' and 'Start in' fields for 'Morrowind' to your Morrowind installation.
