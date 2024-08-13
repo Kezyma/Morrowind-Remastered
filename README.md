@@ -22,7 +22,7 @@
 ## Manual Setup
 - Run ModOrganizer.exe as an administrator.
 - Click 'OK' on the error popup.
-- Select Morrowind in the game list, if Morrowind isn't listed, scroll to the bottom, click 'Browse...' and locate your Morrowind folder.
+- Select <Edit...> in the game list and change the 'Binary' and 'Start in' fields for 'Morrowind' to your Morrowind installation.
 
 ### Sort Mods
 - On the right side panel of Mod Organizer, switch to the 'Plugins' tab (if not currently on that tab).
