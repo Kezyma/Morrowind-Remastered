@@ -15,6 +15,11 @@
 
 ## Post-Install Instructions
 - Once Wabbajack completes the installation, click the 'Install Folder' button.
+- Run MOWJUI.exe as an administrator.
+- Follow the steps in the application to finish setting up your game.
+
+### Obsolete
+## Manual Setup
 - Run ModOrganizer.exe as an administrator.
 - Click 'OK' on the error popup.
 - Select Morrowind in the game list, if Morrowind isn't listed, scroll to the bottom, click 'Browse...' and locate your Morrowind folder.

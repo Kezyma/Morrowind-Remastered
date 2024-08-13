@@ -25,13 +25,13 @@
             "discordURL": "https://discord.com/invite/kPA3RrxAYz"
         },
         "download_metadata": {
-            "Hash": "jGCgMyxdKCI=",
-            "Size": 6616686,
-            "NumberOfArchives": 142,
-            "SizeOfArchives": 8393593562,
-            "NumberOfInstalledFiles": 63250,
-            "SizeOfInstalledFiles": 11606194610
+            "Hash": "Ds80LoDC63s=",
+            "Size": 6795466,
+            "NumberOfArchives": 143,
+            "SizeOfArchives": 8827882881,
+            "NumberOfInstalledFiles": 68470,
+            "SizeOfInstalledFiles": 12346412069
         },
-        "version": "2.1"
+        "version": "2.3"
     }
 ]
