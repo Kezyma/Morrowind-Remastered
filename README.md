@@ -18,7 +18,15 @@
 - Run MOWJUI.exe as an administrator.
 - Follow the steps in the application to finish setting up your game.
 
-
+________
+________
+________
+________
+________
+________
+________
+________
+________
 
 # Obsolete Manual Setup
 - Run ModOrganizer.exe as an administrator.
