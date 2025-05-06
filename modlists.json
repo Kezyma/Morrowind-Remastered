@@ -25,13 +25,14 @@
             "discordURL": "https://discord.com/invite/kPA3RrxAYz"
         },
         "download_metadata": {
-            "Hash": "5xJrADD1RnU=",
-            "Size": 6795502,
-            "NumberOfArchives": 143,
-            "SizeOfArchives": 8827886010,
-            "NumberOfInstalledFiles": 68470,
-            "SizeOfInstalledFiles": 12346412183
+            "Hash": "ETCWO15Bdc4=",
+            "Size": 6755646,
+            "NumberOfArchives": 148,
+            "SizeOfArchives": 8956237891,
+            "NumberOfInstalledFiles": 68834,
+            "SizeOfInstalledFiles": 12420830864,
+            "TotalSize": 21377068755
         },
-        "version": "2.4"
+        "version": "2.7"
     }
 ]
