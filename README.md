@@ -1,4 +1,4 @@
-![Kezyma's Morrowind Remastered](https://raw.githubusercontent.com/Kezyma/Morrowind-Remastered/main/Nexus%20Header%20Image.png)
+![Kezyma's Morrowind Remastered](https://raw.githubusercontent.com/Kezyma/Morrowind-Remastered/main/Images/Nexus%20Header%20Image.png)
 
 # Installation Instructions
 - Install Morrowind through either Steam or GOG. 
