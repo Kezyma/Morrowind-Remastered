@@ -93,7 +93,7 @@
             "image": "https://raw.githubusercontent.com/Kezyma/Morrowind-Remastered/main/Images/Nexus%20Header%20Image%20MWSE.png",
             "readme": "https://github.com/Kezyma/Morrowind-Remastered/blob/main/README.md",
             "download": "https://github.com/Kezyma/Morrowind-Remastered/raw/refs/heads/main/Modlists/Morrowind%20Remastered%20-%20MWSE%20Edition.wabbajack",
-            "machineURL": "morrowindremastered/openmw",
+            "machineURL": "morrowindremastered/mwse",
             "discordURL": "https://discord.com/invite/kPA3RrxAYz"
         },
         "download_metadata": {
