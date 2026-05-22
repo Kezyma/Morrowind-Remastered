@@ -19,7 +19,7 @@
     "DisplayVersionOnlyInInstallerView": false,
     "force_down": false,
     "links": {
-      "image": "https://raw.githubusercontent.com/Kezyma/Morrowind-Remastered/main/Images/Nexus%20Header%20Image%20Legacy.png",
+      "image": "https://raw.githubusercontent.com/Kezyma/Morrowind-Remastered/main/Images/Nexus%20Header%20Image%20Legacy.webp",
       "readme": "https://github.com/Kezyma/Morrowind-Remastered/blob/main/README.md",
       "download": "https://authored-files.wabbajack.org/Morrowind Remastered - Legacy Edition.wabbajack_cff7dccc-cd47-4fe5-90a2-108ee29f7a9e",
       "machineURL": "MorrowindRemasteredLegacyEdition",
@@ -66,7 +66,7 @@
     "DisplayVersionOnlyInInstallerView": false,
     "force_down": false,
     "links": {
-      "image": "https://raw.githubusercontent.com/Kezyma/Morrowind-Remastered/main/Images/Nexus%20Header%20Image%20OpenMW.png",
+      "image": "https://raw.githubusercontent.com/Kezyma/Morrowind-Remastered/main/Images/Nexus%20Header%20Image%20OpenMW.webp",
       "readme": "https://github.com/Kezyma/Morrowind-Remastered/blob/main/README.md",
       "download": "https://authored-files.wabbajack.org/Morrowind Remastered - OpenMW Edition.wabbajack_603b1080-946d-44a0-ac22-4fa1d9cc61b3",
       "machineURL": "MorrowindRemasteredOpenMWEdition",
@@ -113,7 +113,7 @@
     "DisplayVersionOnlyInInstallerView": false,
     "force_down": false,
     "links": {
-      "image": "https://raw.githubusercontent.com/Kezyma/Morrowind-Remastered/main/Images/Nexus%20Header%20Image%20MWSE.png",
+      "image": "https://raw.githubusercontent.com/Kezyma/Morrowind-Remastered/main/Images/Nexus%20Header%20Image%20MWSE.webp",
       "readme": "https://github.com/Kezyma/Morrowind-Remastered/blob/main/README.md",
       "download": "https://authored-files.wabbajack.org/Morrowind Remastered - MWSE Edition.wabbajack_171174ac-85c5-41ea-8943-3148cfa9c24d",
       "machineURL": "MorrowindRemasteredMWSEEdition",
