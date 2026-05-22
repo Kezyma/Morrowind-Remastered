@@ -21,7 +21,7 @@
     "links": {
       "image": "https://raw.githubusercontent.com/Kezyma/Morrowind-Remastered/main/Images/Nexus%20Header%20Image%20Legacy.png",
       "readme": "https://github.com/Kezyma/Morrowind-Remastered/blob/main/README.md",
-      "download": "https://github.com/Kezyma/Morrowind-Remastered/raw/refs/heads/main/Modlists/Morrowind%20Remastered%20-%20Legacy%20Edition.wabbajack",
+      "download": "https://authored-files.wabbajack.org/Morrowind Remastered - Legacy Edition.wabbajack_22d58ad8-5560-4e0d-91b4-64403f3a21aa",
       "machineURL": "MorrowindRemasteredLegacyEdition",
       "discordURL": "https://discord.com/invite/kPA3RrxAYz",
       "websiteURL": "",
@@ -33,17 +33,17 @@
       }
     },
     "download_metadata": {
-      "Hash": "9Hqavc+3dJo=",
-      "Size": 5771569,
+      "Hash": "gmpOjAJplmg=",
+      "Size": 5352646,
       "NumberOfArchives": 147,
       "SizeOfArchives": 8978539965,
-      "NumberOfInstalledFiles": 68844,
-      "SizeOfInstalledFiles": 12438223857,
-      "TotalSize": 21416763822
+      "NumberOfInstalledFiles": 68843,
+      "SizeOfInstalledFiles": 12438221633,
+      "TotalSize": 21416761598
     },
     "version": "2.7.1",
     "dateCreated": "1970-01-01T00:00:00Z",
-    "dateUpdated": "0001-01-01T00:00:00",
+    "dateUpdated": "2026-05-22T21:14:26.040078Z",
     "repositoryName": ""
   },
   {
