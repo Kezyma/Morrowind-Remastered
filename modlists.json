@@ -114,7 +114,12 @@
       "machineURL": "MorrowindRemasteredMWSEEdition",
       "discordURL": "https://discord.com/invite/kPA3RrxAYz",
       "websiteURL": "",
-      "nexusCollection": null
+      "nexusCollection": {
+        "collectionId": "452491",
+        "slug": "kliaxf",
+        "domainName": "morrowind",
+        "lastRevisionNumber": 1
+      }
     },
     "download_metadata": {
       "Hash": "ZYQ5+hEp9Eo=",
