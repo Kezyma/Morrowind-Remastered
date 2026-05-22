@@ -254,19 +254,19 @@
       "phase": 0
     },
     {
-      "name": "(OpenMW) Immersive FPV",
-      "version": "1.3",
+      "name": "(OpenMW 0.49) trav\u0027s OpenMW Books Enhanced",
+      "version": "v6.1",
       "optional": false,
       "domainName": "morrowind",
       "source": {
         "type": "nexus",
-        "modId": 58986,
-        "fileId": 1000064312,
-        "logicalFilename": "(OpenMW) Immersive FPV",
+        "modId": 55126,
+        "fileId": 1000058495,
+        "logicalFilename": "(OpenMW 0.49) trav\u0027s OpenMW Books Enhanced",
         "updatePolicy": "prefer",
-        "fileSize": 22304
+        "fileSize": 5241454
       },
-      "author": "Hrothgarr123",
+      "author": "trav",
       "details": {
         "category": "",
         "type": ""
@@ -454,19 +454,19 @@
       "phase": 0
     },
     {
-      "name": "Arktwend - OpenMW port",
-      "version": "1.0",
+      "name": "Better Clothes Complete",
+      "version": "Complete",
       "optional": false,
       "domainName": "morrowind",
       "source": {
         "type": "nexus",
-        "modId": 45611,
-        "fileId": 1000010930,
-        "logicalFilename": "Arktwend - OpenMW port",
+        "modId": 47549,
+        "fileId": 1000029209,
+        "logicalFilename": "Better Clothes Complete",
         "updatePolicy": "prefer",
-        "fileSize": 31597511
+        "fileSize": 87765303
       },
-      "author": "SureAI",
+      "author": "Better Clothes team and other authors who provided fixes and further versions",
       "details": {
         "category": "",
         "type": ""
@@ -527,26 +527,6 @@
         "fileSize": 17440100
       },
       "author": "marshall1992 and eledin",
-      "details": {
-        "category": "",
-        "type": ""
-      },
-      "phase": 0
-    },
-    {
-      "name": "Comberry Bush and Ingredient Replacer",
-      "version": "2.4",
-      "optional": false,
-      "domainName": "morrowind",
-      "source": {
-        "type": "nexus",
-        "modId": 42586,
-        "fileId": 1000012640,
-        "logicalFilename": "Comberry Bush and Ingredient Replacer",
-        "updatePolicy": "prefer",
-        "fileSize": 2086873
-      },
-      "author": "Pherim",
       "details": {
         "category": "",
         "type": ""
@@ -667,6 +647,26 @@
         "fileSize": 3173039
       },
       "author": "DaggerfallTeam",
+      "details": {
+        "category": "",
+        "type": ""
+      },
+      "phase": 0
+    },
+    {
+      "name": "Dubdilla Location Fix",
+      "version": "1.1",
+      "optional": false,
+      "domainName": "morrowind",
+      "source": {
+        "type": "nexus",
+        "modId": 46720,
+        "fileId": 1000034143,
+        "logicalFilename": "Dubdilla Location Fix",
+        "updatePolicy": "prefer",
+        "fileSize": 4196
+      },
+      "author": "Half11",
       "details": {
         "category": "",
         "type": ""
@@ -847,26 +847,6 @@
         "fileSize": 2477620
       },
       "author": "Leaposter",
-      "details": {
-        "category": "",
-        "type": ""
-      },
-      "phase": 0
-    },
-    {
-      "name": "Glow in the Dahrk",
-      "version": "3.2.2",
-      "optional": false,
-      "domainName": "morrowind",
-      "source": {
-        "type": "nexus",
-        "modId": 45886,
-        "fileId": 1000059262,
-        "logicalFilename": "Glow in the Dahrk",
-        "updatePolicy": "prefer",
-        "fileSize": 11433050
-      },
-      "author": "Melchior Dahrk and NullCascade",
       "details": {
         "category": "",
         "type": ""
@@ -1094,26 +1074,6 @@
       "phase": 0
     },
     {
-      "name": "Title Screen and Logo Video Intro Reworked.",
-      "version": "1.0",
-      "optional": false,
-      "domainName": "morrowind",
-      "source": {
-        "type": "nexus",
-        "modId": 43657,
-        "fileId": 1000003871,
-        "logicalFilename": "Title Screen and Logo Video Intro Reworked.",
-        "updatePolicy": "prefer",
-        "fileSize": 22263246
-      },
-      "author": "Phobos",
-      "details": {
-        "category": "",
-        "type": ""
-      },
-      "phase": 0
-    },
-    {
       "name": "Lorkhan\u0027s Lunar Legacy",
       "version": "1.0",
       "optional": false,
@@ -1247,6 +1207,26 @@
         "fileSize": 30432268
       },
       "author": "MOP Team",
+      "details": {
+        "category": "",
+        "type": ""
+      },
+      "phase": 0
+    },
+    {
+      "name": "Mushroom Tree Replacer",
+      "version": "0.9",
+      "optional": false,
+      "domainName": "morrowind",
+      "source": {
+        "type": "nexus",
+        "modId": 45350,
+        "fileId": 1000009141,
+        "logicalFilename": "Mushroom Tree Replacer",
+        "updatePolicy": "prefer",
+        "fileSize": 77993997
+      },
+      "author": "PeterBitt",
       "details": {
         "category": "",
         "type": ""
@@ -1414,19 +1394,19 @@
       "phase": 0
     },
     {
-      "name": "RainSplash",
-      "version": "1.02",
+      "name": "MGE XE",
+      "version": "0.16.3",
       "optional": false,
       "domainName": "morrowind",
       "source": {
         "type": "nexus",
-        "modId": 43124,
-        "fileId": 1000002993,
-        "logicalFilename": "RainSplash",
+        "modId": 41102,
+        "fileId": 1000048202,
+        "logicalFilename": "MGE XE",
         "updatePolicy": "prefer",
-        "fileSize": 5446
+        "fileSize": 12205469
       },
-      "author": "abot",
+      "author": "Hrnchamd",
       "details": {
         "category": "",
         "type": ""
@@ -1465,26 +1445,6 @@
         "logicalFilename": "Redoran Architecture Reimagined",
         "updatePolicy": "prefer",
         "fileSize": 70818081
-      },
-      "author": "eledin",
-      "details": {
-        "category": "",
-        "type": ""
-      },
-      "phase": 0
-    },
-    {
-      "name": "Redoran Architecture Reimagined",
-      "version": "0.5",
-      "optional": false,
-      "domainName": "morrowind",
-      "source": {
-        "type": "nexus",
-        "modId": 57722,
-        "fileId": 1000058396,
-        "logicalFilename": "Redoran Architecture Reimagined",
-        "updatePolicy": "prefer",
-        "fileSize": 17754688
       },
       "author": "eledin",
       "details": {
@@ -1654,19 +1614,19 @@
       "phase": 0
     },
     {
-      "name": "Pherim\u0027s Small and WIP Mods",
-      "version": "WIP",
+      "name": "Vanilla Friendlier Ascadian Isles Trees",
+      "version": "1.1",
       "optional": false,
       "domainName": "morrowind",
       "source": {
         "type": "nexus",
-        "modId": 44321,
-        "fileId": 1000014115,
-        "logicalFilename": "Pherim\u0027s Small and WIP Mods",
+        "modId": 57566,
+        "fileId": 1000057466,
+        "logicalFilename": "Vanilla Friendlier Ascadian Isles Trees",
         "updatePolicy": "prefer",
-        "fileSize": 3291678
+        "fileSize": 12407221
       },
-      "author": "Pherim",
+      "author": "Vazanoir",
       "details": {
         "category": "",
         "type": ""
@@ -1974,26 +1934,6 @@
       "phase": 0
     },
     {
-      "name": "(OpenMW 0.49) trav\u0027s OpenMW Books Enhanced",
-      "version": "v6.1",
-      "optional": false,
-      "domainName": "morrowind",
-      "source": {
-        "type": "nexus",
-        "modId": 55126,
-        "fileId": 1000058495,
-        "logicalFilename": "(OpenMW 0.49) trav\u0027s OpenMW Books Enhanced",
-        "updatePolicy": "prefer",
-        "fileSize": 5241454
-      },
-      "author": "trav",
-      "details": {
-        "category": "",
-        "type": ""
-      },
-      "phase": 0
-    },
-    {
       "name": "Alit replacer - Aendemika of Vvardenfell",
       "version": "1",
       "optional": false,
@@ -2094,19 +2034,19 @@
       "phase": 0
     },
     {
-      "name": "Better Clothes Complete",
-      "version": "Complete",
+      "name": "Arktwend - OpenMW port",
+      "version": "1.0",
       "optional": false,
       "domainName": "morrowind",
       "source": {
         "type": "nexus",
-        "modId": 47549,
-        "fileId": 1000029209,
-        "logicalFilename": "Better Clothes Complete",
+        "modId": 45611,
+        "fileId": 1000010930,
+        "logicalFilename": "Arktwend - OpenMW port",
         "updatePolicy": "prefer",
-        "fileSize": 87765303
+        "fileSize": 31597511
       },
-      "author": "Better Clothes team and other authors who provided fixes and further versions",
+      "author": "SureAI",
       "details": {
         "category": "",
         "type": ""
@@ -2134,19 +2074,19 @@
       "phase": 0
     },
     {
-      "name": "Better Kegstands",
-      "version": "1.0",
+      "name": "Better Dialogue Font",
+      "version": "1",
       "optional": false,
       "domainName": "morrowind",
       "source": {
         "type": "nexus",
-        "modId": 37708,
-        "fileId": 86872,
-        "logicalFilename": "Better Kegstands",
+        "modId": 36873,
+        "fileId": 74900,
+        "logicalFilename": "Better Dialogue Font",
         "updatePolicy": "prefer",
-        "fileSize": 1764693
+        "fileSize": 32327
       },
-      "author": "Tarius",
+      "author": "Hrnchamd",
       "details": {
         "category": "",
         "type": ""
@@ -2167,6 +2107,26 @@
         "fileSize": 2551777
       },
       "author": "Tarius",
+      "details": {
+        "category": "",
+        "type": ""
+      },
+      "phase": 0
+    },
+    {
+      "name": "Beautiful Cities of Morrowind",
+      "version": "3.0.0",
+      "optional": false,
+      "domainName": "morrowind",
+      "source": {
+        "type": "nexus",
+        "modId": 49231,
+        "fileId": 1000055473,
+        "logicalFilename": "Beautiful Cities of Morrowind",
+        "updatePolicy": "prefer",
+        "fileSize": 322060066
+      },
+      "author": "RandomPal and the Morrowind Modding Community",
       "details": {
         "category": "",
         "type": ""
@@ -2435,19 +2395,19 @@
       "phase": 0
     },
     {
-      "name": "Dragon Statue Revisited",
+      "name": "Dragon Statue Re-Revisted (De-Goofified Edition)",
       "version": "1.0",
       "optional": false,
       "domainName": "morrowind",
       "source": {
         "type": "nexus",
-        "modId": 50561,
-        "fileId": 1000028571,
-        "logicalFilename": "Dragon Statue Revisited",
+        "modId": 52061,
+        "fileId": 1000034152,
+        "logicalFilename": "Dragon Statue Re-Revisted (De-Goofified Edition)",
         "updatePolicy": "prefer",
-        "fileSize": 1814572
+        "fileSize": 227554
       },
-      "author": "Melchior Dahrk",
+      "author": "Ruffin Vangarr and Melchior Dahrk",
       "details": {
         "category": "",
         "type": ""
@@ -2495,26 +2455,6 @@
       "phase": 0
     },
     {
-      "name": "Dwemer Mesh Improvement - Revamped",
-      "version": "1.1",
-      "optional": false,
-      "domainName": "morrowind",
-      "source": {
-        "type": "nexus",
-        "modId": 51525,
-        "fileId": 1000031954,
-        "logicalFilename": "Dwemer Mesh Improvement - Revamped",
-        "updatePolicy": "prefer",
-        "fileSize": 622270
-      },
-      "author": "darkfri",
-      "details": {
-        "category": "",
-        "type": ""
-      },
-      "phase": 0
-    },
-    {
       "name": "Expansion Resource Conflicts",
       "version": "2.1",
       "optional": false,
@@ -2555,6 +2495,26 @@
       "phase": 0
     },
     {
+      "name": "Glow in the Dahrk",
+      "version": "3.2.2",
+      "optional": false,
+      "domainName": "morrowind",
+      "source": {
+        "type": "nexus",
+        "modId": 45886,
+        "fileId": 1000059262,
+        "logicalFilename": "Glow in the Dahrk",
+        "updatePolicy": "prefer",
+        "fileSize": 11433050
+      },
+      "author": "Melchior Dahrk and NullCascade",
+      "details": {
+        "category": "",
+        "type": ""
+      },
+      "phase": 0
+    },
+    {
       "name": "Graphic Herbalism - MWSE and OpenMW Edition",
       "version": "1.04",
       "optional": false,
@@ -2566,6 +2526,26 @@
         "logicalFilename": "Graphic Herbalism - MWSE and OpenMW Edition",
         "updatePolicy": "prefer",
         "fileSize": 4047614
+      },
+      "author": "Stuporstar and Greatness7",
+      "details": {
+        "category": "",
+        "type": ""
+      },
+      "phase": 0
+    },
+    {
+      "name": "Graphic Herbalism - MWSE and OpenMW Edition",
+      "version": "1.04",
+      "optional": false,
+      "domainName": "morrowind",
+      "source": {
+        "type": "nexus",
+        "modId": 46599,
+        "fileId": 1000014602,
+        "logicalFilename": "Graphic Herbalism - MWSE and OpenMW Edition",
+        "updatePolicy": "prefer",
+        "fileSize": 3567780
       },
       "author": "Stuporstar and Greatness7",
       "details": {
@@ -2588,26 +2568,6 @@
         "fileSize": 9838927
       },
       "author": "MOPTeam-ShadowMimicry-Silentjacket",
-      "details": {
-        "category": "",
-        "type": ""
-      },
-      "phase": 0
-    },
-    {
-      "name": "Pherim\u0027s Small and WIP Mods",
-      "version": "WIP",
-      "optional": false,
-      "domainName": "morrowind",
-      "source": {
-        "type": "nexus",
-        "modId": 44321,
-        "fileId": 1000041953,
-        "logicalFilename": "Pherim\u0027s Small and WIP Mods",
-        "updatePolicy": "prefer",
-        "fileSize": 629140
-      },
-      "author": "Pherim",
       "details": {
         "category": "",
         "type": ""
@@ -2675,19 +2635,19 @@
       "phase": 0
     },
     {
-      "name": "Various tweaks and fixes",
-      "version": "1.01",
+      "name": "Insanity\u0027s Iron Swords",
+      "version": "1",
       "optional": false,
       "domainName": "morrowind",
       "source": {
         "type": "nexus",
-        "modId": 43795,
-        "fileId": 1000051505,
-        "logicalFilename": "Various tweaks and fixes",
+        "modId": 57155,
+        "fileId": 1000055330,
+        "logicalFilename": "Insanity\u0027s Iron Swords",
         "updatePolicy": "prefer",
-        "fileSize": 141400
+        "fileSize": 3957909
       },
-      "author": "borok",
+      "author": "InsanitySorrow",
       "details": {
         "category": "",
         "type": ""
@@ -3015,26 +2975,6 @@
       "phase": 0
     },
     {
-      "name": "Beautiful Cities of Morrowind",
-      "version": "3.0.0",
-      "optional": false,
-      "domainName": "morrowind",
-      "source": {
-        "type": "nexus",
-        "modId": 49231,
-        "fileId": 1000055473,
-        "logicalFilename": "Beautiful Cities of Morrowind",
-        "updatePolicy": "prefer",
-        "fileSize": 322060066
-      },
-      "author": "RandomPal and the Morrowind Modding Community",
-      "details": {
-        "category": "",
-        "type": ""
-      },
-      "phase": 0
-    },
-    {
       "name": "OpenMW Containers Animated",
       "version": "1.2.2",
       "optional": false,
@@ -3182,10 +3122,10 @@
       "source": {
         "type": "nexus",
         "modId": 54137,
-        "fileId": 1000050970,
+        "fileId": 1000060714,
         "logicalFilename": "OpenMW Voices of Vvardenfell patch",
         "updatePolicy": "prefer",
-        "fileSize": 3312
+        "fileSize": 3584
       },
       "author": "taitechnic",
       "details": {
@@ -3275,6 +3215,26 @@
       "phase": 0
     },
     {
+      "name": "Redoran Architecture Reimagined",
+      "version": "0.5",
+      "optional": false,
+      "domainName": "morrowind",
+      "source": {
+        "type": "nexus",
+        "modId": 57722,
+        "fileId": 1000058396,
+        "logicalFilename": "Redoran Architecture Reimagined",
+        "updatePolicy": "prefer",
+        "fileSize": 17754688
+      },
+      "author": "eledin",
+      "details": {
+        "category": "",
+        "type": ""
+      },
+      "phase": 0
+    },
+    {
       "name": "Remiros\u0027 Mod Graveyard",
       "version": "1.1",
       "optional": false,
@@ -3348,26 +3308,6 @@
         "fileSize": 13293191
       },
       "author": "Resdayn Revival Team",
-      "details": {
-        "category": "",
-        "type": ""
-      },
-      "phase": 0
-    },
-    {
-      "name": "Simple Sprint for OpenMW",
-      "version": "1.5.1",
-      "optional": false,
-      "domainName": "morrowind",
-      "source": {
-        "type": "nexus",
-        "modId": 55430,
-        "fileId": 1000048923,
-        "logicalFilename": "Simple Sprint for OpenMW",
-        "updatePolicy": "prefer",
-        "fileSize": 5208
-      },
-      "author": "Sevenfm",
       "details": {
         "category": "",
         "type": ""
@@ -3595,6 +3535,26 @@
       "phase": 0
     },
     {
+      "name": "Vanilla-friendly West Gash Tree Replacer",
+      "version": "2.7",
+      "optional": false,
+      "domainName": "morrowind",
+      "source": {
+        "type": "nexus",
+        "modId": 44173,
+        "fileId": 1000051988,
+        "logicalFilename": "Vanilla-friendly West Gash Tree Replacer",
+        "updatePolicy": "prefer",
+        "fileSize": 5607822
+      },
+      "author": "Melchior Dahrk",
+      "details": {
+        "category": "",
+        "type": ""
+      },
+      "phase": 0
+    },
+    {
       "name": "Various Mesh Fixes",
       "version": "1.1",
       "optional": false,
@@ -3742,10 +3702,10 @@
       "source": {
         "type": "nexus",
         "modId": 57850,
-        "fileId": 1000059083,
+        "fileId": 1000058760,
         "logicalFilename": "Werewolf Replacer",
         "updatePolicy": "prefer",
-        "fileSize": 35811497
+        "fileSize": 37331047
       },
       "author": "marshall1992 eledin and daemacht",
       "details": {
@@ -3755,19 +3715,19 @@
       "phase": 0
     },
     {
-      "name": "Boats OpenMW patch",
-      "version": "1.0",
+      "name": "Dwemer Mesh Improvement - Revamped",
+      "version": "1.1",
       "optional": false,
       "domainName": "morrowind",
       "source": {
         "type": "nexus",
-        "modId": 55378,
-        "fileId": 1000047855,
-        "logicalFilename": "Boats OpenMW patch",
+        "modId": 51525,
+        "fileId": 1000031954,
+        "logicalFilename": "Dwemer Mesh Improvement - Revamped",
         "updatePolicy": "prefer",
-        "fileSize": 804854
+        "fileSize": 622270
       },
-      "author": "Katya Karrel_Abot",
+      "author": "darkfri",
       "details": {
         "category": "",
         "type": ""
@@ -3942,26 +3902,6 @@
       "source": {
         "type": "nexus",
         "modId": 52345,
-        "fileId": 1000060640,
-        "logicalFilename": "Kezyma\u0027s OpenMW Player for Mod Organizer 2",
-        "updatePolicy": "prefer",
-        "fileSize": 965262
-      },
-      "author": "Kezyma",
-      "details": {
-        "category": "",
-        "type": ""
-      },
-      "phase": 0
-    },
-    {
-      "name": "Kezyma\u0027s OpenMW Player for Mod Organizer 2",
-      "version": "1.0.1",
-      "optional": false,
-      "domainName": "morrowind",
-      "source": {
-        "type": "nexus",
-        "modId": 52345,
         "fileId": 1000059813,
         "logicalFilename": "Kezyma\u0027s OpenMW Player for Mod Organizer 2",
         "updatePolicy": "prefer",
@@ -4006,6 +3946,26 @@
         "logicalFilename": "Kezyma\u0027s Root Builder for Mod Organizer",
         "updatePolicy": "prefer",
         "fileSize": 953839
+      },
+      "author": "Kezyma",
+      "details": {
+        "category": "",
+        "type": ""
+      },
+      "phase": 0
+    },
+    {
+      "name": "Kezyma\u0027s Root Builder for Mod Organizer",
+      "version": "4.5.2",
+      "optional": false,
+      "domainName": "morrowind",
+      "source": {
+        "type": "nexus",
+        "modId": 31720,
+        "fileId": 707262,
+        "logicalFilename": "Kezyma\u0027s Root Builder for Mod Organizer",
+        "updatePolicy": "prefer",
+        "fileSize": 957191
       },
       "author": "Kezyma",
       "details": {
@@ -4095,6 +4055,26 @@
       "phase": 0
     },
     {
+      "name": "OpenMW Voices of Vvardenfell patch",
+      "version": "0.54",
+      "optional": false,
+      "domainName": "morrowind",
+      "source": {
+        "type": "nexus",
+        "modId": 54137,
+        "fileId": 1000050970,
+        "logicalFilename": "OpenMW Voices of Vvardenfell patch",
+        "updatePolicy": "prefer",
+        "fileSize": 3312
+      },
+      "author": "taitechnic",
+      "details": {
+        "category": "",
+        "type": ""
+      },
+      "phase": 0
+    },
+    {
       "name": "Perfect Scum",
       "version": "1.1",
       "optional": false,
@@ -4108,6 +4088,326 @@
         "fileSize": 2831
       },
       "author": "Phoenix Rime",
+      "details": {
+        "category": "",
+        "type": ""
+      },
+      "phase": 0
+    },
+    {
+      "name": "(OpenMW) Immersive FPV",
+      "version": "1.3",
+      "optional": false,
+      "domainName": "morrowind",
+      "source": {
+        "type": "nexus",
+        "modId": 58986,
+        "fileId": 1000064312,
+        "logicalFilename": "(OpenMW) Immersive FPV",
+        "updatePolicy": "prefer",
+        "fileSize": 22304
+      },
+      "author": "Hrothgarr123",
+      "details": {
+        "category": "",
+        "type": ""
+      },
+      "phase": 0
+    },
+    {
+      "name": "Comberry Bush and Ingredient Replacer",
+      "version": "2.4",
+      "optional": false,
+      "domainName": "morrowind",
+      "source": {
+        "type": "nexus",
+        "modId": 42586,
+        "fileId": 1000012640,
+        "logicalFilename": "Comberry Bush and Ingredient Replacer",
+        "updatePolicy": "prefer",
+        "fileSize": 2086873
+      },
+      "author": "Pherim",
+      "details": {
+        "category": "",
+        "type": ""
+      },
+      "phase": 0
+    },
+    {
+      "name": "Title Screen and Logo Video Intro Reworked.",
+      "version": "1.0",
+      "optional": false,
+      "domainName": "morrowind",
+      "source": {
+        "type": "nexus",
+        "modId": 43657,
+        "fileId": 1000003871,
+        "logicalFilename": "Title Screen and Logo Video Intro Reworked.",
+        "updatePolicy": "prefer",
+        "fileSize": 22263246
+      },
+      "author": "Phobos",
+      "details": {
+        "category": "",
+        "type": ""
+      },
+      "phase": 0
+    },
+    {
+      "name": "RainSplash",
+      "version": "1.02",
+      "optional": false,
+      "domainName": "morrowind",
+      "source": {
+        "type": "nexus",
+        "modId": 43124,
+        "fileId": 1000002993,
+        "logicalFilename": "RainSplash",
+        "updatePolicy": "prefer",
+        "fileSize": 5446
+      },
+      "author": "abot",
+      "details": {
+        "category": "",
+        "type": ""
+      },
+      "phase": 0
+    },
+    {
+      "name": "Pherim\u0027s Small and WIP Mods",
+      "version": "WIP",
+      "optional": false,
+      "domainName": "morrowind",
+      "source": {
+        "type": "nexus",
+        "modId": 44321,
+        "fileId": 1000014115,
+        "logicalFilename": "Pherim\u0027s Small and WIP Mods",
+        "updatePolicy": "prefer",
+        "fileSize": 3291678
+      },
+      "author": "Pherim",
+      "details": {
+        "category": "",
+        "type": ""
+      },
+      "phase": 0
+    },
+    {
+      "name": "Better Kegstands",
+      "version": "1.0",
+      "optional": false,
+      "domainName": "morrowind",
+      "source": {
+        "type": "nexus",
+        "modId": 37708,
+        "fileId": 86872,
+        "logicalFilename": "Better Kegstands",
+        "updatePolicy": "prefer",
+        "fileSize": 1764693
+      },
+      "author": "Tarius",
+      "details": {
+        "category": "",
+        "type": ""
+      },
+      "phase": 0
+    },
+    {
+      "name": "Dragon Statue Revisited",
+      "version": "1.0",
+      "optional": false,
+      "domainName": "morrowind",
+      "source": {
+        "type": "nexus",
+        "modId": 50561,
+        "fileId": 1000028571,
+        "logicalFilename": "Dragon Statue Revisited",
+        "updatePolicy": "prefer",
+        "fileSize": 1814572
+      },
+      "author": "Melchior Dahrk",
+      "details": {
+        "category": "",
+        "type": ""
+      },
+      "phase": 0
+    },
+    {
+      "name": "Pherim\u0027s Small and WIP Mods",
+      "version": "WIP",
+      "optional": false,
+      "domainName": "morrowind",
+      "source": {
+        "type": "nexus",
+        "modId": 44321,
+        "fileId": 1000041953,
+        "logicalFilename": "Pherim\u0027s Small and WIP Mods",
+        "updatePolicy": "prefer",
+        "fileSize": 629140
+      },
+      "author": "Pherim",
+      "details": {
+        "category": "",
+        "type": ""
+      },
+      "phase": 0
+    },
+    {
+      "name": "Various tweaks and fixes",
+      "version": "1.01",
+      "optional": false,
+      "domainName": "morrowind",
+      "source": {
+        "type": "nexus",
+        "modId": 43795,
+        "fileId": 1000051505,
+        "logicalFilename": "Various tweaks and fixes",
+        "updatePolicy": "prefer",
+        "fileSize": 141400
+      },
+      "author": "borok",
+      "details": {
+        "category": "",
+        "type": ""
+      },
+      "phase": 0
+    },
+    {
+      "name": "Simple Sprint for OpenMW",
+      "version": "1.5.1",
+      "optional": false,
+      "domainName": "morrowind",
+      "source": {
+        "type": "nexus",
+        "modId": 55430,
+        "fileId": 1000048923,
+        "logicalFilename": "Simple Sprint for OpenMW",
+        "updatePolicy": "prefer",
+        "fileSize": 5208
+      },
+      "author": "Sevenfm",
+      "details": {
+        "category": "",
+        "type": ""
+      },
+      "phase": 0
+    },
+    {
+      "name": "Werewolf Replacer",
+      "version": "1.1",
+      "optional": false,
+      "domainName": "morrowind",
+      "source": {
+        "type": "nexus",
+        "modId": 57850,
+        "fileId": 1000059083,
+        "logicalFilename": "Werewolf Replacer",
+        "updatePolicy": "prefer",
+        "fileSize": 35811497
+      },
+      "author": "marshall1992 eledin and daemacht",
+      "details": {
+        "category": "",
+        "type": ""
+      },
+      "phase": 0
+    },
+    {
+      "name": "Boats OpenMW patch",
+      "version": "1.0",
+      "optional": false,
+      "domainName": "morrowind",
+      "source": {
+        "type": "nexus",
+        "modId": 55378,
+        "fileId": 1000047855,
+        "logicalFilename": "Boats OpenMW patch",
+        "updatePolicy": "prefer",
+        "fileSize": 804854
+      },
+      "author": "Katya Karrel_Abot",
+      "details": {
+        "category": "",
+        "type": ""
+      },
+      "phase": 0
+    },
+    {
+      "name": "Kezyma\u0027s OpenMW Player for Mod Organizer 2",
+      "version": "1.0.1",
+      "optional": false,
+      "domainName": "morrowind",
+      "source": {
+        "type": "nexus",
+        "modId": 52345,
+        "fileId": 1000060640,
+        "logicalFilename": "Kezyma\u0027s OpenMW Player for Mod Organizer 2",
+        "updatePolicy": "prefer",
+        "fileSize": 965262
+      },
+      "author": "Kezyma",
+      "details": {
+        "category": "",
+        "type": ""
+      },
+      "phase": 0
+    },
+    {
+      "name": "Correct UV Mudcrabs",
+      "version": "1.0",
+      "optional": false,
+      "domainName": "morrowind",
+      "source": {
+        "type": "nexus",
+        "modId": 42130,
+        "fileId": 90353,
+        "logicalFilename": "Correct UV Mudcrabs",
+        "updatePolicy": "prefer",
+        "fileSize": 125458
+      },
+      "author": "tronvillain",
+      "details": {
+        "category": "",
+        "type": ""
+      },
+      "phase": 0
+    },
+    {
+      "name": "Kezyma\u0027s Wabbajack Post-Setup Tool",
+      "version": "0.0.1",
+      "optional": false,
+      "domainName": "morrowind",
+      "source": {
+        "type": "nexus",
+        "modId": 1003,
+        "fileId": 6609,
+        "logicalFilename": "Kezyma\u0027s Wabbajack Post-Setup Tool",
+        "updatePolicy": "prefer",
+        "fileSize": 551
+      },
+      "author": "Kezyma",
+      "details": {
+        "category": "",
+        "type": ""
+      },
+      "phase": 0
+    },
+    {
+      "name": "HD Intro Cinematic - English",
+      "version": "v1.0",
+      "optional": false,
+      "domainName": "morrowind",
+      "source": {
+        "type": "nexus",
+        "modId": 39329,
+        "fileId": 81971,
+        "logicalFilename": "HD Intro Cinematic - English",
+        "updatePolicy": "prefer",
+        "fileSize": 57602497
+      },
+      "author": "Chesko",
       "details": {
         "category": "",
         "type": ""
@@ -4148,26 +4448,6 @@
         "fileSize": 2563976
       },
       "author": "wazabear and rabcor",
-      "details": {
-        "category": "",
-        "type": ""
-      },
-      "phase": 0
-    },
-    {
-      "name": "OpenMW Voices of Vvardenfell patch",
-      "version": "0.54",
-      "optional": false,
-      "domainName": "morrowind",
-      "source": {
-        "type": "nexus",
-        "modId": 54137,
-        "fileId": 1000060714,
-        "logicalFilename": "OpenMW Voices of Vvardenfell patch",
-        "updatePolicy": "prefer",
-        "fileSize": 3584
-      },
-      "author": "taitechnic",
       "details": {
         "category": "",
         "type": ""
@@ -4255,26 +4535,6 @@
       "phase": 0
     },
     {
-      "name": "Werewolf Replacer",
-      "version": "1.1",
-      "optional": false,
-      "domainName": "morrowind",
-      "source": {
-        "type": "nexus",
-        "modId": 57850,
-        "fileId": 1000058760,
-        "logicalFilename": "Werewolf Replacer",
-        "updatePolicy": "prefer",
-        "fileSize": 37331047
-      },
-      "author": "marshall1992 eledin and daemacht",
-      "details": {
-        "category": "",
-        "type": ""
-      },
-      "phase": 0
-    },
-    {
       "name": "Kezyma\u0027s OpenMW Player for Mod Organizer 2",
       "version": "1.0.1",
       "optional": false,
@@ -4315,59 +4575,19 @@
       "phase": 0
     },
     {
-      "name": "Correct UV Mudcrabs",
-      "version": "1.0",
+      "name": "Cave Drips",
+      "version": "1.1.1",
       "optional": false,
       "domainName": "morrowind",
       "source": {
         "type": "nexus",
-        "modId": 42130,
-        "fileId": 90353,
-        "logicalFilename": "Correct UV Mudcrabs",
+        "modId": 43488,
+        "fileId": 1000005302,
+        "logicalFilename": "Cave Drips",
         "updatePolicy": "prefer",
-        "fileSize": 125458
+        "fileSize": 6504
       },
-      "author": "tronvillain",
-      "details": {
-        "category": "",
-        "type": ""
-      },
-      "phase": 0
-    },
-    {
-      "name": "Kezyma\u0027s Wabbajack Post-Setup Tool",
-      "version": "0.0.1",
-      "optional": false,
-      "domainName": "morrowind",
-      "source": {
-        "type": "nexus",
-        "modId": 1003,
-        "fileId": 6609,
-        "logicalFilename": "Kezyma\u0027s Wabbajack Post-Setup Tool",
-        "updatePolicy": "prefer",
-        "fileSize": 551
-      },
-      "author": "Kezyma",
-      "details": {
-        "category": "",
-        "type": ""
-      },
-      "phase": 0
-    },
-    {
-      "name": "HD Intro Cinematic - English",
-      "version": "v1.0",
-      "optional": false,
-      "domainName": "morrowind",
-      "source": {
-        "type": "nexus",
-        "modId": 39329,
-        "fileId": 81971,
-        "logicalFilename": "HD Intro Cinematic - English",
-        "updatePolicy": "prefer",
-        "fileSize": 57602497
-      },
-      "author": "Chesko",
+      "author": "R-Zero",
       "details": {
         "category": "",
         "type": ""
@@ -4428,26 +4648,6 @@
         "fileSize": 6863020
       },
       "author": "Tyddy",
-      "details": {
-        "category": "",
-        "type": ""
-      },
-      "phase": 0
-    },
-    {
-      "name": "Mushroom Tree Replacer",
-      "version": "0.9",
-      "optional": false,
-      "domainName": "morrowind",
-      "source": {
-        "type": "nexus",
-        "modId": 45350,
-        "fileId": 1000009141,
-        "logicalFilename": "Mushroom Tree Replacer",
-        "updatePolicy": "prefer",
-        "fileSize": 77993997
-      },
-      "author": "PeterBitt",
       "details": {
         "category": "",
         "type": ""
@@ -4535,26 +4735,6 @@
       "phase": 0
     },
     {
-      "name": "Graphic Herbalism - MWSE and OpenMW Edition",
-      "version": "1.04",
-      "optional": false,
-      "domainName": "morrowind",
-      "source": {
-        "type": "nexus",
-        "modId": 46599,
-        "fileId": 1000014602,
-        "logicalFilename": "Graphic Herbalism - MWSE and OpenMW Edition",
-        "updatePolicy": "prefer",
-        "fileSize": 3567780
-      },
-      "author": "Stuporstar and Greatness7",
-      "details": {
-        "category": "",
-        "type": ""
-      },
-      "phase": 0
-    },
-    {
       "name": "Various Armor Improvements and Patches",
       "version": "1.0",
       "optional": false,
@@ -4635,26 +4815,6 @@
       "phase": 0
     },
     {
-      "name": "Vanilla-friendly West Gash Tree Replacer",
-      "version": "2.7",
-      "optional": false,
-      "domainName": "morrowind",
-      "source": {
-        "type": "nexus",
-        "modId": 44173,
-        "fileId": 1000051988,
-        "logicalFilename": "Vanilla-friendly West Gash Tree Replacer",
-        "updatePolicy": "prefer",
-        "fileSize": 5607822
-      },
-      "author": "Melchior Dahrk",
-      "details": {
-        "category": "",
-        "type": ""
-      },
-      "phase": 0
-    },
-    {
       "name": "Lush Synthesis",
       "version": "2.1",
       "optional": false,
@@ -4675,19 +4835,19 @@
       "phase": 0
     },
     {
-      "name": "Cave Drips",
-      "version": "1.1.1",
+      "name": "(OpenMW 0.49) Improved Vanilla Leveling",
+      "version": "1.4",
       "optional": false,
       "domainName": "morrowind",
       "source": {
         "type": "nexus",
-        "modId": 43488,
-        "fileId": 1000005302,
-        "logicalFilename": "Cave Drips",
+        "modId": 57062,
+        "fileId": 1000055266,
+        "logicalFilename": "(OpenMW 0.49) Improved Vanilla Leveling",
         "updatePolicy": "prefer",
-        "fileSize": 6504
+        "fileSize": 3095
       },
-      "author": "R-Zero",
+      "author": "OwnlyMe",
       "details": {
         "category": "",
         "type": ""
@@ -4695,39 +4855,19 @@
       "phase": 0
     },
     {
-      "name": "Dubdilla Location Fix",
+      "name": "No More Stage Diving - Desele\u0027s Dancing Girls",
       "version": "1.1",
       "optional": false,
       "domainName": "morrowind",
       "source": {
         "type": "nexus",
-        "modId": 46720,
-        "fileId": 1000034143,
-        "logicalFilename": "Dubdilla Location Fix",
+        "modId": 47738,
+        "fileId": 1000017973,
+        "logicalFilename": "No More Stage Diving - Desele\u0027s Dancing Girls",
         "updatePolicy": "prefer",
-        "fileSize": 4196
+        "fileSize": 2494
       },
-      "author": "Half11",
-      "details": {
-        "category": "",
-        "type": ""
-      },
-      "phase": 0
-    },
-    {
-      "name": "Better Dialogue Font",
-      "version": "1",
-      "optional": false,
-      "domainName": "morrowind",
-      "source": {
-        "type": "nexus",
-        "modId": 36873,
-        "fileId": 74900,
-        "logicalFilename": "Better Dialogue Font",
-        "updatePolicy": "prefer",
-        "fileSize": 32327
-      },
-      "author": "Hrnchamd",
+      "author": "Pherim",
       "details": {
         "category": "",
         "type": ""
@@ -4875,19 +5015,19 @@
       "phase": 0
     },
     {
-      "name": "(OpenMW 0.49) Improved Vanilla Leveling",
-      "version": "1.4",
+      "name": "Pet the Scribs REVOLUTION - OpenMW",
+      "version": "1.0",
       "optional": false,
       "domainName": "morrowind",
       "source": {
         "type": "nexus",
-        "modId": 57062,
-        "fileId": 1000055266,
-        "logicalFilename": "(OpenMW 0.49) Improved Vanilla Leveling",
+        "modId": 56973,
+        "fileId": 1000054653,
+        "logicalFilename": "Pet the Scribs REVOLUTION - OpenMW",
         "updatePolicy": "prefer",
-        "fileSize": 3095
+        "fileSize": 624
       },
-      "author": "OwnlyMe",
+      "author": "jrox8",
       "details": {
         "category": "",
         "type": ""
@@ -4895,19 +5035,19 @@
       "phase": 0
     },
     {
-      "name": "No More Stage Diving - Desele\u0027s Dancing Girls",
-      "version": "1.1",
+      "name": "Voiced Vivec and Yakety Yagrum - Merged and Improved",
+      "version": "1.0",
       "optional": false,
       "domainName": "morrowind",
       "source": {
         "type": "nexus",
-        "modId": 47738,
-        "fileId": 1000017973,
-        "logicalFilename": "No More Stage Diving - Desele\u0027s Dancing Girls",
+        "modId": 53098,
+        "fileId": 1000040536,
+        "logicalFilename": "Voiced Vivec and Yakety Yagrum - Merged and Improved",
         "updatePolicy": "prefer",
-        "fileSize": 2494
+        "fileSize": 1931
       },
-      "author": "Pherim",
+      "author": "ffann1998",
       "details": {
         "category": "",
         "type": ""
@@ -5015,19 +5155,19 @@
       "phase": 0
     },
     {
-      "name": "Pet the Scribs REVOLUTION - OpenMW",
-      "version": "1.0",
+      "name": "Quick Spell Casting",
+      "version": "0.1",
       "optional": false,
       "domainName": "morrowind",
       "source": {
         "type": "nexus",
-        "modId": 56973,
-        "fileId": 1000054653,
-        "logicalFilename": "Pet the Scribs REVOLUTION - OpenMW",
+        "modId": 52130,
+        "fileId": 1000047179,
+        "logicalFilename": "Quick Spell Casting",
         "updatePolicy": "prefer",
-        "fileSize": 624
+        "fileSize": 4684
       },
-      "author": "jrox8",
+      "author": "urm",
       "details": {
         "category": "",
         "type": ""
@@ -5035,19 +5175,19 @@
       "phase": 0
     },
     {
-      "name": "Voiced Vivec and Yakety Yagrum - Merged and Improved",
-      "version": "1.0",
+      "name": "Tamriel Rebuilt Voices",
+      "version": "2.0",
       "optional": false,
       "domainName": "morrowind",
       "source": {
         "type": "nexus",
-        "modId": 53098,
-        "fileId": 1000040536,
-        "logicalFilename": "Voiced Vivec and Yakety Yagrum - Merged and Improved",
+        "modId": 54454,
+        "fileId": 1000063275,
+        "logicalFilename": "Tamriel Rebuilt Voices",
         "updatePolicy": "prefer",
-        "fileSize": 1931
+        "fileSize": 9391393385
       },
-      "author": "ffann1998",
+      "author": "Cepko",
       "details": {
         "category": "",
         "type": ""
@@ -5175,19 +5315,19 @@
       "phase": 0
     },
     {
-      "name": "Quick Spell Casting",
-      "version": "0.1",
+      "name": "Diseases Restored",
+      "version": "1.6",
       "optional": false,
       "domainName": "morrowind",
       "source": {
         "type": "nexus",
-        "modId": 52130,
-        "fileId": 1000047179,
-        "logicalFilename": "Quick Spell Casting",
+        "modId": 45228,
+        "fileId": 1000017296,
+        "logicalFilename": "Diseases Restored",
         "updatePolicy": "prefer",
-        "fileSize": 4684
+        "fileSize": 4640
       },
-      "author": "urm",
+      "author": "Half11",
       "details": {
         "category": "",
         "type": ""
@@ -5195,19 +5335,19 @@
       "phase": 0
     },
     {
-      "name": "Tamriel Rebuilt Voices",
-      "version": "2.0",
+      "name": "HUD Weapon Charge (For OpenMW)",
+      "version": "1.1.0",
       "optional": false,
       "domainName": "morrowind",
       "source": {
         "type": "nexus",
-        "modId": 54454,
-        "fileId": 1000063275,
-        "logicalFilename": "Tamriel Rebuilt Voices",
+        "modId": 57856,
+        "fileId": 1000058885,
+        "logicalFilename": "HUD Weapon Charge (For OpenMW)",
         "updatePolicy": "prefer",
-        "fileSize": 9391393385
+        "fileSize": 41760
       },
-      "author": "Cepko",
+      "author": "NitroInferno",
       "details": {
         "category": "",
         "type": ""
@@ -5295,19 +5435,19 @@
       "phase": 0
     },
     {
-      "name": "Diseases Restored",
-      "version": "1.6",
+      "name": "Nocturnal Moths",
+      "version": "1.2.1",
       "optional": false,
       "domainName": "morrowind",
       "source": {
         "type": "nexus",
-        "modId": 45228,
-        "fileId": 1000017296,
-        "logicalFilename": "Diseases Restored",
+        "modId": 44148,
+        "fileId": 1000050547,
+        "logicalFilename": "Nocturnal Moths",
         "updatePolicy": "prefer",
-        "fileSize": 4640
+        "fileSize": 187343
       },
-      "author": "Half11",
+      "author": "Wriggle Nightbug",
       "details": {
         "category": "",
         "type": ""
@@ -5315,19 +5455,19 @@
       "phase": 0
     },
     {
-      "name": "HUD Weapon Charge (For OpenMW)",
-      "version": "1.1.0",
+      "name": "Torch Hotkey for OpenMW 0.49",
+      "version": "1.5",
       "optional": false,
       "domainName": "morrowind",
       "source": {
         "type": "nexus",
-        "modId": 57856,
-        "fileId": 1000058885,
-        "logicalFilename": "HUD Weapon Charge (For OpenMW)",
+        "modId": 56995,
+        "fileId": 1000054658,
+        "logicalFilename": "Torch Hotkey for OpenMW 0.49",
         "updatePolicy": "prefer",
-        "fileSize": 41760
+        "fileSize": 2838
       },
-      "author": "NitroInferno",
+      "author": "CBTBSD",
       "details": {
         "category": "",
         "type": ""
@@ -5415,59 +5555,19 @@
       "phase": 0
     },
     {
-      "name": "Kezyma\u0027s Root Builder for Mod Organizer",
-      "version": "4.5.2",
+      "name": "Dynamic FPS Optimization",
+      "version": "0.71",
       "optional": false,
       "domainName": "morrowind",
       "source": {
         "type": "nexus",
-        "modId": 31720,
-        "fileId": 707262,
-        "logicalFilename": "Kezyma\u0027s Root Builder for Mod Organizer",
+        "modId": 55216,
+        "fileId": 1000051463,
+        "logicalFilename": "Dynamic FPS Optimization",
         "updatePolicy": "prefer",
-        "fileSize": 957191
+        "fileSize": 2051
       },
-      "author": "Kezyma",
-      "details": {
-        "category": "",
-        "type": ""
-      },
-      "phase": 0
-    },
-    {
-      "name": "Nocturnal Moths",
-      "version": "1.2.1",
-      "optional": false,
-      "domainName": "morrowind",
-      "source": {
-        "type": "nexus",
-        "modId": 44148,
-        "fileId": 1000050547,
-        "logicalFilename": "Nocturnal Moths",
-        "updatePolicy": "prefer",
-        "fileSize": 187343
-      },
-      "author": "Wriggle Nightbug",
-      "details": {
-        "category": "",
-        "type": ""
-      },
-      "phase": 0
-    },
-    {
-      "name": "Torch Hotkey for OpenMW 0.49",
-      "version": "1.5",
-      "optional": false,
-      "domainName": "morrowind",
-      "source": {
-        "type": "nexus",
-        "modId": 56995,
-        "fileId": 1000054658,
-        "logicalFilename": "Torch Hotkey for OpenMW 0.49",
-        "updatePolicy": "prefer",
-        "fileSize": 2838
-      },
-      "author": "CBTBSD",
+      "author": "Radac2008    paranoidnendoroid",
       "details": {
         "category": "",
         "type": ""
@@ -5615,26 +5715,6 @@
       "phase": 0
     },
     {
-      "name": "Dynamic FPS Optimization",
-      "version": "0.71",
-      "optional": false,
-      "domainName": "morrowind",
-      "source": {
-        "type": "nexus",
-        "modId": 55216,
-        "fileId": 1000051463,
-        "logicalFilename": "Dynamic FPS Optimization",
-        "updatePolicy": "prefer",
-        "fileSize": 2051
-      },
-      "author": "Radac2008    paranoidnendoroid",
-      "details": {
-        "category": "",
-        "type": ""
-      },
-      "phase": 0
-    },
-    {
       "name": "(OpenMW 0.49) QuickLoot",
       "version": "1.19",
       "optional": false,
@@ -5775,6 +5855,26 @@
       "phase": 0
     },
     {
+      "name": "Remove Negative Lights for OpenMW",
+      "version": "1.0",
+      "optional": false,
+      "domainName": "morrowind",
+      "source": {
+        "type": "nexus",
+        "modId": 52487,
+        "fileId": 1000048912,
+        "logicalFilename": "Remove Negative Lights for OpenMW",
+        "updatePolicy": "prefer",
+        "fileSize": 2020
+      },
+      "author": "DeathDaisy but really Pharis",
+      "details": {
+        "category": "",
+        "type": ""
+      },
+      "phase": 0
+    },
+    {
       "name": "Remiros\u0027 Mod Graveyard",
       "version": "1.1",
       "optional": false,
@@ -5895,19 +5995,39 @@
       "phase": 0
     },
     {
-      "name": "Remove Negative Lights for OpenMW",
+      "name": "Daedric Sanctuary Fix OpenMW",
       "version": "1.0",
       "optional": false,
       "domainName": "morrowind",
       "source": {
         "type": "nexus",
-        "modId": 52487,
-        "fileId": 1000048912,
-        "logicalFilename": "Remove Negative Lights for OpenMW",
+        "modId": 50266,
+        "fileId": 1000026912,
+        "logicalFilename": "Daedric Sanctuary Fix OpenMW",
         "updatePolicy": "prefer",
-        "fileSize": 2020
+        "fileSize": 2935
       },
-      "author": "DeathDaisy but really Pharis",
+      "author": "gaddgadd",
+      "details": {
+        "category": "",
+        "type": ""
+      },
+      "phase": 0
+    },
+    {
+      "name": "Telvanni Fireplace Replacer",
+      "version": "1.0",
+      "optional": false,
+      "domainName": "morrowind",
+      "source": {
+        "type": "nexus",
+        "modId": 43232,
+        "fileId": 1000002782,
+        "logicalFilename": "Telvanni Fireplace Replacer",
+        "updatePolicy": "prefer",
+        "fileSize": 42371
+      },
+      "author": "Melchior Dahrk",
       "details": {
         "category": "",
         "type": ""
@@ -5995,19 +6115,19 @@
       "phase": 0
     },
     {
-      "name": "Daedric Sanctuary Fix OpenMW",
+      "name": "Sound Spell Sound Effect",
       "version": "1.0",
       "optional": false,
       "domainName": "morrowind",
       "source": {
         "type": "nexus",
-        "modId": 50266,
-        "fileId": 1000026912,
-        "logicalFilename": "Daedric Sanctuary Fix OpenMW",
+        "modId": 43300,
+        "fileId": 1000002931,
+        "logicalFilename": "Sound Spell Sound Effect",
         "updatePolicy": "prefer",
-        "fileSize": 2935
+        "fileSize": 1324
       },
-      "author": "gaddgadd",
+      "author": "R-Zero",
       "details": {
         "category": "",
         "type": ""
@@ -6015,19 +6135,19 @@
       "phase": 0
     },
     {
-      "name": "Telvanni Fireplace Replacer",
-      "version": "1.0",
+      "name": "The Publicans",
+      "version": "2.0",
       "optional": false,
       "domainName": "morrowind",
       "source": {
         "type": "nexus",
-        "modId": 43232,
-        "fileId": 1000002782,
-        "logicalFilename": "Telvanni Fireplace Replacer",
+        "modId": 45410,
+        "fileId": 1000042139,
+        "logicalFilename": "The Publicans",
         "updatePolicy": "prefer",
-        "fileSize": 42371
+        "fileSize": 11351
       },
-      "author": "Melchior Dahrk",
+      "author": "Half11",
       "details": {
         "category": "",
         "type": ""
@@ -6075,46 +6195,6 @@
       "phase": 0
     },
     {
-      "name": "Sound Spell Sound Effect",
-      "version": "1.0",
-      "optional": false,
-      "domainName": "morrowind",
-      "source": {
-        "type": "nexus",
-        "modId": 43300,
-        "fileId": 1000002931,
-        "logicalFilename": "Sound Spell Sound Effect",
-        "updatePolicy": "prefer",
-        "fileSize": 1324
-      },
-      "author": "R-Zero",
-      "details": {
-        "category": "",
-        "type": ""
-      },
-      "phase": 0
-    },
-    {
-      "name": "The Publicans",
-      "version": "2.0",
-      "optional": false,
-      "domainName": "morrowind",
-      "source": {
-        "type": "nexus",
-        "modId": 45410,
-        "fileId": 1000042139,
-        "logicalFilename": "The Publicans",
-        "updatePolicy": "prefer",
-        "fileSize": 11351
-      },
-      "author": "Half11",
-      "details": {
-        "category": "",
-        "type": ""
-      },
-      "phase": 0
-    },
-    {
       "name": "Doors Anti Stuck",
       "version": "1.01",
       "optional": false,
@@ -6128,46 +6208,6 @@
         "fileSize": 49684
       },
       "author": "abot",
-      "details": {
-        "category": "",
-        "type": ""
-      },
-      "phase": 0
-    },
-    {
-      "name": "New Bethesda Intro For OpenMW",
-      "version": "1.0",
-      "optional": false,
-      "domainName": "morrowind",
-      "source": {
-        "type": "nexus",
-        "modId": 50268,
-        "fileId": 1000026916,
-        "logicalFilename": "New Bethesda Intro For OpenMW",
-        "updatePolicy": "prefer",
-        "fileSize": 6304236
-      },
-      "author": "tauiin",
-      "details": {
-        "category": "",
-        "type": ""
-      },
-      "phase": 0
-    },
-    {
-      "name": "OpenMW Full Body Awareness",
-      "version": "3.3.1",
-      "optional": false,
-      "domainName": "morrowind",
-      "source": {
-        "type": "nexus",
-        "modId": 56625,
-        "fileId": 1000053058,
-        "logicalFilename": "OpenMW Full Body Awareness",
-        "updatePolicy": "prefer",
-        "fileSize": 7174
-      },
-      "author": "EgoMaster",
       "details": {
         "category": "",
         "type": ""
@@ -6215,6 +6255,46 @@
       "phase": 0
     },
     {
+      "name": "New Bethesda Intro For OpenMW",
+      "version": "1.0",
+      "optional": false,
+      "domainName": "morrowind",
+      "source": {
+        "type": "nexus",
+        "modId": 50268,
+        "fileId": 1000026916,
+        "logicalFilename": "New Bethesda Intro For OpenMW",
+        "updatePolicy": "prefer",
+        "fileSize": 6304236
+      },
+      "author": "tauiin",
+      "details": {
+        "category": "",
+        "type": ""
+      },
+      "phase": 0
+    },
+    {
+      "name": "OpenMW Full Body Awareness",
+      "version": "3.3.1",
+      "optional": false,
+      "domainName": "morrowind",
+      "source": {
+        "type": "nexus",
+        "modId": 56625,
+        "fileId": 1000053058,
+        "logicalFilename": "OpenMW Full Body Awareness",
+        "updatePolicy": "prefer",
+        "fileSize": 7174
+      },
+      "author": "EgoMaster",
+      "details": {
+        "category": "",
+        "type": ""
+      },
+      "phase": 0
+    },
+    {
       "name": "Normal Maps for Everything",
       "version": "1.0",
       "optional": false,
@@ -6228,66 +6308,6 @@
         "fileSize": 2700085
       },
       "author": "3deadgods",
-      "details": {
-        "category": "",
-        "type": ""
-      },
-      "phase": 0
-    },
-    {
-      "name": "Cutscenes Revamped - Cavern of the Incarnate",
-      "version": "1.3",
-      "optional": false,
-      "domainName": "morrowind",
-      "source": {
-        "type": "nexus",
-        "modId": 49126,
-        "fileId": 1000022143,
-        "logicalFilename": "Cutscenes Revamped - Cavern of the Incarnate",
-        "updatePolicy": "prefer",
-        "fileSize": 56874776
-      },
-      "author": "DarkKnight040802",
-      "details": {
-        "category": "",
-        "type": ""
-      },
-      "phase": 0
-    },
-    {
-      "name": "Insanity\u0027s Iron Swords",
-      "version": "1",
-      "optional": false,
-      "domainName": "morrowind",
-      "source": {
-        "type": "nexus",
-        "modId": 57155,
-        "fileId": 1000055330,
-        "logicalFilename": "Insanity\u0027s Iron Swords",
-        "updatePolicy": "prefer",
-        "fileSize": 3957909
-      },
-      "author": "InsanitySorrow",
-      "details": {
-        "category": "",
-        "type": ""
-      },
-      "phase": 0
-    },
-    {
-      "name": "Vanilla Friendlier Ascadian Isles Trees",
-      "version": "1.1",
-      "optional": false,
-      "domainName": "morrowind",
-      "source": {
-        "type": "nexus",
-        "modId": 57566,
-        "fileId": 1000057466,
-        "logicalFilename": "Vanilla Friendlier Ascadian Isles Trees",
-        "updatePolicy": "prefer",
-        "fileSize": 12407221
-      },
-      "author": "Vazanoir",
       "details": {
         "category": "",
         "type": ""
@@ -6335,19 +6355,19 @@
       "phase": 0
     },
     {
-      "name": "Adamantium Axe Replacer",
-      "version": "V1.01",
+      "name": "Cutscenes Revamped - Cavern of the Incarnate",
+      "version": "1.3",
       "optional": false,
       "domainName": "morrowind",
       "source": {
         "type": "nexus",
-        "modId": 46791,
-        "fileId": 1000014588,
-        "logicalFilename": "Adamantium Axe Replacer",
+        "modId": 49126,
+        "fileId": 1000022143,
+        "logicalFilename": "Cutscenes Revamped - Cavern of the Incarnate",
         "updatePolicy": "prefer",
-        "fileSize": 25005
+        "fileSize": 56874776
       },
-      "author": "RubberMan",
+      "author": "DarkKnight040802",
       "details": {
         "category": "",
         "type": ""
@@ -6395,17 +6415,17 @@
       "phase": 0
     },
     {
-      "name": "Adamantium Claymore Replacer",
-      "version": "V1.00",
+      "name": "Adamantium Axe Replacer",
+      "version": "V1.01",
       "optional": false,
       "domainName": "morrowind",
       "source": {
         "type": "nexus",
-        "modId": 46790,
-        "fileId": 1000014583,
-        "logicalFilename": "Adamantium Claymore Replacer",
+        "modId": 46791,
+        "fileId": 1000014588,
+        "logicalFilename": "Adamantium Axe Replacer",
         "updatePolicy": "prefer",
-        "fileSize": 22543
+        "fileSize": 25005
       },
       "author": "RubberMan",
       "details": {
@@ -6435,39 +6455,19 @@
       "phase": 0
     },
     {
-      "name": "MGE XE",
-      "version": "0.16.3",
+      "name": "Adamantium Claymore Replacer",
+      "version": "V1.00",
       "optional": false,
       "domainName": "morrowind",
       "source": {
         "type": "nexus",
-        "modId": 41102,
-        "fileId": 1000048202,
-        "logicalFilename": "MGE XE",
+        "modId": 46790,
+        "fileId": 1000014583,
+        "logicalFilename": "Adamantium Claymore Replacer",
         "updatePolicy": "prefer",
-        "fileSize": 12205469
+        "fileSize": 22543
       },
-      "author": "Hrnchamd",
-      "details": {
-        "category": "",
-        "type": ""
-      },
-      "phase": 0
-    },
-    {
-      "name": "Dragon Statue Re-Revisted (De-Goofified Edition)",
-      "version": "1.0",
-      "optional": false,
-      "domainName": "morrowind",
-      "source": {
-        "type": "nexus",
-        "modId": 52061,
-        "fileId": 1000034152,
-        "logicalFilename": "Dragon Statue Re-Revisted (De-Goofified Edition)",
-        "updatePolicy": "prefer",
-        "fileSize": 227554
-      },
-      "author": "Ruffin Vangarr and Melchior Dahrk",
+      "author": "RubberMan",
       "details": {
         "category": "",
         "type": ""
