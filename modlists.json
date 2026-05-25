@@ -115,7 +115,7 @@
     "links": {
       "image": "https://raw.githubusercontent.com/Kezyma/Morrowind-Remastered/main/Images/Nexus%20Header%20Image%20MWSE.webp",
       "readme": "https://github.com/Kezyma/Morrowind-Remastered/blob/main/README.md",
-      "download": "https://authored-files.wabbajack.org/Morrowind Remastered - MWSE Edition.wabbajack_6fa1d034-eaa8-4936-8516-95d4cdfea478",
+      "download": "https://authored-files.wabbajack.org/Morrowind Remastered - MWSE Edition.wabbajack_6fb0ff04-5846-4697-ae85-7f0b97dc5e6b",
       "machineURL": "MorrowindRemasteredMWSEEdition",
       "discordURL": "https://discord.com/invite/kPA3RrxAYz",
       "websiteURL": "",
@@ -127,17 +127,17 @@
       }
     },
     "download_metadata": {
-      "Hash": "V0nuG3RRchU=",
-      "Size": 22451312,
+      "Hash": "FRkSos0SNYY=",
+      "Size": 22450549,
       "NumberOfArchives": 312,
       "SizeOfArchives": 36123010831,
-      "NumberOfInstalledFiles": 83937,
-      "SizeOfInstalledFiles": 40102238412,
-      "TotalSize": 76225249243
+      "NumberOfInstalledFiles": 83936,
+      "SizeOfInstalledFiles": 40102236343,
+      "TotalSize": 76225247174
     },
     "version": "3.0.5",
     "dateCreated": "1970-01-01T00:00:00Z",
-    "dateUpdated": "2026-05-22T21:50:43.6974929Z",
+    "dateUpdated": "2026-05-25T14:06:49.10017Z",
     "repositoryName": ""
   }
 ]
