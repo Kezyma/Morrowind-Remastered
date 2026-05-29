@@ -23,3 +23,5 @@
 - Run `ModSetup.exe` as an administrator and follow the post-setup wizard which will automate the entire post-install process.
 - When complete, Mod Organizer 2 should launch.
 - Select `OpenMW` (for OpenMW Edition) or `Morrowind` (for Legacy and MWSE Editions) in the application list at the top right of Mod Organizer, and click Run to play the game.
+
+__If using the OpenMW edition, please check the plugins list on the right side of Mod Organizer, ensure that `merged.omwaddon.esp` is at the bottom of the list. If it is not, drag it to the bottom of the list. This issue will be resolved in a future release.__
