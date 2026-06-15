@@ -1,0 +1,123 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <LangVersion>latest</LangVersion>
+    <RootNamespace>MorrowindRemasteredLauncher</RootNamespace>
+    <!-- Output/published single-file exe name (kept distinct from the code's
+         RootNamespace, which stays MorrowindRemasteredLauncher). -->
+    <AssemblyName>MorrowindRemastered</AssemblyName>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <!-- Taskbar/exe icon (also used as the Steam shortcut icon via Steam/icon.ico,
+         generated from Images/Icon.png). -->
+    <ApplicationIcon>Steam\icon.ico</ApplicationIcon>
+    <Version>0.1.0</Version>
+    <Authors>Kezyma</Authors>
+    <Product>Morrowind Remastered Launcher</Product>
+
+    <DebugType>embedded</DebugType>
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+
+    <!-- Default target platform (used for both Debug runs and publish). We keep
+         the RID set so WebView2's native loader resolves, but the single-file /
+         self-contained packaging is applied only when publishing (below) so that
+         F5/Debug runs a fast, normal framework-dependent build that the VS
+         debugger launches reliably. -->
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <SelfContained>false</SelfContained>
+  </PropertyGroup>
+
+  <!-- Single-file, self-contained settings applied only when publishing. -->
+  <PropertyGroup Condition="'$(_IsPublishing)' == 'true' Or '$(PublishProtocol)' != ''">
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>true</SelfContained>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
+    <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="8.0.0" />
+    <PackageReference Include="System.IO.Hashing" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2792.45" />
+  </ItemGroup>
+
+  <!-- Branding assets: the logo image and the bundled Planewalker font are
+       embedded as WPF Resources so they are available via pack:// URIs at
+       runtime without shipping loose files. -->
+  <ItemGroup>
+    <Resource Include="Assets\Logo.png" />
+    <Resource Include="Assets\Launcher.png" />
+    <Resource Include="Assets\Fonts\*.ttf" />
+    <Resource Include="Assets\Fonts\*.otf" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Morrowind Remastered.wabbajack.meta.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <!-- Custom non-Steam shortcut artwork + icon. Embedded in the exe (so they travel
+       with the launcher even when it's shipped embedded inside a modlist, with no
+       loose files beside it) and extracted into Steam's grid folder on demand by
+       SteamService. Explicit LogicalNames keep the spaces in the resource names so
+       SteamService can look them up by their shipped file names. The icon.ico source
+       file also feeds <ApplicationIcon> above. A loose Steam/<name> file, if present
+       next to the exe, takes precedence at runtime (dev override). -->
+  <ItemGroup>
+    <None Remove="Steam\*.png" />
+    <None Remove="Steam\*.ico" />
+    <EmbeddedResource Include="Steam\Steam Capsule.png">
+      <LogicalName>Steam Capsule.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Steam\Steam Capsule Wide.png">
+      <LogicalName>Steam Capsule Wide.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Steam\Steam Hero.png">
+      <LogicalName>Steam Hero.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Steam\Steam Logo.png">
+      <LogicalName>Steam Logo.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Steam\icon.ico">
+      <LogicalName>icon.ico</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <!-- Default launcher config: embedded in the exe so the defaults always ship.
+       ConfigService reads an optional loose launcher/config.default.json override
+       first, then falls back to this embedded copy. Not copied loose to the output
+       root (it would never be read there under the new launcher/ layout). -->
+  <ItemGroup>
+    <None Remove="config.default.json" />
+    <EmbeddedResource Include="config.default.json">
+      <LogicalName>config.default.json</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <!-- About page content, embedded and rendered (markdown) on the About tab. -->
+  <ItemGroup>
+    <None Remove="about.md" />
+    <EmbeddedResource Include="about.md">
+      <LogicalName>about.md</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <!-- Valve's redistributable steam_api64.dll, embedded in the assembly and
+       extracted next to the exe on demand (only when playtime tracking is used),
+       so no separate file ships loose. The shim is generic and version-stable. -->
+  <ItemGroup>
+    <None Remove="steam_api64.dll" />
+    <EmbeddedResource Include="steam_api64.dll">
+      <LogicalName>steam_api64.dll</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <!-- App.xaml sits at the project root and is auto-detected by the WPF SDK as
+       the ApplicationDefinition, so no explicit declaration is needed. -->
+
+</Project>

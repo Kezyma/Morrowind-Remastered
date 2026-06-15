@@ -1,0 +1,9 @@
+<UserControl x:Class="MorrowindRemasteredLauncher.Views.AboutPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- Transparent: the rendered markdown sits on the parchment like the other
+         pages. Content is built in code-behind from the embedded about.md. -->
+    <ScrollViewer Style="{StaticResource PageScrollViewer}">
+        <StackPanel x:Name="ContentHost" />
+    </ScrollViewer>
+</UserControl>

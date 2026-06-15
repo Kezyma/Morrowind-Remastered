@@ -1,0 +1,104 @@
+{
+  "gamePath": null,
+  "selectedEdition": 0,
+  "install": {
+    "installDir": null,
+    "installedVersion": null,
+    "installedAt": null,
+    "setupComplete": {}
+  },
+  "display": {
+    "resolutionX": 0,
+    "resolutionY": 0,
+    "refreshHz": 0,
+    "uiScale": 0
+  },
+  "downloads": {
+    "openMwInstaller": "https://github.com/OpenMW/openmw/releases/download/openmw-0.50.0/OpenMW-0.50.0-win64.exe",
+    "deltaPlugin": "https://gitlab.com/portmod/delta-plugin/-/releases/0.25.2/downloads/delta-plugin-0.25.2-windows-amd64.zip",
+    "mwseNightly": "https://github.com/MWSE/MWSE/releases/download/build-automatic/mwse.zip",
+    "steamApi": "https://github.com/Kezyma/Morrowind-Remastered/releases/latest/download/steam_api64.dll"
+  },
+  "installSource": {
+    "machineUrl": "MorrowindRemasteredOpenMWEdition",
+    "localFile": "Morrowind Remastered.wabbajack"
+  },
+  "mo2Paths": {
+    "openMwProfile": "OpenMW",
+    "mwseProfile": "MWSE",
+    "compilerSettingsFile": "Morrowind Remastered.compiler_settings",
+    "mwseModDir": "mods\\MWSE",
+    "openMwModDir": "mods\\OpenMW",
+    "deltaModDir": "mods\\Delta Plugin",
+    "mcpGeneratedFilesMod": "Morrowind Code Patch - Generated Files",
+    "mcpModTokens": ["Morrowind Code Patch", "Generated Files"],
+    "mgeGeneratedFilesMod": "MGE XE - Generated Files (MWSE)",
+    "mgeModTokens": ["MGE XE", "Generated Files"],
+    "mgeConfigMod": "MGE XE Distant Land Configuration (MWSE)",
+    "distantLandSubdir": "distantland"
+  },
+  "tools": {
+    "OpenMW": [
+      {
+        "name": "OpenMW Launcher",
+        "description": "Configure OpenMW's video, audio, input and data-files settings.",
+        "executable": "OpenMW Launcher"
+      },
+      {
+        "name": "Delta Plugin",
+        "description": "Merge compatible plugin records to reduce conflicts.",
+        "executable": "Delta Plugin"
+      },
+      {
+        "name": "OpenMW Construction Set",
+        "description": "OpenMW's official editor for viewing and editing OpenMW plugins.",
+        "executable": "OpenMW Construction Set"
+      },
+      {
+        "name": "Mod Organizer 2",
+        "description": "Open the Mod Organizer 2 interface for this managing the entire modlist.",
+        "executable": null
+      }
+    ],
+    "MWSE": [
+      {
+        "name": "Morrowind Launcher",
+        "description": "The original Morrowind launcher for graphics and data-files options.",
+        "executable": "Morrowind Launcher"
+      },
+      {
+        "name": "Morrowind Code Patch",
+        "description": "Apply engine bug fixes and feature patches to Morrowind.exe.",
+        "executable": "Morrowind Code Patch"
+      },
+      {
+        "name": "MGE XE",
+        "description": "Configure graphics settings and generate distant land.",
+        "executable": "MGE XE"
+      },
+      {
+        "name": "mlox",
+        "description": "Sort your plugin load order automatically.",
+        "executable": "mlox"
+      },
+      {
+        "name": "TES3Merge",
+        "description": "Merge compatible plugin records to reduce conflicts.",
+        "executable": "TES3Merge"
+      },
+      {
+        "name": "TES Construction Set",
+        "description": "Bethesda's official editor for viewing and editing Morrowind plugins.",
+        "executable": "TES Construction Set"
+      },
+      {
+        "name": "Mod Organizer 2",
+        "description": "Open the Mod Organizer 2 interface for this managing the entire modlist.",
+        "executable": null
+      }
+    ]
+  },
+  "steam": {
+    "trackPlaytime": false
+  }
+}

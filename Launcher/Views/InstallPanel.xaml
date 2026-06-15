@@ -1,0 +1,159 @@
+<UserControl x:Class="MorrowindRemasteredLauncher.Views.InstallPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:conv="clr-namespace:MorrowindRemasteredLauncher.Converters">
+    <UserControl.Resources>
+        <conv:ByteSizeConverter x:Key="ByteSize" />
+        <conv:BoolToVisibilityConverter x:Key="BoolToVis" />
+        <conv:InverseBoolToVisibilityConverter x:Key="InvBoolToVis" />
+        <conv:StringNotEmptyToVisibilityConverter x:Key="StrToVis" />
+    </UserControl.Resources>
+
+    <ScrollViewer Style="{StaticResource PageScrollViewer}">
+        <StackPanel>
+            <!-- Header (one combined list, so not edition-specific) -->
+            <TextBlock Text="Install Morrowind Remastered" Style="{StaticResource HeaderText}" />
+
+            <TextBlock Text="{Binding StatusSummary}" Style="{StaticResource SubtleText}"
+                       Margin="0,4,0,0" />
+            <!-- Full install flow (standalone only). Embedded-in-MO2 mode shows
+                 only the game-path selector below. -->
+            <StackPanel Visibility="{Binding ShowFullInstall, Converter={StaticResource BoolToVis}}">
+            <TextBlock Text="Update available" Foreground="{StaticResource AccentInkBrush}"
+                       FontWeight="SemiBold" Margin="0,2,0,0"
+                       Visibility="{Binding HasUpdate, Converter={StaticResource BoolToVis}}" />
+
+            <!-- Sizes + versions -->
+            <Grid Margin="0,14,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" Grid.Column="0">
+                    <TextBlock Text="Download size" Style="{StaticResource SubtleText}" />
+                    <TextBlock Text="{Binding DownloadSize, Converter={StaticResource ByteSize}}"
+                               FontSize="18" FontWeight="SemiBold" Margin="0,2,0,0" />
+                </StackPanel>
+                <StackPanel Grid.Row="0" Grid.Column="1">
+                    <TextBlock Text="Install size" Style="{StaticResource SubtleText}" />
+                    <TextBlock Text="{Binding InstallSize, Converter={StaticResource ByteSize}}"
+                               FontSize="18" FontWeight="SemiBold" Margin="0,2,0,0" />
+                </StackPanel>
+                <StackPanel Grid.Row="0" Grid.Column="2">
+                    <TextBlock Text="Peak disk usage" Style="{StaticResource SubtleText}" />
+                    <TextBlock Text="{Binding TotalSize, Converter={StaticResource ByteSize}}"
+                               FontSize="18" FontWeight="SemiBold" Margin="0,2,0,0" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,10,0,0"
+                            Visibility="{Binding IsModlistVersionKnown, Converter={StaticResource BoolToVis}}">
+                    <TextBlock Text="Latest version" Style="{StaticResource SubtleText}" />
+                    <TextBlock Text="{Binding LatestVersionDisplay}"
+                               FontSize="16" Margin="0,2,0,0" />
+                </StackPanel>
+                <StackPanel Grid.Row="1" Grid.Column="1" Margin="0,10,0,0"
+                            Visibility="{Binding IsModlistVersionKnown, Converter={StaticResource BoolToVis}}">
+                    <TextBlock Text="Installed version" Style="{StaticResource SubtleText}" />
+                    <TextBlock Text="{Binding InstalledVersionDisplay}"
+                               FontSize="16" Margin="0,2,0,0" />
+                </StackPanel>
+            </Grid>
+            </StackPanel>
+
+            <!-- Game location -->
+            <TextBlock Text="Game Location" FontWeight="SemiBold" FontSize="15"
+                       Margin="0,14,0,2" />
+            <TextBlock Style="{StaticResource SubtleText}" TextWrapping="Wrap"
+                       Text="Select the location of an unmodified Morrowind installation. You may optionally make a copy of the selected installation for Morrowind Remastered to use, so the modlist will continue to run if you modify or uninstall Morrowind." />
+            <Grid Margin="0,6,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="{Binding GamePathDisplay}"
+                           TextTrimming="CharacterEllipsis" VerticalAlignment="Center"
+                           ToolTip="{Binding GameExePath}" />
+                <Button Grid.Column="1" Content="Change"
+                        Style="{StaticResource TextButton}" Margin="10,0,0,0"
+                        ToolTip="Change game location"
+                        Command="{Binding BrowseGamePathCommand}" />
+                <Button Grid.Column="2" Content="Copy"
+                        Style="{StaticResource TextButton}" Margin="10,0,0,0"
+                        ToolTip="Copy the game to a 'Morrowind' folder next to the launcher"
+                        Visibility="{Binding CanCopyGame, Converter={StaticResource BoolToVis}}"
+                        Command="{Binding CopyGameCommand}" />
+            </Grid>
+
+            <!-- Install location, Nexus sign-in and install actions (standalone only) -->
+            <StackPanel Visibility="{Binding ShowFullInstall, Converter={StaticResource BoolToVis}}">
+            <TextBlock Text="Install Location" FontWeight="SemiBold" FontSize="15"
+                       Margin="0,12,0,2" />
+            <TextBlock Style="{StaticResource SubtleText}" TextWrapping="Wrap"
+                       Text="Select the location to install Morrowind Remastered, or the location of an existing installation. By default Morrowind Remastered will be installed in a folder next to the launcher." />
+            <Grid Margin="0,6,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="{Binding CurrentInstallDir, Mode=OneWay}"
+                           TextTrimming="CharacterEllipsis" VerticalAlignment="Center"
+                           ToolTip="{Binding CurrentInstallDir, Mode=OneWay}" />
+                <Button Grid.Column="1" Content="Browse"
+                        Style="{StaticResource TextButton}" Margin="10,0,0,0"
+                        Command="{Binding BrowseInstallLocationCommand}" />
+            </Grid>
+
+            <!-- Nexus login -->
+            <TextBlock Text="NexusMods Login" FontWeight="SemiBold" FontSize="15"
+                       Margin="0,12,0,2" />
+            <TextBlock Style="{StaticResource SubtleText}" TextWrapping="Wrap"
+                       Text="To install Morrowind Remastered through the launcher, you must be logged in with a NexusMods Premium account. Non-Premium NexusMods users can still download Morrowind Remastered through Wabbajack, however they will be required to download each individual mod manually." />
+            <Grid Margin="0,6,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Content="Sign in to NexusMods"
+                        Style="{StaticResource TextButton}"
+                        Command="{Binding NexusLoginCommand}" />
+                <TextBlock Grid.Column="1" Text="{Binding NexusStatus}"
+                           Style="{StaticResource SubtleText}"
+                           VerticalAlignment="Center" Margin="14,0,0,0"
+                           TextWrapping="Wrap" />
+            </Grid>
+            <TextBlock Text="{Binding NexusWarning}" Foreground="{StaticResource DangerBrush}"
+                       TextWrapping="Wrap" Margin="0,8,0,0"
+                       Visibility="{Binding NexusWarning,
+                                    Converter={StaticResource StrToVis}}" />
+
+            <!-- Actions: Install/Reinstall/Update + Uninstall, then Clear Downloads -->
+            <StackPanel Orientation="Horizontal" Margin="0,16,0,0">
+                <Button Content="{Binding InstallOrUpdateLabel}"
+                        Style="{StaticResource PrimaryTextButton}"
+                        IsEnabled="{Binding CanRunInstall}"
+                        Command="{Binding RunInstallCommand}" />
+                <Button Content="Uninstall"
+                        Style="{StaticResource TextButton}"
+                        Margin="28,0,0,0" VerticalAlignment="Center"
+                        Visibility="{Binding CanUninstall, Converter={StaticResource BoolToVis}}"
+                        Command="{Binding UninstallCommand}" />
+            </StackPanel>
+            </StackPanel>
+
+            <!-- Clear Downloads: shown in both modes. Embedded mode resolves the
+                 cache folder from the adjacent MO2's ModOrganizer.ini. -->
+            <Button Content="{Binding ClearDownloadsLabel}"
+                    Style="{StaticResource TextButton}"
+                    HorizontalAlignment="Left" Margin="0,10,0,0"
+                    Visibility="{Binding HasDownloads, Converter={StaticResource BoolToVis}}"
+                    Command="{Binding ClearDownloadsCommand}" />
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

@@ -1,0 +1,309 @@
+<Window x:Class="MorrowindRemasteredLauncher.Views.ShellWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:MorrowindRemasteredLauncher.ViewModels"
+        xmlns:conv="clr-namespace:MorrowindRemasteredLauncher.Converters"
+        xmlns:models="clr-namespace:MorrowindRemasteredLauncher.Models"
+        xmlns:views="clr-namespace:MorrowindRemasteredLauncher.Views"
+        Title="Morrowind Remastered Launcher"
+        Width="1030" Height="640" MinWidth="824" MinHeight="512"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None" AllowsTransparency="True"
+        Background="Transparent" ResizeMode="CanResize"
+        MouseLeftButtonDown="OnWindowMouseLeftButtonDown"
+        FontFamily="{StaticResource BodyFont}">
+
+    <!-- Chromeless but resizable: the outer 8px ring acts as resize handles;
+         aspect ratio is locked via a WM_SIZING hook in code-behind. -->
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="0" ResizeBorderThickness="8"
+                      GlassFrameThickness="0" CornerRadius="0"
+                      UseAeroCaptionButtons="False" />
+    </WindowChrome.WindowChrome>
+
+    <Window.Resources>
+        <conv:EnumToBoolConverter x:Key="EnumToBool" />
+        <conv:EnumToVisibilityConverter x:Key="EnumToVis" />
+        <conv:BoolToVisibilityConverter x:Key="BoolToVis" />
+        <conv:InverseBoolToVisibilityConverter x:Key="InvBoolToVis" />
+        <conv:StringNotEmptyToVisibilityConverter x:Key="StrToVis" />
+    </Window.Resources>
+
+    <!-- Everything is laid out on a fixed 1030x640 design surface; the Viewbox
+         scales it (text included) with the window, aspect ratio locked. -->
+    <Viewbox Stretch="Uniform">
+        <Grid Width="1030" Height="640">
+            <!-- The open-book artwork IS the window; everything outside its
+                 pages is transparent (chromeless window, drag-to-move). -->
+            <Image Source="/Assets/Launcher.png" Stretch="Uniform"
+                   RenderOptions.BitmapScalingMode="HighQuality" />
+
+            <!-- Overlay aligned to the two page interiors. Star fractions map
+                 the parchment areas of the 1648x1024 artwork. -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="7.5*" />
+                    <!-- left page -->
+                    <ColumnDefinition Width="37.5*" />
+                    <!-- spine -->
+                    <ColumnDefinition Width="10*" />
+                    <!-- right page -->
+                    <ColumnDefinition Width="37.5*" />
+                    <ColumnDefinition Width="7.5*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="6*" />
+                    <RowDefinition Height="88*" />
+                    <RowDefinition Height="6*" />
+                </Grid.RowDefinitions>
+
+                <!-- ===================== Left page ===================== -->
+                <Grid Grid.Row="1" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <!-- logo -->
+                        <RowDefinition Height="*" />
+                        <!-- nav (the edition selector now lives on the Play tab) -->
+                        <RowDefinition Height="Auto" />
+                        <!-- operation status (progress / cancel / result) -->
+                    </Grid.RowDefinitions>
+
+                    <!-- Logo -->
+                    <Image Grid.Row="0" Source="/Assets/Logo.png"
+                           Stretch="Uniform" MaxWidth="320"
+                           HorizontalAlignment="Center" Margin="0,0,0,12"
+                           RenderOptions.BitmapScalingMode="HighQuality" />
+
+                    <!-- Vertical nav menu -->
+                    <StackPanel Grid.Row="1" Margin="0,12,0,0">
+                        <!-- Version selector, directly below the logo: greyed out
+                             until the list is installed; selected version solid
+                             black, the other struck through. -->
+                        <!-- Hosted in a Grid whose height is pinned by a hidden 28pt
+                             sizer, so the visible labels can reflow (tight against the
+                             "/") and the group can re-centre without moving the nav
+                             below. The whole Grid is one click target: the labels are
+                             display-only (IsHitTestVisible=False) and a transparent
+                             background + MouseBinding makes every part — text, "/" and
+                             the gaps — toggle the version with a single click. -->
+                        <Grid HorizontalAlignment="Center" Margin="0,0,0,10"
+                              Background="Transparent" Cursor="Hand"
+                              IsEnabled="{Binding CanSelectEdition}"
+                              Visibility="{Binding ShowEditionSelector,
+                                           Converter={StaticResource BoolToVis}}">
+                            <Grid.Style>
+                                <Style TargetType="Grid">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsEnabled" Value="False">
+                                            <Setter Property="Opacity" Value="0.4" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Grid.Style>
+                            <Grid.InputBindings>
+                                <MouseBinding MouseAction="LeftClick"
+                                              Command="{Binding ToggleEditionCommand}" />
+                            </Grid.InputBindings>
+                            <!-- Invisible height anchor: a selected (28pt) button's
+                                 height, zero width so it doesn't affect the toggler's
+                                 width or centring. -->
+                            <TextBlock Text="OpenMW" FontFamily="{StaticResource DisplayFont}"
+                                       FontSize="28" Padding="0,6" Width="0" TextWrapping="NoWrap"
+                                       Opacity="0" IsHitTestVisible="False" />
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
+                                        VerticalAlignment="Center" IsHitTestVisible="False">
+                                <RadioButton Style="{StaticResource VersionToggle}" GroupName="VersionSel"
+                                             Content="OpenMW"
+                                             IsChecked="{Binding SelectedEdition, Mode=OneWay,
+                                                         Converter={StaticResource EnumToBool},
+                                                         ConverterParameter=OpenMW}" />
+                                <TextBlock Text="/" VerticalAlignment="Center" Margin="8,0"
+                                           FontFamily="{StaticResource DisplayFont}" FontSize="22"
+                                           Foreground="{StaticResource AccentInkBrush}" />
+                                <RadioButton Style="{StaticResource VersionToggle}" GroupName="VersionSel"
+                                             Content="MWSE"
+                                             IsChecked="{Binding SelectedEdition, Mode=OneWay,
+                                                         Converter={StaticResource EnumToBool},
+                                                         ConverterParameter=Mwse}" />
+                            </StackPanel>
+                        </Grid>
+                        <RadioButton Style="{StaticResource NavButton}" GroupName="Nav"
+                                     Content="Play"
+                                     IsEnabled="{Binding CanPlay}"
+                                     IsChecked="{Binding CurrentPage, Mode=OneWay,
+                                                 Converter={StaticResource EnumToBool},
+                                                 ConverterParameter=Play}"
+                                     Command="{Binding NavigateCommand}"
+                                     CommandParameter="{x:Static vm:NavPage.Play}" />
+                        <RadioButton Style="{StaticResource NavButton}" GroupName="Nav"
+                                     Content="{Binding InstallNavLabel}"
+                                     Visibility="{Binding ShowInstallNav,
+                                                  Converter={StaticResource BoolToVis}}"
+                                     IsChecked="{Binding CurrentPage, Mode=OneWay,
+                                                 Converter={StaticResource EnumToBool},
+                                                 ConverterParameter=Install}"
+                                     Command="{Binding NavigateCommand}"
+                                     CommandParameter="{x:Static vm:NavPage.Install}" />
+                        <RadioButton Style="{StaticResource NavButton}" GroupName="Nav"
+                                     Content="Settings"
+                                     IsEnabled="{Binding CanOpenSettings}"
+                                     IsChecked="{Binding CurrentPage, Mode=OneWay,
+                                                 Converter={StaticResource EnumToBool},
+                                                 ConverterParameter=Settings}"
+                                     Command="{Binding NavigateCommand}"
+                                     CommandParameter="{x:Static vm:NavPage.Settings}" />
+                        <RadioButton Style="{StaticResource NavButton}" GroupName="Nav"
+                                     Content="Tools"
+                                     IsEnabled="{Binding CanOpenTools}"
+                                     IsChecked="{Binding CurrentPage, Mode=OneWay,
+                                                 Converter={StaticResource EnumToBool},
+                                                 ConverterParameter=Tools}"
+                                     Command="{Binding NavigateCommand}"
+                                     CommandParameter="{x:Static vm:NavPage.Tools}" />
+                        <RadioButton Style="{StaticResource NavButton}" GroupName="Nav"
+                                     Content="Mods"
+                                     IsEnabled="{Binding CanOpenMods}"
+                                     IsChecked="{Binding CurrentPage, Mode=OneWay,
+                                                 Converter={StaticResource EnumToBool},
+                                                 ConverterParameter=Mods}"
+                                     Command="{Binding NavigateCommand}"
+                                     CommandParameter="{x:Static vm:NavPage.Mods}" />
+                        <RadioButton Style="{StaticResource NavButton}" GroupName="Nav"
+                                     Content="About"
+                                     IsChecked="{Binding CurrentPage, Mode=OneWay,
+                                                 Converter={StaticResource EnumToBool},
+                                                 ConverterParameter=About}"
+                                     Command="{Binding NavigateCommand}"
+                                     CommandParameter="{x:Static vm:NavPage.About}" />
+                    </StackPanel>
+
+                    <!-- Operation status: stays visible on the left page no matter
+                         which content page is open, so a running action (and its
+                         Cancel) is always reachable. One operation runs at a time. -->
+                    <StackPanel Grid.Row="2" Margin="0,16,0,0">
+                        <!-- In-progress -->
+                        <StackPanel Visibility="{Binding IsBusy, Converter={StaticResource BoolToVis}}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="{Binding BusyTitle}" FontWeight="SemiBold"
+                                           TextTrimming="CharacterEllipsis" />
+                                <TextBlock Grid.Column="1" FontWeight="SemiBold"
+                                           Text="{Binding ProgressPercent, StringFormat={}{0:0}%}"
+                                           Visibility="{Binding IsProgressIndeterminate,
+                                                        Converter={StaticResource InvBoolToVis}}" />
+                            </Grid>
+                            <ProgressBar Height="8" Margin="0,8,0,0" Minimum="0" Maximum="100"
+                                         Value="{Binding ProgressPercent}"
+                                         IsIndeterminate="{Binding IsProgressIndeterminate}"
+                                         Foreground="{StaticResource AccentBrush}"
+                                         Background="{StaticResource PanelAltBrush}" BorderThickness="0" />
+                            <TextBlock Text="{Binding ProgressLine}" Style="{StaticResource SubtleText}"
+                                       Margin="0,6,0,0" TextTrimming="CharacterEllipsis" />
+                            <Button Content="Cancel" Style="{StaticResource TextButton}"
+                                    HorizontalAlignment="Left" Margin="0,6,0,0"
+                                    Visibility="{Binding IsInstallRunning, Converter={StaticResource BoolToVis}}"
+                                    Command="{Binding CancelInstallCommand}" />
+                        </StackPanel>
+
+                        <!-- Last result (persists after the run; cleared on the next) -->
+                        <Grid Visibility="{Binding HasInstallResult, Converter={StaticResource BoolToVis}}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="{Binding InstallResultMessage}"
+                                       TextWrapping="Wrap" FontWeight="SemiBold" VerticalAlignment="Center">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock"
+                                           BasedOn="{StaticResource {x:Type TextBlock}}">
+                                        <Setter Property="Foreground" Value="{StaticResource DangerBrush}" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding InstallResultSuccess}" Value="True">
+                                                <Setter Property="Foreground" Value="{StaticResource OkBrush}" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                            <Button Grid.Column="1" Content="Open Log" Style="{StaticResource TextButton}"
+                                    Margin="10,0,0,0" VerticalAlignment="Center"
+                                    Visibility="{Binding InstallFailed, Converter={StaticResource BoolToVis}}"
+                                    Command="{Binding OpenLogCommand}" />
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+
+                <!-- ===================== Right page ===================== -->
+                <Grid Grid.Row="1" Grid.Column="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <!-- close button -->
+                        <RowDefinition Height="*" />
+                        <!-- current page -->
+                    </Grid.RowDefinitions>
+
+                    <Button Grid.Row="0" Style="{StaticResource TextButton}"
+                            Content="X" FontSize="18" Padding="6,2"
+                            HorizontalAlignment="Right" ToolTip="Close"
+                            Click="OnCloseClick" />
+
+                    <!-- Content host: one panel per page, toggled by CurrentPage -->
+                    <Grid Grid.Row="1" Margin="0,4,0,0">
+                        <views:InstallPanel
+                            Visibility="{Binding CurrentPage,
+                                         Converter={StaticResource EnumToVis},
+                                         ConverterParameter=Install}" />
+                        <views:PlayPanel
+                            Visibility="{Binding CurrentPage,
+                                         Converter={StaticResource EnumToVis},
+                                         ConverterParameter=Play}" />
+                        <views:SettingsPanel
+                            Visibility="{Binding CurrentPage,
+                                         Converter={StaticResource EnumToVis},
+                                         ConverterParameter=Settings}" />
+                        <views:ToolsPanel
+                            Visibility="{Binding CurrentPage,
+                                         Converter={StaticResource EnumToVis},
+                                         ConverterParameter=Tools}" />
+                        <views:ModsPanel
+                            Visibility="{Binding CurrentPage,
+                                         Converter={StaticResource EnumToVis},
+                                         ConverterParameter=Mods}" />
+                        <views:AboutPanel
+                            Visibility="{Binding CurrentPage,
+                                         Converter={StaticResource EnumToVis},
+                                         ConverterParameter=About}" />
+                    </Grid>
+
+                    <!-- Error banner: persists after the busy/progress UI hides -->
+                    <Border Grid.Row="1" VerticalAlignment="Bottom" Padding="0,8"
+                            Visibility="{Binding HasError,
+                                         Converter={StaticResource BoolToVis}}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="{Binding LastError}"
+                                       Foreground="{StaticResource DangerBrush}"
+                                       TextWrapping="Wrap" VerticalAlignment="Center" />
+                            <Button Grid.Column="1" Content="Open Log"
+                                    Style="{StaticResource TextButton}"
+                                    Margin="10,0,0,0" VerticalAlignment="Center"
+                                    Command="{Binding OpenLogCommand}" />
+                            <Button Grid.Column="2" Content="X"
+                                    Style="{StaticResource TextButton}"
+                                    Margin="10,0,0,0" VerticalAlignment="Center"
+                                    ToolTip="Dismiss"
+                                    Command="{Binding DismissErrorCommand}" />
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Viewbox>
+</Window>

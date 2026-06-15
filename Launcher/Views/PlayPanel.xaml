@@ -1,0 +1,88 @@
+<UserControl x:Class="MorrowindRemasteredLauncher.Views.PlayPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:conv="clr-namespace:MorrowindRemasteredLauncher.Converters">
+    <UserControl.Resources>
+        <conv:BoolToVisibilityConverter x:Key="BoolToVis" />
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Top: the per-version setup steps (scroll if they overflow). The
+             "Setup steps" heading is the page title, aligned with the other pages. -->
+        <ScrollViewer Grid.Row="0" Style="{StaticResource PageScrollViewer}">
+            <StackPanel>
+                <TextBlock Text="Setup steps" Style="{StaticResource HeaderText}" />
+                <TextBlock Style="{StaticResource SubtleText}" TextWrapping="Wrap" Margin="0,4,0,8"
+                           Text="These run automatically when you press Play. You can also run each one here once the previous step is complete." />
+                <ItemsControl ItemsSource="{Binding SetupSteps}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0,3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="20" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" VerticalAlignment="Center" FontWeight="Bold">
+                                    <TextBlock.Style>
+                                        <Style TargetType="TextBlock"
+                                               BasedOn="{StaticResource {x:Type TextBlock}}">
+                                            <Setter Property="Text" Value="&#x2022;" />
+                                            <Setter Property="Foreground"
+                                                    Value="{StaticResource TextDimBrush}" />
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding State}" Value="Running">
+                                                    <Setter Property="Text" Value="&#x2026;" />
+                                                    <Setter Property="Foreground"
+                                                            Value="{StaticResource AccentInkBrush}" />
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding State}" Value="Done">
+                                                    <Setter Property="Text" Value="&#x2713;" />
+                                                    <Setter Property="Foreground"
+                                                            Value="{StaticResource OkBrush}" />
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding State}" Value="Failed">
+                                                    <Setter Property="Text" Value="&#x2717;" />
+                                                    <Setter Property="Foreground"
+                                                            Value="{StaticResource DangerBrush}" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                                <TextBlock Grid.Column="1" Text="{Binding Label}" VerticalAlignment="Center" />
+                                <Button Grid.Column="2" Content="Run"
+                                        Style="{StaticResource TextButton}"
+                                        Command="{Binding DataContext.RunInstallStepCommand,
+                                                  RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                        CommandParameter="{Binding}" />
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Bottom: the Play action (menu-styled, large, centred) + installed
+             version, lifted off the page bottom a little. -->
+        <StackPanel Grid.Row="1" Margin="0,12,0,48" HorizontalAlignment="Center">
+            <Button Content="Play"
+                    Style="{StaticResource MenuButton}" FontSize="52"
+                    HorizontalAlignment="Center"
+                    Command="{Binding PlayCommand}" />
+            <TextBlock Text="{Binding InstalledVersionDisplay}"
+                       Style="{StaticResource SubtleText}" Margin="0,2,0,0"
+                       HorizontalAlignment="Center" />
+            <!-- Shown only while Steam is running: count the session as Morrowind playtime. -->
+            <CheckBox Content="Track as Morrowind playtime on Steam"
+                      Style="{StaticResource LabeledCheckBox}"
+                      Margin="0,12,0,0" HorizontalAlignment="Center"
+                      IsChecked="{Binding TrackSteamPlaytime}"
+                      Visibility="{Binding IsSteamRunning, Converter={StaticResource BoolToVis}}" />
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 18
+VisualStudioVersion = 18.6.11828.311 oobstable
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MorrowindRemasteredLauncher", "MorrowindRemasteredLauncher.csproj", "{CFF1539C-4C86-51B1-7FEA-1DD4E26BF58D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CFF1539C-4C86-51B1-7FEA-1DD4E26BF58D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFF1539C-4C86-51B1-7FEA-1DD4E26BF58D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFF1539C-4C86-51B1-7FEA-1DD4E26BF58D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFF1539C-4C86-51B1-7FEA-1DD4E26BF58D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A5FA0DAE-84D2-4066-B07A-0741FFB43F53}
+	EndGlobalSection
+EndGlobal
