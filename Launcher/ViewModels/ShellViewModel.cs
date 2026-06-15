@@ -39,6 +39,7 @@ public partial class ShellViewModel : ObservableObject
     private readonly Mo2LaunchService _mo2Launch;
     private readonly GameSettingsService _gameSettings;
     private readonly SteamService _steam;
+    private readonly ModPruneService _modPrune;
     private readonly LauncherEnvironment _environment;
 
     /// <summary>Wires services, resolves the starting edition and game path, hooks the error banner, seeds state, and starts the MO2-running monitor.</summary>
@@ -56,6 +57,7 @@ public partial class ShellViewModel : ObservableObject
         Mo2LaunchService mo2Launch,
         GameSettingsService gameSettings,
         SteamService steam,
+        ModPruneService modPrune,
         LauncherEnvironment environment)
     {
         _config = config;
@@ -71,6 +73,7 @@ public partial class ShellViewModel : ObservableObject
         _mo2Launch = mo2Launch;
         _gameSettings = gameSettings;
         _steam = steam;
+        _modPrune = modPrune;
         _environment = environment;
 
         _selectedEdition = environment.PrimaryEmbeddedEdition ?? config.Current.SelectedEdition;
@@ -97,9 +100,11 @@ public partial class ShellViewModel : ObservableObject
     /// <summary>True while any ModOrganizer.exe is running; buttons that launch MO2 are disabled until every instance closes, because MO2 single-instances per machine.</summary>
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(CanLaunchMo2))]
+    [NotifyPropertyChangedFor(nameof(CanPrune))]
     [NotifyCanExecuteChangedFor(nameof(PlayCommand))]
     [NotifyCanExecuteChangedFor(nameof(LaunchToolCommand))]
     [NotifyCanExecuteChangedFor(nameof(RunInstallStepCommand))]
+    [NotifyCanExecuteChangedFor(nameof(PruneCommand))]
     private bool _isMo2Running;
 
     /// <summary>True while the Steam client is running (gates the playtime checkbox).</summary>
@@ -432,6 +437,9 @@ public partial class ShellViewModel : ObservableObject
     [NotifyPropertyChangedFor(nameof(HasUpdate))]
     [NotifyPropertyChangedFor(nameof(InstalledVersionDisplay))]
     [NotifyPropertyChangedFor(nameof(StatusSummary))]
+    [NotifyPropertyChangedFor(nameof(CanPrune))]
+    [NotifyPropertyChangedFor(nameof(ShowPruneButton))]
+    [NotifyCanExecuteChangedFor(nameof(PruneCommand))]
     private EditionState? _currentState;
 
     /// <summary>Short human description of the current edition's state.</summary>

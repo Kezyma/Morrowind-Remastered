@@ -59,6 +59,7 @@ public sealed class ServiceRegistry
             Get<BinarySetupService>(),
             Get<Mo2ToolAutomation>(),
             Get<SteamService>()));
+        Register(new ModPruneService(config, Get<InstallStateService>()));
 
         Register(new ShellViewModel(
             Get<ConfigService>(),
@@ -74,6 +75,7 @@ public sealed class ServiceRegistry
             Get<Mo2LaunchService>(),
             Get<GameSettingsService>(),
             Get<SteamService>(),
+            Get<ModPruneService>(),
             environment));
     }
 

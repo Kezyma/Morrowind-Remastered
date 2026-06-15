@@ -133,8 +133,9 @@ public partial class ShellViewModel
 
     /// <summary>The Install/Update button: installs the single combined Wabbajack list then repairs the Mod Organizer paths (the only post-install step here; per-engine setup happens on the Play tab).</summary>
     [RelayCommand]
-    private Task RunInstall() =>
-        RunBusyAsync($"{InstallOrUpdateLabel} Morrowind Remastered", async (p, ct) =>
+    private async Task RunInstall()
+    {
+        await RunBusyAsync($"{InstallOrUpdateLabel} Morrowind Remastered", async (p, ct) =>
         {
             var (ok, message) = await RunModlistInstallAsync(p, ct).ConfigureAwait(false);
             if (!ok)
@@ -152,7 +153,14 @@ public partial class ShellViewModel
             }
 
             return (true, "Installed. Pick a version on the Play tab to finish setup.");
-        });
+        }).ConfigureAwait(true);
+
+        // The mods folder just changed on disk — recompute what can be pruned in the background.
+        if (InstallResultSuccess)
+        {
+            RefreshPruneInfo(force: true);
+        }
+    }
 
     /// <summary>Installs the modlist from the configured source (catalog / machineURL / local file); the catalog modlist is optional since the test source modes don't need it.</summary>
     private async Task<(bool Ok, string Message)> RunModlistInstallAsync(
@@ -272,6 +280,7 @@ public partial class ShellViewModel
 
             InstallResultSuccess = true;
             InstallResultMessage = $"{SelectedEditionName} Edition uninstalled.";
+            InvalidatePruneScan();
             Logger.Info($"Uninstall complete for {edition}");
         }
         catch (Exception ex)
@@ -292,10 +301,12 @@ public partial class ShellViewModel
     [NotifyPropertyChangedFor(nameof(CanRunInstall))]
     [NotifyPropertyChangedFor(nameof(CanClearDownloads))]
     [NotifyPropertyChangedFor(nameof(CanLaunchMo2))]
+    [NotifyPropertyChangedFor(nameof(CanPrune))]
     [NotifyCanExecuteChangedFor(nameof(ClearDownloadsCommand))]
     [NotifyCanExecuteChangedFor(nameof(PlayCommand))]
     [NotifyCanExecuteChangedFor(nameof(LaunchToolCommand))]
     [NotifyCanExecuteChangedFor(nameof(RunInstallStepCommand))]
+    [NotifyCanExecuteChangedFor(nameof(PruneCommand))]
     private bool _isBusy;
 
     /// <summary>Title shown above the progress area for the current operation.</summary>

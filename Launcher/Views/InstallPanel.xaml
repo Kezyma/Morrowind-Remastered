@@ -147,13 +147,21 @@
             </StackPanel>
             </StackPanel>
 
-            <!-- Clear Downloads: shown in both modes. Embedded mode resolves the
-                 cache folder from the adjacent MO2's ModOrganizer.ini. -->
-            <Button Content="{Binding ClearDownloadsLabel}"
-                    Style="{StaticResource TextButton}"
-                    HorizontalAlignment="Left" Margin="0,10,0,0"
-                    Visibility="{Binding HasDownloads, Converter={StaticResource BoolToVis}}"
-                    Command="{Binding ClearDownloadsCommand}" />
+            <!-- Maintenance: Clear Downloads + Prune Mods. Clear Downloads is shown in both
+                 modes (embedded resolves the cache from the adjacent MO2's ModOrganizer.ini);
+                 Prune Mods deletes loose files neither profile loads, and appears once the
+                 background scan finds something to free. -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,10,0,0">
+                <Button Content="{Binding ClearDownloadsLabel}"
+                        Style="{StaticResource TextButton}"
+                        Visibility="{Binding HasDownloads, Converter={StaticResource BoolToVis}}"
+                        Command="{Binding ClearDownloadsCommand}" />
+                <Button Content="{Binding PruneLabel}"
+                        Style="{StaticResource TextButton}" Margin="16,0,0,0"
+                        ToolTip="Delete loose mod files that neither profile loads, to reclaim disk space"
+                        Visibility="{Binding ShowPruneButton, Converter={StaticResource BoolToVis}}"
+                        Command="{Binding PruneCommand}" />
+            </StackPanel>
         </StackPanel>
     </ScrollViewer>
 </UserControl>
