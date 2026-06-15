@@ -9,19 +9,17 @@ using MorrowindRemasteredLauncher.Services;
 
 namespace MorrowindRemasteredLauncher.Views;
 
-/// <summary>
-/// A tiny, dependency-free Markdown → WPF renderer for the About page. Emits the
-/// same styled <see cref="TextBlock"/>s the other panels use (theme fonts/brushes,
-/// no backgrounds), so the rendered doc reads as part of the parchment page.
-///
-/// Supported subset: <c>#/##/###</c> headings, blank-line-separated paragraphs,
-/// <c>-</c>/<c>*</c> bullets, <c>---</c> rules, GitHub-style pipe tables
-/// (<c>| a | b |</c> with a <c>| --- | :--: |</c> alignment row), and inline
-/// <c>**bold**</c>, <c>*italic*</c>, <c>`code`</c> and <c>[text](url)</c> (links
-/// open externally).
-/// </summary>
+/// <summary>A tiny, dependency-free Markdown &#8594; WPF renderer that emits the app's styled <see cref="TextBlock"/>s.</summary>
+/// <remarks>
+/// Output uses theme fonts/brushes with no backgrounds, so the rendered doc reads as part of the
+/// parchment page. Supported subset: <c>#/##/###</c> headings, blank-line-separated paragraphs,
+/// <c>-</c>/<c>*</c> bullets, <c>---</c> rules, GitHub-style pipe tables (<c>| a | b |</c> with a
+/// <c>| --- | :--: |</c> alignment row), and inline <c>**bold**</c>, <c>*italic*</c>, <c>`code`</c>
+/// and <c>[text](url)</c> (links open externally).
+/// </remarks>
 public static class MarkdownRenderer
 {
+    /// <summary>Matches inline links, code, bold and italic spans in priority order.</summary>
     private static readonly Regex InlineRegex = new(
         @"(?<link>\[(?<ltext>[^\]]+)\]\((?<lurl>[^)]+)\))" +
         @"|(?<code>`(?<ctext>[^`]+)`)" +
@@ -29,11 +27,7 @@ public static class MarkdownRenderer
         @"|(?<italic>\*(?<itext>.+?)\*)",
         RegexOptions.Compiled);
 
-    /// <summary>
-    /// Renders <paramref name="markdown"/> into <paramref name="host"/>. When
-    /// <paramref name="colorStatusMarks"/> is set, check (U+2713) and cross (U+2717)
-    /// glyphs are tinted green/red — used by the Mods page for modlist.md, off elsewhere.
-    /// </summary>
+    /// <summary>Renders <paramref name="markdown"/> into <paramref name="host"/>; <paramref name="colorStatusMarks"/> tints check (U+2713)/cross (U+2717) glyphs green/red (used by the Mods page for modlist.md).</summary>
     public static void Render(string markdown, Panel host, bool colorStatusMarks = false)
     {
         host.Children.Clear();
@@ -43,6 +37,8 @@ public static class MarkdownRenderer
         }
     }
 
+    /// <summary>Parses <paramref name="markdown"/> into the styled WPF block elements it renders to.</summary>
+    /// <remarks>A pipe table (a header row immediately followed by a <c>|---|:--:|</c> alignment row) is consumed as one block: header, alignment and all following data rows.</remarks>
     public static IEnumerable<UIElement> Render(string markdown, bool colorStatusMarks = false)
     {
         var elements = new List<UIElement>();
@@ -62,8 +58,6 @@ public static class MarkdownRenderer
         {
             var line = lines[i].Trim();
 
-            // Table: a header row immediately followed by a |---|:--:| alignment row.
-            // The whole block (header + alignment + data rows) is consumed here.
             if (IsTableRow(line) && i + 1 < lines.Length && IsTableDelimiter(lines[i + 1].Trim()))
             {
                 FlushParagraph();
@@ -118,8 +112,7 @@ public static class MarkdownRenderer
         return elements;
     }
 
-    // ------------------------------------------------------------- block builders
-
+    /// <summary>Builds a styled heading TextBlock for the given level (1-3).</summary>
     private static TextBlock Heading(string text, int level, bool colorStatusMarks)
     {
         var tb = new TextBlock { TextWrapping = TextWrapping.Wrap };
@@ -148,6 +141,7 @@ public static class MarkdownRenderer
         return tb;
     }
 
+    /// <summary>Builds a styled paragraph TextBlock.</summary>
     private static TextBlock Paragraph(string text, bool colorStatusMarks)
     {
         var tb = new TextBlock
@@ -162,6 +156,7 @@ public static class MarkdownRenderer
         return tb;
     }
 
+    /// <summary>Builds a bulleted list item as a two-column grid (dot + wrapping body).</summary>
     private static UIElement Bullet(string text, bool colorStatusMarks)
     {
         var grid = new Grid { Margin = new Thickness(0, 3, 0, 3) };
@@ -191,6 +186,7 @@ public static class MarkdownRenderer
         return grid;
     }
 
+    /// <summary>Builds a thin horizontal rule Border.</summary>
     private static UIElement HorizontalRule() => new Border
     {
         Height = 1,
@@ -198,8 +194,6 @@ public static class MarkdownRenderer
         Margin = new Thickness(0, 12, 0, 12),
         HorizontalAlignment = HorizontalAlignment.Stretch
     };
-
-    // -------------------------------------------------------------- table blocks
 
     /// <summary>A row that is part of a pipe table (contains at least one <c>|</c>).</summary>
     private static bool IsTableRow(string line) => line.Contains('|');
@@ -242,11 +236,7 @@ public static class MarkdownRenderer
         return s.Split('|').Select(c => c.Trim()).ToList();
     }
 
-    /// <summary>
-    /// Renders a pipe table as a <see cref="Grid"/>: the first (label) column flexes
-    /// and wraps, the rest size to content. Header row is emphasised; a faint rule
-    /// separates each row. Cells render inline markdown (links, bold, etc.).
-    /// </summary>
+    /// <summary>Renders a pipe table as a Grid (first column flexes and wraps, rest size to content; header emphasised, faint rule per row; cells render inline markdown).</summary>
     private static UIElement Table(IReadOnlyList<string> rows, IReadOnlyList<TextAlignment> alignments,
         bool colorStatusMarks)
     {
@@ -267,7 +257,6 @@ public static class MarkdownRenderer
             var isHeader = r == 0;
             var cells = SplitRow(rows[r]);
 
-            // Full-width underline: solid under the header, faint between data rows.
             var rule = new Border
             {
                 BorderBrush = borderBrush,
@@ -300,8 +289,7 @@ public static class MarkdownRenderer
         return grid;
     }
 
-    // ------------------------------------------------------------ inline builders
-
+    /// <summary>Appends inline runs (links, code, bold, italic, plain text) for <paramref name="text"/> to the TextBlock.</summary>
     private static void AddInlines(TextBlock tb, string text, bool colorStatusMarks)
     {
         var pos = 0;
@@ -339,11 +327,7 @@ public static class MarkdownRenderer
         }
     }
 
-    /// <summary>
-    /// Appends plain (non-inline-markdown) text. With <paramref name="colorStatusMarks"/>
-    /// on, each check (U+2713) / cross (U+2717) glyph is split into its own coloured run
-    /// (green/red); otherwise the text is added as a single run.
-    /// </summary>
+    /// <summary>Appends plain text; with <paramref name="colorStatusMarks"/> on, each check (U+2713)/cross (U+2717) glyph becomes its own green/red run.</summary>
     private static void AddText(TextBlock tb, string text, bool colorStatusMarks)
     {
         if (!colorStatusMarks || (!text.Contains('✓') && !text.Contains('✗')))
@@ -357,8 +341,8 @@ public static class MarkdownRenderer
         {
             var brushKey = text[k] switch
             {
-                '✓' => "OkBrush",      // check mark → dark green
-                '✗' => "DangerBrush",  // ballot X  → dark red
+                '✓' => "OkBrush",
+                '✗' => "DangerBrush",
                 _ => null
             };
             if (brushKey is null)
@@ -378,6 +362,8 @@ public static class MarkdownRenderer
         }
     }
 
+    /// <summary>Builds an external-opening hyperlink for an absolute URL, or plain text if the URL is invalid.</summary>
+    /// <remarks>Hyperlink underlines by default; setting <c>TextDecorations = null</c> clears it so the accent colour alone marks the link.</remarks>
     private static Inline Link(string text, string url)
     {
         if (!Uri.TryCreate(url, UriKind.Absolute, out var uri))
@@ -388,8 +374,6 @@ public static class MarkdownRenderer
         {
             NavigateUri = uri,
             Foreground = Res<Brush>("AccentInkBrush"),
-            // Hyperlink underlines by default; null (not omission) clears it. The accent
-            // colour alone marks the link.
             TextDecorations = null,
             ToolTip = url
         };
@@ -397,6 +381,7 @@ public static class MarkdownRenderer
         return link;
     }
 
+    /// <summary>Opens a clicked hyperlink in the default browser.</summary>
     private static void OnRequestNavigate(object sender, RequestNavigateEventArgs e)
     {
         try
@@ -410,5 +395,6 @@ public static class MarkdownRenderer
         e.Handled = true;
     }
 
+    /// <summary>Looks up a typed application resource (font/brush/style) by key.</summary>
     private static T Res<T>(string key) => (T)Application.Current.FindResource(key);
 }

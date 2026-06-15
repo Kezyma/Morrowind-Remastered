@@ -2,14 +2,13 @@ using System.Text.RegularExpressions;
 
 namespace MorrowindRemasteredLauncher.Services;
 
-/// <summary>
-/// Minimal section-aware INI value writer that preserves a file's existing
-/// layout and <c>=</c> spacing. Used for OpenMW's <c>settings.cfg</c>
-/// (<c>key = value</c>) and MGE's <c>MGE.ini</c> (<c>Key=Value</c>); it adapts
-/// to whatever spacing each key already uses. Keys/sections are matched
-/// case-insensitively; a missing key is inserted into its section, a missing
-/// section is appended.
-/// </summary>
+/// <summary>Minimal section-aware INI value reader/writer that preserves the file's existing layout and <c>=</c> spacing.</summary>
+/// <remarks>
+/// Used for OpenMW's <c>settings.cfg</c> (<c>key = value</c>) and MGE's
+/// <c>MGE.ini</c> (<c>Key=Value</c>), adapting to each key's spacing. Keys and
+/// sections match case-insensitively; a missing key is inserted into its
+/// section, a missing section is appended.
+/// </remarks>
 public static class IniEditor
 {
     /// <summary>Reads a key's value within a section, or null if absent.</summary>
@@ -25,7 +24,7 @@ public static class IniEditor
             {
                 if (inSection)
                 {
-                    return null; // left the section without finding the key
+                    return null;
                 }
                 inSection = string.Equals(trimmed[1..^1].Trim(), section,
                     StringComparison.OrdinalIgnoreCase);
@@ -43,11 +42,7 @@ public static class IniEditor
         return null;
     }
 
-    /// <summary>
-    /// Sets <paramref name="key"/> = <paramref name="value"/> within
-    /// <paramref name="section"/>. Returns the new lines and whether anything
-    /// changed.
-    /// </summary>
+    /// <summary>Sets <paramref name="key"/> = <paramref name="value"/> within <paramref name="section"/>; returns the new lines and whether anything changed.</summary>
     public static (string[] Lines, bool Changed) SetValue(
         string[] lines, string section, string key, string value)
     {
@@ -56,8 +51,8 @@ public static class IniEditor
             RegexOptions.IgnoreCase);
 
         var inSection = false;
-        var sectionStart = -1; // index of the [section] header
-        var sectionEnd = -1;   // index just past the last line of the section
+        var sectionStart = -1;
+        var sectionEnd = -1;
 
         for (var i = 0; i < result.Count; i++)
         {
@@ -67,7 +62,7 @@ public static class IniEditor
                 var name = trimmed[1..^1].Trim();
                 if (inSection)
                 {
-                    sectionEnd = i; // first header after our section
+                    sectionEnd = i;
                     break;
                 }
                 if (string.Equals(name, section, StringComparison.OrdinalIgnoreCase))
@@ -94,7 +89,6 @@ public static class IniEditor
             }
         }
 
-        // Key not present: insert into the section, or create the section.
         var writeLine = $"{key}={value}";
         if (sectionStart >= 0)
         {

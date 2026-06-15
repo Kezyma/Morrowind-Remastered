@@ -10,68 +10,57 @@ namespace MorrowindRemasteredLauncher.Services;
 /// <summary>The Nexus account a validated OAuth session belongs to.</summary>
 public sealed record NexusAccount(string Name, bool IsPremium);
 
-/// <summary>
-/// The authorize URL to show plus the PKCE/state secrets needed to complete the
-/// exchange. The UI shows <see cref="AuthorizeUrl"/> in a WebView2 and reports
-/// the intercepted redirect URI back to <see cref="NexusAuthService.CompleteAsync"/>.
-/// </summary>
+/// <summary>The authorize URL to show plus the PKCE/state secrets needed to complete the exchange (the UI shows it in a WebView2 and reports the redirect back to <see cref="NexusAuthService.CompleteAsync"/>).</summary>
 public sealed record OAuthChallenge(string AuthorizeUrl, string State, string CodeVerifier);
 
-/// <summary>
-/// Drives Nexus Mods OAuth (PKCE) exactly as Wabbajack does, so the token we
-/// write is accepted by the wabbajack-cli. The interactive part (showing the
-/// Nexus login page and catching the <c>https://127.0.0.1:1234</c> redirect) is
-/// handled by a WebView2 popup; this service owns the protocol:
-///   1. <see cref="BeginLogin"/> builds the authorize URL + PKCE secrets.
-///   2. The popup navigates there; when Nexus redirects to 127.0.0.1, the popup
-///      passes that URI to <see cref="CompleteAsync"/>.
-///   3. We validate state, exchange the code for a token, persist it via
-///      <see cref="WabbajackTokenStore"/>, and read the account info.
-///
-/// Verified against Wabbajack 4.2.1.4's <c>NexusLoginHandler</c>.
-/// </summary>
+/// <summary>Drives Nexus Mods OAuth (PKCE) exactly as Wabbajack does, so the token written is accepted by the wabbajack-cli.</summary>
+/// <remarks>
+/// A WebView2 popup handles the interactive part (login page + catching the
+/// 127.0.0.1 redirect); this service owns the protocol: <see cref="BeginLogin"/>
+/// builds the authorize URL and PKCE secrets, the popup passes the intercepted
+/// redirect to <see cref="CompleteAsync"/>, which validates state, exchanges the
+/// code, persists it via <see cref="WabbajackTokenStore"/>, and reads the
+/// account. Verified against Wabbajack 4.2.1.4's <c>NexusLoginHandler</c>.
+/// </remarks>
 public sealed class NexusAuthService
 {
-    private const string OAuthBase = "https://users.nexusmods.com/oauth";
-    private const string AuthorizeEndpoint = OAuthBase + "/authorize";
-    private const string TokenEndpoint = OAuthBase + "/token";
-    private const string UserInfoEndpoint = OAuthBase + "/userinfo";
-
-    private const string ClientId = "wabbajack";
-    private const string RedirectUri = "https://127.0.0.1:1234";
-    private const string Scopes = "public openid profile";
-
-    /// <summary>Host of the redirect URI; the popup intercepts navigations here.</summary>
-    public const string RedirectHost = "127.0.0.1";
-
+    /// <summary>Shared HTTP client used for the token and userinfo calls.</summary>
     private readonly HttpClient _http;
+    /// <summary>Persists the OAuth token in Wabbajack's store.</summary>
     private readonly WabbajackTokenStore _tokenStore;
+    /// <summary>Persisted launcher config (Nexus OAuth settings).</summary>
+    private readonly ConfigService _config;
 
-    public NexusAuthService(HttpClient http, WabbajackTokenStore tokenStore)
+    /// <summary>The OAuth authorize endpoint.</summary>
+    private string AuthorizeEndpoint => _config.Current.Nexus.OAuthBase + "/authorize";
+    /// <summary>The OAuth token endpoint.</summary>
+    private string TokenEndpoint => _config.Current.Nexus.OAuthBase + "/token";
+    /// <summary>The OAuth userinfo endpoint.</summary>
+    private string UserInfoEndpoint => _config.Current.Nexus.OAuthBase + "/userinfo";
+
+    /// <summary>Host of the redirect URI; the WebView2 popup intercepts navigations here.</summary>
+    public string RedirectHost => _config.Current.Nexus.RedirectHost;
+
+    /// <summary>Creates the service over the shared HTTP client, token store and config.</summary>
+    public NexusAuthService(HttpClient http, WabbajackTokenStore tokenStore, ConfigService config)
     {
         _http = http;
         _tokenStore = tokenStore;
+        _config = config;
     }
 
     /// <summary>The current account, populated after sign-in/restore.</summary>
     public NexusAccount? Account { get; private set; }
 
+    /// <summary>True when an account is currently signed in.</summary>
     public bool IsSignedIn => Account is not null;
 
-    /// <summary>
-    /// True when a usable Wabbajack Nexus token already exists on disk (so the
-    /// CLI can run without an interactive login).
-    /// </summary>
+    /// <summary>True when a usable Wabbajack Nexus token already exists on disk, so the CLI can run without an interactive login.</summary>
     public bool HasUsableToken => _tokenStore.HasValidToken();
 
-    /// <summary>
-    /// Builds the authorize URL and PKCE secrets for a new login attempt. The
-    /// caller shows <see cref="OAuthChallenge.AuthorizeUrl"/> in the popup.
-    /// </summary>
+    /// <summary>Builds the authorize URL and PKCE secrets (RFC 7636) for a new login attempt; the caller shows <see cref="OAuthChallenge.AuthorizeUrl"/> in the popup.</summary>
     public OAuthChallenge BeginLogin()
     {
-        // PKCE (RFC 7636): verifier is a random base64 string; challenge is the
-        // base64url(SHA256(verifier)).
         var codeVerifier = Convert.ToBase64String(
             Encoding.UTF8.GetBytes(Guid.NewGuid().ToString("N")));
         var challengeBytes = SHA256.HashData(Encoding.UTF8.GetBytes(codeVerifier));
@@ -79,12 +68,13 @@ public sealed class NexusAuthService
 
         var state = Guid.NewGuid().ToString();
 
+        var nexus = _config.Current.Nexus;
         var query = HttpUtility.ParseQueryString(string.Empty);
         query["response_type"] = "code";
-        query["scope"] = Scopes;
+        query["scope"] = nexus.Scopes;
         query["code_challenge_method"] = "S256";
-        query["client_id"] = ClientId;
-        query["redirect_uri"] = RedirectUri;
+        query["client_id"] = nexus.ClientId;
+        query["redirect_uri"] = nexus.RedirectUri;
         query["code_challenge"] = codeChallenge;
         query["state"] = state;
 
@@ -92,11 +82,7 @@ public sealed class NexusAuthService
         return new OAuthChallenge(url, state, codeVerifier);
     }
 
-    /// <summary>
-    /// Completes login given the redirect URI the popup intercepted. Validates
-    /// state, exchanges the auth code, persists the token, and loads account
-    /// info. Returns the account, or null on failure.
-    /// </summary>
+    /// <summary>Completes login from the intercepted redirect URI: validates state, exchanges the code, persists the token, and loads the account; null on failure.</summary>
     public async Task<NexusAccount?> CompleteAsync(
         Uri redirect, OAuthChallenge challenge, CancellationToken ct = default)
     {
@@ -137,10 +123,7 @@ public sealed class NexusAuthService
         }
     }
 
-    /// <summary>
-    /// Restores account info from an existing, non-expired token (no UI). Returns
-    /// null if there is no usable token.
-    /// </summary>
+    /// <summary>Restores account info from an existing, non-expired token (no UI); null if there is no usable token.</summary>
     public async Task<NexusAccount?> TryRestoreAsync(CancellationToken ct = default)
     {
         var state = _tokenStore.Read();
@@ -157,22 +140,23 @@ public sealed class NexusAuthService
         return account;
     }
 
+    /// <summary>Signs out by clearing the stored token and current account.</summary>
     public void SignOut()
     {
         _tokenStore.Clear();
         Account = null;
     }
 
-    // --------------------------------------------------------- token exchange
-
+    /// <summary>Exchanges an authorization code (with its PKCE verifier) for a token; null on failure, logging the server's error body which explains why.</summary>
     private async Task<JwtTokenReply?> ExchangeCodeAsync(
         string code, string verifier, CancellationToken ct)
     {
+        var nexus = _config.Current.Nexus;
         var form = new FormUrlEncodedContent(new Dictionary<string, string>
         {
             ["grant_type"] = "authorization_code",
-            ["client_id"] = ClientId,
-            ["redirect_uri"] = RedirectUri,
+            ["client_id"] = nexus.ClientId,
+            ["redirect_uri"] = nexus.RedirectUri,
             ["code"] = code,
             ["code_verifier"] = verifier
         });
@@ -180,8 +164,6 @@ public sealed class NexusAuthService
         using var response = await _http.PostAsync(TokenEndpoint, form, ct).ConfigureAwait(false);
         if (!response.IsSuccessStatusCode)
         {
-            // Include the server's error body — it usually explains *why* (invalid
-            // grant, expired code, etc.), which the status line alone doesn't.
             string body;
             try { body = await response.Content.ReadAsStringAsync(ct).ConfigureAwait(false); }
             catch { body = string.Empty; }
@@ -195,6 +177,7 @@ public sealed class NexusAuthService
             .ConfigureAwait(false);
     }
 
+    /// <summary>Reads account name and premium status from the userinfo endpoint, treating the user as signed in even if userinfo is unavailable (the token is still valid).</summary>
     private async Task<NexusAccount?> LoadAccountAsync(string accessToken, CancellationToken ct)
     {
         try
@@ -207,7 +190,6 @@ public sealed class NexusAuthService
             if (!response.IsSuccessStatusCode)
             {
                 Logger.Warn($"Nexus userinfo returned {(int)response.StatusCode}");
-                // Token is valid even if userinfo is unavailable; treat as signed in.
                 return new NexusAccount("Nexus user", IsPremium: false);
             }
 
@@ -235,6 +217,7 @@ public sealed class NexusAuthService
         }
     }
 
+    /// <summary>Base64url-encodes bytes (RFC 7636 style: no padding, URL-safe alphabet).</summary>
     private static string Base64UrlEncode(byte[] data) =>
         Convert.ToBase64String(data)
             .TrimEnd('=')
@@ -244,12 +227,15 @@ public sealed class NexusAuthService
     /// <summary>Nexus OAuth userinfo response (subset).</summary>
     private sealed class OAuthUserInfo
     {
+        /// <summary>The account's subject identifier.</summary>
         [JsonPropertyName("sub")]
         public string Sub { get; set; } = "";
 
+        /// <summary>The account display name.</summary>
         [JsonPropertyName("name")]
         public string Name { get; set; } = "";
 
+        /// <summary>The account's membership roles (checked for premium/lifetime).</summary>
         [JsonPropertyName("membership_roles")]
         public string[] MembershipRoles { get; set; } = Array.Empty<string>();
     }

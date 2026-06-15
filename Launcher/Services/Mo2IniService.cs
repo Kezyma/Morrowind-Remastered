@@ -5,32 +5,27 @@ using MorrowindRemasteredLauncher.Models;
 
 namespace MorrowindRemasteredLauncher.Services;
 
-/// <summary>
-/// Repairs the paths baked into an edition's <c>ModOrganizer.ini</c> after a
-/// Wabbajack install. The list is compiled against the author's machine, so it
-/// still points at the author's game path (e.g. <c>D:\Wabbajack\Morrowind</c>)
-/// and — if the install was relocated — a stale mods root. This rewrites:
-///   1. the <c>gamePath = @ByteArray(...)</c> value, and every other occurrence
-///      of the author's game path (Morrowind.exe, Morrowind Launcher.exe,
-///      workingDirectories, arguments) — in BOTH the forward-slash and
-///      escaped-backslash encodings MO2 uses; and
-///   2. every tool path under a <c>mods</c> folder, re-rooted to this install's
-///      actual mods folder (skipping the game path itself, which may contain
-///      "mods").
-/// The operation is idempotent: re-running on an already-repaired file is a
-/// no-op.
-/// </summary>
+/// <summary>Repairs the paths baked into an edition's <c>ModOrganizer.ini</c> after a Wabbajack install; idempotent (re-running on a repaired file is a no-op).</summary>
+/// <remarks>
+/// The list is compiled against the author's machine, so it still points at the author's game path (e.g.
+/// <c>D:\Wabbajack\Morrowind</c>) and — if relocated — a stale mods root. This rewrites the
+/// <c>gamePath = @ByteArray(...)</c> value and every other occurrence of the author's game path (Morrowind.exe,
+/// Morrowind Launcher.exe, workingDirectories, arguments) in BOTH the forward-slash and escaped-backslash
+/// encodings MO2 uses, and re-roots every tool path under a <c>mods</c> folder to this install's mods folder
+/// (skipping the game path itself, which may contain "mods").
+/// </remarks>
 public sealed class Mo2IniService
 {
     private readonly ConfigService _config;
     private readonly GamePathService _gamePath;
     private readonly InstallStateService _installState;
 
-    // gamePath = @ByteArray(D:\\Wabbajack\\Morrowind)
+    /// <summary>Matches the <c>gamePath = @ByteArray(...)</c> line and captures the encoded path.</summary>
     private static readonly Regex GamePathRegex =
         new(@"^(?<prefix>\s*gamePath\s*=\s*@ByteArray\()(?<path>.*?)(?<suffix>\)\s*)$",
             RegexOptions.Compiled);
 
+    /// <summary>Creates the MO2 ini repair service.</summary>
     public Mo2IniService(
         ConfigService config, GamePathService gamePath, InstallStateService installState)
     {
@@ -42,10 +37,7 @@ public sealed class Mo2IniService
     /// <summary>Outcome of a repair run.</summary>
     public sealed record RepairResult(bool Success, string? Error, int Replacements);
 
-    /// <summary>
-    /// Rewrites the edition's ModOrganizer.ini in place. Requires a selected,
-    /// valid game path.
-    /// </summary>
+    /// <summary>Rewrites the edition's ModOrganizer.ini in place (and disables the ModSetup plugin); requires a selected, valid game path.</summary>
     public RepairResult RepairPaths(Edition edition)
     {
         var gameDir = _gamePath.GameDirectory(_config.Current.GameExePath);
@@ -73,9 +65,6 @@ public sealed class Mo2IniService
 
             WriteAtomic(iniPath, rewritten);
 
-            // The list ships a ModSetup MO2 plugin that, on launch, runs the old
-            // ModSetup.exe and kills ModOrganizer — disable it so the launcher's
-            // own post-setup (and all MO2 launches) work.
             DisableModSetupPlugin(installDir);
 
             Logger.Info($"Repaired MO2 paths for {edition}: {replacements} line(s) updated " +
@@ -89,11 +78,7 @@ public sealed class Mo2IniService
         }
     }
 
-    /// <summary>
-    /// Pure transformation of ModOrganizer.ini lines (extracted for testability).
-    /// Returns the rewritten lines, the number of changed lines, and an error
-    /// message when the author game path can't be found.
-    /// </summary>
+    /// <summary>Pure transformation of ModOrganizer.ini lines (extracted for testability); returns the rewritten lines, the count of changed lines, and an error when the author game path can't be found.</summary>
     public static (string[] Lines, int Replacements, string? Error) Rewrite(
         string[] lines, string gameDir, string installDir)
     {
@@ -113,12 +98,9 @@ public sealed class Mo2IniService
             var original = result[i];
             var line = original;
 
-            // 1. Author game path → selected game path, both encodings.
             line = ReplaceIgnoreCase(line, ToForward(origRaw), ToForward(newRaw));
             line = ReplaceIgnoreCase(line, ToEscaped(origRaw), ToEscaped(newRaw));
 
-            // 2. Re-root mods paths to this install's mods folder, unless the
-            //    value is under the (already-correct) game path.
             line = RerootMods(line, modsRoot, newRaw);
 
             if (line != original)
@@ -131,13 +113,8 @@ public sealed class Mo2IniService
         return (result, replacements, null);
     }
 
-    /// <summary>
-    /// Disables the list's ModSetup MO2 plugin by renaming
-    /// <c>plugins\ModSetup.py</c> to <c>ModSetup.py.disabled</c> (MO2 only loads
-    /// <c>.py</c> files). That plugin spawns the old <c>ModSetup.exe</c> and runs
-    /// <c>taskkill /im ModOrganizer.exe</c> on launch, which the launcher
-    /// replaces. Idempotent and safe to call before every MO2 launch.
-    /// </summary>
+    /// <summary>Disables the list's ModSetup MO2 plugin by renaming <c>plugins\ModSetup.py</c> to <c>ModSetup.py.disabled</c> (MO2 only loads <c>.py</c>); idempotent and safe to call before every MO2 launch.</summary>
+    /// <remarks>That plugin spawns the old <c>ModSetup.exe</c> and runs <c>taskkill /im ModOrganizer.exe</c> on launch (killing MO2), which the launcher replaces — so it must be disabled or no MO2 launch survives.</remarks>
     public static void DisableModSetupPlugin(string installDir)
     {
         try
@@ -160,14 +137,7 @@ public sealed class Mo2IniService
         }
     }
 
-    /// <summary>
-    /// Resolves the MO2 download directory for an install by reading
-    /// <c>download_directory</c> from its ModOrganizer.ini. Expands the
-    /// <c>%BASE_DIR%</c> placeholder (against <c>base_directory</c>, default the
-    /// install dir), unescapes the stored path, and falls back to
-    /// <c>&lt;installDir&gt;/downloads</c> when unset or unreadable. Used so the
-    /// Clear Downloads button works against an embedded MO2 install's own cache.
-    /// </summary>
+    /// <summary>Resolves an install's MO2 download directory from its ModOrganizer.ini (expanding <c>%BASE_DIR%</c> and unescaping the path), falling back to <c>&lt;installDir&gt;/downloads</c> when unset or unreadable, so Clear Downloads targets an embedded MO2 install's own cache.</summary>
     public static string ResolveDownloadDirectory(string mo2InstallDir)
     {
         var fallback = Path.Combine(mo2InstallDir, "downloads");
@@ -186,10 +156,8 @@ public sealed class Mo2IniService
                 return fallback;
             }
 
-            // MO2 stores Windows paths with escaped backslashes; normalise them.
             var path = raw.Replace(@"\\", @"\").Trim();
 
-            // Expand %BASE_DIR% (base_directory, defaulting to the install dir).
             if (path.Contains("%BASE_DIR%", StringComparison.OrdinalIgnoreCase))
             {
                 var baseRaw = IniEditor.GetValue(lines, "Settings", "base_directory");
@@ -217,18 +185,13 @@ public sealed class Mo2IniService
             var m = GamePathRegex.Match(line);
             if (m.Success)
             {
-                // Stored with escaped backslashes; decode to a real path.
                 return m.Groups["path"].Value.Replace(@"\\", @"\").Trim();
             }
         }
         return null;
     }
 
-    /// <summary>
-    /// If the line holds a path under a <c>mods</c> folder, replace the prefix
-    /// before that segment with this install's mods root (matching the line's
-    /// slash style). Skips paths under the game path.
-    /// </summary>
+    /// <summary>If the line holds a path under a <c>mods</c> folder, replaces the prefix before that segment with this install's mods root (matching the line's slash style); skips paths under the game path, which may itself contain "mods".</summary>
     private static string RerootMods(string line, string modsRoot, string gameDir)
     {
         foreach (var (sep, modsToken) in new[] { ('/', "/mods/"), ('\\', @"\\mods\\") })
@@ -239,7 +202,6 @@ public sealed class Mo2IniService
                 continue;
             }
 
-            // Find the start of the path value on this line (drive letter).
             var driveIdx = FindDriveStart(line, idx);
             if (driveIdx < 0)
             {
@@ -249,15 +211,12 @@ public sealed class Mo2IniService
             var before = line[..driveIdx];
             var pathPart = line[driveIdx..];
 
-            // Don't touch the game path (it may itself contain "mods").
             if (pathPart.StartsWith(ToForward(gameDir), StringComparison.OrdinalIgnoreCase) ||
                 pathPart.StartsWith(ToEscaped(gameDir), StringComparison.OrdinalIgnoreCase))
             {
                 continue;
             }
 
-            // Re-root: everything from "mods<sep>" onward, prefixed with the
-            // install's mods root in the same slash style.
             var tokenInPath = pathPart.IndexOf(modsToken, StringComparison.OrdinalIgnoreCase);
             var tail = pathPart[(tokenInPath + modsToken.Length)..];
             var root = sep == '/' ? ToForward(modsRoot) : ToEscaped(modsRoot);
@@ -283,20 +242,18 @@ public sealed class Mo2IniService
         return -1;
     }
 
+    /// <summary>Converts a Windows path to forward-slash form.</summary>
     private static string ToForward(string path) => path.Replace('\\', '/');
 
+    /// <summary>Converts a Windows path to MO2's escaped-backslash form.</summary>
     private static string ToEscaped(string path) => path.Replace(@"\", @"\\");
 
+    /// <summary>Case-insensitive literal string replacement.</summary>
     private static string ReplaceIgnoreCase(string input, string search, string replacement)
-    {
-        if (string.IsNullOrEmpty(search) || !input.Contains(search[0]))
-        {
-            // Cheap reject; full check below.
-        }
-        return Regex.Replace(input, Regex.Escape(search), replacement.Replace("$", "$$"),
+        => Regex.Replace(input, Regex.Escape(search), replacement.Replace("$", "$$"),
             RegexOptions.IgnoreCase);
-    }
 
+    /// <summary>Writes the lines to a temp file and atomically moves it over the target (UTF-8, no BOM).</summary>
     private static void WriteAtomic(string path, string[] lines)
     {
         var tmp = path + ".tmp";

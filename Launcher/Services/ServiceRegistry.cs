@@ -3,17 +3,15 @@ using MorrowindRemasteredLauncher.ViewModels;
 
 namespace MorrowindRemasteredLauncher.Services;
 
-/// <summary>
-/// Minimal hand-rolled service container. Registers singletons and resolves them
-/// by type. Intentionally lightweight to keep the single-file binary small.
-/// </summary>
+/// <summary>Minimal hand-rolled service container that registers singletons and resolves them by type, kept lightweight to keep the single-file binary small.</summary>
 public sealed class ServiceRegistry
 {
+    /// <summary>The registered singletons, keyed by type.</summary>
     private readonly Dictionary<Type, object> _instances = new();
 
+    /// <summary>Constructs and registers every service and the shell view-model in dependency order; notably GamePathService must precede InstallStateService, which uses it to treat an embedded install as "installed" once a game path is chosen.</summary>
     public void Initialize()
     {
-        // ---- Infrastructure ----
         var http = new HttpClient
         {
             Timeout = TimeSpan.FromSeconds(100)
@@ -25,27 +23,22 @@ public sealed class ServiceRegistry
         config.Load();
         Register(config);
 
-        // ---- Environment detection (standalone vs embedded-in-MO2) ----
         var environment = new EnvironmentService(config).Detect();
         Register(environment);
 
-        // ---- Domain services ----
-        Register(new ModlistCatalogService(http));
-        // GamePathService is created before InstallStateService: the latter uses it
-        // to treat an embedded install as "installed" once a game path is chosen.
+        Register(new ModlistCatalogService(http, config));
         Register(new GamePathService(config));
         Register(new InstallStateService(config, environment, Get<GamePathService>()));
-        Register(new SteamService(http, config));
+        Register(new SteamService(config));
         Register(new WabbajackTokenStore());
-        Register(new NexusAuthService(http, Get<WabbajackTokenStore>()));
-        Register(new WabbajackCliService(http));
+        Register(new NexusAuthService(http, Get<WabbajackTokenStore>(), config));
+        Register(new WabbajackCliService(http, config));
         Register(new InstallEngine(
             Get<WabbajackCliService>(),
             Get<NexusAuthService>(),
             Get<InstallStateService>(),
             config));
 
-        // ---- Post-setup services ----
         Register(new DisplayService());
         Register(new Mo2IniService(config, Get<GamePathService>(), Get<InstallStateService>()));
         Register(new PostSetupConfigService(
@@ -67,7 +60,6 @@ public sealed class ServiceRegistry
             Get<Mo2ToolAutomation>(),
             Get<SteamService>()));
 
-        // ---- View models ----
         Register(new ShellViewModel(
             Get<ConfigService>(),
             Get<ModlistCatalogService>(),
@@ -85,9 +77,11 @@ public sealed class ServiceRegistry
             environment));
     }
 
+    /// <summary>Registers a singleton under its type <typeparamref name="T"/>.</summary>
     public void Register<T>(T instance) where T : class
         => _instances[typeof(T)] = instance;
 
+    /// <summary>Resolves the singleton of type <typeparamref name="T"/>, or throws if it isn't registered.</summary>
     public T Get<T>() where T : class
     {
         if (_instances.TryGetValue(typeof(T), out var instance))

@@ -6,12 +6,10 @@ using System.Text.Json.Serialization;
 
 namespace MorrowindRemasteredLauncher.Services;
 
-/// <summary>
-/// The OAuth token reply from Nexus, mirroring Wabbajack's <c>JwtTokenReply</c>
-/// exactly (property names matter — the CLI deserializes this).
-/// </summary>
+/// <summary>The OAuth token reply from Nexus, mirroring Wabbajack's <c>JwtTokenReply</c> exactly (property names matter — the CLI deserializes this).</summary>
 public sealed class JwtTokenReply
 {
+    /// <summary>The bearer access token.</summary>
     [JsonPropertyName("access_token")]
     public string? AccessToken { get; set; }
 
@@ -19,25 +17,27 @@ public sealed class JwtTokenReply
     [JsonPropertyName("_received_at")]
     public long ReceivedAt { get; set; }
 
+    /// <summary>The token type (e.g. "Bearer").</summary>
     [JsonPropertyName("token_type")]
     public string? Type { get; set; }
 
+    /// <summary>Lifetime of the token in seconds.</summary>
     [JsonPropertyName("expires_in")]
     public ulong ExpiresIn { get; set; }
 
+    /// <summary>The refresh token, if issued.</summary>
     [JsonPropertyName("refresh_token")]
     public string? RefreshToken { get; set; }
 
+    /// <summary>The granted OAuth scopes.</summary>
     [JsonPropertyName("scope")]
     public string? Scope { get; set; }
 
+    /// <summary>Unix timestamp the token was created at.</summary>
     [JsonPropertyName("created_at")]
     public long CreatedAt { get; set; }
 
-    /// <summary>
-    /// Mirrors Wabbajack's expiry rule (5-minute safety margin). Used to decide
-    /// whether a restored token is still usable.
-    /// </summary>
+    /// <summary>True when the token is past Wabbajack's expiry rule (5-minute safety margin).</summary>
     [JsonIgnore]
     public bool IsExpired =>
         DateTime.FromFileTimeUtc(ReceivedAt)
@@ -46,46 +46,37 @@ public sealed class JwtTokenReply
         <= DateTimeOffset.UtcNow;
 }
 
-/// <summary>
-/// Wabbajack's persisted Nexus login state. Serialized (then DPAPI-encrypted) to
-/// <c>%LOCALAPPDATA%\Wabbajack\encrypted\nexus-oauth-info</c>.
-/// </summary>
+/// <summary>Wabbajack's persisted Nexus login state, stored encrypted at <c>%LOCALAPPDATA%\Wabbajack\encrypted\nexus-oauth-info</c>.</summary>
 public sealed class NexusOAuthState
 {
+    /// <summary>The OAuth token reply.</summary>
     [JsonPropertyName("oauth")]
     public JwtTokenReply? OAuth { get; set; } = new();
 
+    /// <summary>The legacy Nexus API key (unused by the OAuth flow).</summary>
     [JsonPropertyName("api_key")]
     public string ApiKey { get; set; } = string.Empty;
 }
 
-/// <summary>
-/// Reads and writes Wabbajack's Nexus OAuth token file so the wabbajack-cli can
-/// authenticate headlessly.
-///
-/// The on-disk format mirrors Wabbajack 4.x's own
-/// <c>Wabbajack.Services.OSIntegrated.ProtectedData</c> (which, despite the
-/// name, is NOT Windows DPAPI): TripleDES (CBC/PKCS7) over default-options JSON,
-/// with a device key derived from xxHash64 of the %LOCALAPPDATA% path and an IV
-/// derived from xxHash64 of the file name. Writing any other format (e.g. real
-/// DPAPI, as earlier launcher builds did) makes the CLI crash with
-/// "CryptographicException: The input data is not a complete block" as soon as
-/// it needs Nexus auth. Reads fall back to the legacy DPAPI format and silently
-/// migrate it.
-/// </summary>
+/// <summary>Reads and writes Wabbajack's encrypted Nexus OAuth token file so the wabbajack-cli can authenticate headlessly.</summary>
+/// <remarks>
+/// The token lives in Wabbajack's own store (%LOCALAPPDATA%\Wabbajack), not our
+/// config. The on-disk format mirrors Wabbajack 4.x's <c>ProtectedData</c>
+/// (despite the name, NOT Windows DPAPI): TripleDES (CBC/PKCS7) over JSON, with a
+/// device key from xxHash64 of the %LOCALAPPDATA% path and an IV from xxHash64 of
+/// the file name. Writing any other format (e.g. real DPAPI, as earlier builds
+/// did) makes the CLI crash ("input data is not a complete block") on Nexus auth;
+/// reads fall back to the legacy DPAPI format and silently migrate it.
+/// </remarks>
 public sealed class WabbajackTokenStore
 {
+    /// <summary>Default JSON options, matching Wabbajack's serializer.</summary>
     private static readonly JsonSerializerOptions JsonOptions = new();
 
     /// <summary>True when Wabbajack's Nexus token file exists on disk.</summary>
     public bool HasToken => File.Exists(AppPaths.WabbajackNexusTokenFile);
 
-    /// <summary>
-    /// The 24-byte TripleDES key Wabbajack derives per device: xxHash64 of the
-    /// UTF8 %LOCALAPPDATA% path (separators normalised to '\', as
-    /// Wabbajack.Paths.AbsolutePath.ToString() renders it), concatenated with
-    /// two XOR-tweaked variants. Each hash is serialised little-endian.
-    /// </summary>
+    /// <summary>The 24-byte per-device TripleDES key: little-endian xxHash64 of the normalised %LOCALAPPDATA% path, concatenated with two XOR-tweaked variants.</summary>
     private static byte[] DeviceKey()
     {
         var raw = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
@@ -106,21 +97,17 @@ public sealed class WabbajackTokenStore
         => BitConverter.GetBytes(
             System.IO.Hashing.XxHash64.HashToUInt64(Encoding.UTF8.GetBytes(fileName)));
 
+    /// <summary>Encrypts or decrypts a buffer with the device key and file-derived IV (TripleDES CBC/PKCS7, as Wabbajack uses).</summary>
     private static byte[] Transform(byte[] data, string fileName, bool encrypt)
     {
-        using var tdes = TripleDES.Create(); // CBC + PKCS7 defaults, as Wabbajack uses
+        using var tdes = TripleDES.Create();
         using var transform = encrypt
             ? tdes.CreateEncryptor(DeviceKey(), FileIv(fileName))
             : tdes.CreateDecryptor(DeviceKey(), FileIv(fileName));
         return transform.TransformFinalBlock(data, 0, data.Length);
     }
 
-    /// <summary>
-    /// Returns the stored state if present and decryptable, or null. Does not
-    /// check expiry (callers can inspect <see cref="JwtTokenReply.IsExpired"/>).
-    /// Tokens written by old launcher builds in DPAPI format are migrated to
-    /// the Wabbajack format on successful read.
-    /// </summary>
+    /// <summary>Returns the stored state if present and decryptable (does not check expiry), migrating legacy DPAPI tokens on read.</summary>
     public NexusOAuthState? Read()
     {
         try
@@ -140,7 +127,6 @@ public sealed class WabbajackTokenStore
             }
             catch (Exception ex) when (ex is CryptographicException or JsonException)
             {
-                // Legacy: earlier launcher builds wrote real DPAPI. Migrate.
                 var plain = ProtectedData.Unprotect(
                     cipher, optionalEntropy: null, DataProtectionScope.CurrentUser);
                 var state = JsonSerializer.Deserialize<NexusOAuthState>(
@@ -167,11 +153,7 @@ public sealed class WabbajackTokenStore
         return state?.OAuth is { } o && !string.IsNullOrEmpty(o.AccessToken) && !o.IsExpired;
     }
 
-    /// <summary>
-    /// Writes the OAuth reply into Wabbajack's encrypted token file. Stamps
-    /// <c>_received_at</c> with the current FILETIME (matching Wabbajack) if the
-    /// caller hasn't already.
-    /// </summary>
+    /// <summary>Writes the OAuth reply into Wabbajack's encrypted token file, stamping <c>_received_at</c> with the current FILETIME if unset.</summary>
     public void Write(JwtTokenReply token)
     {
         if (token.ReceivedAt == 0)

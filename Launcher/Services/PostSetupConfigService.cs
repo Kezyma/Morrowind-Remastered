@@ -4,24 +4,26 @@ using MorrowindRemasteredLauncher.Models;
 
 namespace MorrowindRemasteredLauncher.Services;
 
-/// <summary>
-/// Applies the launcher's display settings (resolution, refresh, UI scale) to an
-/// edition's game configuration:
-///   - OpenMW: <c>profiles/OpenMW/settings.cfg</c> (<c>[Video]</c> resolution,
-///     <c>[GUI]</c> scaling factor).
-///   - MWSE: the registry screen mode (where Morrowind/MGE read resolution +
-///     refresh) and the active MGE config ini (<c>[Render State] UI Scaling</c>,
-///     <c>[Global Graphics] Refresh Rate</c>).
-/// Values come from <see cref="LauncherConfig.Display"/>, which is seeded from
-/// the primary monitor on first use.
-/// </summary>
+/// <summary>Applies the launcher's display settings (resolution, refresh, UI scale) to an edition's game configuration.</summary>
+/// <remarks>
+/// OpenMW writes <c>settings.cfg</c> (<c>[Video]</c> resolution, <c>[GUI]</c>
+/// scaling); MWSE writes the registry screen mode plus the active MGE config ini
+/// (<c>[Render State] UI Scaling</c>, <c>[Global Graphics] Refresh Rate</c>).
+/// Values come from <see cref="LauncherConfig.Display"/>, seeded from the primary
+/// monitor on first use.
+/// </remarks>
 public sealed class PostSetupConfigService
 {
+    /// <summary>Persisted launcher config (display settings, MO2 paths).</summary>
     private readonly ConfigService _config;
+    /// <summary>Resolves the shared install directory for an edition.</summary>
     private readonly InstallStateService _installState;
+    /// <summary>Reads/writes the registry screen mode.</summary>
     private readonly GamePathService _gamePath;
+    /// <summary>Queries the monitor for seeding display settings.</summary>
     private readonly DisplayService _display;
 
+    /// <summary>Creates the service with its config and helper dependencies.</summary>
     public PostSetupConfigService(
         ConfigService config,
         InstallStateService installState,
@@ -34,10 +36,7 @@ public sealed class PostSetupConfigService
         _display = display;
     }
 
-    /// <summary>
-    /// Returns the effective display settings, seeding config from the monitor
-    /// the first time (and persisting the seed).
-    /// </summary>
+    /// <summary>Returns the effective display settings, seeding (and persisting) from the monitor on first use.</summary>
     public DisplaySettings EnsureDisplaySettings()
     {
         var d = _config.Current.Display;
@@ -65,6 +64,7 @@ public sealed class PostSetupConfigService
             : ApplyMwse(installDir, d);
     }
 
+    /// <summary>Writes resolution and UI scale into OpenMW's settings.cfg.</summary>
     private static bool ApplyOpenMw(string installDir, DisplaySettings d, string openMwProfile)
     {
         var cfg = AppPaths.OpenMwSettingsCfg(installDir, openMwProfile);
@@ -93,12 +93,11 @@ public sealed class PostSetupConfigService
         return true;
     }
 
+    /// <summary>Writes the registry screen mode plus refresh rate and UI scale into the MGE config ini.</summary>
     private bool ApplyMwse(string installDir, DisplaySettings d)
     {
-        // 1. Registry: where Morrowind + MGE's borderless window read the mode.
         var regOk = _gamePath.WriteScreenSettings(d.ResolutionX, d.ResolutionY, d.RefreshHz);
 
-        // 2. MGE config ini: refresh rate + UI scaling.
         var mge = FindMgeIni(installDir, _config.Current.Mo2Paths.MgeConfigMod,
             _config.Current.Mo2Paths.MwseProfile);
         if (mge is null)
@@ -121,13 +120,7 @@ public sealed class PostSetupConfigService
         return regOk;
     }
 
-    /// <summary>
-    /// Ensures distant land is turned on in the active MGE config ini
-    /// (<c>[Distant Land] Distant Land=On</c>). MGE XE flips this to Off while we
-    /// drive it to (re)generate distant land — e.g. it disables distant land at
-    /// startup when it finds the files missing/old — so we set it back on after
-    /// generation. MWSE only (OpenMW has no MGE).
-    /// </summary>
+    /// <summary>Turns distant land back on in the MGE config ini (MWSE only) after MGE XE disables it during generation.</summary>
     public bool EnableDistantLand(Edition edition)
     {
         if (edition != Edition.Mwse)
@@ -158,18 +151,12 @@ public sealed class PostSetupConfigService
         return true;
     }
 
-    /// <summary>
-    /// Locates the active MGE config ini by scanning the MWSE profile's
-    /// modlist.txt for an enabled MGE-configuration mod containing
-    /// <c>Root/mge*/MGE.ini</c>. Names drift (e.g. the "(Legacy)" suffix), so
-    /// this resolves it dynamically rather than via a fixed path.
-    /// </summary>
+    /// <summary>Locates the active MGE config ini by scanning the MWSE profile's enabled mods, since the mod name drifts.</summary>
     public static string? FindMgeIni(
         string installDir, string? preferredMod, string mwseProfileName)
     {
         var modsDir = AppPaths.Mo2ModsDir(installDir);
 
-        // Prefer the configured MGE config mod, if present.
         if (!string.IsNullOrWhiteSpace(preferredMod) && Directory.Exists(modsDir))
         {
             foreach (var sub in new[] { "mge3", "MGE" })
@@ -188,7 +175,6 @@ public sealed class PostSetupConfigService
             return null;
         }
 
-        // Enabled mods ('+' prefix), MGE-config first.
         var enabled = File.ReadAllLines(modlist)
             .Where(l => l.StartsWith('+'))
             .Select(l => l[1..].Trim())

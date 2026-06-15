@@ -16,20 +16,15 @@ public enum PostSetupStep
     GenerateDistantLand,
     DeltaMerge,
 
-    /// <summary>Optional: add the launcher to Steam as a non-Steam shortcut. Never
-    /// required, never auto-run, and excluded from <see cref="PostSetupVerifier.SetupStepsFor"/>.</summary>
+    /// <summary>Optional: add the launcher to Steam as a non-Steam shortcut; never required, never auto-run, excluded from <see cref="PostSetupVerifier.SetupStepsFor"/>.</summary>
     AddToSteam
 }
 
 /// <summary>A step's readiness, derived from real files/values.</summary>
 public sealed record StepStatus(PostSetupStep Step, string Label, bool Done);
 
-/// <summary>
-/// Determines whether each post-install step has actually been completed by
-/// inspecting real files, registry values and config — never the
-/// <c>PostSetupComplete</c> flag. Backs the idempotent runner, the pre-launch
-/// gate, and the Tools panel.
-/// </summary>
+/// <summary>Determines whether each post-install step has actually been completed by inspecting real files, registry values and config — never the cached <c>PostSetupComplete</c> flag.</summary>
+/// <remarks>Backs the idempotent runner, the pre-launch gate, and the Tools panel.</remarks>
 public sealed class PostSetupVerifier
 {
     private readonly ConfigService _config;
@@ -37,6 +32,7 @@ public sealed class PostSetupVerifier
     private readonly GamePathService _gamePath;
     private readonly SteamService _steam;
 
+    /// <summary>Creates the verifier.</summary>
     public PostSetupVerifier(
         ConfigService config, InstallStateService installState, GamePathService gamePath,
         SteamService steam)
@@ -47,13 +43,7 @@ public sealed class PostSetupVerifier
         _steam = steam;
     }
 
-    /// <summary>
-    /// The ordered per-edition SETUP steps shown on the Play tab and auto-run before
-    /// launch. Excludes RepairPaths (now part of Install — "update Mod Organizer
-    /// paths") and the Wabbajack install itself. Delta merge is NOT a setup step
-    /// (the list already includes the patch); it remains a manual tool. Display
-    /// settings are applied LAST.
-    /// </summary>
+    /// <summary>The ordered per-edition setup steps shown on the Play tab and auto-run before launch (display settings last); excludes RepairPaths (part of Install), the Wabbajack install, and Delta merge (a manual tool, since the list already includes the patch).</summary>
     public static IReadOnlyList<PostSetupStep> SetupStepsFor(Edition edition) => edition switch
     {
         Edition.OpenMW => new[]
@@ -69,10 +59,7 @@ public sealed class PostSetupVerifier
         _ => Array.Empty<PostSetupStep>()
     };
 
-    /// <summary>
-    /// Steps we can confirm 100% are applied (so the Run button is hidden once
-    /// done). Others stay re-runnable.
-    /// </summary>
+    /// <summary>Steps we can confirm are fully applied (so the Run button hides once done); others stay re-runnable.</summary>
     public static bool IsDefinitive(PostSetupStep step)
         => step is PostSetupStep.RepairPaths or PostSetupStep.ApplyDisplay;
 
@@ -81,6 +68,7 @@ public sealed class PostSetupVerifier
         => step is PostSetupStep.ApplyMcp or PostSetupStep.GenerateDistantLand
             or PostSetupStep.DeltaMerge;
 
+    /// <summary>The user-facing label for a step.</summary>
     public static string Label(PostSetupStep step) => step switch
     {
         PostSetupStep.RepairPaths => "Update Mod Organizer Paths",
@@ -104,6 +92,7 @@ public sealed class PostSetupVerifier
     /// <summary>True when every applicable setup step is complete.</summary>
     public bool IsFullyConfigured(Edition edition) => Verify(edition).All(s => s.Done);
 
+    /// <summary>True when the given step is actually done for the edition, judged from real files/registry/config.</summary>
     public bool IsDone(Edition edition, PostSetupStep step)
     {
         var installDir = _installState.GetEditionInstallDir(edition);
@@ -133,8 +122,7 @@ public sealed class PostSetupVerifier
         }
     }
 
-    // ---- individual checks ----
-
+    /// <summary>True when ModOrganizer.ini's gamePath points at the selected game dir and the author's Wabbajack staging path is gone.</summary>
     private bool PathsRepaired(string installDir)
     {
         var gameDir = _gamePath.GameDirectory(_config.Current.GameExePath);
@@ -148,14 +136,13 @@ public sealed class PostSetupVerifier
             return false;
         }
         var text = File.ReadAllText(ini);
-        // gamePath ByteArray points at the selected game dir, and the author's
-        // Wabbajack staging path is gone.
         var wantEscaped = $"@ByteArray({gameDir.TrimEnd('\\', '/').Replace(@"\", @"\\")})";
         return text.Contains(wantEscaped, StringComparison.OrdinalIgnoreCase)
             && !text.Contains(@"Wabbajack\\Morrowind", StringComparison.OrdinalIgnoreCase)
             && !text.Contains("Wabbajack/Morrowind", StringComparison.OrdinalIgnoreCase);
     }
 
+    /// <summary>True when the configured display settings are reflected in OpenMW's settings.cfg, or (for MWSE) the screen registry plus MGE ini.</summary>
     private bool DisplayApplied(Edition edition, string installDir)
     {
         var d = _config.Current.Display;
@@ -177,7 +164,6 @@ public sealed class PostSetupVerifier
                 && ScaleMatches(IniEditor.GetValue(lines, "GUI", "scaling factor"), d.UiScale);
         }
 
-        // MWSE: registry mode + MGE ini.
         var reg = _gamePath.ReadScreenSettings();
         if (reg is null || reg.Value.Width != d.ResolutionX ||
             reg.Value.Height != d.ResolutionY || reg.Value.RefreshHz != d.RefreshHz)
@@ -195,15 +181,14 @@ public sealed class PostSetupVerifier
             && IniEditor.GetValue(mlines, "Global Graphics", "Refresh Rate") == d.RefreshHz.ToString();
     }
 
+    /// <summary>True when <paramref name="value"/> parses to within a small tolerance of <paramref name="expected"/>.</summary>
     private static bool ScaleMatches(string? value, double expected)
         => double.TryParse(value, NumberStyles.Any, CultureInfo.InvariantCulture, out var v)
            && Math.Abs(v - expected) < 0.001;
 
+    /// <summary>True when MCP has been applied, judged by the presence of its backed-up Morrowind.Original.exe in the harvested MCP Generated Files mod.</summary>
     private bool McpApplied()
     {
-        // Root Builder redirects MCP's output to overwrite, which the launcher
-        // harvests into the MCP Generated Files mod. MCP backs up the unpatched
-        // exe as Morrowind.Original.exe, so its presence there confirms a patch.
         var installDir = _installState.GetEditionInstallDir(Edition.Mwse);
         var paths = _config.Current.Mo2Paths;
         var mod = ResolveMod(installDir, paths.McpGeneratedFilesMod, paths.McpModTokens);
@@ -211,12 +196,8 @@ public sealed class PostSetupVerifier
             && File.Exists(Path.Combine(mod, "Root", "Morrowind.Original.exe"));
     }
 
-    /// <summary>
-    /// Resolves a mod folder: prefers the exact configured name, then falls back to
-    /// the first mod whose name contains all the given tokens (case-insensitive),
-    /// so renames like "(Legacy)"→"(MWSE)" keep working.
-    /// </summary>
-    private static string? ResolveMod(string installDir, string configuredName, params string[] tokens)
+    /// <summary>Resolves a mod folder by exact configured name, falling back to a token match (tolerates renames).</summary>
+    public static string? ResolveMod(string installDir, string configuredName, params string[] tokens)
     {
         var modsDir = AppPaths.Mo2ModsDir(installDir);
         if (!Directory.Exists(modsDir))
@@ -234,11 +215,7 @@ public sealed class PostSetupVerifier
         return FindGeneratedFilesMod(installDir, tokens);
     }
 
-    /// <summary>
-    /// Finds the enabled "… Generated Files" mod for a tool (e.g. MCP, MGE) by
-    /// matching a mod folder name that contains all the given tokens
-    /// (case-insensitive). Robust to name drift such as the "(MWSE)" suffix.
-    /// </summary>
+    /// <summary>Finds the "… Generated Files" mod for a tool by matching a folder name that contains all the given tokens (case-insensitive); robust to name drift such as a "(MWSE)" suffix.</summary>
     public static string? FindGeneratedFilesMod(string installDir, params string[] tokens)
     {
         var modsDir = AppPaths.Mo2ModsDir(installDir);
@@ -257,11 +234,9 @@ public sealed class PostSetupVerifier
         return null;
     }
 
+    /// <summary>True when distant land has been generated, judged by the harvested MGE Generated Files mod containing distant-land data (world.dds or a statics folder).</summary>
     private bool DistantLandGenerated(string installDir)
     {
-        // MGE writes distant-land data to the virtual Data Files (mapped by MO2 to
-        // overwrite), which the launcher harvests into the MGE "Generated Files"
-        // mod at its data root — so the marker is "<mod>/<distantland>/…".
         var paths = _config.Current.Mo2Paths;
         var mod = ResolveMod(installDir, paths.MgeGeneratedFilesMod, paths.MgeModTokens);
         if (mod is null)
@@ -273,9 +248,9 @@ public sealed class PostSetupVerifier
             || Directory.Exists(Path.Combine(distantland, "statics"));
     }
 
+    /// <summary>True when the Delta merge has run, judged by an output <c>.omwaddon</c> in the Delta mod's Data Files.</summary>
     private bool DeltaMerged(string installDir)
     {
-        // delta_plugin merge writes its output omwaddon into the mod's Data Files.
         var deltaMod = Path.Combine(installDir, _config.Current.Mo2Paths.DeltaModDir);
         return Directory.Exists(deltaMod)
             && Directory.EnumerateFiles(deltaMod, "*.omwaddon", SearchOption.AllDirectories).Any();

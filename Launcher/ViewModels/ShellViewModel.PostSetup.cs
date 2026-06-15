@@ -12,28 +12,26 @@ public enum StepState { Pending, Running, Done, Failed }
 /// <summary>One row of the per-edition setup checklist (Play tab); State ticks live.</summary>
 public sealed partial class InstallStepVm : ObservableObject
 {
+    /// <summary>Which post-setup step this row represents.</summary>
     public PostSetupStep Step { get; init; }
+    /// <summary>Display label for the step.</summary>
     public string Label { get; init; } = "";
 
+    /// <summary>Live status of the step (pending/running/done/failed).</summary>
     [ObservableProperty]
     private StepState _state;
 }
 
-/// <summary>
-/// A config-driven MO2 tool launchable from the Tools panel. A blank
-/// <see cref="Executable"/> opens the MO2 GUI itself; otherwise it is the MO2
-/// customExecutable title to launch for the selected edition's profile.
-/// </summary>
+/// <summary>A config-driven MO2 tool launchable from the Tools panel.</summary>
+/// <remarks>A blank <see cref="Executable"/> opens the MO2 GUI itself; otherwise it is the MO2 customExecutable title to launch for the selected edition's profile.</remarks>
 public sealed record ToolLaunchVm(string Name, string Description, string? Executable)
 {
+    /// <summary>True when the tool has a description to show.</summary>
     public bool HasDescription => !string.IsNullOrWhiteSpace(Description);
 }
 
-/// <summary>
-/// Play launch (auto-running any incomplete setup first), the per-edition setup
-/// checklist shown on the Play tab, and the Tools panel's launch-through-MO2
-/// buttons. Reuses the shared busy / progress / result UI from the install flow.
-/// </summary>
+/// <summary>Play launch (auto-running any incomplete setup first), the Play-tab setup checklist, and the Tools panel's launch-through-MO2 buttons.</summary>
+/// <remarks>Reuses the shared busy / progress / result UI from the install flow.</remarks>
 public partial class ShellViewModel
 {
     /// <summary>The per-edition setup steps shown on the Play tab (with live state).</summary>
@@ -42,7 +40,7 @@ public partial class ShellViewModel
     /// <summary>The MO2 tools launchable from the Tools panel for the current edition.</summary>
     public ObservableCollection<ToolLaunchVm> ToolLaunches { get; } = new();
 
-    /// <summary>Rebuilds the Play-tab setup checklist for the selected edition.</summary>
+    /// <summary>Rebuilds the Play-tab setup checklist for the selected edition, appending the optional "Add to Steam" step (kept out of the required/auto-run set so Play never waits on it) only when Steam is installed.</summary>
     private void RebuildSetupSteps()
     {
         SetupSteps.Clear();
@@ -56,8 +54,6 @@ public partial class ShellViewModel
             });
         }
 
-        // Optional, non-required final step (only when Steam is installed): it's kept
-        // out of the required/auto-run set, so Play never waits on or runs it.
         if (_steam.IsInstalled)
         {
             SetupSteps.Add(new InstallStepVm
@@ -71,10 +67,7 @@ public partial class ShellViewModel
         RunInstallStepCommand.NotifyCanExecuteChanged();
     }
 
-    /// <summary>
-    /// Rebuilds the manual tool-launch list for the selected edition from config
-    /// (keyed by edition display name). Called from RefreshState.
-    /// </summary>
+    /// <summary>Rebuilds the manual tool-launch list for the selected edition from config (keyed by edition display name).</summary>
     private void RebuildToolsLists()
     {
         ToolLaunches.Clear();
@@ -87,23 +80,16 @@ public partial class ShellViewModel
         }
     }
 
-    // ----------------------------------------------------- command gating
-
     /// <summary>True when an MO2 launch is allowed (not busy, no MO2 running).</summary>
     public bool CanLaunchMo2 => !IsBusy && !IsMo2Running;
 
-    /// <summary>
-    /// A setup step can run when not busy, every earlier step is Done (forward
-    /// gating), and — for steps that launch MO2 — no ModOrganizer.exe is open.
-    /// </summary>
+    /// <summary>A setup step can run when not busy, every earlier step is Done (forward gating, except "Add to Steam" which is always runnable), and — for steps that launch MO2 — no ModOrganizer.exe is open.</summary>
     private bool CanRunInstallStep(InstallStepVm? item)
     {
         if (IsBusy || item is null)
         {
             return false;
         }
-        // The optional "Add to Steam" step is independent of modlist setup — runnable
-        // any time (not forward-gated behind the required steps).
         if (item.Step == PostSetupStep.AddToSteam)
         {
             return true;
@@ -122,8 +108,7 @@ public partial class ShellViewModel
         return !(PostSetupVerifier.LaunchesMo2(item.Step) && IsMo2Running);
     }
 
-    // ------------------------------------------------------------------- Play
-
+    /// <summary>Auto-runs any incomplete setup for the selected edition, applies display settings, launches the game via MO2, and optionally starts the Steam-presence helper.</summary>
     [RelayCommand(CanExecute = nameof(CanLaunchMo2))]
     private async Task Play()
     {
@@ -132,7 +117,6 @@ public partial class ShellViewModel
             return;
         }
 
-        // Auto-run any incomplete setup steps for the selected edition first.
         if (!_verifier.IsFullyConfigured(SelectedEdition))
         {
             await RunBusyAsync($"Setting up {SelectedEditionName}…", async (p, ct) =>
@@ -146,7 +130,6 @@ public partial class ShellViewModel
                         ". See the log, then try again.");
             }).ConfigureAwait(true);
 
-            // RunBusyAsync re-runs the verifier via RefreshState; bail if still incomplete.
             if (!_verifier.IsFullyConfigured(SelectedEdition))
             {
                 return;
@@ -155,7 +138,6 @@ public partial class ShellViewModel
 
         try
         {
-            // Make sure the latest display settings are on disk before launch.
             _displayConfig.ApplyDisplay(SelectedEdition);
             await _mo2Launch
                 .LaunchAsync(SelectedEdition, SelectedEdition.Mo2PlayExecutableName(),
@@ -163,8 +145,6 @@ public partial class ShellViewModel
                 .ConfigureAwait(true);
             Logger.Info($"Launched {SelectedEdition} via MO2.");
 
-            // Optionally hold a Steam session so the run counts as Morrowind playtime;
-            // a headless helper process owns the session and ends it when the game exits.
             if (TrackSteamPlaytime && IsSteamRunning)
             {
                 StartSteamPresence(SelectedEdition);
@@ -177,8 +157,7 @@ public partial class ShellViewModel
         }
     }
 
-    // ------------------------------------------------------- Setup checklist
-
+    /// <summary>Runs a single setup step and ticks its row, reporting success against the real verifier marker so a GUI tool the user didn't finish leaves the step incomplete.</summary>
     [RelayCommand(CanExecute = nameof(CanRunInstallStep))]
     private Task RunInstallStep(InstallStepVm? item)
     {
@@ -191,8 +170,6 @@ public partial class ShellViewModel
             item.State = StepState.Running;
             var r = await _postSetup.RunStepAsync(SelectedEdition, item.Step, force: true, p, ct)
                 .ConfigureAwait(false);
-            // Report against the real marker — a GUI tool the user didn't finish
-            // leaves the step incomplete.
             var done = r.Success && _verifier.IsDone(SelectedEdition, item.Step);
             item.State = done ? StepState.Done : StepState.Failed;
             var label = PostSetupVerifier.Label(item.Step);
@@ -210,8 +187,7 @@ public partial class ShellViewModel
         });
     }
 
-    // ------------------------------------------------------------- Tools panel
-
+    /// <summary>Launches a Tools-panel entry through MO2; a blank executable opens the MO2 GUI itself (instance+profile, no tool).</summary>
     [RelayCommand(CanExecute = nameof(CanLaunchMo2))]
     private async Task LaunchTool(ToolLaunchVm? tool)
     {
@@ -221,7 +197,6 @@ public partial class ShellViewModel
         }
         try
         {
-            // A blank executable opens the MO2 GUI itself (instance+profile, no tool).
             var appName = string.IsNullOrWhiteSpace(tool.Executable)
                 ? string.Empty
                 : tool.Executable;
@@ -236,12 +211,7 @@ public partial class ShellViewModel
         }
     }
 
-    // --------------------------------------------------- shared busy runner
-
-    /// <summary>
-    /// Runs a cancellable, progress-reporting operation using the same busy /
-    /// progress / result UI as the install flow.
-    /// </summary>
+    /// <summary>Runs a cancellable, progress-reporting operation using the same busy / progress / result UI as the install flow.</summary>
     private async Task RunBusyAsync(
         string title,
         Func<IProgress<InstallProgress>, CancellationToken, Task<(bool Ok, string Message)>> work)
@@ -302,13 +272,8 @@ public partial class ShellViewModel
         }
     }
 
-    /// <summary>
-    /// Keeps the persisted <c>PostSetupComplete</c> flag in step with the real
-    /// verifier result. The per-step checklist run bypasses
-    /// <see cref="PostSetupService.RunAllAsync"/> (which used to set it), so we sync
-    /// it here — otherwise the edition would stay "setup required" after the
-    /// checklist is finished.
-    /// </summary>
+    /// <summary>Keeps the persisted <c>PostSetupComplete</c> flag in step with the real verifier result.</summary>
+    /// <remarks>The per-step checklist run bypasses <see cref="PostSetupService.RunAllAsync"/> (which used to set it), so we sync here — otherwise the edition would stay "setup required" after the checklist is finished.</remarks>
     private void SyncPostSetupComplete()
     {
         try

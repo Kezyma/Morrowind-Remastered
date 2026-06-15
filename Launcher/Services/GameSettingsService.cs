@@ -4,23 +4,25 @@ using MorrowindRemasteredLauncher.Models;
 
 namespace MorrowindRemasteredLauncher.Services;
 
-/// <summary>
-/// Reads and writes the curated game settings (see <see cref="SettingsCatalog"/>)
-/// for the selected edition, routing each value to its backing store: OpenMW's
-/// settings.cfg, MGE.ini (a safe subset only), Morrowind.ini, or the registry
-/// screen mode. Reuses <see cref="PostSetupConfigService.FindMgeIni"/>,
-/// <see cref="AppPaths"/> and <see cref="GamePathService"/> so path/registry logic
-/// stays single-sourced; resolution/refresh/UI-scale changes are mirrored into
-/// <c>config.Display</c> to keep the seed/Play path consistent. Fail-soft: a
-/// missing install or file logs and returns without throwing.
-/// </summary>
+/// <summary>Reads and writes the curated game settings for the selected edition, routing each value to its backing store.</summary>
+/// <remarks>
+/// Stores are OpenMW's settings.cfg, a safe subset of MGE.ini, Morrowind.ini, or
+/// the registry screen mode. Resolution/refresh/UI-scale changes are mirrored
+/// into <c>config.Display</c> to keep the seed/Play path consistent. Fail-soft:
+/// a missing install or file logs and returns without throwing.
+/// </remarks>
 public sealed class GameSettingsService
 {
+    /// <summary>Persisted launcher config (display mirror, MO2 paths).</summary>
     private readonly ConfigService _config;
+    /// <summary>Resolves the shared install directory and install presence.</summary>
     private readonly InstallStateService _installState;
+    /// <summary>Reads/writes the registry screen mode.</summary>
     private readonly GamePathService _gamePath;
+    /// <summary>Enumerates monitor modes for the dropdown options.</summary>
     private readonly DisplayService _display;
 
+    /// <summary>Creates the service with its config and helper dependencies.</summary>
     public GameSettingsService(
         ConfigService config,
         InstallStateService installState,
@@ -33,10 +35,7 @@ public sealed class GameSettingsService
         _display = display;
     }
 
-    /// <summary>
-    /// The descriptors for an edition, with resolution/refresh dropdown options
-    /// filled in from the current monitor's available modes.
-    /// </summary>
+    /// <summary>The descriptors for an edition, with resolution/refresh dropdowns filled from the monitor's modes.</summary>
     public IReadOnlyList<SettingDescriptor> GetDescriptors(Edition edition)
     {
         var modes = _display.EnumerateModes();
@@ -69,11 +68,7 @@ public sealed class GameSettingsService
         return list;
     }
 
-    /// <summary>
-    /// Reads each setting's current stored token for the edition. Values map to the
-    /// raw token in the file (or the "WIDTHxHEIGHT"/Hz synthesised from the
-    /// registry); the row view-model decodes them. Missing files/keys yield null.
-    /// </summary>
+    /// <summary>Reads each setting's current stored token for the edition (file token or registry-synthesised), null when absent.</summary>
     public IReadOnlyDictionary<string, string?> LoadCurrent(Edition edition)
     {
         var result = new Dictionary<string, string?>();
@@ -104,10 +99,7 @@ public sealed class GameSettingsService
         return result;
     }
 
-    /// <summary>
-    /// Applies a single setting's new logical value to its backing store. Returns
-    /// false (and logs) when the install/file is missing or the write fails.
-    /// </summary>
+    /// <summary>Applies a single setting's new value to its backing store; false (and logs) on missing install/file or write failure.</summary>
     public bool Apply(Edition edition, SettingDescriptor descriptor, string value)
     {
         try
@@ -121,7 +113,6 @@ public sealed class GameSettingsService
             var installDir = _installState.GetEditionInstallDir(edition);
             var mo2 = _config.Current.Mo2Paths;
 
-            // Display specials: registry-backed, with mirrors to config / MGE.
             if (descriptor.Id == SettingsCatalog.ResolutionIdValue)
             {
                 return ApplyResolution(edition, installDir, mo2, value);
@@ -165,8 +156,7 @@ public sealed class GameSettingsService
         }
     }
 
-    // ------------------------------------------------------------- read helpers
-
+    /// <summary>Reads one setting's stored token from the right source for its edition and store.</summary>
     private static string? ReadOne(
         SettingDescriptor d, Edition edition,
         string[]? cfgLines, string[]? mgeLines, string[]? mwLines,
@@ -193,13 +183,14 @@ public sealed class GameSettingsService
 
         if (d.Target.Store == SettingStore.RegistryScreen)
         {
-            return null; // only resolution/refresh use the registry; handled above
+            return null;
         }
 
         var lines = LinesFor(d.Target.File, cfgLines, mgeLines, mwLines);
         return lines is null ? null : IniEditor.GetValue(lines, d.Target.Section!, d.Target.Key!);
     }
 
+    /// <summary>Picks the already-read lines for a setting's backing file.</summary>
     private static string[]? LinesFor(
         SettingFile file, string[]? cfgLines, string[]? mgeLines, string[]? mwLines) =>
         file switch
@@ -210,6 +201,7 @@ public sealed class GameSettingsService
             _ => null
         };
 
+    /// <summary>Reads a file's lines, or null (with a log) if it's missing or unreadable.</summary>
     private static string[]? ReadLinesOrNull(string path)
     {
         if (!File.Exists(path))
@@ -228,8 +220,7 @@ public sealed class GameSettingsService
         }
     }
 
-    // ------------------------------------------------------------ apply helpers
-
+    /// <summary>Applies a resolution change to OpenMW's cfg or the registry, mirrors it into config, and never writes a 0 Hz refresh (which breaks the game's display mode).</summary>
     private bool ApplyResolution(Edition edition, string installDir, Mo2Paths mo2, string value)
     {
         var (w, h) = ParseWxH(value);
@@ -262,8 +253,6 @@ public sealed class GameSettingsService
             var hz = current?.RefreshHz ?? _config.Current.Display.RefreshHz;
             if (hz <= 0)
             {
-                // Never write a 0 Hz refresh into the registry (breaks the game's
-                // display mode); fall back to the primary monitor's rate.
                 hz = _display.GetPrimaryMode().RefreshHz;
                 Logger.Info($"No known refresh rate; using primary monitor's {hz} Hz for the resolution write.");
             }
@@ -276,6 +265,7 @@ public sealed class GameSettingsService
         return true;
     }
 
+    /// <summary>Applies a refresh-rate change to the registry, mirrors it into MGE.ini and config, and never writes a 0x0 resolution.</summary>
     private bool ApplyRefresh(string installDir, Mo2Paths mo2, string value)
     {
         if (!int.TryParse(value, NumberStyles.Integer, CultureInfo.InvariantCulture, out var hz) || hz <= 0)
@@ -288,8 +278,6 @@ public sealed class GameSettingsService
         var h = current?.Height ?? _config.Current.Display.ResolutionY;
         if (w <= 0 || h <= 0)
         {
-            // Never write a 0x0 resolution into the registry; fall back to the
-            // primary monitor's current resolution.
             var primary = _display.GetPrimaryMode();
             w = primary.Width;
             h = primary.Height;
@@ -297,7 +285,6 @@ public sealed class GameSettingsService
         }
         _gamePath.WriteScreenSettings(w, h, hz);
 
-        // Mirror into MGE's [Global Graphics] Refresh Rate (matches PostSetupConfigService).
         var mge = PostSetupConfigService.FindMgeIni(installDir, mo2.MgeConfigMod, mo2.MwseProfile);
         if (mge is not null && File.Exists(mge))
         {
@@ -315,6 +302,7 @@ public sealed class GameSettingsService
         return true;
     }
 
+    /// <summary>Mirrors a UI-scale change into config.Display so the seed/Play path stays consistent.</summary>
     private void MirrorToConfig(SettingDescriptor descriptor, string value)
     {
         if (descriptor.Id == SettingsCatalog.UiScaleIdValue &&
@@ -326,6 +314,7 @@ public sealed class GameSettingsService
         }
     }
 
+    /// <summary>Resolves the on-disk path for a setting's backing ini file.</summary>
     private static string? ResolveIniPath(SettingFile file, string installDir, Mo2Paths mo2) =>
         file switch
         {
@@ -336,6 +325,7 @@ public sealed class GameSettingsService
             _ => null
         };
 
+    /// <summary>Parses a "WIDTHxHEIGHT" token into a (width, height) pair, or (0, 0) if malformed.</summary>
     private static (int Width, int Height) ParseWxH(string? text)
     {
         if (string.IsNullOrWhiteSpace(text))

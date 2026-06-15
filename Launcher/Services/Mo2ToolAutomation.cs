@@ -4,23 +4,20 @@ using MorrowindRemasteredLauncher.Models;
 
 namespace MorrowindRemasteredLauncher.Services;
 
-/// <summary>
-/// Automation of the MO2-driven tools that have no silent CLI — MCP's "Apply
-/// chosen patches", MGE XE distant-land generation, and the Delta plugin merge.
-/// Each runs the tool through <see cref="Mo2LaunchService"/> (inside MO2's VFS).
-/// MO2, launched with the <c>-i/-p</c> form, closes automatically once the tool
-/// exits, so waiting on ModOrganizer.exe is the completion signal.
-///
-/// Root Builder redirects any files the tool writes to MO2's overwrite folder;
-/// after the run those are harvested into the tool's "Generated Files" mod so
-/// they persist and the launcher can verify them.
-/// </summary>
+/// <summary>Automates the MO2-driven tools that have no silent CLI — MCP, MGE XE distant-land generation, and the Delta plugin merge.</summary>
+/// <remarks>
+/// Each runs the tool through <see cref="Mo2LaunchService"/> inside MO2's VFS; MO2 launched with the
+/// <c>-i/-p</c> form closes automatically once the tool exits, so waiting on ModOrganizer.exe is the completion
+/// signal. Root Builder redirects any files the tool writes to MO2's overwrite folder; after the run those are
+/// harvested into the tool's "Generated Files" mod so they persist and the launcher can verify them.
+/// </remarks>
 public sealed class Mo2ToolAutomation
 {
     private readonly Mo2LaunchService _launch;
     private readonly InstallStateService _installState;
     private readonly ConfigService _config;
 
+    /// <summary>Creates the tool-automation service.</summary>
     public Mo2ToolAutomation(
         Mo2LaunchService launch, InstallStateService installState, ConfigService config)
     {
@@ -29,81 +26,61 @@ public sealed class Mo2ToolAutomation
         _config = config;
     }
 
-    /// <summary>
-    /// Runs the Delta plugin merge: launches the "Delta Plugin" MO2 executable
-    /// (which runs <c>delta.bat</c> → <c>delta_plugin merge</c>) and waits for
-    /// it to finish. Fully non-interactive.
-    /// </summary>
+    /// <summary>Runs the Delta plugin merge (launches the "Delta Plugin" MO2 executable, which runs <c>delta.bat</c> → <c>delta_plugin merge</c>) and waits for it; fully non-interactive.</summary>
     public async Task DeltaMergeAsync(
         Edition edition, IProgress<InstallProgress>? progress, CancellationToken ct)
     {
-        Report(progress, "Merging plugins (Delta)… this can take a while.", true);
+        progress.Report("Setup", "Merging plugins (Delta)… this can take a while.", indeterminate: true, log: true);
         await _launch.LaunchAsync(edition, "Delta Plugin", waitForExit: true, ct)
             .ConfigureAwait(false);
-        Report(progress, "Delta merge finished.", false);
+        progress.Report("Setup", "Delta merge finished.", log: true);
     }
 
-    /// <summary>
-    /// Runs Morrowind Code Patch through MO2, auto-clicks "Apply chosen patches",
-    /// then harvests the patched exe + backup from overwrite into the MCP
-    /// Generated Files mod. The auto-click is best-effort — if it can't find the
-    /// button the user completes it manually; the harvest + verifier are the
-    /// source of truth either way.
-    /// </summary>
+    /// <summary>Runs Morrowind Code Patch through MO2, best-effort auto-clicks "Apply chosen patches", then harvests the patched exe + backup from overwrite into the MCP Generated Files mod; the harvest + verifier are the source of truth if the click can't be driven.</summary>
     public async Task ApplyMcpAsync(
         Edition edition, IProgress<InstallProgress>? progress, CancellationToken ct)
     {
         var installDir = _installState.GetEditionInstallDir(edition);
         var before = SnapshotOverwrite(installDir);
 
-        Report(progress, "Opening Morrowind Code Patch in Mod Organizer…", true);
+        progress.Report("Setup", "Opening Morrowind Code Patch in Mod Organizer…", indeterminate: true, log: true);
         var mo2 = await _launch.LaunchAsync(edition, "Morrowind Code Patch", waitForExit: false, ct)
             .ConfigureAwait(false);
 
-        // Best-effort GUI automation; harmless if the window/button isn't found.
-        await McpAutomation.ApplyMorrowindCodePatchAsync(progress, ct).ConfigureAwait(false);
+        await McpAutomation.ApplyMorrowindCodePatchAsync(
+            _config.Current.ToolAutomation.Mcp, progress, ct).ConfigureAwait(false);
 
         await mo2.WaitForExitAsync(ct).ConfigureAwait(false);
 
         var moved = HarvestOverwriteIntoMod(installDir, before,
             _config.Current.Mo2Paths.McpGeneratedFilesMod, _config.Current.Mo2Paths.McpModTokens);
-        Report(progress, moved > 0
+        progress.Report("Setup", moved > 0
             ? $"Morrowind Code Patch applied ({moved} file(s) saved)."
-            : "Morrowind Code Patch closed (no new patched files detected).", false);
+            : "Morrowind Code Patch closed (no new patched files detected).", log: true);
     }
 
-    /// <summary>
-    /// Runs MGE XE distant-land generation through MO2 and drives its wizard
-    /// entirely off-screen (Distant Land tab → generator wizard → accept the
-    /// stale-files warning → keep the default load order → run with saved/default
-    /// settings → Finish), then harvests the generated <c>distantland</c> tree from
-    /// overwrite into the MGE Generated Files mod. The GUI automation is
-    /// best-effort — if a step can't be driven the user finishes it by hand; the
-    /// harvest + verifier are the source of truth either way.
-    /// </summary>
+    /// <summary>Runs MGE XE distant-land generation through MO2, driving its wizard off-screen, then harvests the generated <c>distantland</c> tree from overwrite into the MGE Generated Files mod; the harvest + verifier are the source of truth if a step can't be driven.</summary>
     public async Task GenerateDistantLandAsync(
         Edition edition, IProgress<InstallProgress>? progress, CancellationToken ct)
     {
         var installDir = _installState.GetEditionInstallDir(edition);
         var before = SnapshotOverwrite(installDir);
 
-        Report(progress, "Opening MGE XE in Mod Organizer…", true);
+        progress.Report("Setup", "Opening MGE XE in Mod Organizer…", indeterminate: true, log: true);
         var mo2 = await _launch.LaunchAsync(edition, "MGE XE", waitForExit: false, ct)
             .ConfigureAwait(false);
 
-        // Best-effort off-screen GUI automation; harmless if a window/button isn't found.
-        await MgeAutomation.GenerateDistantLandAsync(progress, ct).ConfigureAwait(false);
+        await MgeAutomation.GenerateDistantLandAsync(
+            _config.Current.ToolAutomation.Mge, progress, ct).ConfigureAwait(false);
 
         await mo2.WaitForExitAsync(ct).ConfigureAwait(false);
 
         var moved = HarvestOverwriteIntoMod(installDir, before,
             _config.Current.Mo2Paths.MgeGeneratedFilesMod, _config.Current.Mo2Paths.MgeModTokens);
-        Report(progress, moved > 0
+        progress.Report("Setup", moved > 0
             ? $"Distant land generated ({moved} file(s) saved)."
-            : "MGE XE closed (no new distant-land files detected).", false);
+            : "MGE XE closed (no new distant-land files detected).", log: true);
     }
-
-    // ---------------------------------------------------- overwrite harvesting
 
     /// <summary>Relative-path → last-write-time map of the overwrite folder.</summary>
     public sealed record OverwriteSnapshot(IReadOnlyDictionary<string, DateTime> Files);
@@ -118,17 +95,13 @@ public sealed class Mo2ToolAutomation
             foreach (var f in Directory.EnumerateFiles(dir, "*", SearchOption.AllDirectories))
             {
                 try { map[Path.GetRelativePath(dir, f)] = File.GetLastWriteTimeUtc(f); }
-                catch { /* ignore */ }
+                catch { }
             }
         }
         return new OverwriteSnapshot(map);
     }
 
-    /// <summary>
-    /// Moves every overwrite file that is new or modified since
-    /// <paramref name="before"/> into the matching Generated Files mod,
-    /// preserving its relative path. Returns the number moved.
-    /// </summary>
+    /// <summary>Moves every overwrite file new or modified since <paramref name="before"/> into the matching Generated Files mod (preserving relative paths), and returns the number moved.</summary>
     public static int HarvestOverwriteIntoMod(
         string installDir, OverwriteSnapshot before, string preferredMod, params string[] modTokens)
     {
@@ -138,18 +111,7 @@ public sealed class Mo2ToolAutomation
             return 0;
         }
 
-        // Prefer the configured mod folder name; fall back to the token match.
-        var modsDir = AppPaths.Mo2ModsDir(installDir);
-        string? mod = null;
-        if (!string.IsNullOrWhiteSpace(preferredMod))
-        {
-            var exact = Path.Combine(modsDir, preferredMod);
-            if (Directory.Exists(exact))
-            {
-                mod = exact;
-            }
-        }
-        mod ??= PostSetupVerifier.FindGeneratedFilesMod(installDir, modTokens);
+        var mod = PostSetupVerifier.ResolveMod(installDir, preferredMod, modTokens);
         if (mod is null)
         {
             Logger.Warn($"No Generated Files mod \"{preferredMod}\" or matching " +
@@ -191,16 +153,13 @@ public sealed class Mo2ToolAutomation
         return moved;
     }
 
-    /// <summary>
-    /// Runtime logs/debug files the tools write to overwrite each run (MGE/MWSE
-    /// logs, MWSE's ProgramFlow/Warnings). These regenerate every launch and aren't
-    /// part of the generated output, so we never harvest them into a mod.
-    /// </summary>
+    /// <summary>Runtime logs/debug files the tools rewrite to overwrite every launch (MGE/MWSE logs, ProgramFlow/Warnings); not part of the generated output, so they are never harvested into a mod.</summary>
     private static readonly HashSet<string> RuntimeNoiseNames = new(StringComparer.OrdinalIgnoreCase)
     {
         "mgeXE.log", "MWSE.log", "ProgramFlow.txt", "Warnings.txt", "openmw.log",
     };
 
+    /// <summary>True when the file is a runtime log/debug file that should not be harvested.</summary>
     private static bool IsRuntimeNoise(string file)
     {
         var name = Path.GetFileName(file);
@@ -208,6 +167,7 @@ public sealed class Mo2ToolAutomation
             || name.EndsWith(".log", StringComparison.OrdinalIgnoreCase);
     }
 
+    /// <summary>Deletes any empty subdirectories left under <paramref name="root"/> after harvesting.</summary>
     private static void RemoveEmptyDirectories(string root)
     {
         foreach (var dir in Directory.GetDirectories(root, "*", SearchOption.AllDirectories)
@@ -220,13 +180,8 @@ public sealed class Mo2ToolAutomation
                     Directory.Delete(dir);
                 }
             }
-            catch { /* ignore */ }
+            catch { }
         }
     }
 
-    private static void Report(IProgress<InstallProgress>? progress, string line, bool indeterminate)
-    {
-        Logger.Info(line);
-        progress?.Report(new InstallProgress("Setup", line, null, indeterminate));
-    }
 }

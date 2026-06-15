@@ -1,5 +1,4 @@
 using System.Diagnostics;
-using System.Net.Http;
 using System.Windows;
 using System.Windows.Threading;
 using MorrowindRemasteredLauncher.Services;
@@ -10,12 +9,11 @@ namespace MorrowindRemasteredLauncher;
 
 public partial class App : Application
 {
-    /// <summary>
-    /// Minimal service container. Kept simple to avoid pulling in a DI framework
-    /// (helps keep the single-file binary small).
-    /// </summary>
+    /// <summary>Minimal service container, deliberately not a DI framework to keep the single-file binary small.</summary>
     public static ServiceRegistry Services { get; } = new();
 
+    /// <summary>App entry point: wires global exception handlers, then either runs the Steam-presence helper or shows the shell window.</summary>
+    /// <remarks>The <c>--steam-presence</c> branch runs as a separate short-lived process because Steam only ends a session when the owning process exits, so the long-lived launcher can't hold it itself. Startup is wrapped in try/catch because an exception here (before the message loop is pumping) would otherwise crash silently with no visible window.</remarks>
     protected override void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
@@ -23,10 +21,6 @@ public partial class App : Application
         DispatcherUnhandledException += OnDispatcherUnhandledException;
         AppDomain.CurrentDomain.UnhandledException += OnDomainUnhandledException;
 
-        // Headless Steam-presence helper (spawned by the main launcher on Play): hold
-        // a Morrowind (22320) Steam session while the game runs, then EXIT — Steam only
-        // ends a session when the process that opened it exits, so it can't be done in
-        // the long-lived launcher process itself.
         if (e.Args.Length > 0 && e.Args[0] == "--steam-presence")
         {
             RunSteamPresence(e.Args);
@@ -48,9 +42,6 @@ public partial class App : Application
         }
         catch (Exception ex)
         {
-            // An exception here (before the message loop is pumping) would
-            // otherwise crash silently with no visible window. Log it and tell
-            // the user, then shut down cleanly.
             Logger.Error("Fatal error during startup", ex);
             MessageBox.Show(
                 $"The launcher failed to start:\n\n{ex.GetType().Name}: {ex.Message}\n\n" +
@@ -62,17 +53,13 @@ public partial class App : Application
         }
     }
 
-    /// <summary>
-    /// Runs the headless Steam-presence loop on a background thread: extract the API,
-    /// wait for the game to start, hold the Morrowind session, then exit when the game
-    /// closes. Args: <c>--steam-presence &lt;appid&gt; &lt;gameProcessName&gt;</c>.
-    /// </summary>
+    /// <summary>Runs the headless Steam-presence loop on a background thread: extract the API, wait for the game to start, hold the Morrowind session, then exit when the game closes.</summary>
+    /// <remarks>Args: <c>--steam-presence &lt;appid&gt; &lt;gameProcessName&gt;</c>. Has no window, so it stays alive via the message loop until <see cref="Application.Shutdown()"/>. Waits up to ~2 min for the game (it launches via MO2) before claiming a session, so a failed launch logs no phantom playtime.</remarks>
     private void RunSteamPresence(string[] args)
     {
         var appId = args.Length > 1 && uint.TryParse(args[1], out var a) ? a : SteamService.MorrowindAppId;
         var gameProc = args.Length > 2 ? args[2] : "Morrowind";
 
-        // No window: keep the process alive via the message loop until we Shutdown().
         ShutdownMode = ShutdownMode.OnExplicitShutdown;
 
         Task.Run(() =>
@@ -82,16 +69,14 @@ public partial class App : Application
                 AppPaths.EnsureBaseDirectories();
                 var config = new ConfigService();
                 config.Load();
-                var steam = new SteamService(new HttpClient(), config);
+                var steam = new SteamService(config);
 
-                if (!steam.EnsureSteamApiAsync(null, default).GetAwaiter().GetResult())
+                if (!steam.EnsureSteamApi())
                 {
                     Logger.Warn("Steam presence: steam_api64.dll unavailable; exiting.");
                     return;
                 }
 
-                // Wait for the game to actually start (up to ~2 min — it launches via
-                // MO2) before claiming a session, so a failed launch logs no phantom time.
                 var appeared = false;
                 for (var i = 0; i < 240 && !appeared; i++)
                 {
@@ -136,12 +121,14 @@ public partial class App : Application
         });
     }
 
+    /// <summary>True when a process with the given name is currently running.</summary>
     private static bool IsRunning(string processName)
     {
         try { return Process.GetProcessesByName(processName).Length > 0; }
         catch { return false; }
     }
 
+    /// <summary>Logs an unhandled UI-thread exception, shows it to the user, and marks it handled so the app keeps running.</summary>
     private void OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
     {
         Logger.Error("Unhandled UI exception", e.Exception);
@@ -153,6 +140,7 @@ public partial class App : Application
         e.Handled = true;
     }
 
+    /// <summary>Logs an unhandled exception raised on a non-UI thread.</summary>
     private void OnDomainUnhandledException(object sender, UnhandledExceptionEventArgs e)
     {
         if (e.ExceptionObject is Exception ex)

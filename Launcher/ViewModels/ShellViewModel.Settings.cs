@@ -6,13 +6,8 @@ using MorrowindRemasteredLauncher.Services;
 
 namespace MorrowindRemasteredLauncher.ViewModels;
 
-/// <summary>
-/// Settings panel: a category-grouped, data-driven editor whose setting set
-/// switches with the selected edition (OpenMW ↔ MWSE). Rows are built from
-/// <see cref="SettingsCatalog"/>; values are read from / written to the edition's
-/// game configs by <see cref="GameSettingsService"/>. Rebuilt on install-state and
-/// edition changes (both routed through <see cref="RefreshState"/>).
-/// </summary>
+/// <summary>Settings panel: a category-grouped, data-driven editor whose setting set switches with the selected edition.</summary>
+/// <remarks>Rows are built from <see cref="SettingsCatalog"/>; values are read from / written to the edition's game configs by <see cref="GameSettingsService"/>. Rebuilt on install-state and edition changes (both routed through <see cref="RefreshState"/>).</remarks>
 public partial class ShellViewModel
 {
     /// <summary>The category sections rendered on the Settings page.</summary>
@@ -22,10 +17,7 @@ public partial class ShellViewModel
     [ObservableProperty]
     private bool _hasSettings;
 
-    /// <summary>
-    /// Rebuilds the editor rows for the current edition from disk. No-ops to an
-    /// empty list (and <see cref="HasSettings"/> = false) when nothing is installed.
-    /// </summary>
+    /// <summary>Rebuilds the editor rows for the current edition from disk (opening the first section so the page never starts fully collapsed), emptying the list when nothing is installed.</summary>
     public void RebuildGameSettings()
     {
         SettingCategories.Clear();
@@ -55,7 +47,6 @@ public partial class ShellViewModel
             }
         }
 
-        // Accordion: open the first section so the page never starts fully collapsed.
         if (SettingCategories.Count > 0)
         {
             SettingCategories[0].IsExpanded = true;
@@ -64,10 +55,7 @@ public partial class ShellViewModel
         HasSettings = SettingCategories.Count > 0;
     }
 
-    /// <summary>
-    /// Accordion behaviour: expands the clicked category (collapsing the rest), or
-    /// collapses it if it was already open.
-    /// </summary>
+    /// <summary>Expands the clicked category (collapsing the rest), or collapses it if it was already open.</summary>
     [RelayCommand]
     private void ToggleCategory(SettingCategoryViewModel? category)
     {
@@ -83,6 +71,7 @@ public partial class ShellViewModel
         category.IsExpanded = willOpen;
     }
 
+    /// <summary>Writes one edited setting row to the game config; on a skipped/failed write, reverts the control to its on-disk value and tells the user instead of failing silently.</summary>
     private void ApplySettingRow(SettingRowViewModel row)
     {
         try
@@ -92,9 +81,6 @@ public partial class ShellViewModel
                 return;
             }
 
-            // The write was skipped or failed (missing/read-only file, etc.). Roll the
-            // control back to the on-disk value so the UI never shows an unsaved state,
-            // and tell the user instead of failing silently.
             var current = _gameSettings.LoadCurrent(SelectedEdition);
             row.Revert(current.TryGetValue(row.Descriptor.Id, out var v) ? v : null);
             ReportError($"Couldn't save \"{row.Label}\". See the log for details.");

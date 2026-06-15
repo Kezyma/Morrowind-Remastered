@@ -4,18 +4,17 @@ using MorrowindRemasteredLauncher.Services;
 
 namespace MorrowindRemasteredLauncher.Views;
 
-/// <summary>
-/// The About page: renders the embedded <c>about.md</c> with the app's fonts/styling
-/// on a transparent background (see <see cref="MarkdownRenderer"/>).
-/// </summary>
+/// <summary>The About page; renders the embedded <c>about.md</c> with the app's fonts/styling.</summary>
 public partial class AboutPanel : UserControl
 {
+    /// <summary>Initializes the panel and renders the About content.</summary>
     public AboutPanel()
     {
         InitializeComponent();
         LoadAbout();
     }
 
+    /// <summary>Reads and renders the embedded about.md, showing a fallback if missing.</summary>
     private void LoadAbout()
     {
         try
@@ -36,6 +35,7 @@ public partial class AboutPanel : UserControl
         }
     }
 
+    /// <summary>Reads an embedded resource as text, or null if it isn't present.</summary>
     private static string? ReadEmbedded(string name)
     {
         using var stream = typeof(AboutPanel).Assembly.GetManifestResourceStream(name);

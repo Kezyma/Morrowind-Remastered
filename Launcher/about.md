@@ -16,6 +16,12 @@ The **MWSE** edition runs Morrowind using the original game engine, with Morrowi
 
 This version features more quality of life additions and a much improved user interface, but lacks the same degree of graphical improvements as the OpenMW edition, and may be more prone to crashes.
 
+## Help
+
+If you have any bugs or issues, please report them on Discord using the link at the bottom of this page.
+
+If there are any mods that you think could improve this list, or settings that can be changed to make the current list better, feel free to join the Discord server and bring them up!
+
 ## Credits
 
 Built on and only thanks to the work of the entire Morrowind modding community over the last two decades.

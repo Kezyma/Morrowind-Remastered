@@ -5,10 +5,7 @@ using MorrowindRemasteredLauncher.Models;
 
 namespace MorrowindRemasteredLauncher.Services;
 
-/// <summary>
-/// Coarse progress for the install UI. Line is null for percent-only updates
-/// (the UI keeps showing the previous status text).
-/// </summary>
+/// <summary>Coarse progress for the install UI; <c>Line</c> is null for percent-only updates so the previous status text stays.</summary>
 public sealed record InstallProgress(
     string Stage,
     string? Line,
@@ -18,65 +15,34 @@ public sealed record InstallProgress(
 /// <summary>Outcome of an install run.</summary>
 public sealed record InstallResult(bool Success, string? Error);
 
-/// <summary>
-/// Drives a headless Wabbajack install:
-///   1. Acquire the Wabbajack CLI (cached in the portable Wabbajack folder).
-///   2. Pick the install source as a cascade (no explicit mode):
-///        - a local <c>.wabbajack</c> file when one is configured AND present on
-///          disk (<c>wabbajack-cli install -w &lt;file&gt;</c>), otherwise
-///        - the online list named by the configured machineURL, resolved from the
-///          gallery with <c>-m &lt;repo/slug&gt;</c> — ALWAYS together with
-///          <c>-w &lt;cache path&gt;</c>: the CLI uses -w as the destination for the
-///          list it downloads, and crashes with "Value cannot be null. (Parameter
-///          'array')" when -m is passed alone.
-///      Either way the CLI downloads the archives itself, authenticating with the
-///      OAuth token already written to Wabbajack's encrypted store, installing into
-///      the edition's install dir and sharing the global Downloads cache so
-///      editions/updates don't re-download archives. (The catalog's direct
-///      <c>links.download</c> URL is not fetched: authored-files.wabbajack.org 404s
-///      for plain-HTTP clients on every list — only the CLI's internal resolver can
-///      fetch them — so the gallery <c>-m</c> path is the sole online source. The
-///      catalog is still read elsewhere for version/size metadata.)
-///   3. On success, record the installed version + timestamp in config.
-///
-/// Authentication is handled entirely by the Wabbajack token store (the launcher
-/// signs the user in beforehand); the CLI reads it from
-/// <c>%LOCALAPPDATA%\Wabbajack\encrypted\nexus-oauth-info</c>. There is no
-/// NEXUS_API_KEY environment variable in Wabbajack 4.x.
-///
-/// Post-setup (OpenMW/MWSE configuration) is a separate step run afterwards.
-/// </summary>
+/// <summary>Drives a headless Wabbajack install, then records the installed version on success.</summary>
+/// <remarks>
+/// Acquires the cached Wabbajack CLI, then picks the install source as a cascade: a configured local
+/// <c>.wabbajack</c> file when present (<c>install -w &lt;file&gt;</c>), else the online list named by the
+/// configured machineURL resolved from the gallery with <c>-m &lt;repo/slug&gt;</c>. The <c>-m</c> form MUST
+/// always be passed together with <c>-w &lt;cache path&gt;</c> (the CLI uses <c>-w</c> as the download
+/// destination and crashes with "Value cannot be null. (Parameter 'array')" when <c>-m</c> is alone). The
+/// gallery is the sole online source because authored-files.wabbajack.org 404s for plain-HTTP clients on every
+/// list — only the CLI's internal resolver can fetch them. Auth comes from Wabbajack's encrypted OAuth token
+/// store (no NEXUS_API_KEY in Wabbajack 4.x); the shared Downloads cache avoids re-downloading archives.
+/// Post-setup (OpenMW/MWSE configuration) runs separately afterwards.
+/// </remarks>
 public sealed class InstallEngine
 {
-    /// <summary>
-    /// The Wabbajack repository these lists are published under, as registered in
-    /// the official <c>repositories.json</c>. The CLI's <c>-m</c> lookup keys
-    /// featured lists as <c>&lt;RepositoryName&gt;/&lt;machineURL&gt;</c>, e.g.
-    /// <c>Kezyma/MorrowindRemasteredMWSEEdition</c> — the bare machineURL alone
-    /// resolves to "Couldn't find list".
-    /// </summary>
-    private const string RepositoryName = "Kezyma";
-
-    /// <summary>
-    /// How many times to retry when the CLI fails while resolving the list from
-    /// the gallery (a transient failure that clears on retry).
-    /// </summary>
-    private const int MaxResolveAttempts = 4;
-
     private readonly WabbajackCliService _cli;
     private readonly NexusAuthService _nexus;
     private readonly InstallStateService _installState;
     private readonly ConfigService _config;
 
-    // Matches a percentage Wabbajack prints during install, e.g. "42.5%".
+    /// <summary>Matches a percentage Wabbajack might print during install, e.g. "42.5%".</summary>
     private static readonly Regex PercentRegex =
         new(@"(\d{1,3}(?:\.\d+)?)\s*%", RegexOptions.Compiled);
 
-    // Matches the CLI's "00:01:23.456 [INFO] " line prefix, stripped from the
-    // progress text shown to the user (the log keeps the raw line).
+    /// <summary>Matches the CLI's "00:01:23.456 [INFO] " line prefix, stripped from the progress text shown to the user.</summary>
     private static readonly Regex CliPrefixRegex =
         new(@"^\d{2}:\d{2}:\d{2}(?:\.\d+)?\s*\[\w+\]\s*", RegexOptions.Compiled);
 
+    /// <summary>Creates the install engine.</summary>
     public InstallEngine(
         WabbajackCliService cli,
         NexusAuthService nexus,
@@ -89,10 +55,7 @@ public sealed class InstallEngine
         _config = config;
     }
 
-    /// <summary>
-    /// Installs (or updates) the given edition's modlist. Reports progress and
-    /// returns the result. Requires a usable Wabbajack Nexus token on disk.
-    /// </summary>
+    /// <summary>Installs or updates the edition's modlist, reporting progress; requires a usable Wabbajack Nexus token on disk.</summary>
     public async Task<InstallResult> InstallAsync(
         Edition edition,
         Modlist? modlist,
@@ -105,25 +68,23 @@ public sealed class InstallEngine
         }
 
         var source = _config.Current.InstallSource;
+        var wabbajack = _config.Current.Wabbajack;
+        var maxResolveAttempts = wabbajack.MaxResolveAttempts;
         try
         {
-            // ---- 1. Ensure the CLI is present ----
-            Report(progress, "Preparing", "Preparing Wabbajack…", null, true);
+            progress.Report("Preparing", "Preparing Wabbajack…", null, true);
             await _cli.EnsureAvailableAsync(
-                new Progress<string>(s => Report(progress, "Preparing", s, null, true)),
+                new Progress<string>(s => progress.Report("Preparing", s, null, true)),
                 ct).ConfigureAwait(false);
 
-            // ---- 2. Run the headless install into the single shared install dir ----
             var outputDir = _installState.GetEditionInstallDir(edition);
             Directory.CreateDirectory(outputDir);
             Directory.CreateDirectory(AppPaths.DownloadsDir);
-            Report(progress, "Installing", "Starting installation…", null, true);
+            progress.Report("Installing", "Starting installation…", null, true);
 
-            // Progress-tracker inputs (see CliProgressTracker / PollInstallBytesAsync).
             var totalArchives = modlist?.DownloadMetadata?.NumberOfArchives ?? 0;
             var installBytesTotal = modlist?.DownloadMetadata?.SizeOfInstalledFiles ?? 0;
 
-            // Gallery (-m) resolution fails transiently; retry a few times.
             async Task<CliRunResult> RunWithResolveRetry(string machineUrl, string fallbackTarget)
             {
                 Directory.CreateDirectory(AppPaths.ModlistCacheDir);
@@ -134,13 +95,13 @@ public sealed class InstallEngine
                     var r = await RunCliInstallAsync(
                         machineUrl, fallbackTarget, outputDir, AppPaths.DownloadsDir,
                         totalArchives, installBytesTotal, progress, ct).ConfigureAwait(false);
-                    if (r.ExitCode == 0 || !r.FailedResolvingList || attempt >= MaxResolveAttempts)
+                    if (r.ExitCode == 0 || !r.FailedResolvingList || attempt >= maxResolveAttempts)
                     {
                         return r;
                     }
-                    Logger.Warn($"List resolution failed (attempt {attempt}/{MaxResolveAttempts}); retrying…");
-                    Report(progress, "Preparing",
-                        $"Couldn't reach the Wabbajack gallery; retrying ({attempt}/{MaxResolveAttempts})…",
+                    Logger.Warn($"List resolution failed (attempt {attempt}/{maxResolveAttempts}); retrying…");
+                    progress.Report("Preparing",
+                        $"Couldn't reach the Wabbajack gallery; retrying ({attempt}/{maxResolveAttempts})…",
                         null, true);
                     await Task.Delay(TimeSpan.FromSeconds(3), ct).ConfigureAwait(false);
                 }
@@ -148,16 +109,11 @@ public sealed class InstallEngine
 
             CliRunResult run;
 
-            // Source cascade: a present local .wabbajack file overrides the online list.
-            // The version (when known) comes from the catalog metadata in `modlist`; a raw
-            // local file usually has none, so the real version is read back from the
-            // installed compiler_settings later (never record a blank).
             var recordedVersion = string.IsNullOrWhiteSpace(modlist?.Version) ? null : modlist!.Version;
 
             if (source.ResolveExistingLocalFile() is { } listFile)
             {
-                // Tier 1: install straight from the local .wabbajack file.
-                Report(progress, "Installing", "Installing from local modlist file…", null, true);
+                progress.Report("Installing", "Installing from local modlist file…", null, true);
                 Logger.Info($"Installing from local modlist file: {listFile}");
                 run = await RunCliInstallAsync(
                     machineUrl: null, listFile, outputDir, AppPaths.DownloadsDir,
@@ -165,12 +121,11 @@ public sealed class InstallEngine
             }
             else if (source.HasMachineUrl)
             {
-                // Tier 2: install the online list by resolving its machineURL from the gallery.
                 var machineUrl = source.MachineUrl!.Contains('/')
                     ? source.MachineUrl!
-                    : $"{RepositoryName}/{source.MachineUrl}";
+                    : $"{wabbajack.RepositoryName}/{source.MachineUrl}";
                 run = await RunWithResolveRetry(
-                    machineUrl, Path.Combine(AppPaths.ModlistCacheDir, "combined.wabbajack"))
+                    machineUrl, Path.Combine(AppPaths.ModlistCacheDir, wabbajack.CombinedListFileName))
                     .ConfigureAwait(false);
             }
             else
@@ -188,14 +143,13 @@ public sealed class InstallEngine
                 return new InstallResult(false, detail);
             }
 
-            // ---- 3. Record success (single combined install; setup runs per profile) ----
             var record = _config.Current.Install;
             record.InstalledVersion = recordedVersion;
             record.InstalledAt = DateTimeOffset.UtcNow;
             record.SetupComplete.Clear();
             _config.Save();
 
-            Report(progress, "Done", "Installation complete.", 100, false);
+            progress.Report("Done", "Installation complete.", 100, false);
             Logger.Info($"Install completed (v{recordedVersion}) at \"{outputDir}\".");
             return new InstallResult(true, null);
         }
@@ -214,36 +168,29 @@ public sealed class InstallEngine
     /// <summary>Result of a single CLI install attempt.</summary>
     private sealed record CliRunResult(int ExitCode, bool FailedResolvingList);
 
-    /// <summary>
-    /// Derives a monotonic overall percentage for one CLI install run from the
-    /// CLI's own log lines. The CLI never prints a percentage (it computes
-    /// progress internally but the CLI verb doesn't subscribe to it), so we
-    /// track this run's work instead:
-    ///   "Missing N archives"          → N downloads happen this run (0 on a
-    ///                                    reinstall; few on an update — shared/
-    ///                                    cached archives already excluded by
-    ///                                    Wabbajack's hash index),
-    ///   "Finished downloading …"      → one download done (5–58% band),
-    ///   "Installing files" step       → 60–95% band driven by BYTES written to
-    ///                                    the install dir (fed by the engine's
-    ///                                    folder poller via
-    ///                                    <see cref="ReportInstallFilesFraction"/>;
-    ///                                    "Extracting" lines can't be counted —
-    ///                                    nested archives make their number
-    ///                                    unpredictable),
-    ///   "Building <name>"             → per-BSA bumps across 96–99,
-    ///   "Next Step: …"                → fixed floor bumps per phase.
-    /// Tracking the run's own events keeps reinstalls, updates and the shared
-    /// Downloads cache honest.
-    /// </summary>
+    /// <summary>Derives a monotonic overall install percentage from the CLI's own log lines.</summary>
+    /// <remarks>
+    /// The CLI never prints a percentage (it computes progress internally but the verb doesn't subscribe), so
+    /// this tracks the run's own events instead, which keeps reinstalls, updates and the shared Downloads cache
+    /// honest: "Missing N archives" sets this run's download count (0 on a reinstall, few on an update —
+    /// cached archives are excluded by Wabbajack's hash index); "Finished downloading" advances the 5–58% band;
+    /// the "Installing files" step drives the 60–95% band from BYTES written (via
+    /// <see cref="ReportInstallFilesFraction"/> — "Extracting" lines can't be counted because nested archives
+    /// make their number unpredictable); "Building &lt;name&gt;" gives per-BSA bumps across 96–99; "Next Step:"
+    /// sets fixed floor bumps per phase.
+    /// </remarks>
     private sealed class CliProgressTracker
     {
+        /// <summary>Matches the CLI's "Next Step: ..." phase markers.</summary>
         private static readonly Regex NextStepRegex =
             new(@"Next Step:\s*(.+?)\s*$", RegexOptions.Compiled);
+        /// <summary>Matches the CLI's "Missing N archives" line.</summary>
         private static readonly Regex MissingArchivesRegex =
             new(@"Missing (\d+) archives", RegexOptions.Compiled);
+        /// <summary>Matches the CLI's "Optimized X directives to Y required" line.</summary>
         private static readonly Regex OptimizedRegex =
             new(@"Optimized (\d+) directives to (\d+) required", RegexOptions.Compiled);
+        /// <summary>Matches the CLI's "Building N bsa files" line.</summary>
         private static readonly Regex BsaCountRegex =
             new(@"Building (\d+) bsa files", RegexOptions.Compiled);
 
@@ -255,40 +202,26 @@ public sealed class InstallEngine
         private int _bsaDone;
         private bool _inBsaStep;
 
+        /// <summary>Creates the tracker; <paramref name="totalArchives"/> is reserved (the download band sizes itself from this run's "Missing N archives" line).</summary>
         public CliProgressTracker(int totalArchives)
         {
-            // totalArchives reserved for future use; the download band sizes
-            // itself from this run's "Missing N archives" line instead.
             _ = totalArchives;
         }
 
-        /// <summary>
-        /// Fraction of this run's directives that actually need installing
-        /// ("Optimized X directives to Y required"). Scales the expected bytes
-        /// of the Installing-files phase: 1.0 on a fresh install, near 0 when
-        /// reinstalling over an identical copy.
-        /// </summary>
+        /// <summary>Fraction of this run's directives that need installing ("Optimized X to Y required"); scales the Installing-files phase's expected bytes (1.0 fresh, near 0 reinstalling over an identical copy).</summary>
         public double DirectiveRatio { get; private set; } = 1.0;
 
         /// <summary>True while the CLI is in the "Installing files" step.</summary>
         public bool InstallFilesPhaseActive { get; private set; }
 
-        /// <summary>
-        /// Maps a bytes-written fraction (0–1) of the Installing-files phase
-        /// onto the 60–95 band and returns the monotonic overall percent.
-        /// Called from the engine's folder poller thread; racing with line
-        /// updates is benign (Bump only ever raises the value).
-        /// </summary>
+        /// <summary>Maps a bytes-written fraction (0–1) of the Installing-files phase onto the 60–95 band and returns the monotonic percent; safe to race with line updates since Bump only ever raises the value.</summary>
         public double ReportInstallFilesFraction(double fraction)
         {
             Bump(60 + Math.Clamp(fraction, 0, 1) * 35);
             return _percent;
         }
 
-        /// <summary>
-        /// Consumes one raw CLI line and returns the updated monotonic percent,
-        /// or null while the CLI is still starting up (game detection etc.).
-        /// </summary>
+        /// <summary>Consumes one raw CLI line and returns the updated monotonic percent, or null while the CLI is still starting up (game detection etc.).</summary>
         public double? Update(string line)
         {
             var step = NextStepRegex.Match(line);
@@ -355,7 +288,6 @@ public sealed class InstallEngine
                 Bump(96 + Math.Min(1.0, (double)_bsaDone / _bsaTotal) * 3);
             }
 
-            // Opportunistic: honour any literal "NN%" a future CLI might print.
             var pct = PercentRegex.Match(line);
             if (pct.Success && double.TryParse(pct.Groups[1].Value, out var p))
             {
@@ -366,18 +298,12 @@ public sealed class InstallEngine
             return _started ? _percent : null;
         }
 
+        /// <summary>Raises the tracked percent toward <paramref name="value"/> (never lowers it, capped at 99).</summary>
         private void Bump(double value)
             => _percent = Math.Max(_percent, Math.Min(value, 99));
     }
 
-    /// <summary>
-    /// Runs one CLI install. With only <paramref name="wabbajackFile"/>, the
-    /// CLI installs that local file directly. With <paramref name="machineUrl"/>
-    /// too, the CLI resolves the list from the gallery and downloads it to
-    /// <paramref name="wabbajackFile"/> first (-m must always be accompanied by
-    /// -w: the CLI dereferences the -w path while saving the download and
-    /// crashes when it is missing).
-    /// </summary>
+    /// <summary>Runs one CLI install: local-file install from <paramref name="wabbajackFile"/> alone, or gallery resolve when <paramref name="machineUrl"/> is also given — in which case <c>-m</c> must be passed with <c>-w</c> (the CLI dereferences the <c>-w</c> path while saving the download and crashes when it is missing).</summary>
     private async Task<CliRunResult> RunCliInstallAsync(
         string? machineUrl,
         string wabbajackFile,
@@ -399,7 +325,6 @@ public sealed class InstallEngine
             WorkingDirectory = AppPaths.WabbajackDir
         };
 
-        // Auth is taken from Wabbajack's encrypted OAuth token store.
         psi.ArgumentList.Add("install");
         if (machineUrl is not null)
         {
@@ -415,8 +340,6 @@ public sealed class InstallEngine
 
         using var process = new Process { StartInfo = psi, EnableRaisingEvents = true };
 
-        // Track whether this run died while resolving the list (vs. a real install
-        // failure), so the caller can decide to retry.
         var failedResolvingList = false;
 
         void OnLine(string? line)
@@ -441,17 +364,12 @@ public sealed class InstallEngine
         process.BeginOutputReadLine();
         process.BeginErrorReadLine();
 
-        // Ensure the process is killed if the user cancels.
         await using var reg = ct.Register(() =>
         {
             try { if (!process.HasExited) process.Kill(entireProcessTree: true); }
-            catch { /* ignore */ }
+            catch { }
         });
 
-        // The "Installing files" phase logs no usable per-unit events (nested
-        // archives make "Extracting" counts unpredictable), so progress there
-        // is measured as bytes written to the install dir since the phase
-        // began, against this run's expected workload.
         using var pollerCts = CancellationTokenSource.CreateLinkedTokenSource(ct);
         var poller = PollInstallBytesAsync(
             tracker, outputDir, installBytesTotal, progress, pollerCts.Token);
@@ -463,20 +381,18 @@ public sealed class InstallEngine
         finally
         {
             pollerCts.Cancel();
-            try { await poller.ConfigureAwait(false); } catch { /* cancelled */ }
+            try { await poller.ConfigureAwait(false); } catch { }
         }
         return new CliRunResult(process.ExitCode, failedResolvingList);
     }
 
-    /// <summary>
-    /// Background companion to a CLI run: once the tracker enters the
-    /// "Installing files" phase, takes a baseline byte-count of the install
-    /// dir, then rescans every few seconds and maps the bytes written since
-    /// the baseline onto the 60–95 band. Expected bytes are the catalog's
-    /// SizeOfInstalledFiles scaled by this run's directive ratio, so
-    /// reinstalls (delta ≈ small) and pre-existing files (baseline) are
-    /// handled honestly.
-    /// </summary>
+    /// <summary>Background companion to a CLI run that measures Installing-files progress by bytes written, because that phase logs no usable per-unit events (nested archives make "Extracting" counts unpredictable).</summary>
+    /// <remarks>
+    /// Once the tracker enters the "Installing files" phase it baselines the install dir's byte-count, then
+    /// rescans every few seconds and maps bytes written since the baseline onto the 60–95 band. Expected bytes
+    /// are the catalog's SizeOfInstalledFiles scaled by this run's directive ratio, so reinstalls (small delta)
+    /// and pre-existing files (baseline) are handled honestly.
+    /// </remarks>
     private static async Task PollInstallBytesAsync(
         CliProgressTracker tracker,
         string outputDir,
@@ -498,10 +414,10 @@ public sealed class InstallEngine
                     dir, "*", SearchOption.AllDirectories))
                 {
                     try { total += new FileInfo(file).Length; }
-                    catch { /* file vanished mid-scan */ }
+                    catch { }
                 }
             }
-            catch { /* dir busy/missing; treat as current total */ }
+            catch { }
             return total;
         }
 
@@ -521,19 +437,15 @@ public sealed class InstallEngine
                 var written = await Task.Run(() => ScanBytes(outputDir), ct)
                     .ConfigureAwait(false) - baseline;
                 var percent = tracker.ReportInstallFilesFraction((double)written / expected);
-                Report(progress, "Installing", null, percent, false);
+                progress.Report("Installing", null, percent, false);
             }
         }
         catch (OperationCanceledException)
         {
-            // CLI run ended; nothing to clean up.
         }
     }
 
-    /// <summary>
-    /// True when a CLI output line indicates the (transient) failure to load the
-    /// list from the gallery, rather than a genuine install error.
-    /// </summary>
+    /// <summary>True when a CLI output line indicates a transient failure to load the list from the gallery (so the caller retries) rather than a genuine install error.</summary>
     private static bool LooksLikeListResolutionFailure(string? line)
     {
         if (string.IsNullOrWhiteSpace(line))
@@ -548,6 +460,7 @@ public sealed class InstallEngine
                    StringComparison.OrdinalIgnoreCase);
     }
 
+    /// <summary>Logs one raw CLI line, updates the progress tracker, and reports the (prefix-stripped, non-TRACE) text to the UI.</summary>
     private static void HandleLine(
         string? line, CliProgressTracker tracker, IProgress<InstallProgress>? progress)
     {
@@ -558,12 +471,8 @@ public sealed class InstallEngine
 
         Logger.Info($"[wabbajack] {line}");
 
-        // Null until the install steps begin (CLI startup/game detection):
-        // the bar stays indeterminate, then turns determinate and counts up.
         var percent = tracker.Update(line);
 
-        // TRACE lines (raw paths etc.) stay in the log but aren't shown in
-        // the UI; the previous status line remains visible.
         var display = line.Contains("[TRACE]", StringComparison.Ordinal)
             ? null
             : CliPrefixRegex.Replace(line.Trim(), "");
@@ -571,11 +480,6 @@ public sealed class InstallEngine
         {
             return;
         }
-        Report(progress, "Installing", display, percent, percent is null);
+        progress.Report("Installing", display, percent, percent is null);
     }
-
-    private static void Report(
-        IProgress<InstallProgress>? progress,
-        string stage, string? line, double? percent, bool indeterminate)
-        => progress?.Report(new InstallProgress(stage, line, percent, indeterminate));
 }

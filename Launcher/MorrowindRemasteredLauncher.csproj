@@ -12,9 +12,9 @@
          RootNamespace, which stays MorrowindRemasteredLauncher). -->
     <AssemblyName>MorrowindRemastered</AssemblyName>
     <ApplicationManifest>app.manifest</ApplicationManifest>
-    <!-- Taskbar/exe icon (also used as the Steam shortcut icon via Steam/icon.ico,
+    <!-- Taskbar/exe icon (also used as the Steam shortcut icon via Assets/icon.ico,
          generated from Images/Icon.png). -->
-    <ApplicationIcon>Steam\icon.ico</ApplicationIcon>
+    <ApplicationIcon>Assets\icon.ico</ApplicationIcon>
     <Version>0.1.0</Version>
     <Authors>Kezyma</Authors>
     <Product>Morrowind Remastered Launcher</Product>
@@ -66,24 +66,27 @@
        loose files beside it) and extracted into Steam's grid folder on demand by
        SteamService. Explicit LogicalNames keep the spaces in the resource names so
        SteamService can look them up by their shipped file names. The icon.ico source
-       file also feeds <ApplicationIcon> above. A loose Steam/<name> file, if present
-       next to the exe, takes precedence at runtime (dev override). -->
+       file also feeds <ApplicationIcon> above. A loose launcher/steam/<name> file, if
+       present at runtime, takes precedence (dev override). -->
   <ItemGroup>
-    <None Remove="Steam\*.png" />
-    <None Remove="Steam\*.ico" />
-    <EmbeddedResource Include="Steam\Steam Capsule.png">
+    <None Remove="Assets\Steam Capsule.png" />
+    <None Remove="Assets\Steam Capsule Wide.png" />
+    <None Remove="Assets\Steam Hero.png" />
+    <None Remove="Assets\Steam Logo.png" />
+    <None Remove="Assets\icon.ico" />
+    <EmbeddedResource Include="Assets\Steam Capsule.png">
       <LogicalName>Steam Capsule.png</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="Steam\Steam Capsule Wide.png">
+    <EmbeddedResource Include="Assets\Steam Capsule Wide.png">
       <LogicalName>Steam Capsule Wide.png</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="Steam\Steam Hero.png">
+    <EmbeddedResource Include="Assets\Steam Hero.png">
       <LogicalName>Steam Hero.png</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="Steam\Steam Logo.png">
+    <EmbeddedResource Include="Assets\Steam Logo.png">
       <LogicalName>Steam Logo.png</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="Steam\icon.ico">
+    <EmbeddedResource Include="Assets\icon.ico">
       <LogicalName>icon.ico</LogicalName>
     </EmbeddedResource>
   </ItemGroup>
@@ -111,8 +114,8 @@
        extracted next to the exe on demand (only when playtime tracking is used),
        so no separate file ships loose. The shim is generic and version-stable. -->
   <ItemGroup>
-    <None Remove="steam_api64.dll" />
-    <EmbeddedResource Include="steam_api64.dll">
+    <None Remove="Assets\steam_api64.dll" />
+    <EmbeddedResource Include="Assets\steam_api64.dll">
       <LogicalName>steam_api64.dll</LogicalName>
     </EmbeddedResource>
   </ItemGroup>

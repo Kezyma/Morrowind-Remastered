@@ -3,28 +3,22 @@ using MorrowindRemasteredLauncher.Models;
 
 namespace MorrowindRemasteredLauncher.Services;
 
-/// <summary>
-/// Describes how the launcher is running:
-///  - Standalone: a normal portable launcher that installs lists into sibling
-///    folders (OpenMW/, MWSE/).
-///  - Embedded: the launcher executable was shipped inside an MO2 install (as
-///    part of a Wabbajack list). In this mode it acts as a dedicated launcher
-///    for that specific installed list - the install button and (usually) the
-///    edition selector are hidden.
-/// </summary>
+/// <summary>Describes how the launcher is running: standalone, or embedded inside an MO2 install.</summary>
+/// <remarks>
+/// Standalone installs lists into sibling folders. Embedded means the executable
+/// was shipped inside an MO2 install (as part of a Wabbajack list), so it acts as
+/// a dedicated launcher for that list — the install button and (usually) the
+/// edition selector are hidden.
+/// </remarks>
 public sealed class LauncherEnvironment
 {
+    /// <summary>True when the launcher is embedded inside an MO2 install.</summary>
     public bool IsEmbedded { get; init; }
 
-    /// <summary>
-    /// When embedded, the MO2 install directory the launcher lives inside.
-    /// </summary>
+    /// <summary>When embedded, the MO2 install directory the launcher lives inside.</summary>
     public string? EmbeddedMo2Dir { get; init; }
 
-    /// <summary>
-    /// Editions detected as installed at the embedded location. Usually one, but
-    /// both can share a folder, in which case the selector remains visible.
-    /// </summary>
+    /// <summary>Editions detected at the embedded location; usually one, but both can share a folder.</summary>
     public IReadOnlyList<Edition> EmbeddedEditions { get; init; } = Array.Empty<Edition>();
 
     /// <summary>The edition to default to when embedded (first detected).</summary>
@@ -35,16 +29,16 @@ public sealed class LauncherEnvironment
     public bool HideEditionSelector => IsEmbedded && EmbeddedEditions.Count <= 1;
 }
 
-/// <summary>
-/// Detects the launcher environment by inspecting the folder the executable
-/// resides in and its parents for an MO2 install.
-/// </summary>
+/// <summary>Detects the launcher environment by checking the executable's folder and its parents for an enclosing MO2 install.</summary>
 public sealed class EnvironmentService
 {
+    /// <summary>Persisted launcher config (MO2 profile names).</summary>
     private readonly ConfigService _config;
 
+    /// <summary>Creates the service over the launcher config.</summary>
     public EnvironmentService(ConfigService config) => _config = config;
 
+    /// <summary>Detects whether the launcher is standalone or embedded, and which editions are present.</summary>
     public LauncherEnvironment Detect()
     {
         var mo2Dir = FindEnclosingMo2Dir(AppPaths.Root);
@@ -64,14 +58,10 @@ public sealed class EnvironmentService
         };
     }
 
-    /// <summary>
-    /// Walks up from <paramref name="start"/> looking for a folder containing
-    /// ModOrganizer.exe. Returns it, or null if none found within a few levels.
-    /// </summary>
+    /// <summary>Walks up from <paramref name="start"/> for a folder containing ModOrganizer.exe, capping the climb to avoid false positives high up the tree.</summary>
     private static string? FindEnclosingMo2Dir(string start)
     {
         var dir = new DirectoryInfo(start);
-        // Limit how far we climb to avoid false positives high up the tree.
         for (var depth = 0; dir is not null && depth < 4; depth++)
         {
             if (File.Exists(Path.Combine(dir.FullName, "ModOrganizer.exe")))
@@ -83,10 +73,7 @@ public sealed class EnvironmentService
         return null;
     }
 
-    /// <summary>
-    /// Determines which edition(s) an MO2 install hosts by checking for the
-    /// edition-specific MO2 profiles.
-    /// </summary>
+    /// <summary>Determines which edition(s) an MO2 install hosts by checking for each edition's MO2 profile.</summary>
     private List<Edition> DetectEditions(string mo2Dir)
     {
         var found = new List<Edition>();

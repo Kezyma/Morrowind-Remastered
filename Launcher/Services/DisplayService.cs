@@ -9,17 +9,13 @@ public sealed record DisplayMode(int Width, int Height, int RefreshHz)
     public double RecommendedUiScale => (Width >= 3840 || Height >= 2160) ? 1.5 : 1.0;
 }
 
-/// <summary>
-/// Reads the primary monitor's current display mode via the Win32
-/// <c>EnumDisplaySettings</c> API. WPF's <c>SystemParameters</c> reports
-/// DPI-scaled DIPs and no refresh rate; this returns true physical pixels and
-/// the refresh rate, which is what the game configs need. The launcher is
-/// PerMonitorV2 DPI-aware, so the values are not virtualized.
-/// </summary>
+/// <summary>Reads the primary monitor's display modes (true physical pixels + refresh rate) via Win32 <c>EnumDisplaySettings</c>, which is what the game configs need.</summary>
+/// <remarks>WPF's <c>SystemParameters</c> reports DPI-scaled DIPs and no refresh rate; the launcher is PerMonitorV2 DPI-aware so these values aren't virtualized.</remarks>
 public sealed class DisplayService
 {
     private const int EnumCurrentSettings = -1;
 
+    /// <summary>The Win32 DEVMODE structure describing a display mode.</summary>
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
     private struct DevMode
     {
@@ -60,20 +56,15 @@ public sealed class DisplayService
         public uint dmPanningHeight;
     }
 
+    /// <summary>Win32 <c>EnumDisplaySettings</c>: reads a display mode for the given device.</summary>
     [DllImport("user32.dll", CharSet = CharSet.Unicode)]
     private static extern bool EnumDisplaySettings(
         string? deviceName, int modeNum, ref DevMode devMode);
 
-    /// <summary>
-    /// Normalises a DEVMODE refresh rate: 0 ("default") and 1 ("hardware default")
-    /// both mean "unspecified", so report 60 Hz instead.
-    /// </summary>
+    /// <summary>Normalises a DEVMODE refresh rate: 0 and 1 both mean "unspecified", so report 60 Hz.</summary>
     private static int NormalizeHz(uint frequency) => frequency is 0 or 1 ? 60 : (int)frequency;
 
-    /// <summary>
-    /// The primary monitor's current mode, or a 1920×1080@60 fallback if the
-    /// query fails.
-    /// </summary>
+    /// <summary>The primary monitor's current mode, or a 1920x1080@60 fallback if the query fails.</summary>
     public DisplayMode GetPrimaryMode()
     {
         var dm = new DevMode { dmSize = (ushort)Marshal.SizeOf<DevMode>() };
@@ -88,10 +79,7 @@ public sealed class DisplayService
         return new DisplayMode(1920, 1080, 60);
     }
 
-    /// <summary>
-    /// All distinct display modes the primary adapter advertises (32-bit only),
-    /// ordered largest-first. Used to populate the Settings dropdowns.
-    /// </summary>
+    /// <summary>All distinct 32-bit display modes the primary adapter advertises, ordered largest-first, for the Settings dropdowns.</summary>
     public IReadOnlyList<DisplayMode> EnumerateModes()
     {
         var modes = new HashSet<(int, int, int)>();

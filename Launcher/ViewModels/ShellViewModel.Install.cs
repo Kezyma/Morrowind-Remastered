@@ -8,15 +8,10 @@ using MorrowindRemasteredLauncher.Views;
 
 namespace MorrowindRemasteredLauncher.ViewModels;
 
-/// <summary>
-/// Install-flow members of the shell view model: Nexus sign-in, the headless
-/// Wabbajack install run, shared-downloads clearing, and the busy/progress UI
-/// state these flows drive.
-/// </summary>
+/// <summary>Install-flow members of the shell view model: Nexus sign-in, the headless Wabbajack install run, shared-downloads clearing, and the busy/progress UI state these flows drive.</summary>
 public partial class ShellViewModel
 {
-    // -------------------------------------------------------- Install options
-
+    /// <summary>Prompts for an install folder and persists the choice.</summary>
     [RelayCommand]
     private void BrowseInstallLocation()
     {
@@ -37,25 +32,21 @@ public partial class ShellViewModel
         }
     }
 
-    // ------------------------------------------------------------ Nexus state
-
+    /// <summary>True when a Nexus account is signed in.</summary>
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(CanRunInstall))]
     [NotifyCanExecuteChangedFor(nameof(RunInstallStepCommand))]
     private bool _isNexusLoggedIn;
 
+    /// <summary>The Nexus sign-in status line shown on the Install page.</summary>
     [ObservableProperty]
     private string _nexusStatus = "Not signed in";
 
+    /// <summary>Warning shown for a non-Premium account (null when none).</summary>
     [ObservableProperty]
     private string? _nexusWarning;
 
-    /// <summary>
-    /// Opens the embedded Nexus OAuth login popup (WebView2) and waits for
-    /// approval. On success the account is shown, the token is persisted into
-    /// Wabbajack's store, and a non-Premium warning is surfaced. A second click
-    /// while signed in signs out.
-    /// </summary>
+    /// <summary>Opens the embedded Nexus OAuth popup, persists the token to Wabbajack's store, and surfaces a non-Premium warning; a second click while signed in signs out.</summary>
     [RelayCommand]
     private async Task NexusLogin()
     {
@@ -70,10 +61,9 @@ public partial class ShellViewModel
         {
             NexusStatus = "Opening Nexus sign-in…";
 
-            // Build the authorize URL + PKCE secrets, then show the popup.
             var challenge = _nexus.BeginLogin();
 
-            var login = new NexusLoginWindow(challenge.AuthorizeUrl, NexusAuthService.RedirectHost)
+            var login = new NexusLoginWindow(challenge.AuthorizeUrl, _nexus.RedirectHost)
             {
                 Owner = Application.Current?.MainWindow
             };
@@ -136,17 +126,12 @@ public partial class ShellViewModel
               + "unattended.";
     }
 
-    // --------------------------------------------------------- Install action
-
     /// <summary>The final install button is disabled until the user is signed in.</summary>
     public bool CanRunInstall => IsNexusLoggedIn && !IsBusy;
 
     private CancellationTokenSource? _installCts;
 
-    /// <summary>
-    /// The Install/Update button: installs the single combined Wabbajack list, then
-    /// updates the Mod Organizer paths. Per-engine setup happens on the Play tab.
-    /// </summary>
+    /// <summary>The Install/Update button: installs the single combined Wabbajack list then repairs the Mod Organizer paths (the only post-install step here; per-engine setup happens on the Play tab).</summary>
     [RelayCommand]
     private Task RunInstall() =>
         RunBusyAsync($"{InstallOrUpdateLabel} Morrowind Remastered", async (p, ct) =>
@@ -157,7 +142,6 @@ public partial class ShellViewModel
                 return (false, message);
             }
 
-            // The only post-install step the Install tab runs: repair MO2 paths.
             BusyTitle = "Updating Mod Organizer paths";
             var r = await _postSetup
                 .RunStepAsync(SelectedEdition, PostSetupStep.RepairPaths, force: true, p, ct)
@@ -170,10 +154,7 @@ public partial class ShellViewModel
             return (true, "Installed. Pick a version on the Play tab to finish setup.");
         });
 
-    /// <summary>
-    /// Installs the modlist from the configured source (catalog / machineURL / local
-    /// file). The catalog modlist is optional — the test source modes don't need it.
-    /// </summary>
+    /// <summary>Installs the modlist from the configured source (catalog / machineURL / local file); the catalog modlist is optional since the test source modes don't need it.</summary>
     private async Task<(bool Ok, string Message)> RunModlistInstallAsync(
         IProgress<InstallProgress> progress, CancellationToken ct)
     {
@@ -190,6 +171,7 @@ public partial class ShellViewModel
             : (false, result.Error ?? "Installation failed.");
     }
 
+    /// <summary>Cancels the in-flight install run.</summary>
     [RelayCommand]
     private void CancelInstall() => _installCts?.Cancel();
 
@@ -203,19 +185,21 @@ public partial class ShellViewModel
     [NotifyPropertyChangedFor(nameof(InstallFailed))]
     private string? _installResultMessage;
 
+    /// <summary>Whether the last install run succeeded.</summary>
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(InstallFailed))]
     private bool _installResultSuccess;
 
+    /// <summary>True when there is an install outcome message to show.</summary>
     public bool HasInstallResult => !string.IsNullOrEmpty(InstallResultMessage);
 
     /// <summary>True when the last install run ended unsuccessfully.</summary>
     public bool InstallFailed => HasInstallResult && !InstallResultSuccess;
 
-    /// <summary>Clearing the cache mid-install would pull files out from under
-    /// the running Wabbajack process.</summary>
+    /// <summary>Clear Downloads is disabled while busy, since clearing the cache mid-install would pull files out from under the running Wabbajack process.</summary>
     public bool CanClearDownloads => !IsBusy;
 
+    /// <summary>Deletes and recreates the shared downloads cache folder.</summary>
     [RelayCommand(CanExecute = nameof(CanClearDownloads))]
     private void ClearDownloads()
     {
@@ -241,10 +225,8 @@ public partial class ShellViewModel
         }
     }
 
-    /// <summary>
-    /// Deletes the selected edition's installation folder and clears its install
-    /// record. The shared downloads cache is kept (Clear Downloads handles it).
-    /// </summary>
+    /// <summary>Deletes the selected edition's installation folder and clears its install record, keeping the shared downloads cache (Clear Downloads handles that).</summary>
+    /// <remarks>Failure is typically a file lock (e.g. MO2 still running); the error then surfaces in the banner via <c>Logger.ErrorLogged</c>.</remarks>
     [RelayCommand]
     private async Task Uninstall()
     {
@@ -294,8 +276,6 @@ public partial class ShellViewModel
         }
         catch (Exception ex)
         {
-            // Typically a file lock (e.g. MO2 still running); the error banner
-            // appears via Logger.ErrorLogged.
             Logger.Error("Uninstall failed", ex);
             InstallResultSuccess = false;
             InstallResultMessage = $"Uninstall failed: {ex.Message}";
@@ -307,8 +287,7 @@ public partial class ShellViewModel
         }
     }
 
-    // ----------------------------------------------------------- Busy / progress
-
+    /// <summary>True while any long-running operation is in progress (gates most commands).</summary>
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(CanRunInstall))]
     [NotifyPropertyChangedFor(nameof(CanClearDownloads))]
@@ -319,15 +298,19 @@ public partial class ShellViewModel
     [NotifyCanExecuteChangedFor(nameof(RunInstallStepCommand))]
     private bool _isBusy;
 
+    /// <summary>Title shown above the progress area for the current operation.</summary>
     [ObservableProperty]
     private string _busyTitle = "";
 
+    /// <summary>Current progress percentage (0–100).</summary>
     [ObservableProperty]
     private double _progressPercent;
 
+    /// <summary>True when progress is indeterminate (no known percentage).</summary>
     [ObservableProperty]
     private bool _isProgressIndeterminate;
 
+    /// <summary>The current progress status line.</summary>
     [ObservableProperty]
     private string? _progressLine;
 }

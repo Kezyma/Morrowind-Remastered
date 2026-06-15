@@ -4,6 +4,7 @@ using MorrowindRemasteredLauncher.Models;
 
 namespace MorrowindRemasteredLauncher.Services;
 
+/// <summary>The install lifecycle state of an edition.</summary>
 public enum InstallStatus
 {
     /// <summary>No install root configured, or MO2 not present for this edition.</summary>
@@ -19,28 +20,33 @@ public enum InstallStatus
     UpdateAvailable
 }
 
+/// <summary>An edition's resolved install state plus its installed and latest versions.</summary>
 public sealed record EditionState(
     Edition Edition,
     InstallStatus Status,
     string? InstalledVersion,
     string? LatestVersion)
 {
+    /// <summary>True when the edition is installed in any state.</summary>
     public bool IsInstalled => Status is not InstallStatus.NotInstalled;
+    /// <summary>True when the edition can be launched (ready, updatable, or needs setup).</summary>
     public bool IsPlayable => Status is InstallStatus.Ready or InstallStatus.UpdateAvailable
                                        or InstallStatus.InstalledNeedsSetup;
+    /// <summary>True when a newer catalog version is available.</summary>
     public bool HasUpdate => Status is InstallStatus.UpdateAvailable;
 }
 
-/// <summary>
-/// Determines per-edition install status by inspecting disk and the persisted
-/// config, comparing against the live catalog version.
-/// </summary>
+/// <summary>Determines per-edition install status from disk and config, compared against the live catalog version.</summary>
 public sealed class InstallStateService
 {
+    /// <summary>Persisted launcher config (install record, MO2 paths).</summary>
     private readonly ConfigService _config;
+    /// <summary>Standalone vs embedded-in-MO2 environment.</summary>
     private readonly LauncherEnvironment _environment;
+    /// <summary>Validates the vanilla game path (the "installed" signal when embedded).</summary>
     private readonly GamePathService _gamePath;
 
+    /// <summary>Creates the service with its config and environment dependencies.</summary>
     public InstallStateService(
         ConfigService config, LauncherEnvironment environment, GamePathService gamePath)
     {
@@ -49,14 +55,8 @@ public sealed class InstallStateService
         _gamePath = gamePath;
     }
 
-    /// <summary>
-    /// Resolves the single combined-list install directory (one MO2 instance with
-    /// both profiles). The <paramref name="edition"/> is accepted for call-site
-    /// convenience but no longer affects the directory — both profiles share it:
-    ///  - Embedded: the MO2 folder the launcher lives in.
-    ///  - User override if set.
-    ///  - Otherwise the default portable location next to the launcher.
-    /// </summary>
+    /// <summary>Resolves the single combined-list install directory shared by both profiles (<paramref name="edition"/> no longer affects it).</summary>
+    /// <remarks>Embedded: the enclosing MO2 folder; else the user override if set; else the default portable location next to the launcher.</remarks>
     public string GetEditionInstallDir(Edition edition)
     {
         if (_environment.IsEmbedded && _environment.EmbeddedMo2Dir is not null)
@@ -72,21 +72,14 @@ public sealed class InstallStateService
         return AppPaths.DefaultInstallDir;
     }
 
-    /// <summary>
-    /// Returns true if MO2 is present for this edition (ModOrganizer.exe exists).
-    /// </summary>
+    /// <summary>True if MO2 (ModOrganizer.exe) is present for this edition.</summary>
     public bool IsMo2Present(Edition edition)
     {
         var dir = GetEditionInstallDir(edition);
         return File.Exists(AppPaths.Mo2Exe(dir));
     }
 
-    /// <summary>
-    /// Reads the installed modlist version from the Wabbajack
-    /// <c>*.compiler_settings</c> JSON in the install dir (its root <c>Version</c>
-    /// field — NOT <c>ModlistVersion</c>). Tries the configured file name first,
-    /// then any <c>*.compiler_settings</c> in the folder. Null when absent/unreadable.
-    /// </summary>
+    /// <summary>Reads the installed modlist version from the Wabbajack <c>*.compiler_settings</c> JSON's root <c>Version</c> field (not <c>ModlistVersion</c>); null when absent/unreadable.</summary>
     public string? ReadInstalledVersion(Edition edition)
     {
         try
@@ -121,25 +114,20 @@ public sealed class InstallStateService
         return null;
     }
 
-    /// <summary>
-    /// Computes the full state for an edition. <paramref name="latestVersion"/>
-    /// is the catalog version (may be null if the catalog is unreachable).
-    /// </summary>
+    /// <summary>Computes the full state for an edition, comparing against the (possibly null) catalog <paramref name="latestVersion"/>.</summary>
+    /// <remarks>
+    /// "Installed" needs MO2 on disk plus a positive completion signal (not just
+    /// files a failed/cancelled run leaves behind): embedded installs use a valid
+    /// vanilla game path; standalone uses a launcher-recorded timestamp or a
+    /// version readable from the compiler_settings (for manual/debug copies).
+    /// </remarks>
     public EditionState GetState(Edition edition, string? latestVersion)
     {
         var record = _config.Current.Install;
 
-        // Installed version comes from the modlist's own compiler_settings; fall
-        // back to whatever we recorded at install time.
         var diskVersion = ReadInstalledVersion(edition);
         var installedVersion = diskVersion ?? record.InstalledVersion;
 
-        // "Installed" needs MO2 on disk plus a positive completion signal — not
-        // just files a failed/cancelled run can leave behind. Embedded installs
-        // aren't run by the launcher (no InstalledAt), so a valid vanilla game
-        // path is the signal there. Standalone: a launcher-recorded timestamp, OR
-        // — for installs the launcher didn't perform (manual/debug copies) — a
-        // modlist version readable from the compiler_settings on disk.
         var completed = _environment.IsEmbedded
             ? _gamePath.IsValidGameExe(_config.Current.GameExePath)
             : record.InstalledAt is not null || diskVersion is not null;
@@ -150,7 +138,6 @@ public sealed class InstallStateService
                 installedVersion, latestVersion);
         }
 
-        // Post-setup completion is tracked per profile (the install is shared).
         if (!record.GetSetupComplete(edition))
         {
             return new EditionState(edition, InstallStatus.InstalledNeedsSetup,
@@ -168,10 +155,7 @@ public sealed class InstallStateService
         return new EditionState(edition, status, installedVersion, latestVersion);
     }
 
-    /// <summary>
-    /// Compares dotted version strings (e.g. "3.0.5"). Returns &lt;0 if a precedes b.
-    /// Falls back to ordinal comparison for non-numeric parts.
-    /// </summary>
+    /// <summary>Compares dotted version strings (&lt;0 if a precedes b), falling back to ordinal comparison for non-numeric parts.</summary>
     public static int VersionCompare(string a, string b)
     {
         if (System.Version.TryParse(a, out var va) && System.Version.TryParse(b, out var vb))

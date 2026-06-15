@@ -4,32 +4,31 @@ using MorrowindRemasteredLauncher.Models;
 
 namespace MorrowindRemasteredLauncher.Services;
 
-/// <summary>
-/// Fetches the live modlist catalog from GitHub and the authoritative
-/// .wabbajack.meta.json for an edition. We never rely on the meta files baked
-/// into the repo, since the live download links/versions can change.
-/// </summary>
+/// <summary>Fetches the live modlist catalog and per-edition metadata from GitHub, never trusting the meta files baked into the repo since download links/versions can change.</summary>
 public sealed class ModlistCatalogService
 {
-    // Raw modlists.json from the main branch.
-    private const string CatalogUrl =
-        "https://raw.githubusercontent.com/Kezyma/Morrowind-Remastered/main/modlists.json";
-
+    /// <summary>Case-insensitive JSON options for catalog deserialization.</summary>
     private static readonly JsonSerializerOptions JsonOptions = new()
     {
         PropertyNameCaseInsensitive = true
     };
 
+    /// <summary>Shared HTTP client used to fetch the catalog.</summary>
     private readonly HttpClient _http;
+    /// <summary>Persisted launcher config (catalog URL).</summary>
+    private readonly ConfigService _config;
 
+    /// <summary>Cached catalog after the first successful fetch.</summary>
     private List<Modlist>? _cache;
 
-    public ModlistCatalogService(HttpClient http) => _http = http;
+    /// <summary>Creates the service over the shared HTTP client and config.</summary>
+    public ModlistCatalogService(HttpClient http, ConfigService config)
+    {
+        _http = http;
+        _config = config;
+    }
 
-    /// <summary>
-    /// Fetches and caches the full catalog. Throws on network/parse failure so
-    /// callers can show a clear "couldn't reach catalog" message.
-    /// </summary>
+    /// <summary>Fetches and caches the full catalog, throwing on network/parse failure so callers can show a clear "couldn't reach catalog" message.</summary>
     public async Task<IReadOnlyList<Modlist>> GetCatalogAsync(
         bool forceRefresh = false, CancellationToken ct = default)
     {
@@ -38,16 +37,14 @@ public sealed class ModlistCatalogService
             return _cache;
         }
 
-        var json = await _http.GetStringAsync(CatalogUrl, ct).ConfigureAwait(false);
+        var json = await _http.GetStringAsync(_config.Current.Wabbajack.CatalogUrl, ct).ConfigureAwait(false);
         var lists = JsonSerializer.Deserialize<List<Modlist>>(json, JsonOptions)
                     ?? new List<Modlist>();
         _cache = lists;
         return lists;
     }
 
-    /// <summary>
-    /// Returns the catalog entry for the given edition, or null if absent.
-    /// </summary>
+    /// <summary>Returns the catalog entry for the given edition, or null if absent.</summary>
     public async Task<Modlist?> GetModlistAsync(Edition edition, CancellationToken ct = default)
     {
         var catalog = await GetCatalogAsync(ct: ct).ConfigureAwait(false);
@@ -56,12 +53,7 @@ public sealed class ModlistCatalogService
             string.Equals(m.Links.MachineUrl, machineUrl, StringComparison.OrdinalIgnoreCase));
     }
 
-    /// <summary>
-    /// Returns the catalog entry whose machineURL matches the given value, used to
-    /// pin the "latest version" lookup to a configured machineURL regardless of the
-    /// install source. Config values may be repository-qualified (e.g.
-    /// "Kezyma/Slug"); the trailing slug is matched too.
-    /// </summary>
+    /// <summary>Returns the catalog entry whose machineURL matches the given value (also matching the trailing slug of repository-qualified values), to pin "latest version" to a configured machineURL.</summary>
     public async Task<Modlist?> GetByMachineUrlAsync(string machineUrl, CancellationToken ct = default)
     {
         var catalog = await GetCatalogAsync(ct: ct).ConfigureAwait(false);
@@ -73,11 +65,7 @@ public sealed class ModlistCatalogService
             string.Equals(m.Links.MachineUrl, slug, StringComparison.OrdinalIgnoreCase));
     }
 
-    /// <summary>
-    /// Fetches the authoritative .wabbajack.meta.json for the edition's current
-    /// download. Returns null if it can't be derived/fetched (callers can fall
-    /// back to the catalog's embedded download_metadata).
-    /// </summary>
+    /// <summary>Returns the live download metadata for the edition, preferring the catalog's embedded metadata which is kept in sync with the published list.</summary>
     public async Task<DownloadMetadata?> GetLiveMetadataAsync(
         Modlist modlist, CancellationToken ct = default)
     {
@@ -87,9 +75,6 @@ public sealed class ModlistCatalogService
             return modlist.DownloadMetadata;
         }
 
-        // The authored-files download URL has a corresponding .meta.json sibling
-        // on the GitHub repo; prefer the catalog's embedded metadata which is
-        // already kept in sync with the published list, and treat it as live.
         return modlist.DownloadMetadata;
     }
 }

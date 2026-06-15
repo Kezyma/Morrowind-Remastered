@@ -16,8 +16,7 @@
   "downloads": {
     "openMwInstaller": "https://github.com/OpenMW/openmw/releases/download/openmw-0.50.0/OpenMW-0.50.0-win64.exe",
     "deltaPlugin": "https://gitlab.com/portmod/delta-plugin/-/releases/0.25.2/downloads/delta-plugin-0.25.2-windows-amd64.zip",
-    "mwseNightly": "https://github.com/MWSE/MWSE/releases/download/build-automatic/mwse.zip",
-    "steamApi": "https://github.com/Kezyma/Morrowind-Remastered/releases/latest/download/steam_api64.dll"
+    "mwseNightly": "https://github.com/MWSE/MWSE/releases/download/build-automatic/mwse.zip"
   },
   "installSource": {
     "machineUrl": "MorrowindRemasteredOpenMWEdition",
@@ -99,6 +98,110 @@
     ]
   },
   "steam": {
-    "trackPlaytime": false
+    "trackPlaytime": false,
+    "morrowindAppId": 22320,
+    "shortcutAppName": "The Elder Scrolls III: Morrowind Remastered",
+    "shutdownTimeoutSeconds": 20,
+    "steamExeName": "steam.exe",
+    "iconAssetName": "icon.ico",
+    "steamApiDllName": "steam_api64.dll",
+    "registryPaths": [
+      { "hive": "CurrentUser", "view": "Registry64", "subKey": "Software\\Valve\\Steam", "valueName": "SteamPath" },
+      { "hive": "CurrentUser", "view": "Registry32", "subKey": "Software\\Valve\\Steam", "valueName": "SteamPath" },
+      { "hive": "LocalMachine", "view": "Registry32", "subKey": "SOFTWARE\\WOW6432Node\\Valve\\Steam", "valueName": "InstallPath" },
+      { "hive": "LocalMachine", "view": "Registry64", "subKey": "SOFTWARE\\Valve\\Steam", "valueName": "InstallPath" }
+    ],
+    "artwork": {
+      "capsuleWide": ["Steam Capsule Wide", "header"],
+      "capsule": ["Steam Capsule", "boxart"],
+      "hero": ["Steam Hero", "hero"],
+      "logo": ["Steam Logo", "logo"]
+    }
+  },
+  "editions": {
+    "OpenMW": {
+      "displayName": "OpenMW",
+      "machineUrl": "MorrowindRemasteredOpenMWEdition",
+      "mo2PlayExecutableName": "OpenMW",
+      "gameProcessName": "openmw"
+    },
+    "Mwse": {
+      "displayName": "MWSE",
+      "machineUrl": "MorrowindRemasteredOpenMWEdition",
+      "mo2PlayExecutableName": "Morrowind",
+      "gameProcessName": "Morrowind"
+    }
+  },
+  "wabbajack": {
+    "repositoryName": "Kezyma",
+    "maxResolveAttempts": 4,
+    "combinedListFileName": "combined.wabbajack",
+    "catalogUrl": "https://raw.githubusercontent.com/Kezyma/Morrowind-Remastered/main/modlists.json",
+    "latestReleaseApi": "https://api.github.com/repos/wabbajack-tools/wabbajack/releases/latest"
+  },
+  "nexus": {
+    "oauthBase": "https://users.nexusmods.com/oauth",
+    "clientId": "wabbajack",
+    "redirectUri": "https://127.0.0.1:1234",
+    "scopes": "public openid profile",
+    "redirectHost": "127.0.0.1"
+  },
+  "mo2": {
+    "instanceName": "Portable",
+    "modOrganizerExe": "ModOrganizer.exe",
+    "modOrganizerIni": "ModOrganizer.ini",
+    "processName": "ModOrganizer",
+    "monitorPollSeconds": 1.5
+  },
+  "gameRegistry": {
+    "subKey": "SOFTWARE\\Bethesda Softworks\\Morrowind",
+    "installedPathValue": "Installed Path",
+    "screenWidthValue": "Screen Width",
+    "screenHeightValue": "Screen Height",
+    "refreshRateValue": "Refresh Rate",
+    "gameExeName": "Morrowind.exe"
+  },
+  "paths": {
+    "installDirName": "modorganizer",
+    "gameCopyDirName": "morrowind",
+    "launcherDirName": "launcher",
+    "wabbajackDirName": "wabbajack",
+    "downloadsDirName": "downloads",
+    "logsDirName": "logs",
+    "logFileName": "morrowindremastered.log"
+  },
+  "toolAutomation": {
+    "mcp": {
+      "applyButton": "Apply chosen patches",
+      "successPhrases": ["Patch succeeded", "succeeded"],
+      "failurePhrases": ["patch failed", "error", "cannot patch", "unable"],
+      "windowWaitSeconds": 45,
+      "logWaitSeconds": 45,
+      "pollMs": 500
+    },
+    "mge": {
+      "mainWindowTitle": "Graphics Extender",
+      "processName": "MGEXEgui",
+      "tabClass": "SysTabControl32",
+      "distantLandTabIndex": 1,
+      "generatorWizardButton": "generator wizard",
+      "dismissLabels": ["Yes", "OK", "Continue"],
+      "startupDismissLabels": ["OK"],
+      "yesButton": "Yes",
+      "continueButton": "Continue",
+      "runStepsButton": "Run above steps",
+      "finishButton": "Finish",
+      "windowWaitSeconds": 45,
+      "yesToContinueWaitSeconds": 20,
+      "continueToRunWaitSeconds": 40,
+      "runStepsWaitSeconds": 20,
+      "generationTimeoutMinutes": 90,
+      "mainPollMs": 500,
+      "dialogDismissPauseMs": 400,
+      "tabSwitchPauseMs": 800,
+      "wizardClickPollMs": 1200,
+      "generationPollMs": 3000,
+      "finishPauseMs": 1500
+    }
   }
 }

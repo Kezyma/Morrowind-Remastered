@@ -3,10 +3,19 @@ namespace MorrowindRemasteredLauncher.Models;
 /// <summary>The kind of UI control a setting renders as in the editor.</summary>
 public enum SettingControl
 {
+    /// <summary>On/off switch for a boolean setting.</summary>
     Toggle,
+
+    /// <summary>Choice list of predefined options.</summary>
     Dropdown,
+
+    /// <summary>Slider over a numeric range.</summary>
     Slider,
+
+    /// <summary>Numeric entry field.</summary>
     NumberField,
+
+    /// <summary>Free-text entry field.</summary>
     TextField
 }
 
@@ -36,16 +45,18 @@ public enum SettingFile
 /// <summary>Which registry display field a <see cref="SettingStore.RegistryScreen"/> setting maps to.</summary>
 public enum ScreenField
 {
+    /// <summary>Screen width in pixels.</summary>
     Width,
+
+    /// <summary>Screen height in pixels.</summary>
     Height,
+
+    /// <summary>Refresh rate in Hz.</summary>
     Refresh
 }
 
-/// <summary>
-/// How a setting's value is encoded in its backing store. The editor works with a
-/// normalised "logical" value (bools as "true"/"false", numbers as invariant
-/// strings) and <see cref="SettingValueCodec"/> converts to/from the stored token.
-/// </summary>
+/// <summary>How a setting's value is encoded in its backing store.</summary>
+/// <remarks>The editor works with a normalised "logical" value (bools as "true"/"false", numbers as invariant strings); <see cref="SettingValueCodec"/> converts to/from the stored token.</remarks>
 public enum ValueFormat
 {
     /// <summary>Stored verbatim (dropdown tokens, free text).</summary>
@@ -70,9 +81,7 @@ public enum ValueFormat
 /// <summary>One choice in a <see cref="SettingControl.Dropdown"/> (display label + stored token).</summary>
 public sealed record SettingOption(string Label, string StoredToken)
 {
-    // The combo box's selection-box ContentPresenter falls back to ToString() for
-    // the collapsed display (DisplayMemberPath only covers the dropdown list), so
-    // surface the label here rather than the default record formatting.
+    /// <summary>Returns the label so the combo box's collapsed selection box shows it (DisplayMemberPath only covers the dropdown list).</summary>
     public override string ToString() => Label;
 }
 
@@ -85,10 +94,7 @@ public sealed record SettingTarget(
     string? Key = null,
     ScreenField ScreenField = ScreenField.Width);
 
-/// <summary>
-/// A single curated setting: its category/label/help, the control to render, the
-/// backing target, and (for sliders/dropdowns) range or option metadata.
-/// </summary>
+/// <summary>A single curated setting: category/label/help, the control to render, the backing target, and (for sliders/dropdowns) range or option metadata.</summary>
 public sealed record SettingDescriptor(
     string Id,
     string Category,

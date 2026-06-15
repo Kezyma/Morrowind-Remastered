@@ -1,15 +1,16 @@
 namespace MorrowindRemasteredLauncher.Models;
 
-/// <summary>
-/// The curated, per-edition list of settings the editor exposes. Pure data — no
-/// I/O. Resolution and refresh options are filled at runtime by
-/// <c>GameSettingsService</c> from the active monitor's modes.
-/// </summary>
+/// <summary>The curated, per-edition list of settings the editor exposes (pure data, no I/O).</summary>
+/// <remarks>Resolution and refresh options are filled at runtime by <c>GameSettingsService</c> from the active monitor's modes.</remarks>
 public static class SettingsCatalog
 {
-    // Well-known ids the service special-cases (registry display / config mirror).
+    /// <summary>Well-known resolution setting id the service special-cases (registry display / config mirror).</summary>
     public const string ResolutionIdValue = "display.resolution";
+
+    /// <summary>Well-known refresh-rate setting id the service special-cases.</summary>
     public const string RefreshIdValue = "display.refresh";
+
+    /// <summary>Well-known UI-scale setting id the service special-cases.</summary>
     public const string UiScaleIdValue = "ui.scale";
 
     /// <summary>The resolution setting id (same in both editions; lists are separate).</summary>
@@ -22,49 +23,55 @@ public static class SettingsCatalog
         "Interface", "Gameplay", "Audio", "Controls"
     };
 
+    /// <summary>The setting list for the given edition (OpenMW or MWSE).</summary>
     public static IReadOnlyList<SettingDescriptor> For(Edition edition) =>
         edition == Edition.OpenMW ? OpenMw : Mwse;
 
-    // ----------------------------------------------------------- build helpers
-
+    /// <summary>Builds a settings.cfg-backed target.</summary>
     private static SettingTarget Cfg(string section, string key, ValueFormat fmt = ValueFormat.Raw) =>
         new(SettingStore.IniFile, fmt, SettingFile.SettingsCfg, section, key);
 
+    /// <summary>Builds an MGE.ini-backed target.</summary>
     private static SettingTarget Mge(string section, string key, ValueFormat fmt = ValueFormat.Raw) =>
         new(SettingStore.IniFile, fmt, SettingFile.MgeIni, section, key);
 
+    /// <summary>Builds a Morrowind.ini-backed target.</summary>
     private static SettingTarget MwIni(string section, string key, ValueFormat fmt = ValueFormat.Raw) =>
         new(SettingStore.IniFile, fmt, SettingFile.MorrowindIni, section, key);
 
+    /// <summary>Builds a registry-display target for the given screen field.</summary>
     private static SettingTarget Reg(ScreenField field) =>
         new(SettingStore.RegistryScreen, ValueFormat.Raw, ScreenField: field);
 
+    /// <summary>Builds a toggle setting descriptor.</summary>
     private static SettingDescriptor Toggle(
         string id, string cat, string label, string desc, SettingTarget target) =>
         new(id, cat, label, desc, SettingControl.Toggle, target);
 
+    /// <summary>Builds a slider setting descriptor with range and step.</summary>
     private static SettingDescriptor Slider(
         string id, string cat, string label, string desc, SettingTarget target,
         double min, double max, double step) =>
         new(id, cat, label, desc, SettingControl.Slider, target, min, max, step);
 
+    /// <summary>Builds a numeric-field setting descriptor with optional bounds.</summary>
     private static SettingDescriptor Number(
         string id, string cat, string label, string desc, SettingTarget target,
         double min = 0, double max = double.MaxValue) =>
         new(id, cat, label, desc, SettingControl.NumberField, target, min, max);
 
+    /// <summary>Builds a dropdown setting descriptor with its options.</summary>
     private static SettingDescriptor Dropdown(
         string id, string cat, string label, string desc, SettingTarget target,
         params SettingOption[] options) =>
         new(id, cat, label, desc, SettingControl.Dropdown, target, Options: options);
 
+    /// <summary>Builds a dropdown option (label + stored token).</summary>
     private static SettingOption Opt(string label, string token) => new(label, token);
 
-    // ----------------------------------------------------------------- OpenMW
-
+    /// <summary>The OpenMW edition's curated settings, grouped by category.</summary>
     private static readonly IReadOnlyList<SettingDescriptor> OpenMw = new[]
     {
-        // Display
         Dropdown(ResolutionIdValue, "Display", "Resolution",
             "Screen resolution.",
             Cfg("Video", "resolution x", ValueFormat.Int)),
@@ -83,7 +90,6 @@ public static class SettingsCatalog
             "Screen brightness.",
             Cfg("Video", "gamma", ValueFormat.Float1), 0.5, 2.0, 0.05),
 
-        // Graphics
         Dropdown("video.antialiasing", "Graphics", "Anti-aliasing",
             "Smooths jagged edges (MSAA).",
             Cfg("Video", "antialiasing"),
@@ -105,7 +111,6 @@ public static class SettingsCatalog
             "Field of view for the player's hands in first person.",
             Cfg("Camera", "first person field of view", ValueFormat.Int), 30, 110, 1),
 
-        // View Distance
         Slider("camera.viewDistance", "View Distance", "View distance",
             "How far the world is drawn; higher costs performance.",
             Cfg("Camera", "viewing distance", ValueFormat.Int), 6144, 81920, 2048),
@@ -125,7 +130,6 @@ public static class SettingsCatalog
             "How far away grass is drawn.",
             Cfg("Groundcover", "rendering distance", ValueFormat.Int), 1024, 12288, 512),
 
-        // Shadows
         Toggle("shadows.enable", "Shadows", "Enable shadows",
             "Master toggle for dynamic shadows.",
             Cfg("Shadows", "enable shadows", ValueFormat.BoolTrueFalse)),
@@ -149,7 +153,6 @@ public static class SettingsCatalog
             "Allow terrain to cast shadows.",
             Cfg("Shadows", "terrain shadows", ValueFormat.BoolTrueFalse)),
 
-        // Interface
         Slider(UiScaleIdValue, "Interface", "UI scale",
             "Scales the interface and HUD.",
             Cfg("GUI", "scaling factor", ValueFormat.Float1), 0.5, 2.0, 0.05),
@@ -166,7 +169,6 @@ public static class SettingsCatalog
             "Show subtitles for spoken dialogue.",
             Cfg("GUI", "subtitles", ValueFormat.BoolTrueFalse)),
 
-        // Gameplay
         Slider("game.difficulty", "Gameplay", "Difficulty",
             "Damage dealt vs. received. Negative is easier.",
             Cfg("Game", "difficulty", ValueFormat.Int), -100, 100, 5),
@@ -178,7 +180,6 @@ public static class SettingsCatalog
             "Always use the strongest attack type for the weapon.",
             Cfg("Game", "best attack", ValueFormat.BoolTrueFalse)),
 
-        // Audio
         Slider("sound.master", "Audio", "Master volume",
             "Overall volume.",
             Cfg("Sound", "master volume", ValueFormat.Float1), 0, 1, 0.05),
@@ -195,7 +196,6 @@ public static class SettingsCatalog
             "Footstep sound volume.",
             Cfg("Sound", "footsteps volume", ValueFormat.Float1), 0, 1, 0.05),
 
-        // Controls
         Slider("input.sensitivity", "Controls", "Mouse sensitivity",
             "Camera look sensitivity.",
             Cfg("Input", "camera sensitivity", ValueFormat.Float1), 0.1, 5.0, 0.05),
@@ -210,15 +210,17 @@ public static class SettingsCatalog
             Cfg("Input", "enable controller", ValueFormat.BoolTrueFalse)),
     };
 
-    // ------------------------------------------------------------------- MWSE
-    // Safe subset only. Never touches Distant Land generation params, the
-    // Distant Land on/off toggle, [Shader Chain], or [DLWizard Settings] — those
-    // are owned by the MGE XE GUI tool. Bool formats match each key's existing
-    // convention in MGE.ini (some keys use On/Off, others True/False).
-
+    /// <summary>The MWSE edition's curated settings, grouped by category.</summary>
+    /// <remarks>
+    /// A safe subset only: never touches Distant Land generation params, the Distant Land on/off
+    /// toggle, [Shader Chain], or [DLWizard Settings] (those are owned by the MGE XE GUI tool). Bool
+    /// formats match each key's existing convention in MGE.ini (some keys use On/Off, others True/False).
+    /// Audio volumes, Difficulty, Shadows and Gamma are intentionally omitted (OpenMW-only): vanilla
+    /// Morrowind stores volumes/difficulty in an undocumented registry binary blob, MGE's shadow params
+    /// live in the generation-managed [Distant Land] section the MGE XE tool owns, and MGE has no gamma key.
+    /// </remarks>
     private static readonly IReadOnlyList<SettingDescriptor> Mwse = new[]
     {
-        // Display
         Dropdown(ResolutionIdValue, "Display", "Resolution",
             "Screen resolution.",
             Reg(ScreenField.Width)),
@@ -237,7 +239,6 @@ public static class SettingsCatalog
             "Maximum frames per second. 0 = unlimited.",
             MwIni("General", "Max FPS", ValueFormat.Int), 0, 1000),
 
-        // Graphics
         Dropdown("mge.antialiasing", "Graphics", "Anti-aliasing",
             "Smooths jagged edges (MSAA).",
             Mge("Global Graphics", "Antialiasing Level"),
@@ -261,12 +262,10 @@ public static class SettingsCatalog
             "Show an on-screen FPS counter.",
             Mge("Render State", "MGE FPS Counter", ValueFormat.BoolTrueFalse)),
 
-        // View Distance
         Slider("mge.drawDistance", "View Distance", "View distance",
             "How far distant land is drawn, in cells (5 = recommended).",
             Mge("Distant Land", "Draw Distance", ValueFormat.Float1), 1, 10, 0.5),
 
-        // Interface
         Slider(UiScaleIdValue, "Interface", "UI scale",
             "Scales the interface and HUD.",
             Mge("Render State", "UI Scaling", ValueFormat.Float1), 0.5, 2.0, 0.05),
@@ -277,16 +276,8 @@ public static class SettingsCatalog
             "Show subtitles for spoken dialogue.",
             MwIni("General", "Subtitles", ValueFormat.BoolOneZero)),
 
-        // Gameplay (MGE [Misc])
         Toggle("mge.skipIntro", "Gameplay", "Skip intro movies",
             "Skip the studio logos and intro video on startup.",
             Mge("Misc", "Skip Intro Movies", ValueFormat.BoolTrueFalse)),
-
-        // NOTE: MWSE intentionally omits Audio volumes, Difficulty, Shadows and Gamma:
-        //  - vanilla Morrowind stores master/music/effect/voice volume and difficulty in an
-        //    undocumented registry binary blob, not a safe text key;
-        //  - MGE's shadow params live in the generation-managed [Distant Land] section (which
-        //    the MGE XE tool owns, so we don't touch it), and the MGE core has no gamma key.
-        // These appear only under OpenMW by design.
     };
 }

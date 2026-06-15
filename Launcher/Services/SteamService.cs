@@ -1,7 +1,6 @@
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
-using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -9,50 +8,43 @@ using Microsoft.Win32;
 
 namespace MorrowindRemasteredLauncher.Services;
 
-/// <summary>
-/// Steam integration, all best-effort / fail-soft:
-///   - detect the Steam install (registry) and whether the client is running;
-///   - add the launcher to Steam as a non-Steam shortcut (binary shortcuts.vdf);
-///   - while the game runs, hold a Steamworks session for Morrowind (appid 22320)
-///     so Steam logs the playtime. The steam_api64.dll is downloaded on demand
-///     (not shipped) and only used when Steam is running and tracking is enabled.
-/// </summary>
+/// <summary>Best-effort Steam integration: detect the install, add a non-Steam shortcut, and track Morrowind playtime.</summary>
+/// <remarks>
+/// All operations are fail-soft. Detects the Steam install (registry) and whether the client is running; adds
+/// the launcher to Steam as a non-Steam shortcut (binary shortcuts.vdf); and, while the game runs, holds a
+/// Steamworks session for Morrowind (appid 22320) so Steam logs the playtime. The steam_api64.dll ships
+/// embedded in the exe and is extracted on demand, only used when Steam is running and tracking is enabled.
+/// </remarks>
 public sealed class SteamService
 {
-    /// <summary>Steam appid for The Elder Scrolls III: Morrowind — used for playtime tracking.</summary>
+    /// <summary>Default Steam appid for Morrowind; the literal fallback for the presence helper's arg parse.</summary>
     public const uint MorrowindAppId = 22320;
 
-    private const string ShortcutAppName = "The Elder Scrolls III: Morrowind Remastered";
-
-    private readonly HttpClient _http;
     private readonly ConfigService _config;
 
-    public SteamService(HttpClient http, ConfigService config)
+    /// <summary>Creates the Steam service.</summary>
+    public SteamService(ConfigService config)
     {
-        _http = http;
         _config = config;
     }
-
-    // -------------------------------------------------------------- Detection
 
     /// <summary>The Steam install folder, or null when Steam isn't installed.</summary>
     public string? SteamPath
     {
         get
         {
-            foreach (var (hive, view, sub, name) in new[]
-            {
-                (RegistryHive.CurrentUser, RegistryView.Registry64, @"Software\Valve\Steam", "SteamPath"),
-                (RegistryHive.CurrentUser, RegistryView.Registry32, @"Software\Valve\Steam", "SteamPath"),
-                (RegistryHive.LocalMachine, RegistryView.Registry32, @"SOFTWARE\WOW6432Node\Valve\Steam", "InstallPath"),
-                (RegistryHive.LocalMachine, RegistryView.Registry64, @"SOFTWARE\Valve\Steam", "InstallPath"),
-            })
+            foreach (var reg in _config.Current.Steam.RegistryPaths)
             {
                 try
                 {
+                    if (!Enum.TryParse<RegistryHive>(reg.Hive, out var hive) ||
+                        !Enum.TryParse<RegistryView>(reg.View, out var view))
+                    {
+                        continue;
+                    }
                     using var baseKey = RegistryKey.OpenBaseKey(hive, view);
-                    using var key = baseKey.OpenSubKey(sub);
-                    if (key?.GetValue(name) is string p && !string.IsNullOrWhiteSpace(p))
+                    using var key = baseKey.OpenSubKey(reg.SubKey);
+                    if (key?.GetValue(reg.ValueName) is string p && !string.IsNullOrWhiteSpace(p))
                     {
                         var full = Path.GetFullPath(p);
                         if (Directory.Exists(full))
@@ -63,14 +55,13 @@ public sealed class SteamService
                 }
                 catch
                 {
-                    // Ignore and try the next hive/view.
                 }
             }
             return null;
         }
     }
 
-    /// <summary>True when Steam is installed on this machine.</summary>
+    /// <summary>True when Steam is installed.</summary>
     public bool IsInstalled => SteamPath is not null;
 
     /// <summary>Full path to <c>steam.exe</c>, or null when Steam isn't installed.</summary>
@@ -83,7 +74,7 @@ public sealed class SteamService
             {
                 return null;
             }
-            var exe = Path.Combine(p, "steam.exe");
+            var exe = Path.Combine(p, _config.Current.Steam.SteamExeName);
             return File.Exists(exe) ? exe : null;
         }
     }
@@ -112,23 +103,18 @@ public sealed class SteamService
         }
         catch
         {
-            // ignore
         }
         return null;
     }
 
-    // ------------------------------------------------- Shortcut (Add to Steam)
-
+    /// <summary>Full path to the running launcher exe.</summary>
     private static string LauncherExe =>
         Environment.ProcessPath ?? Path.Combine(AppPaths.Root, "MorrowindRemastered.exe");
 
+    /// <summary>The launcher exe path wrapped in quotes, as Steam stores it.</summary>
     private static string QuotedExe => $"\"{LauncherExe}\"";
 
-    /// <summary>
-    /// Per-user <c>shortcuts.vdf</c> paths. When <paramref name="activeUser"/> is a
-    /// known account id, only that user's file; when null, every numeric
-    /// <c>userdata/&lt;id&gt;</c> folder.
-    /// </summary>
+    /// <summary>Per-user <c>shortcuts.vdf</c> paths: just <paramref name="activeUser"/>'s file when known, else every numeric <c>userdata/&lt;id&gt;</c> folder.</summary>
     private IEnumerable<string> ShortcutsVdfPaths(string? activeUser)
     {
         var steam = SteamPath;
@@ -182,25 +168,13 @@ public sealed class SteamService
         return false;
     }
 
-    /// <summary>
-    /// Adds the launcher as a non-Steam shortcut for the signed-in user (or all
-    /// users if unknown). Round-trips the existing shortcuts.vdf so other shortcuts
-    /// are preserved; a one-time <c>.bak</c> is kept. Steam must be restarted to
-    /// show the shortcut. Returns true if added or already present.
-    /// </summary>
+    /// <summary>Adds the launcher as a non-Steam shortcut for the signed-in user (or all users if unknown), preserving other shortcuts and keeping a one-time <c>.bak</c>; Steam must be restarted to show it. Returns true if added or already present.</summary>
     public bool AddLauncherShortcut() => WriteShortcut(ActiveUserId());
 
-    /// <summary>
-    /// Adds the shortcut and, when <paramref name="restartSteam"/> is set and Steam is
-    /// running, restarts the client so the new entry shows up immediately. Steam
-    /// rewrites shortcuts.vdf from its in-memory list when it exits, so a write made
-    /// while it runs is lost on the next shutdown; we therefore sandwich the write
-    /// between a graceful shutdown and a relaunch so it sticks. Returns true if the
-    /// shortcut was added or already present.
-    /// </summary>
+    /// <summary>Adds the shortcut and, when <paramref name="restartSteam"/> is set and Steam is running, restarts the client so the entry shows immediately. Returns true if added or already present.</summary>
+    /// <remarks>Steam rewrites shortcuts.vdf from its in-memory list when it exits, so a write made while it runs is lost on the next shutdown; the write is therefore sandwiched between a graceful shutdown and a relaunch so it sticks. The signed-in user is captured up front because ActiveUser resets to 0 once Steam exits.</remarks>
     public async Task<bool> AddLauncherShortcutAsync(bool restartSteam, CancellationToken ct)
     {
-        // Capture the signed-in user up front — ActiveUser resets to 0 once Steam exits.
         var activeUser = ActiveUserId();
         var restart = restartSteam && IsRunning;
 
@@ -218,6 +192,7 @@ public sealed class SteamService
         return ok;
     }
 
+    /// <summary>Writes/refreshes the launcher's shortcut entry (and its icon and artwork) into each target user's shortcuts.vdf. Returns true if any file was handled.</summary>
     private bool WriteShortcut(string? activeUser)
     {
         var any = false;
@@ -236,9 +211,6 @@ public sealed class SteamService
                     root.Entries.Add(("shortcuts", Vdf.TypeMap, shortcuts));
                 }
 
-                // Always resolve the icon — this re-extracts icon.ico to disk whenever it's
-                // missing (e.g. after a rebuild wiped the output), the same way artwork is
-                // re-applied every run. Then ensure the entry exists and points at it.
                 var icon = IconPath();
                 var entry = FindLauncherEntry(shortcuts);
                 bool changed;
@@ -270,8 +242,6 @@ public sealed class SteamService
                     File.Move(tmp, file, overwrite: true);
                 }
 
-                // (Re)apply any custom artwork for this user, whether the shortcut was
-                // just added or already present.
                 ApplyArtwork(Path.GetDirectoryName(file)!);
                 any = true;
             }
@@ -283,14 +253,7 @@ public sealed class SteamService
         return any;
     }
 
-    // ----------------------------------------------------- Restart the client
-
-    /// <summary>
-    /// Asks a running Steam client to shut down gracefully (<c>steam.exe -shutdown</c>)
-    /// and waits for every steam process to exit, up to <paramref name="timeout"/>
-    /// (default 20s). Returns true once Steam has stopped (or wasn't running). No-op
-    /// fail-soft: a false return just means the caller should skip the relaunch.
-    /// </summary>
+    /// <summary>Asks a running Steam client to shut down gracefully (<c>steam.exe -shutdown</c>) and waits for every steam process to exit up to <paramref name="timeout"/>; returns true once stopped (or not running), a false return meaning the caller should skip the relaunch.</summary>
     public async Task<bool> ShutdownSteamAsync(CancellationToken ct, TimeSpan? timeout = null)
     {
         if (!IsRunning)
@@ -317,7 +280,7 @@ public sealed class SteamService
             return false;
         }
 
-        var limit = timeout ?? TimeSpan.FromSeconds(20);
+        var limit = timeout ?? TimeSpan.FromSeconds(_config.Current.Steam.ShutdownTimeoutSeconds);
         var waited = TimeSpan.Zero;
         var step = TimeSpan.FromMilliseconds(250);
         while (IsRunning && waited < limit)
@@ -334,11 +297,7 @@ public sealed class SteamService
         return true;
     }
 
-    /// <summary>
-    /// Starts the Steam client. The launcher runs elevated, so Steam is launched via
-    /// explorer.exe to drop back to the user's normal integrity level (Steam launched
-    /// elevated misbehaves). Best-effort; returns false if it couldn't be started.
-    /// </summary>
+    /// <summary>Starts the Steam client via explorer.exe so it drops back to the user's normal integrity level (the launcher runs elevated and Steam misbehaves when elevated); best-effort, returns false if it couldn't be started.</summary>
     public bool StartSteam()
     {
         var exe = SteamExe;
@@ -362,18 +321,10 @@ public sealed class SteamService
         }
     }
 
-    // ------------------------------------------------- Custom artwork / icon
-
     /// <summary>Folder under launcher/ where Steam artwork is kept/extracted.</summary>
     private static string SteamAssetsDir => AppPaths.SteamAssetsDir;
 
-    /// <summary>
-    /// Resolves a Steam asset to an on-disk path: a loose <c>Steam/&lt;fileName&gt;</c>
-    /// beside the exe wins (dev override); otherwise the copy embedded in the exe
-    /// (logical resource name == <paramref name="fileName"/>) is extracted there.
-    /// Returns null when neither exists. Extraction is what lets the artwork/icon work
-    /// when the launcher ships embedded inside a modlist with no loose files beside it.
-    /// </summary>
+    /// <summary>Resolves a Steam asset on disk — a loose <c>Steam/&lt;fileName&gt;</c> beside the exe wins (dev override), else the embedded copy is extracted there (so artwork/icon work when the launcher ships embedded with no loose files); null when neither exists.</summary>
     private static string? EnsureAsset(string fileName)
     {
         var path = Path.Combine(SteamAssetsDir, fileName);
@@ -405,15 +356,10 @@ public sealed class SteamService
         }
     }
 
-    /// <summary>
-    /// The shortcut icon path: a bundled/extracted <c>icon.ico</c> (preferred), a loose
-    /// <c>icon.png</c>, else the launcher exe (which carries the same icon via
-    /// <c>&lt;ApplicationIcon&gt;</c>). Steam reads this path lazily after we exit, so it
-    /// must point at a file that persists — hence we extract to disk, not a temp file.
-    /// </summary>
-    private static string IconPath()
+    /// <summary>The shortcut icon path — a bundled/extracted <c>icon.ico</c> (preferred), a loose <c>icon.png</c>, else the launcher exe; extracted to a persistent disk file (not temp) because Steam reads this path lazily after we exit.</summary>
+    private string IconPath()
     {
-        if (EnsureAsset("icon.ico") is { } ico)
+        if (EnsureAsset(_config.Current.Steam.IconAssetName) is { } ico)
         {
             return ico;
         }
@@ -421,14 +367,7 @@ public sealed class SteamService
         return File.Exists(loosePng) ? loosePng : LauncherExe;
     }
 
-    /// <summary>
-    /// Copies user-supplied artwork from the "Steam" folder beside the launcher into
-    /// the user's <c>config/grid</c> folder, keyed by the shortcut appid, so the
-    /// non-Steam entry shows a custom wide capsule, box art, hero and logo. Each slot
-    /// accepts the descriptive shipped name first, then an older generic stem as a
-    /// fallback (.png/.jpg): "Steam Capsule Wide"/<c>header</c>,
-    /// "Steam Capsule"/<c>boxart</c>, "Steam Hero"/<c>hero</c>, "Steam Logo"/<c>logo</c>.
-    /// </summary>
+    /// <summary>Copies the wide-capsule, box-art, hero and logo artwork into the user's <c>config/grid</c> folder keyed by the shortcut appid, so the non-Steam entry shows custom library art.</summary>
     private void ApplyArtwork(string userConfigDir)
     {
         var grid = Path.Combine(userConfigDir, "grid");
@@ -436,24 +375,18 @@ public sealed class SteamService
         var legacyId = ((ulong)appId << 32) | 0x02000000UL;
         Logger.Info($"Applying Steam artwork (appid {appId}) to \"{grid}\".");
 
+        var art = _config.Current.Steam.Artwork;
         var placed = 0;
-        // Wide capsule → horizontal capsule (new UI) + legacy grid id for the old UI.
-        placed += PlaceArtwork(grid, new[] { "Steam Capsule Wide", "header" },
+        placed += PlaceArtwork(grid, art.CapsuleWideStems,
             appId.ToString(CultureInfo.InvariantCulture),
             legacyId.ToString(CultureInfo.InvariantCulture));
-        // Capsule → vertical/portrait box art.
-        placed += PlaceArtwork(grid, new[] { "Steam Capsule", "boxart" }, $"{appId}p");
-        // Hero banner + transparent logo.
-        placed += PlaceArtwork(grid, new[] { "Steam Hero", "hero" }, $"{appId}_hero");
-        placed += PlaceArtwork(grid, new[] { "Steam Logo", "logo" }, $"{appId}_logo");
+        placed += PlaceArtwork(grid, art.CapsuleStems, $"{appId}p");
+        placed += PlaceArtwork(grid, art.HeroStems, $"{appId}_hero");
+        placed += PlaceArtwork(grid, art.LogoStems, $"{appId}_logo");
         Logger.Info($"Placed {placed}/4 Steam artwork slot(s) in the grid folder.");
     }
 
-    /// <summary>
-    /// Resolves an artwork source: a loose <c>Steam/&lt;stem&gt;.(png|jpg|jpeg)</c> for any of
-    /// <paramref name="sourceStems"/> wins (dev override / generic fallback names); otherwise
-    /// the embedded copy shipped under the first stem's <c>.png</c> name is extracted.
-    /// </summary>
+    /// <summary>Resolves an artwork source: a loose <c>Steam/&lt;stem&gt;.(png|jpg|jpeg)</c> for any of <paramref name="sourceStems"/> wins (dev override / fallback names), else the embedded copy under the first stem's <c>.png</c> name is extracted.</summary>
     private static string? ResolveArtworkSource(string[] sourceStems)
     {
         var loose = sourceStems
@@ -489,6 +422,7 @@ public sealed class SteamService
         }
     }
 
+    /// <summary>An empty shortcuts.vdf root holding just an empty <c>shortcuts</c> map.</summary>
     private static VdfMap NewRoot()
     {
         var root = new VdfMap();
@@ -496,6 +430,7 @@ public sealed class SteamService
         return root;
     }
 
+    /// <summary>True if the shortcuts map already contains the launcher's entry.</summary>
     private static bool HasLauncherEntry(VdfMap shortcuts) => FindLauncherEntry(shortcuts) is not null;
 
     /// <summary>The launcher's shortcut entry (matched by Exe == the launcher exe), or null.</summary>
@@ -516,11 +451,7 @@ public sealed class SteamService
         return null;
     }
 
-    /// <summary>
-    /// Sets the entry's <c>icon</c> string field to <paramref name="icon"/> (adding it if
-    /// absent). Returns true if the value changed, so the caller only rewrites the vdf when
-    /// needed.
-    /// </summary>
+    /// <summary>Sets the entry's <c>icon</c> field (adding it if absent); returns true only when the value changed, so the caller rewrites the vdf only when needed.</summary>
     private static bool SetEntryIcon(VdfMap entry, string icon)
     {
         for (var i = 0; i < entry.Entries.Count; i++)
@@ -540,6 +471,7 @@ public sealed class SteamService
         return true;
     }
 
+    /// <summary>The next free numeric index key for a new shortcut entry.</summary>
     private static int NextIndex(VdfMap shortcuts)
     {
         var max = -1;
@@ -553,11 +485,12 @@ public sealed class SteamService
         return max + 1;
     }
 
-    private static VdfMap BuildEntry(string icon)
+    /// <summary>Builds a fresh non-Steam shortcut entry for the launcher with the given icon.</summary>
+    private VdfMap BuildEntry(string icon)
     {
         var e = new VdfMap();
         e.Entries.Add(("appid", Vdf.TypeInt, ComputeAppId()));
-        e.Entries.Add(("AppName", Vdf.TypeString, ShortcutAppName));
+        e.Entries.Add(("AppName", Vdf.TypeString, _config.Current.Steam.ShortcutAppName));
         e.Entries.Add(("Exe", Vdf.TypeString, QuotedExe));
         e.Entries.Add(("StartDir", Vdf.TypeString, $"\"{AppPaths.Root}\""));
         e.Entries.Add(("icon", Vdf.TypeString, icon));
@@ -575,17 +508,14 @@ public sealed class SteamService
         return e;
     }
 
-    /// <summary>
-    /// Steam's non-Steam shortcut id (unsigned): crc32(exe+name) with the high bit
-    /// set. This is the key Steam uses for both shortcuts.vdf and the library
-    /// artwork filenames in <c>config/grid</c>.
-    /// </summary>
-    private static uint ShortcutAppIdUnsigned() =>
-        Crc32(Encoding.UTF8.GetBytes(QuotedExe + ShortcutAppName)) | 0x80000000u;
+    /// <summary>Steam's non-Steam shortcut id (unsigned): crc32(exe+name) with the high bit set — the key Steam uses for both shortcuts.vdf and the <c>config/grid</c> artwork filenames.</summary>
+    private uint ShortcutAppIdUnsigned() =>
+        Crc32(Encoding.UTF8.GetBytes(QuotedExe + _config.Current.Steam.ShortcutAppName)) | 0x80000000u;
 
     /// <summary>The same id as stored in shortcuts.vdf's int32 <c>appid</c> field.</summary>
-    private static int ComputeAppId() => unchecked((int)ShortcutAppIdUnsigned());
+    private int ComputeAppId() => unchecked((int)ShortcutAppIdUnsigned());
 
+    /// <summary>Computes the standard CRC-32 of the given bytes.</summary>
     private static uint Crc32(byte[] data)
     {
         var crc = 0xFFFFFFFFu;
@@ -600,17 +530,16 @@ public sealed class SteamService
         return ~crc;
     }
 
-    // --------------------------------------------- Playtime tracking (22320)
-
+    /// <summary>On-disk path of the Steamworks shim DLL next to the launcher.</summary>
     private static string SteamApiDllPath => AppPaths.SteamApiDll;
 
-    /// <summary>Extracts the embedded steam_api64.dll next to the exe. False if absent.</summary>
-    private static bool TryExtractEmbeddedSteamApi()
+    /// <summary>Extracts the embedded Steamworks shim DLL next to the exe. False if absent.</summary>
+    private bool TryExtractEmbeddedSteamApi()
     {
         try
         {
             using var stream = typeof(SteamService).Assembly
-                .GetManifestResourceStream("steam_api64.dll");
+                .GetManifestResourceStream(_config.Current.Steam.SteamApiDllName);
             if (stream is null)
             {
                 return false;
@@ -631,11 +560,7 @@ public sealed class SteamService
         }
     }
 
-    /// <summary>
-    /// Finds an existing <c>steam_api64.dll</c> anywhere in the user's Steam library
-    /// (any installed 64-bit game ships one), or null. Lazy enumeration stops at the
-    /// first hit.
-    /// </summary>
+    /// <summary>Finds an existing <c>steam_api64.dll</c> anywhere in the user's Steam library (any installed 64-bit game ships one), stopping at the first hit; null if none.</summary>
     private string? TryFindLocalSteamApi()
     {
         var steam = SteamPath;
@@ -662,7 +587,6 @@ public sealed class SteamService
             }
             catch
             {
-                // Permission/IO issue scanning this library; try the next.
             }
         }
         return null;
@@ -698,34 +622,31 @@ public sealed class SteamService
     private System.Threading.Timer? _callbackTimer;
     private bool _tracking;
 
+    /// <summary>True while a Steamworks playtime session is being held.</summary>
     public bool IsTracking => _tracking;
 
+    /// <summary>Native signature of <c>SteamAPI_Init</c>.</summary>
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     [return: MarshalAs(UnmanagedType.I1)]
     private delegate bool SteamApiInitDelegate();
 
+    /// <summary>Native signature of the void Steam API entry points (RunCallbacks, Shutdown).</summary>
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     private delegate void SteamApiVoidDelegate();
 
-    /// <summary>
-    /// Ensures steam_api64.dll is present next to the launcher, downloading it from
-    /// the configured URL on demand. Returns false if it can't be obtained.
-    /// </summary>
-    public async Task<bool> EnsureSteamApiAsync(IProgress<InstallProgress>? progress, CancellationToken ct)
+    /// <summary>Ensures steam_api64.dll is present next to the launcher (the embedded copy, else an existing one in the Steam library); false if it can't be obtained.</summary>
+    public bool EnsureSteamApi()
     {
         if (File.Exists(SteamApiDllPath))
         {
             return true;
         }
 
-        // Primary source: the copy embedded in the launcher (extract next to the exe).
         if (TryExtractEmbeddedSteamApi())
         {
             return true;
         }
 
-        // Fallback: an existing steam_api64.dll already on disk in the user's Steam
-        // library — it's the generic shim and works for any appid.
         var local = TryFindLocalSteamApi();
         if (local is not null)
         {
@@ -741,50 +662,12 @@ public sealed class SteamService
             }
         }
 
-        var url = _config.Current.Downloads.SteamApi;
-        if (string.IsNullOrWhiteSpace(url))
-        {
-            Logger.Warn("No local steam_api64.dll found and no download URL configured; " +
-                        "can't track playtime.");
-            return false;
-        }
-        try
-        {
-            progress?.Report(new InstallProgress("Steam", "Downloading Steam API…", null, true));
-            using var resp = await _http
-                .GetAsync(new Uri(url), HttpCompletionOption.ResponseHeadersRead, ct)
-                .ConfigureAwait(false);
-            resp.EnsureSuccessStatusCode();
-            var tmp = SteamApiDllPath + ".tmp";
-            await using (var src = await resp.Content.ReadAsStreamAsync(ct).ConfigureAwait(false))
-            await using (var dst = File.Create(tmp))
-            {
-                await src.CopyToAsync(dst, ct).ConfigureAwait(false);
-            }
-            File.Move(tmp, SteamApiDllPath, overwrite: true);
-            Logger.Info($"Downloaded steam_api64.dll to {SteamApiDllPath}.");
-            return true;
-        }
-        catch (Exception ex)
-        {
-            // Not fatal: the game still launches, tracking just won't start. Logged
-            // as a warning (no error banner) since the dll may simply not be hosted
-            // yet — host it at the configured URL, or drop steam_api64.dll next to
-            // the launcher to use it directly.
-            Logger.Warn($"Couldn't download steam_api64.dll from '{url}' ({ex.Message}); " +
-                        "Steam playtime tracking is unavailable.");
-            return false;
-        }
+        Logger.Warn("steam_api64.dll unavailable (no embedded or local copy); can't track playtime.");
+        return false;
     }
 
-    /// <summary>
-    /// Begins holding a Steamworks session for the given appid so Steam logs the
-    /// playtime while it's open. No-op returning false if Steam isn't running, the dll
-    /// is missing, or init fails (e.g. the account doesn't own the game). IMPORTANT:
-    /// Steam only ends the session when the process that opened it EXITS, so this must
-    /// be used from a short-lived helper that exits when the game does — not the
-    /// long-lived launcher. Pair with <see cref="StopTracking"/>.
-    /// </summary>
+    /// <summary>Begins holding a Steamworks session for the given appid so Steam logs playtime; no-op returning false if Steam isn't running, the dll is missing, or init fails. Pair with <see cref="StopTracking"/>.</summary>
+    /// <remarks>Steam only ends the session when the process that opened it EXITS, so this must run from a short-lived helper that exits when the game does, not the long-lived launcher. It writes steam_appid.txt, which the API reads from the process CWD (the presence helper sets its working directory to launcher/, see ShellViewModel.StartSteamPresence).</remarks>
     public bool StartTracking(uint appId)
     {
         if (_tracking)
@@ -798,13 +681,10 @@ public sealed class SteamService
 
         try
         {
-            // Tell the Steam API which app this process represents before init. The
-            // steam_appid.txt is read from the process CWD; the presence helper sets its
-            // working directory to launcher/ (see ShellViewModel.StartSteamPresence).
             var id = appId.ToString(CultureInfo.InvariantCulture);
             Environment.SetEnvironmentVariable("SteamAppId", id);
             Environment.SetEnvironmentVariable("SteamGameId", id);
-            try { File.WriteAllText(AppPaths.SteamAppIdFile, id); } catch { /* best effort */ }
+            try { File.WriteAllText(AppPaths.SteamAppIdFile, id); } catch { }
 
             _steamApiLib = NativeLibrary.Load(SteamApiDllPath);
             var init = Marshal.GetDelegateForFunctionPointer<SteamApiInitDelegate>(
@@ -824,7 +704,7 @@ public sealed class SteamService
 
             _tracking = true;
             _callbackTimer = new System.Threading.Timer(
-                _ => { try { _runCallbacks?.Invoke(); } catch { /* ignore */ } }, null, 1000, 1000);
+                _ => { try { _runCallbacks?.Invoke(); } catch { } }, null, 1000, 1000);
             Logger.Info($"Steam playtime tracking started (appid {appId}).");
             return true;
         }
@@ -859,6 +739,7 @@ public sealed class SteamService
         }
     }
 
+    /// <summary>Frees the native library and clears all tracking state.</summary>
     private void Cleanup()
     {
         _tracking = false;
@@ -867,18 +748,18 @@ public sealed class SteamService
         _shutdown = null;
         if (_steamApiLib != IntPtr.Zero)
         {
-            try { NativeLibrary.Free(_steamApiLib); } catch { /* ignore */ }
+            try { NativeLibrary.Free(_steamApiLib); } catch { }
             _steamApiLib = IntPtr.Zero;
         }
     }
 
-    // ------------------------------------------- Binary VDF (shortcuts.vdf)
-
     /// <summary>An ordered binary-VDF map: each entry is (name, type byte, value).</summary>
     private sealed class VdfMap
     {
+        /// <summary>The map's entries in file order.</summary>
         public List<(string Name, byte Type, object Value)> Entries { get; } = new();
 
+        /// <summary>Returns the nested map under <paramref name="name"/>, or null.</summary>
         public VdfMap? GetMap(string name)
         {
             foreach (var e in Entries)
@@ -891,6 +772,7 @@ public sealed class SteamService
             return null;
         }
 
+        /// <summary>Returns the string value under <paramref name="name"/>, or null.</summary>
         public string? GetString(string name)
         {
             foreach (var e in Entries)
@@ -907,17 +789,23 @@ public sealed class SteamService
     /// <summary>Minimal binary-VDF (Valve KeyValues) reader/writer for shortcuts.vdf.</summary>
     private static class Vdf
     {
+        /// <summary>VDF type byte for a nested map.</summary>
         public const byte TypeMap = 0x00;
+        /// <summary>VDF type byte for a string value.</summary>
         public const byte TypeString = 0x01;
+        /// <summary>VDF type byte for an int32 value.</summary>
         public const byte TypeInt = 0x02;
+        /// <summary>VDF type byte that ends a map.</summary>
         private const byte EndMap = 0x08;
 
+        /// <summary>Parses a binary-VDF byte array into a map.</summary>
         public static VdfMap Parse(byte[] data)
         {
             var pos = 0;
             return ReadMap(data, ref pos);
         }
 
+        /// <summary>Reads one map (recursively for nested maps) from <paramref name="pos"/>.</summary>
         private static VdfMap ReadMap(byte[] data, ref int pos)
         {
             var map = new VdfMap();
@@ -941,6 +829,7 @@ public sealed class SteamService
             return map;
         }
 
+        /// <summary>Reads a null-terminated UTF-8 string, advancing past the terminator.</summary>
         private static string ReadCString(byte[] data, ref int pos)
         {
             var start = pos;
@@ -949,10 +838,11 @@ public sealed class SteamService
                 pos++;
             }
             var s = Encoding.UTF8.GetString(data, start, pos - start);
-            pos++; // skip the null terminator
+            pos++;
             return s;
         }
 
+        /// <summary>Reads a little-endian int32, advancing four bytes.</summary>
         private static int ReadInt32(byte[] data, ref int pos)
         {
             var v = BitConverter.ToInt32(data, pos);
@@ -960,6 +850,7 @@ public sealed class SteamService
             return v;
         }
 
+        /// <summary>Serializes a map back to a binary-VDF byte array.</summary>
         public static byte[] Serialize(VdfMap root)
         {
             using var ms = new MemoryStream();
@@ -967,6 +858,7 @@ public sealed class SteamService
             return ms.ToArray();
         }
 
+        /// <summary>Writes one map (recursively for nested maps) to the stream.</summary>
         private static void WriteMap(MemoryStream ms, VdfMap map)
         {
             foreach (var (name, type, value) in map.Entries)
@@ -989,6 +881,7 @@ public sealed class SteamService
             ms.WriteByte(EndMap);
         }
 
+        /// <summary>Writes a string as null-terminated UTF-8.</summary>
         private static void WriteCString(MemoryStream ms, string s)
         {
             var bytes = Encoding.UTF8.GetBytes(s);

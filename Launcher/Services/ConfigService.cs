@@ -18,17 +18,16 @@ public sealed class ConfigService
 
     private readonly object _gate = new();
 
+    /// <summary>The most recently loaded config service, for static helpers that can't take injection.</summary>
+    public static ConfigService? Instance { get; private set; }
+
     public LauncherConfig Current { get; private set; } = new();
 
+    /// <summary>Loads config from disk, seeding and backfilling from the bundled default.</summary>
     public void Load()
     {
         AppPaths.EnsureBaseDirectories();
 
-        // First run: seed the live config from the bundled default so the whole
-        // config (tools, MO2 paths, etc.) is present and editable. Note: editing
-        // the bundled config.default.json only affects a fresh install or a config
-        // with no tools (the fallback below) — an existing config.json keeps its
-        // values. To re-seed during development, delete Config/config.json.
         try
         {
             if (!File.Exists(AppPaths.ConfigFile))
@@ -59,16 +58,9 @@ public sealed class ConfigService
         }
         catch
         {
-            // Corrupt config should never block startup; fall back to defaults.
             Current = new LauncherConfig();
         }
 
-        // Backfill sections that older configs may lack from the bundled default,
-        // so changes to the default take effect without forcing a re-seed:
-        //   - Tools: legacy configs (pre-Tools) have none.
-        //   - installSource.machineUrl: pins the "latest version" lookup; an empty
-        //     value would otherwise fall back to per-edition (flipping between the
-        //     two old lists when the edition is toggled).
         var toolsEmpty = Current.Tools.Count == 0 || Current.Tools.Values.All(l => l.Count == 0);
         var machineUrlEmpty = string.IsNullOrWhiteSpace(Current.InstallSource.MachineUrl);
         if (toolsEmpty || machineUrlEmpty)
@@ -88,8 +80,11 @@ public sealed class ConfigService
                 }
             }
         }
+
+        Instance = this;
     }
 
+    /// <summary>Deserializes the bundled default config, or null if it can't be read/parsed.</summary>
     private static LauncherConfig? TryLoadDefault()
     {
         var json = ReadDefaultConfigJson();
@@ -108,11 +103,7 @@ public sealed class ConfigService
         }
     }
 
-    /// <summary>
-    /// Returns the default-config JSON: the loose <c>config.default.json</c> next to
-    /// the exe if present, otherwise the copy embedded in the executable (so the
-    /// defaults survive even if the loose file is deleted). Null if neither exists.
-    /// </summary>
+    /// <summary>Returns the default-config JSON from the loose override or the embedded copy, else null.</summary>
     private static string? ReadDefaultConfigJson()
     {
         try
@@ -144,13 +135,13 @@ public sealed class ConfigService
         return null;
     }
 
+    /// <summary>Atomically persists the current config to disk.</summary>
     public void Save()
     {
         lock (_gate)
         {
             AppPaths.EnsureBaseDirectories();
             var json = JsonSerializer.Serialize(Current, JsonOptions);
-            // Atomic write: write to temp then move over the target.
             var tmp = AppPaths.ConfigFile + ".tmp";
             File.WriteAllText(tmp, json);
             File.Move(tmp, AppPaths.ConfigFile, overwrite: true);

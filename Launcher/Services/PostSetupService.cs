@@ -5,24 +5,28 @@ namespace MorrowindRemasteredLauncher.Services;
 /// <summary>Outcome of a single post-setup step.</summary>
 public sealed record StepResult(PostSetupStep Step, bool Success, bool Skipped, string? Error);
 
-/// <summary>
-/// Runs the post-install steps for an edition, in order. Each step is idempotent
-/// — it is skipped when <see cref="PostSetupVerifier"/> already reports it done
-/// (unless forced) — so this both drives the automatic post-install tail and
-/// backs the Tools panel's per-step / run-all buttons. Reports through the same
-/// <see cref="InstallProgress"/> pipe the install uses.
-/// </summary>
+/// <summary>Runs the ordered, idempotent post-install steps for an edition, backing both the automatic post-install tail and the Tools panel's per-step / run-all buttons.</summary>
+/// <remarks>Each step is skipped when <see cref="PostSetupVerifier"/> already reports it done (unless forced), and progress flows through the same <see cref="InstallProgress"/> pipe the install uses.</remarks>
 public sealed class PostSetupService
 {
+    /// <summary>Persisted launcher config (the install record + per-profile setup flags).</summary>
     private readonly ConfigService _config;
+    /// <summary>Resolves install state for an edition.</summary>
     private readonly InstallStateService _installState;
+    /// <summary>Derives which steps are needed and which are already done.</summary>
     private readonly PostSetupVerifier _verifier;
+    /// <summary>Repairs ModOrganizer.ini paths.</summary>
     private readonly Mo2IniService _mo2Ini;
+    /// <summary>Applies display config and toggles distant land.</summary>
     private readonly PostSetupConfigService _displayConfig;
+    /// <summary>Downloads and places the OpenMW/Delta/MWSE binaries.</summary>
     private readonly BinarySetupService _binaries;
+    /// <summary>Drives MCP and MGE through MO2.</summary>
     private readonly Mo2ToolAutomation _tools;
+    /// <summary>Adds the launcher shortcut to Steam.</summary>
     private readonly SteamService _steam;
 
+    /// <summary>Creates the service with all the step dependencies it orchestrates.</summary>
     public PostSetupService(
         ConfigService config,
         InstallStateService installState,
@@ -43,10 +47,7 @@ public sealed class PostSetupService
         _steam = steam;
     }
 
-    /// <summary>
-    /// Runs every applicable step for an edition, skipping ones already done.
-    /// On completion records <c>PostSetupComplete</c> = fully configured.
-    /// </summary>
+    /// <summary>Runs every applicable step for an edition, skipping ones already done, then records whether it is fully configured.</summary>
     public async Task<IReadOnlyList<StepResult>> RunAllAsync(
         Edition edition, IProgress<InstallProgress>? progress, CancellationToken ct)
     {
@@ -66,10 +67,7 @@ public sealed class PostSetupService
         return results;
     }
 
-    /// <summary>
-    /// Runs one step. When not forced, skips it if already done. Used by both
-    /// the run-all loop and the Tools panel's individual buttons (forced).
-    /// </summary>
+    /// <summary>Runs one step, skipping it when not forced and already done; used by both the run-all loop and the Tools panel's (forced) buttons.</summary>
     public async Task<StepResult> RunStepAsync(
         Edition edition, PostSetupStep step, bool force,
         IProgress<InstallProgress>? progress, CancellationToken ct)
@@ -77,11 +75,11 @@ public sealed class PostSetupService
         var label = PostSetupVerifier.Label(step);
         if (!force && _verifier.IsDone(edition, step))
         {
-            Report(progress, $"{label}: already done.", null, false);
+            progress.Report("Setup", $"{label}: already done.", null, false);
             return new StepResult(step, Success: true, Skipped: true, null);
         }
 
-        Report(progress, $"{label}…", null, true);
+        progress.Report("Setup", $"{label}…", null, true);
         try
         {
             switch (step)
@@ -112,16 +110,12 @@ public sealed class PostSetupService
                     break;
                 case PostSetupStep.GenerateDistantLand:
                     await _tools.GenerateDistantLandAsync(edition, progress, ct).ConfigureAwait(false);
-                    // MGE flips [Distant Land] Distant Land=Off while generating; turn it back on.
                     _displayConfig.EnableDistantLand(edition);
                     break;
                 case PostSetupStep.DeltaMerge:
                     await _tools.DeltaMergeAsync(edition, progress, ct).ConfigureAwait(false);
                     break;
                 case PostSetupStep.AddToSteam:
-                    // Restart Steam (when running) so the shortcut + artwork load now;
-                    // this also makes the write stick, since Steam rewrites shortcuts.vdf
-                    // from memory on exit.
                     if (!await _steam.AddLauncherShortcutAsync(restartSteam: true, ct)
                             .ConfigureAwait(false))
                     {
@@ -130,7 +124,7 @@ public sealed class PostSetupService
                     break;
             }
 
-            Report(progress, $"{label}: done.", null, false);
+            progress.Report("Setup", $"{label}: done.", null, false);
             return new StepResult(step, Success: true, Skipped: false, null);
         }
         catch (OperationCanceledException)
@@ -144,10 +138,7 @@ public sealed class PostSetupService
         }
     }
 
+    /// <summary>Builds a failed <see cref="StepResult"/> for a step.</summary>
     private static StepResult Fail(PostSetupStep step, string? error)
         => new(step, Success: false, Skipped: false, error ?? "Failed.");
-
-    private static void Report(
-        IProgress<InstallProgress>? progress, string line, double? percent, bool indeterminate)
-        => progress?.Report(new InstallProgress("Setup", line, percent, indeterminate));
 }

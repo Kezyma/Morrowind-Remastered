@@ -3,28 +3,26 @@ using System.Text;
 
 namespace MorrowindRemasteredLauncher.Services;
 
-/// <summary>
-/// Tiny append-only file logger. Writes to
-/// &lt;LauncherDir&gt;/Config/logs/morrowindremastered.log.
-/// Thread-safe; never throws.
-/// </summary>
+/// <summary>Tiny thread-safe, never-throwing append-only file logger writing to the launcher's log file.</summary>
 public static class Logger
 {
+    /// <summary>Serialises writes to the log file.</summary>
     private static readonly object Gate = new();
 
     /// <summary>Full path of the log file (for "Open Log" UI actions).</summary>
-    public static string LogFile => Path.Combine(AppPaths.LogsDir, "morrowindremastered.log");
+    public static string LogFile => Path.Combine(AppPaths.LogsDir,
+        ConfigService.Instance?.Current.Paths.LogFileName ?? "morrowindremastered.log");
 
-    /// <summary>
-    /// Raised whenever an ERROR line is written, with a short single-line
-    /// summary. Fired on the logging thread — UI subscribers must dispatch.
-    /// </summary>
+    /// <summary>Raised with a short summary whenever an ERROR is written; fired on the logging thread, so UI subscribers must dispatch.</summary>
     public static event Action<string>? ErrorLogged;
 
+    /// <summary>Writes an INFO line.</summary>
     public static void Info(string message) => Write("INFO", message);
 
+    /// <summary>Writes a WARN line.</summary>
     public static void Warn(string message) => Write("WARN", message);
 
+    /// <summary>Writes an ERROR line (with exception detail if given) and raises <see cref="ErrorLogged"/>.</summary>
     public static void Error(string message, Exception? ex = null)
     {
         var sb = new StringBuilder(message);
@@ -42,10 +40,10 @@ public static class Logger
         }
         catch
         {
-            // Notification must never crash the app.
         }
     }
 
+    /// <summary>Appends one timestamped, leveled line to the log file; swallows all failures so logging never crashes the app.</summary>
     private static void Write(string level, string message)
     {
         try
@@ -59,7 +57,6 @@ public static class Logger
         }
         catch
         {
-            // Logging must never crash the app.
         }
     }
 }

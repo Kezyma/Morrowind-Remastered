@@ -5,15 +5,15 @@ using MorrowindRemasteredLauncher.ViewModels;
 
 namespace MorrowindRemasteredLauncher.Views;
 
-/// <summary>
-/// The optional Mods page: renders the installed list's <c>modlist.md</c> from the
-/// single shared MO2 folder (path supplied by <see cref="ShellViewModel.ModsMarkdownPath"/>)
-/// with the app's fonts/styling on a transparent background (see <see cref="MarkdownRenderer"/>).
-/// Re-read each time the page is shown so it picks up the file once an install creates
-/// it; the nav item is disabled when no such file exists.
-/// </summary>
+/// <summary>The optional Mods page; renders the installed list's <c>modlist.md</c> with the app's styling.</summary>
+/// <remarks>
+/// Path comes from <see cref="ShellViewModel.ModsMarkdownPath"/> (the single shared MO2 folder).
+/// Re-read each time the page is shown so it picks up the file once an install creates it; the
+/// nav item is disabled when no such file exists.
+/// </remarks>
 public partial class ModsPanel : UserControl
 {
+    /// <summary>Initializes the panel and re-renders the mod list whenever it becomes visible.</summary>
     public ModsPanel()
     {
         InitializeComponent();
@@ -26,6 +26,7 @@ public partial class ModsPanel : UserControl
         };
     }
 
+    /// <summary>Reads and renders the current modlist.md, showing a fallback if absent.</summary>
     private void LoadMods()
     {
         try

@@ -1,66 +1,62 @@
+using MorrowindRemasteredLauncher.Services;
+
 namespace MorrowindRemasteredLauncher.Models;
 
-/// <summary>
-/// The two supported modlist editions. The Legacy edition exists in the
-/// catalog but is intentionally not surfaced by this launcher.
-/// </summary>
+/// <summary>The two supported modlist editions (the catalog's Legacy edition is not surfaced).</summary>
 public enum Edition
 {
     OpenMW,
     Mwse
 }
 
+/// <summary>
+/// Edition string projections, read from the <c>editions</c> config map with an in-code
+/// fallback so they resolve before config loads or when the section is absent. The enum
+/// itself stays the control-flow source of truth; only these strings are config-driven.
+/// </summary>
 public static class EditionExtensions
 {
-    /// <summary>
-    /// The "machineURL" used in modlists.json / Wabbajack to identify the list.
-    /// </summary>
-    public static string MachineUrl(this Edition edition) => edition switch
-    {
-        Edition.OpenMW => "MorrowindRemasteredOpenMWEdition",
-        Edition.Mwse => "MorrowindRemasteredMWSEEdition",
-        _ => throw new ArgumentOutOfRangeException(nameof(edition))
-    };
+    private static readonly IReadOnlyDictionary<Edition, EditionProfile> Fallback =
+        new Dictionary<Edition, EditionProfile>
+        {
+            [Edition.OpenMW] = new()
+            {
+                DisplayName = "OpenMW",
+                MachineUrl = "MorrowindRemasteredOpenMWEdition",
+                Mo2PlayExecutableName = "OpenMW",
+                GameProcessName = "openmw"
+            },
+            [Edition.Mwse] = new()
+            {
+                DisplayName = "MWSE",
+                MachineUrl = "MorrowindRemasteredMWSEEdition",
+                Mo2PlayExecutableName = "Morrowind",
+                GameProcessName = "Morrowind"
+            },
+        };
 
-    /// <summary>
-    /// The title used as the modlist key in modlists.json.
-    /// </summary>
-    public static string CatalogTitle(this Edition edition) => edition switch
+    /// <summary>The configured profile for an edition, or the in-code fallback when unset.</summary>
+    private static EditionProfile Profile(this Edition edition)
     {
-        Edition.OpenMW => "Morrowind Remastered - OpenMW Edition",
-        Edition.Mwse => "Morrowind Remastered - MWSE Edition",
-        _ => throw new ArgumentOutOfRangeException(nameof(edition))
-    };
+        var editions = ConfigService.Instance?.Current.Editions;
+        if (editions is not null &&
+            editions.TryGetValue(edition.ToString(), out var p) &&
+            !string.IsNullOrWhiteSpace(p.DisplayName))
+        {
+            return p;
+        }
+        return Fallback[edition];
+    }
 
-    /// <summary>
-    /// Friendly display name shown in the UI.
-    /// </summary>
-    public static string DisplayName(this Edition edition) => edition switch
-    {
-        Edition.OpenMW => "OpenMW",
-        Edition.Mwse => "MWSE",
-        _ => throw new ArgumentOutOfRangeException(nameof(edition))
-    };
+    /// <summary>The "machineURL" used in modlists.json / Wabbajack to identify the list.</summary>
+    public static string MachineUrl(this Edition edition) => edition.Profile().MachineUrl;
 
-    /// <summary>
-    /// The MO2 executable name (used with moshortcut://) that launches the game.
-    /// </summary>
-    public static string Mo2PlayExecutableName(this Edition edition) => edition switch
-    {
-        Edition.OpenMW => "OpenMW",
-        Edition.Mwse => "Morrowind",
-        _ => throw new ArgumentOutOfRangeException(nameof(edition))
-    };
+    /// <summary>Friendly display name shown in the UI (also the tools/setup/profile key).</summary>
+    public static string DisplayName(this Edition edition) => edition.Profile().DisplayName;
 
-    /// <summary>
-    /// The actual game process name (no extension) launched inside MO2, used to
-    /// detect when the game exits — MO2 stays open afterwards, so we can't rely on
-    /// it. OpenMW runs <c>openmw.exe</c>; MWSE runs <c>Morrowind.exe</c>.
-    /// </summary>
-    public static string GameProcessName(this Edition edition) => edition switch
-    {
-        Edition.OpenMW => "openmw",
-        Edition.Mwse => "Morrowind",
-        _ => throw new ArgumentOutOfRangeException(nameof(edition))
-    };
+    /// <summary>The MO2 executable name (used with moshortcut://) that launches the game.</summary>
+    public static string Mo2PlayExecutableName(this Edition edition) => edition.Profile().Mo2PlayExecutableName;
+
+    /// <summary>The game process name (no extension) used to detect when the game exits.</summary>
+    public static string GameProcessName(this Edition edition) => edition.Profile().GameProcessName;
 }

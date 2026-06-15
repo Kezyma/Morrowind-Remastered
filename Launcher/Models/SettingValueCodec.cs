@@ -2,12 +2,8 @@ using System.Globalization;
 
 namespace MorrowindRemasteredLauncher.Models;
 
-/// <summary>
-/// Converts between a setting's stored token (what lives in the config file) and
-/// the normalised "logical" value the editor's controls bind to. Logical bools are
-/// always "true"/"false"; logical numbers are invariant-culture strings. This is
-/// the single place encoding rules live, so loading and applying always agree.
-/// </summary>
+/// <summary>Converts between a setting's stored token and the normalised "logical" value the editor binds to.</summary>
+/// <remarks>Logical bools are always "true"/"false"; logical numbers are invariant-culture strings. The single place encoding rules live, so loading and applying always agree.</remarks>
 public static class SettingValueCodec
 {
     /// <summary>Converts a logical editor value into the token to write to the store.</summary>
