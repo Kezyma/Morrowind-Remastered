@@ -1,2 +1,55 @@
+# ---- Repo-specific (pre-existing) ----
 Setup
 MSGO
+
+# Stray Windows reserved-name file (created by an errant redirect)
+nul
+
+# ---- .NET / Visual Studio build output ----
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+
+# ---- IDE / editor ----
+.vs/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.userprefs
+.idea/
+
+# ---- NuGet ----
+*.nupkg
+*.snupkg
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# ---- Misc build/runtime artifacts ----
+*.pdb
+*.cache
+*.tmp
+*_i.c
+*_p.c
+*.ilk
+*.meta
+*.obj
+*.iobj
+*.ipdb
+*.tlog
+# WPF temp project files that can leak to the project root during a build
+*_wpftmp.csproj
+*_wpftmp.*
+
+# ---- OS noise ----
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
