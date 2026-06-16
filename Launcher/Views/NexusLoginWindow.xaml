@@ -1,0 +1,23 @@
+<Window x:Class="MorrowindRemasteredLauncher.Views.NexusLoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+        Title="Sign in to Nexus Mods"
+        Width="520" Height="720" MinWidth="420" MinHeight="560"
+        WindowStartupLocation="CenterOwner"
+        Background="#1B1714">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Background="#241F1B" Padding="14,10">
+            <TextBlock Text="{Binding StatusText, RelativeSource={RelativeSource AncestorType=Window}}"
+                       Foreground="#E8E0D6" FontSize="13" TextWrapping="Wrap" />
+        </Border>
+
+        <wv2:WebView2 x:Name="Web" Grid.Row="1" />
+    </Grid>
+</Window>

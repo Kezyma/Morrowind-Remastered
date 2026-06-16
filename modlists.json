@@ -47,8 +47,8 @@
     "repositoryName": ""
   },
   {
-    "title": "Morrowind Remastered - OpenMW Edition",
-    "description": "Morrowind Remastered is a purist-friendly modlist that aims to give modern players the opportunity to play Morrowind as it was originally designed, but with quality of life and graphics improvements that enhance the game without changing the original experience from 2002.\n\n- Automated post-install process, no manual editing of configuration or files required.\n- OpenMW with enhanced lighting, shadows, and effects.\n- Updated textures and meshes, faithful to the original style.\n- Purist-friendly implementations of modern features missing from the original game.\n- No new quests or landmass, the same game is it was on release.\n- Fully voiced dialogue, which can be safely disabled or deleted if not to your taste.\n\nMWSE or OpenMW Edition?\nMWSE has more quality of life and UI additions.\nOpenMW has better graphics and visual effects.",
+    "title": "Morrowind Remastered",
+    "description": "Morrowind Remastered is a purist-friendly modlist that aims to give modern players the opportunity to play Morrowind as it was originally designed, but with quality of life and graphics improvements that enhance the game without changing the original experience from 2002.\n\n- Automated post-install process, no manual editing of configuration or files required.\n- Enhanced lighting, shadows, and effects.\n- Updated textures and meshes, faithful to the original style.\n- Purist-friendly implementations of modern features missing from the original game.\n- No new quests or landmass, the same game is it was on release.\n- Fully voiced dialogue, which can be safely disabled or deleted if not to your taste.\n\nMorrowind Remastered comes with both OpenMW and MWSE editions. MWSE has more quality of life and UI additions, while OpenMW has better graphics and visual effects.",
     "author": "Kezyma",
     "maintainers": [
       "github/Kezyma"
@@ -66,7 +66,7 @@
     "DisplayVersionOnlyInInstallerView": false,
     "force_down": false,
     "links": {
-      "image": "https://raw.githubusercontent.com/Kezyma/Morrowind-Remastered/main/Images/Nexus%20Header%20Image%20OpenMW.webp",
+      "image": "https://raw.githubusercontent.com/Kezyma/Morrowind-Remastered/main/Images/Nexus%20Header%20Image.webp",
       "readme": "https://github.com/Kezyma/Morrowind-Remastered/blob/main/README.md",
       "download": "https://authored-files.wabbajack.org/Morrowind Remastered.wabbajack_27732699-9022-461c-815f-2dcd447a4083",
       "machineURL": "MorrowindRemasteredOpenMWEdition",
@@ -91,53 +91,6 @@
     "version": "3.1.3",
     "dateCreated": "1970-01-01T00:00:00Z",
     "dateUpdated": "2026-06-16T11:12:20.761978Z",
-    "repositoryName": ""
-  },
-  {
-    "title": "Morrowind Remastered - MWSE Edition",
-    "description": "Morrowind Remastered is a purist-friendly modlist that aims to give modern players the opportunity to play Morrowind as it was originally designed, but with quality of life and graphics improvements that enhance the game without changing the original experience from 2002.\n\n- Automated post-install process, no manual editing of configuration or files required.\n- WSE and MGE XE with enhanced lighting, shadows, and effects.\n- Updated textures and meshes, faithful to the original style.\n- Purist-friendly implementations of modern features missing from the original game.\n- No new quests or landmass, the same game is it was on release.\n- Fully voiced dialogue, which can be safely disabled or deleted if not to your taste.\n\nMWSE or OpenMW Edition?\nMWSE has more quality of life and UI additions.\nOpenMW has better graphics and visual effects.",
-    "author": "Kezyma",
-    "maintainers": [
-      "github/Kezyma"
-    ],
-    "game": "morrowind",
-    "official": false,
-    "tags": [
-      "vanilla",
-      "purist",
-      "MWSE"
-    ],
-    "nsfw": false,
-    "utility_list": false,
-    "image_contains_title": true,
-    "DisplayVersionOnlyInInstallerView": false,
-    "force_down": false,
-    "links": {
-      "image": "https://raw.githubusercontent.com/Kezyma/Morrowind-Remastered/main/Images/Nexus%20Header%20Image%20MWSE.webp",
-      "readme": "https://github.com/Kezyma/Morrowind-Remastered/blob/main/README.md",
-      "download": "https://authored-files.wabbajack.org/Morrowind Remastered - MWSE Edition.wabbajack_98ae0884-b9e3-4418-8108-65c037f87d67",
-      "machineURL": "MorrowindRemasteredMWSEEdition",
-      "discordURL": "https://discord.com/invite/kPA3RrxAYz",
-      "websiteURL": "",
-      "nexusCollection": {
-        "collectionId": "452491",
-        "slug": "kliaxf",
-        "domainName": "morrowind",
-        "lastRevisionNumber": 3
-      }
-    },
-    "download_metadata": {
-      "Hash": "yZXQQTsmR1A=",
-      "Size": 22451363,
-      "NumberOfArchives": 312,
-      "SizeOfArchives": 36123010831,
-      "NumberOfInstalledFiles": 83937,
-      "SizeOfInstalledFiles": 40102238388,
-      "TotalSize": 76225249219
-    },
-    "version": "3.0.5",
-    "dateCreated": "1970-01-01T00:00:00Z",
-    "dateUpdated": "2026-05-25T14:41:11.4973196Z",
     "repositoryName": ""
   }
 ]

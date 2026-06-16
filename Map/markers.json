@@ -1,0 +1,7343 @@
+{
+  "cells": [
+    {
+      "name": "Holamayan",
+      "gridX": 19,
+      "gridY": -4
+    },
+    {
+      "name": "Sadrith Mora",
+      "gridX": 18,
+      "gridY": 4
+    },
+    {
+      "name": "Wolverine Hall",
+      "gridX": 18,
+      "gridY": 3
+    },
+    {
+      "name": "Sadrith Mora",
+      "gridX": 17,
+      "gridY": 5
+    },
+    {
+      "name": "Sadrith Mora",
+      "gridX": 17,
+      "gridY": 4
+    },
+    {
+      "name": "Nchurdamz",
+      "gridX": 17,
+      "gridY": -6
+    },
+    {
+      "name": "Tel Aruhn",
+      "gridX": 15,
+      "gridY": 5
+    },
+    {
+      "name": "Tel Fyr",
+      "gridX": 15,
+      "gridY": 1
+    },
+    {
+      "name": "Tel Branora",
+      "gridX": 15,
+      "gridY": -13
+    },
+    {
+      "name": "Mount Assarnibibi",
+      "gridX": 14,
+      "gridY": -4
+    },
+    {
+      "name": "Tel Branora",
+      "gridX": 14,
+      "gridY": -13
+    },
+    {
+      "name": "Tel Mora",
+      "gridX": 13,
+      "gridY": 14
+    },
+    {
+      "name": "Erabenimsun Camp",
+      "gridX": 13,
+      "gridY": -1
+    },
+    {
+      "name": "Molag Mar",
+      "gridX": 13,
+      "gridY": -8
+    },
+    {
+      "name": "Vos",
+      "gridX": 12,
+      "gridY": 13
+    },
+    {
+      "name": "Yansirramus",
+      "gridX": 12,
+      "gridY": 4
+    },
+    {
+      "name": "Molag Mar",
+      "gridX": 12,
+      "gridY": -8
+    },
+    {
+      "name": "Zaintiraris",
+      "gridX": 12,
+      "gridY": -10
+    },
+    {
+      "name": "Ald Daedroth",
+      "gridX": 11,
+      "gridY": 20
+    },
+    {
+      "name": "Ahemmusa Camp",
+      "gridX": 11,
+      "gridY": 16
+    },
+    {
+      "name": "Vos",
+      "gridX": 11,
+      "gridY": 14
+    },
+    {
+      "name": "Mount Kand",
+      "gridX": 11,
+      "gridY": -5
+    },
+    {
+      "name": "Tel Vos",
+      "gridX": 10,
+      "gridY": 14
+    },
+    {
+      "name": "Uvirith\u0027s Grave",
+      "gridX": 10,
+      "gridY": 1
+    },
+    {
+      "name": "Nchuleftingth",
+      "gridX": 10,
+      "gridY": -3
+    },
+    {
+      "name": "Zainab Camp",
+      "gridX": 9,
+      "gridY": 10
+    },
+    {
+      "name": "Falensarano",
+      "gridX": 9,
+      "gridY": 6
+    },
+    {
+      "name": "Telasero",
+      "gridX": 9,
+      "gridY": -7
+    },
+    {
+      "name": "Bal Fell",
+      "gridX": 9,
+      "gridY": -12
+    },
+    {
+      "name": "Nchuleft Ruin",
+      "gridX": 8,
+      "gridY": 12
+    },
+    {
+      "name": "Mzahnch Ruin",
+      "gridX": 8,
+      "gridY": -10
+    },
+    {
+      "name": "Bal Fell",
+      "gridX": 8,
+      "gridY": -12
+    },
+    {
+      "name": "Dagon Fel",
+      "gridX": 7,
+      "gridY": 22
+    },
+    {
+      "name": "Mzuleft Ruin",
+      "gridX": 6,
+      "gridY": 21
+    },
+    {
+      "name": "Rotheran",
+      "gridX": 6,
+      "gridY": 18
+    },
+    {
+      "name": "Bal Ur",
+      "gridX": 6,
+      "gridY": -5
+    },
+    {
+      "name": "Suran",
+      "gridX": 6,
+      "gridY": -6
+    },
+    {
+      "name": "Suran",
+      "gridX": 6,
+      "gridY": -7
+    },
+    {
+      "name": "Ald Sotha",
+      "gridX": 6,
+      "gridY": -9
+    },
+    {
+      "name": "Zergonipal",
+      "gridX": 5,
+      "gridY": 15
+    },
+    {
+      "name": "Vivec",
+      "gridX": 5,
+      "gridY": -10
+    },
+    {
+      "name": "Vivec, Telvanni",
+      "gridX": 5,
+      "gridY": -11
+    },
+    {
+      "name": "Tureynulal",
+      "gridX": 4,
+      "gridY": 9
+    },
+    {
+      "name": "Marandus",
+      "gridX": 4,
+      "gridY": -3
+    },
+    {
+      "name": "Vivec, Foreign Quarter",
+      "gridX": 4,
+      "gridY": -10
+    },
+    {
+      "name": "Vivec, Arena",
+      "gridX": 4,
+      "gridY": -11
+    },
+    {
+      "name": "Vivec, St. Olms",
+      "gridX": 4,
+      "gridY": -12
+    },
+    {
+      "name": "Vivec, Temple",
+      "gridX": 4,
+      "gridY": -13
+    },
+    {
+      "name": "Vivec, Temple",
+      "gridX": 4,
+      "gridY": -14
+    },
+    {
+      "name": "Odrosal",
+      "gridX": 3,
+      "gridY": 7
+    },
+    {
+      "name": "Vivec",
+      "gridX": 3,
+      "gridY": -9
+    },
+    {
+      "name": "Vivec, Foreign Quarter",
+      "gridX": 3,
+      "gridY": -10
+    },
+    {
+      "name": "Vivec, Redoran",
+      "gridX": 3,
+      "gridY": -11
+    },
+    {
+      "name": "Vivec, St. Delyn",
+      "gridX": 3,
+      "gridY": -12
+    },
+    {
+      "name": "Vivec, Temple",
+      "gridX": 3,
+      "gridY": -13
+    },
+    {
+      "name": "Vivec, Temple",
+      "gridX": 3,
+      "gridY": -14
+    },
+    {
+      "name": "Dagoth Ur",
+      "gridX": 2,
+      "gridY": 8
+    },
+    {
+      "name": "Ghostgate",
+      "gridX": 2,
+      "gridY": 4
+    },
+    {
+      "name": "Arvel Plantation",
+      "gridX": 2,
+      "gridY": -6
+    },
+    {
+      "name": "Dren Plantation",
+      "gridX": 2,
+      "gridY": -7
+    },
+    {
+      "name": "Vivec",
+      "gridX": 2,
+      "gridY": -10
+    },
+    {
+      "name": "Vivec, Hlaalu",
+      "gridX": 2,
+      "gridY": -11
+    },
+    {
+      "name": "Ebonheart",
+      "gridX": 2,
+      "gridY": -13
+    },
+    {
+      "name": "Sanctus Shrine",
+      "gridX": 1,
+      "gridY": 21
+    },
+    {
+      "name": "Fields of Kummu",
+      "gridX": 1,
+      "gridY": -5
+    },
+    {
+      "name": "Ebonheart",
+      "gridX": 1,
+      "gridY": -13
+    },
+    {
+      "name": "Vas",
+      "gridX": 0,
+      "gridY": 22
+    },
+    {
+      "name": "Kogoruhn",
+      "gridX": 0,
+      "gridY": 14
+    },
+    {
+      "name": "Vemynal",
+      "gridX": 0,
+      "gridY": 10
+    },
+    {
+      "name": "Pelagiad",
+      "gridX": 0,
+      "gridY": -7
+    },
+    {
+      "name": "Pelagiad",
+      "gridX": 0,
+      "gridY": -8
+    },
+    {
+      "name": "Valenvaryon",
+      "gridX": -1,
+      "gridY": 18
+    },
+    {
+      "name": "Moonmoth Legion Fort",
+      "gridX": -1,
+      "gridY": -3
+    },
+    {
+      "name": "Falasmaryon",
+      "gridX": -2,
+      "gridY": 15
+    },
+    {
+      "name": "Ald-ruhn",
+      "gridX": -2,
+      "gridY": 7
+    },
+    {
+      "name": "Ald-ruhn",
+      "gridX": -2,
+      "gridY": 6
+    },
+    {
+      "name": "Buckmoth Legion Fort",
+      "gridX": -2,
+      "gridY": 5
+    },
+    {
+      "name": "Caldera",
+      "gridX": -2,
+      "gridY": 2
+    },
+    {
+      "name": "Balmora",
+      "gridX": -2,
+      "gridY": -2
+    },
+    {
+      "name": "Seyda Neen",
+      "gridX": -2,
+      "gridY": -9
+    },
+    {
+      "name": "Seyda Neen",
+      "gridX": -2,
+      "gridY": -10
+    },
+    {
+      "name": "Maar Gan",
+      "gridX": -3,
+      "gridY": 12
+    },
+    {
+      "name": "Ald-ruhn",
+      "gridX": -3,
+      "gridY": 6
+    },
+    {
+      "name": "Balmora",
+      "gridX": -3,
+      "gridY": -2
+    },
+    {
+      "name": "Balmora",
+      "gridX": -3,
+      "gridY": -3
+    },
+    {
+      "name": "Ald Redaynia",
+      "gridX": -4,
+      "gridY": 21
+    },
+    {
+      "name": "Urshilaku Camp",
+      "gridX": -4,
+      "gridY": 18
+    },
+    {
+      "name": "Balmora",
+      "gridX": -4,
+      "gridY": -2
+    },
+    {
+      "name": "Ashurnabitashpi",
+      "gridX": -5,
+      "gridY": 18
+    },
+    {
+      "name": "Bal Isra",
+      "gridX": -5,
+      "gridY": 9
+    },
+    {
+      "name": "Odai Plateau",
+      "gridX": -5,
+      "gridY": -5
+    },
+    {
+      "name": "Hlormaren",
+      "gridX": -6,
+      "gridY": -1
+    },
+    {
+      "name": "Hla Oad",
+      "gridX": -6,
+      "gridY": -5
+    },
+    {
+      "name": "Ashurnibibi",
+      "gridX": -7,
+      "gridY": -4
+    },
+    {
+      "name": "Gnaar Mok",
+      "gridX": -8,
+      "gridY": 3
+    },
+    {
+      "name": "Khuul",
+      "gridX": -9,
+      "gridY": 17
+    },
+    {
+      "name": "Khuul",
+      "gridX": -9,
+      "gridY": 16
+    },
+    {
+      "name": "Andasreth",
+      "gridX": -9,
+      "gridY": 5
+    },
+    {
+      "name": "Khartag Point",
+      "gridX": -9,
+      "gridY": 4
+    },
+    {
+      "name": "Ashalmawia",
+      "gridX": -10,
+      "gridY": 15
+    },
+    {
+      "name": "Gnisis",
+      "gridX": -10,
+      "gridY": 11
+    },
+    {
+      "name": "Berandas",
+      "gridX": -10,
+      "gridY": 9
+    },
+    {
+      "name": "Ald Velothi",
+      "gridX": -11,
+      "gridY": 15
+    },
+    {
+      "name": "Gnisis",
+      "gridX": -11,
+      "gridY": 11
+    },
+    {
+      "name": "Gnisis",
+      "gridX": -11,
+      "gridY": 10
+    },
+    {
+      "name": "Koal Cave Entrance",
+      "gridX": -11,
+      "gridY": 9
+    },
+    {
+      "name": "Solstheim, Gyldenhul Barrow Entrance",
+      "gridX": -17,
+      "gridY": 24
+    },
+    {
+      "name": "Thirsk",
+      "gridX": -19,
+      "gridY": 23
+    },
+    {
+      "name": "Skaal Village",
+      "gridX": -20,
+      "gridY": 26
+    },
+    {
+      "name": "Skaal Village",
+      "gridX": -20,
+      "gridY": 25
+    },
+    {
+      "name": "Solstheim, Lake Fjalding",
+      "gridX": -20,
+      "gridY": 23
+    },
+    {
+      "name": "Solstheim, Lake Fjalding",
+      "gridX": -21,
+      "gridY": 23
+    },
+    {
+      "name": "Fort Frostmoth",
+      "gridX": -22,
+      "gridY": 17
+    },
+    {
+      "name": "Fort Frostmoth",
+      "gridX": -22,
+      "gridY": 16
+    },
+    {
+      "name": "Solstheim, Altar of Thrond",
+      "gridX": -23,
+      "gridY": 23
+    },
+    {
+      "name": "Solstheim, Brodir Grove",
+      "gridX": -23,
+      "gridY": 20
+    },
+    {
+      "name": "Solstheim, Castle Karstaag",
+      "gridX": -24,
+      "gridY": 26
+    },
+    {
+      "name": "Solstheim, Hrothmund\u0027s Bane",
+      "gridX": -24,
+      "gridY": 25
+    },
+    {
+      "name": "Raven Rock",
+      "gridX": -24,
+      "gridY": 19
+    },
+    {
+      "name": "Solstheim, Mortrag Glacier",
+      "gridX": -25,
+      "gridY": 27
+    },
+    {
+      "name": "Solstheim, Mortrag Glacier",
+      "gridX": -25,
+      "gridY": 26
+    },
+    {
+      "name": "Solstheim, Hvitkald Peak",
+      "gridX": -25,
+      "gridY": 23
+    },
+    {
+      "name": "Raven Rock",
+      "gridX": -25,
+      "gridY": 19
+    },
+    {
+      "name": "Solstheim, Mortrag Glacier",
+      "gridX": -26,
+      "gridY": 27
+    },
+    {
+      "name": "Solstheim, Mortrag Glacier",
+      "gridX": -26,
+      "gridY": 26
+    },
+    {
+      "name": "Solstheim, Thormoor\u0027s Watch",
+      "gridX": -27,
+      "gridY": 22
+    }
+  ],
+  "doors": [
+    {
+      "destination": "Omaren Ancestral Tomb",
+      "gridX": 20.360965576171875,
+      "gridY": 4.6316290283203125
+    },
+    {
+      "destination": "Hlervi Ancestral Tomb",
+      "gridX": 19.696417236328124,
+      "gridY": 7.524525146484375
+    },
+    {
+      "destination": "Strange Shipwreck, Upper Level",
+      "gridX": 19.201591796875,
+      "gridY": 6.253571044921875
+    },
+    {
+      "destination": "Strange Shipwreck, Cabin",
+      "gridX": 19.24477783203125,
+      "gridY": 6.14222412109375
+    },
+    {
+      "destination": "Verelnim Ancestral Tomb",
+      "gridX": 19.19814453125,
+      "gridY": 0.1573541259765625
+    },
+    {
+      "destination": "Salmantu",
+      "gridX": 19.157239990234373,
+      "gridY": -2.48659375
+    },
+    {
+      "destination": "Holamayan Monastery",
+      "gridX": 19.422099609375,
+      "gridY": -3.698526123046875
+    },
+    {
+      "destination": "Hlervu Ancestral Tomb",
+      "gridX": 19.270843505859375,
+      "gridY": -5.446658081054688
+    },
+    {
+      "destination": "Ahallaraddon Egg Mine",
+      "gridX": 19.47266357421875,
+      "gridY": -6.608423706054688
+    },
+    {
+      "destination": "Aharnabi",
+      "gridX": 19.58267822265625,
+      "gridY": -7.915111083984375
+    },
+    {
+      "destination": "Shrine of Azura",
+      "gridX": 19.71068359375,
+      "gridY": -7.533375244140625
+    },
+    {
+      "destination": "Sadrith Mora, Fara\u0027s Hole in the Wall",
+      "gridX": 18.009420166015627,
+      "gridY": 4.870617431640625
+    },
+    {
+      "destination": "Sadrith Mora, Anis Seloth: Alchemist",
+      "gridX": 18.1343017578125,
+      "gridY": 4.879298706054687
+    },
+    {
+      "destination": "Sadrith Mora, Morag Tong Guild",
+      "gridX": 18.597578125,
+      "gridY": 4.735049194335938
+    },
+    {
+      "destination": "Sadrith Mora, Tel Naga Great Hall",
+      "gridX": 18.180321044921875,
+      "gridY": 4.409204467773438
+    },
+    {
+      "destination": "Sadrith Mora, Rolis Garvon\u0027s House",
+      "gridX": 18.398905029296873,
+      "gridY": 4.904371704101562
+    },
+    {
+      "destination": "Sadrith Mora, Nevrila Areloth\u0027s House",
+      "gridX": 18.290113525390623,
+      "gridY": 4.924296875
+    },
+    {
+      "destination": "Sadrith Mora, Milara Vedran\u0027s House",
+      "gridX": 18.18250732421875,
+      "gridY": 4.976820922851562
+    },
+    {
+      "destination": "Sadrith Mora, Meluria Seleth\u0027s House",
+      "gridX": 18.73259521484375,
+      "gridY": 4.647838134765625
+    },
+    {
+      "destination": "Sadrith Mora, Vaden Belas\u0027 House",
+      "gridX": 18.6431005859375,
+      "gridY": 4.6769140625
+    },
+    {
+      "destination": "Sadrith Mora, Urtiso Faryon: Sorcerer",
+      "gridX": 18.55275390625,
+      "gridY": 4.6580267333984375
+    },
+    {
+      "destination": "Sadrith Mora, Balen Vendu: Monk",
+      "gridX": 18.67300048828125,
+      "gridY": 4.544193725585938
+    },
+    {
+      "destination": "Sadrith Mora, Hleras Gidren\u0027s House",
+      "gridX": 18.030235595703125,
+      "gridY": 4.15612890625
+    },
+    {
+      "destination": "Sadrith Mora, Tel Naga Upper Tower",
+      "gridX": 18.2309423828125,
+      "gridY": 4.403877197265625
+    },
+    {
+      "destination": "Sadrith Mora, Tel Naga Upper Hall",
+      "gridX": 18.185228271484377,
+      "gridY": 4.405466552734375
+    },
+    {
+      "destination": "Sadrith Mora, Llaalam Madalas: Mage",
+      "gridX": 18.269442138671874,
+      "gridY": 4.099013671875
+    },
+    {
+      "destination": "Sadrith Mora, Volmyni Dral\u0027s House",
+      "gridX": 18.121890869140625,
+      "gridY": 3.9883890380859377
+    },
+    {
+      "destination": "Sadrith Mora, Pierlette Rostorard: Apothecary",
+      "gridX": 18.089385986328125,
+      "gridY": 3.884337890625
+    },
+    {
+      "destination": "Sadrith Mora, Trendrus Dral\u0027s House",
+      "gridX": 18.252845458984375,
+      "gridY": 3.943577880859375
+    },
+    {
+      "destination": "Sadrith Mora, Wolverine Hall: Imperial Shrine",
+      "gridX": 18.173828125,
+      "gridY": 3.4619140625
+    },
+    {
+      "destination": "Sadrith Mora, Wolverine Hall",
+      "gridX": 18.154296875,
+      "gridY": 3.44140625
+    },
+    {
+      "destination": "Sadrith Mora, Wolverine Hall",
+      "gridX": 18.263671875,
+      "gridY": 3.685546875
+    },
+    {
+      "destination": "Sadrith Mora, Wolverine Hall",
+      "gridX": 18.23828125,
+      "gridY": 3.6953125
+    },
+    {
+      "destination": "Sadrith Mora, Wolverine Hall",
+      "gridX": 18.14453125,
+      "gridY": 3.55078125
+    },
+    {
+      "destination": "Sadrith Mora, Dirty Muriel\u0027s Cornerclub",
+      "gridX": 18.603363037109375,
+      "gridY": 3.636553466796875
+    },
+    {
+      "destination": "Sadrith Mora, Wolverine Hall",
+      "gridX": 18.26953125,
+      "gridY": 3.578125
+    },
+    {
+      "destination": "Sadrith Mora, Wolverine Hall",
+      "gridX": 18.25390625,
+      "gridY": 3.544921875
+    },
+    {
+      "destination": "Sadrith Mora, Wolverine Hall",
+      "gridX": 18.236328125,
+      "gridY": 3.5625
+    },
+    {
+      "destination": "Sadrith Mora, Wolverine Hall: Fighter\u0027s Guild",
+      "gridX": 18.171444091796875,
+      "gridY": 3.478026611328125
+    },
+    {
+      "destination": "Kaushtarari, Shrine",
+      "gridX": 18.31572509765625,
+      "gridY": 0.8331741088867187
+    },
+    {
+      "destination": "Lonely Shipwreck, Upper Level",
+      "gridX": 18.89471435546875,
+      "gridY": -0.8508804931640624
+    },
+    {
+      "destination": "Lonely Shipwreck, Cabin",
+      "gridX": 18.9896484375,
+      "gridY": -0.9057431640625
+    },
+    {
+      "destination": "Arenim Ancestral Tomb",
+      "gridX": 18.40727783203125,
+      "gridY": -1.6271129150390624
+    },
+    {
+      "destination": "Zalkin Grotto",
+      "gridX": 18.659892578125,
+      "gridY": -3.3681668701171876
+    },
+    {
+      "destination": "Ravel Ancestral Tomb",
+      "gridX": 18.321146240234373,
+      "gridY": -4.730371459960938
+    },
+    {
+      "destination": "Sadryon Ancestral Tomb",
+      "gridX": 17.624803466796877,
+      "gridY": 6.3614044189453125
+    },
+    {
+      "destination": "Sadrith Mora, Telvanni Council House, Entry",
+      "gridX": 17.668023681640626,
+      "gridY": 5.172224487304687
+    },
+    {
+      "destination": "Sadrith Mora, Urtisa Romayn\u0027s House",
+      "gridX": 17.968721923828124,
+      "gridY": 4.2467413330078125
+    },
+    {
+      "destination": "Sadrith Mora, Thervul Serethi: Healer",
+      "gridX": 17.88298828125,
+      "gridY": 4.32647216796875
+    },
+    {
+      "destination": "Sadrith Mora, Nirasa Aren\u0027s House",
+      "gridX": 17.87939208984375,
+      "gridY": 4.51283984375
+    },
+    {
+      "destination": "Sadrith Mora, Madran Ulvel\u0027s House",
+      "gridX": 17.86879150390625,
+      "gridY": 4.45424365234375
+    },
+    {
+      "destination": "Sadrith Mora, Gateway Inn",
+      "gridX": 17.603193359375,
+      "gridY": 4.382944580078125
+    },
+    {
+      "destination": "Sadrith Mora, Gateway Inn: North Wing",
+      "gridX": 17.692430419921877,
+      "gridY": 4.402164306640625
+    },
+    {
+      "destination": "Elf-Skerring, Cabin",
+      "gridX": 17.205955810546875,
+      "gridY": 4.8714375
+    },
+    {
+      "destination": "Elf-Skerring, Upper Level",
+      "gridX": 17.32802734375,
+      "gridY": 4.823336547851563
+    },
+    {
+      "destination": "Ainat",
+      "gridX": 17.42622802734375,
+      "gridY": -3.801627197265625
+    },
+    {
+      "destination": "Shashpilamat, Shrine",
+      "gridX": 17.4007470703125,
+      "gridY": -4.2208447265625
+    },
+    {
+      "destination": "Shashpilamat",
+      "gridX": 17.6095751953125,
+      "gridY": -4.125857788085938
+    },
+    {
+      "destination": "Nchurdamz, Interior",
+      "gridX": 17.41015625,
+      "gridY": -5.546875
+    },
+    {
+      "destination": "Odirniran",
+      "gridX": 17.720960693359373,
+      "gridY": -7.163037719726563
+    },
+    {
+      "destination": "Baram Ancestral Tomb",
+      "gridX": 16.1366748046875,
+      "gridY": 7.467263671875
+    },
+    {
+      "destination": "Unknown Shipwreck, Cabin",
+      "gridX": 16.1940185546875,
+      "gridY": 4.5581396484375
+    },
+    {
+      "destination": "Unknown Shipwreck, Upper Level",
+      "gridX": 16.15096435546875,
+      "gridY": 4.665414306640625
+    },
+    {
+      "destination": "Abanabi",
+      "gridX": 16.714422607421874,
+      "gridY": 2.6017218017578125
+    },
+    {
+      "destination": "Dreloth Ancestral Tomb",
+      "gridX": 16.660989990234373,
+      "gridY": 0.4396956787109375
+    },
+    {
+      "destination": "Andalen Ancestral Tomb",
+      "gridX": 16.18345703125,
+      "gridY": -1.478542236328125
+    },
+    {
+      "destination": "Matus-Akin Egg Mine",
+      "gridX": 16.20968994140625,
+      "gridY": -3.514650390625
+    },
+    {
+      "destination": "Savel Ancestral Tomb",
+      "gridX": 16.3014404296875,
+      "gridY": -7.6026458740234375
+    },
+    {
+      "destination": "Almurbalarammi, Shrine",
+      "gridX": 16.2526953125,
+      "gridY": -8.394395751953125
+    },
+    {
+      "destination": "Lost Shipwreck, Upper Level",
+      "gridX": 15.519681396484375,
+      "gridY": 11.555423583984375
+    },
+    {
+      "destination": "Lost Shipwreck, Cabin",
+      "gridX": 15.614303588867188,
+      "gridY": 11.500328979492188
+    },
+    {
+      "destination": "Vassamsi Grotto",
+      "gridX": 15.371593017578125,
+      "gridY": 8.19054443359375
+    },
+    {
+      "destination": "Tel Aruhn, Bildren Areleth: Apothecary",
+      "gridX": 15.408055419921874,
+      "gridY": 5.84194140625
+    },
+    {
+      "destination": "Tel Aruhn, Tower Entry",
+      "gridX": 15.389068603515625,
+      "gridY": 5.574993896484375
+    },
+    {
+      "destination": "Tel Aruhn, Ferele Athram: Trader",
+      "gridX": 15.308787353515624,
+      "gridY": 5.81831884765625
+    },
+    {
+      "destination": "Tel Aruhn, Aryne Telnim: Smith",
+      "gridX": 15.57157421875,
+      "gridY": 5.755596923828125
+    },
+    {
+      "destination": "Tel Aruhn, Upper Tower",
+      "gridX": 15.417921142578125,
+      "gridY": 5.620149658203125
+    },
+    {
+      "destination": "Tel Aruhn, Maren Uvaren: Enchanter",
+      "gridX": 15.25979736328125,
+      "gridY": 5.63061328125
+    },
+    {
+      "destination": "Tel Aruhn, Underground",
+      "gridX": 15.033868408203125,
+      "gridY": 5.53987548828125
+    },
+    {
+      "destination": "Tel Aruhn, Plot and Plaster",
+      "gridX": 15.52109619140625,
+      "gridY": 5.707048950195312
+    },
+    {
+      "destination": "Tel Aruhn, Underground",
+      "gridX": 15.10164794921875,
+      "gridY": 5.863465576171875
+    },
+    {
+      "destination": "Tel Aruhn, Tower Living Quarters",
+      "gridX": 15.4,
+      "gridY": 5.59612060546875
+    },
+    {
+      "destination": "Tel Aruhn, Tower Entry",
+      "gridX": 15.4122509765625,
+      "gridY": 5.71282861328125
+    },
+    {
+      "destination": "Tower of Tel Fyr, Onyx Hall",
+      "gridX": 15.18406201171875,
+      "gridY": 1.915124267578125
+    },
+    {
+      "destination": "Zebabi",
+      "gridX": 15.507415771484375,
+      "gridY": -0.5572044677734375
+    },
+    {
+      "destination": "Maesa-Shammus Egg Mine",
+      "gridX": 15.140908203125,
+      "gridY": -3.3236236572265625
+    },
+    {
+      "destination": "Nchardumz",
+      "gridX": 15.507714233398438,
+      "gridY": -4.651073486328125
+    },
+    {
+      "destination": "Maba-Ilu",
+      "gridX": 15.863416748046875,
+      "gridY": -9.463499755859376
+    },
+    {
+      "destination": "Mawia",
+      "gridX": 15.56920654296875,
+      "gridY": -9.906736328125
+    },
+    {
+      "destination": "Kumarahaz",
+      "gridX": 15.754095458984375,
+      "gridY": -10.82187939453125
+    },
+    {
+      "destination": "Tel Branora, Fadase Selvayn: Trader",
+      "gridX": 15.381282958984375,
+      "gridY": -12.73966796875
+    },
+    {
+      "destination": "Tel Branora, Sethan\u0027s Tradehouse",
+      "gridX": 15.4265185546875,
+      "gridY": -12.57005615234375
+    },
+    {
+      "destination": "Tel Branora, Lower Tower",
+      "gridX": 15.41830322265625,
+      "gridY": -12.475792236328125
+    },
+    {
+      "destination": "Tel Branora, Tower Guardpost",
+      "gridX": 15.37392822265625,
+      "gridY": -12.473380126953124
+    },
+    {
+      "destination": "Tel Branora, Fedar Davus\u0027s House",
+      "gridX": 15.631541259765624,
+      "gridY": -12.57374755859375
+    },
+    {
+      "destination": "Tel Branora, Evos Goran\u0027s House",
+      "gridX": 15.66689013671875,
+      "gridY": -12.6299951171875
+    },
+    {
+      "destination": "Tel Branora, Galen Berer: Armorer",
+      "gridX": 15.7621923828125,
+      "gridY": -12.547010498046875
+    },
+    {
+      "destination": "Tel Branora, Manos Vavyn\u0027s House",
+      "gridX": 15.572041015625,
+      "gridY": -12.625477294921875
+    },
+    {
+      "destination": "Tel Branora, Upper Tower",
+      "gridX": 15.488470458984375,
+      "gridY": -12.43169677734375
+    },
+    {
+      "destination": "Tel Branora, Lower Tower",
+      "gridX": 15.552705078125,
+      "gridY": -12.411934814453126
+    },
+    {
+      "destination": "Tel Branora, Seryne Relas\u0027s House",
+      "gridX": 15.7732470703125,
+      "gridY": -12.32892578125
+    },
+    {
+      "destination": "Arano Ancestral Tomb",
+      "gridX": 15.083575439453124,
+      "gridY": -13.9933837890625
+    },
+    {
+      "destination": "Beran Ancestral Tomb",
+      "gridX": 15.870880126953125,
+      "gridY": -13.652674560546876
+    },
+    {
+      "destination": "Esutanamus, Shrine",
+      "gridX": 14.43865234375,
+      "gridY": 11.434822998046876
+    },
+    {
+      "destination": "Indoranyon, Propylon Chamber",
+      "gridX": 14.49047607421875,
+      "gridY": 9.444019775390625
+    },
+    {
+      "destination": "Indoranyon",
+      "gridX": 14.645802490234376,
+      "gridY": 9.369287109375
+    },
+    {
+      "destination": "Sobitbael Camp, Mal\u0027s Yurt",
+      "gridX": 14.1171875,
+      "gridY": 1.1953125
+    },
+    {
+      "destination": "Tusenend, Shrine",
+      "gridX": 14.364879150390625,
+      "gridY": -1.142015625
+    },
+    {
+      "destination": "Helan Ancestral Tomb",
+      "gridX": 14.24888134765625,
+      "gridY": -6.35581201171875
+    },
+    {
+      "destination": "Hlaalu Ancestral Tomb",
+      "gridX": 14.07210693359375,
+      "gridY": -9.157921752929688
+    },
+    {
+      "destination": "Abebaal Egg Mine",
+      "gridX": 14.4377421875,
+      "gridY": -10.8799638671875
+    },
+    {
+      "destination": "Tel Branora, Giron Manas\u0027s Shack",
+      "gridX": 14.47062744140625,
+      "gridY": -12.537612915039062
+    },
+    {
+      "destination": "Tel Branora, Ervyna Hlervu\u0027s Shack",
+      "gridX": 14.60054443359375,
+      "gridY": -12.533460693359375
+    },
+    {
+      "destination": "Lonesome Shipwreck, Cabin",
+      "gridX": 13.58771484375,
+      "gridY": 15.6404150390625
+    },
+    {
+      "destination": "Lonesome Shipwreck, Upper Level",
+      "gridX": 13.544599609375,
+      "gridY": 15.75154296875
+    },
+    {
+      "destination": "Tel Mora, Upper Tower",
+      "gridX": 13.12503662109375,
+      "gridY": 14.5341796875
+    },
+    {
+      "destination": "Tel Mora, Lower Tower",
+      "gridX": 13.21920654296875,
+      "gridY": 14.58279296875
+    },
+    {
+      "destination": "Tel Mora, Lower Tower",
+      "gridX": 13.22020263671875,
+      "gridY": 14.44322265625
+    },
+    {
+      "destination": "Tel Mora, The Covenant",
+      "gridX": 13.249091796875,
+      "gridY": 14.181119873046875
+    },
+    {
+      "destination": "Tel Mora, Jolda: Apothecary",
+      "gridX": 13.455791015625,
+      "gridY": 14.509283447265625
+    },
+    {
+      "destination": "Tel Mora, Radras: Smith",
+      "gridX": 13.50372509765625,
+      "gridY": 14.619011840820313
+    },
+    {
+      "destination": "Tel Mora, Liette\u0027s House",
+      "gridX": 13.417714111328126,
+      "gridY": 14.620665283203126
+    },
+    {
+      "destination": "Tel Mora, Nona\u0027s House",
+      "gridX": 13.394642822265626,
+      "gridY": 14.429520263671876
+    },
+    {
+      "destination": "Tel Mora, Kirsty\u0027s House",
+      "gridX": 13.379703369140625,
+      "gridY": 14.281395263671875
+    },
+    {
+      "destination": "Tel Mora, Elegnan: Clothier",
+      "gridX": 13.333231201171875,
+      "gridY": 14.2158251953125
+    },
+    {
+      "destination": "Tel Mora, Berwen: Trader",
+      "gridX": 13.314708251953125,
+      "gridY": 14.483704833984374
+    },
+    {
+      "destination": "Tel Mora, Upper Tower",
+      "gridX": 13.17498583984375,
+      "gridY": 14.499947509765626
+    },
+    {
+      "destination": "Pinsun",
+      "gridX": 13.437672119140625,
+      "gridY": 11.096854248046874
+    },
+    {
+      "destination": "Hanud",
+      "gridX": 13.756024169921876,
+      "gridY": 9.609609375
+    },
+    {
+      "destination": "Massahanud Camp, Sargon\u0027s Yurt",
+      "gridX": 13.33203125,
+      "gridY": 8.59765625
+    },
+    {
+      "destination": "Yakin",
+      "gridX": 13.10323974609375,
+      "gridY": 7.669919067382812
+    },
+    {
+      "destination": "Nallit",
+      "gridX": 13.890628662109375,
+      "gridY": 7.171283203125
+    },
+    {
+      "destination": "Ashamanu Camp, Kausha\u0027s Yurt",
+      "gridX": 13.63671875,
+      "gridY": 5.7734375
+    },
+    {
+      "destination": "Bensiberib Camp, Odaishah\u0027s Yurt",
+      "gridX": 13.250250244140625,
+      "gridY": 3.109051025390625
+    },
+    {
+      "destination": "Andas Ancestral Tomb",
+      "gridX": 13.163306274414062,
+      "gridY": 1.4224012451171875
+    },
+    {
+      "destination": "Erabenimsun Camp, Ashkhan\u0027s Yurt",
+      "gridX": 13.3005859375,
+      "gridY": -0.31123468017578126
+    },
+    {
+      "destination": "Erabenimsun Camp, Ashu-Ahhe\u0027s Yurt",
+      "gridX": 13.275885009765625,
+      "gridY": -0.37332305908203123
+    },
+    {
+      "destination": "Erabenimsun Camp, Addut-Lamanu\u0027s Yurt",
+      "gridX": 13.49365966796875,
+      "gridY": -0.383596923828125
+    },
+    {
+      "destination": "Erabenimsun Camp, Massarapal\u0027s Yurt",
+      "gridX": 13.408323974609376,
+      "gridY": -0.3533497802734375
+    },
+    {
+      "destination": "Erabenimsun Camp, Han-Ammu\u0027s Yurt",
+      "gridX": 13.366929931640625,
+      "gridY": -0.30107489013671873
+    },
+    {
+      "destination": "Erabenimsun Camp, Wise Woman\u0027s Yurt",
+      "gridX": 13.44916015625,
+      "gridY": -0.488272705078125
+    },
+    {
+      "destination": "Erabenimsun Camp, Ranabi\u0027s Yurt",
+      "gridX": 13.3189453125,
+      "gridY": -0.4248423828125
+    },
+    {
+      "destination": "Erabenimsun Camp, Salattanat\u0027s Yurt",
+      "gridX": 13.565810546875,
+      "gridY": -0.543642333984375
+    },
+    {
+      "destination": "Erabenimsun Camp, Ainab\u0027s Yurt",
+      "gridX": 13.562720336914062,
+      "gridY": -0.4525796508789062
+    },
+    {
+      "destination": "Erabenimsun Camp, Assemmus\u0027 Yurt",
+      "gridX": 13.457083740234374,
+      "gridY": -0.613458984375
+    },
+    {
+      "destination": "Alas Ancestral Tomb",
+      "gridX": 13.294732055664063,
+      "gridY": -3.0693106689453127
+    },
+    {
+      "destination": "Molag Mar, Waistworks",
+      "gridX": 13.2038916015625,
+      "gridY": -7.468946533203125
+    },
+    {
+      "destination": "Molag Mar, Temple",
+      "gridX": 13.507415771484375,
+      "gridY": -7.50911572265625
+    },
+    {
+      "destination": "Molag Mar, St. Veloth\u0027s Hostel",
+      "gridX": 13.31988330078125,
+      "gridY": -7.602142333984375
+    },
+    {
+      "destination": "Molag Mar, Redoran Stronghold",
+      "gridX": 13.690135498046875,
+      "gridY": -7.63064697265625
+    },
+    {
+      "destination": "Molag Mar, Waistworks",
+      "gridX": 13.507684326171875,
+      "gridY": -7.378037475585938
+    },
+    {
+      "destination": "Molag Mar, Waistworks",
+      "gridX": 13.8112353515625,
+      "gridY": -7.4699521484375
+    },
+    {
+      "destination": "Molag Mar, Waistworks",
+      "gridX": 13.507701416015625,
+      "gridY": -7.716412353515625
+    },
+    {
+      "destination": "Molag Mar, Underworks",
+      "gridX": 13.165372802734375,
+      "gridY": -7.7841339111328125
+    },
+    {
+      "destination": "Molag Mar, Underworks",
+      "gridX": 13.84775634765625,
+      "gridY": -7.307142333984375
+    },
+    {
+      "destination": "Molag Mar, Waistworks",
+      "gridX": 13.204202880859375,
+      "gridY": -7.632055297851562
+    },
+    {
+      "destination": "Molag Mar, Waistworks",
+      "gridX": 13.8112353515625,
+      "gridY": -7.624071044921875
+    },
+    {
+      "destination": "Kaushtababi Camp, Adibael\u0027s Yurt",
+      "gridX": 13.515731811523438,
+      "gridY": -8.859873046875
+    },
+    {
+      "destination": "Redas Ancestral Tomb",
+      "gridX": 13.626297607421876,
+      "gridY": -8.6966796875
+    },
+    {
+      "destination": "Eretammus-Sennammu Egg Mine",
+      "gridX": 13.561818115234376,
+      "gridY": -10.39958251953125
+    },
+    {
+      "destination": "Arys Ancestral Tomb",
+      "gridX": 13.2234375,
+      "gridY": -12.320980224609375
+    },
+    {
+      "destination": "Eluba-Addon Grotto",
+      "gridX": 12.201165161132813,
+      "gridY": 17.048638916015626
+    },
+    {
+      "destination": "Falvillo\u0027s Endeavor, Cabin",
+      "gridX": 12.366153564453125,
+      "gridY": 14.07095947265625
+    },
+    {
+      "destination": "Vos, Varo Tradehouse Entrance",
+      "gridX": 12.1125732421875,
+      "gridY": 13.817869140625
+    },
+    {
+      "destination": "Vos, Varo Tradehouse",
+      "gridX": 12.082767333984375,
+      "gridY": 13.9204150390625
+    },
+    {
+      "destination": "Falvilo\u0027s Endeavor, Upper Level",
+      "gridX": 12.385252685546876,
+      "gridY": 13.941505126953125
+    },
+    {
+      "destination": "Salit Camp, Zelay\u0027s Yurt",
+      "gridX": 12.75,
+      "gridY": 11.3203125
+    },
+    {
+      "destination": "Salit Camp, Zalit\u0027s Yurt",
+      "gridX": 12.63232177734375,
+      "gridY": 11.312999267578125
+    },
+    {
+      "destination": "Andalor Ancestral Tomb",
+      "gridX": 12.541658935546875,
+      "gridY": 9.60927978515625
+    },
+    {
+      "destination": "Thiralas Ancestral Tomb",
+      "gridX": 12.74330810546875,
+      "gridY": 7.843536865234375
+    },
+    {
+      "destination": "Yansirramus, Shrine",
+      "gridX": 12.68977783203125,
+      "gridY": 4.64857861328125
+    },
+    {
+      "destination": "Ahinipalit",
+      "gridX": 12.665299072265626,
+      "gridY": 2.6106331787109376
+    },
+    {
+      "destination": "Missir-Dadalit Egg Mine",
+      "gridX": 12.5637841796875,
+      "gridY": 1.4615833740234374
+    },
+    {
+      "destination": "Zaintirari",
+      "gridX": 12.578878173828125,
+      "gridY": 1.013921630859375
+    },
+    {
+      "destination": "Maren Ancestral Tomb",
+      "gridX": 12.441378173828125,
+      "gridY": -0.6895367431640625
+    },
+    {
+      "destination": "Zaintiraris, Shrine",
+      "gridX": 12.888987548828124,
+      "gridY": -9.2006787109375
+    },
+    {
+      "destination": "Marvani Ancestral Tomb",
+      "gridX": 12.336483154296875,
+      "gridY": -11.407263793945312
+    },
+    {
+      "destination": "Ald Daedroth, Outer Shrine",
+      "gridX": 11.54205517578125,
+      "gridY": 20.479871826171873
+    },
+    {
+      "destination": "Ahemmusa Camp, Ashkhan\u0027s Yurt",
+      "gridX": 11.694306640625,
+      "gridY": 16.584425048828123
+    },
+    {
+      "destination": "Ahemmusa Camp, Dutadalk\u0027s Yurt",
+      "gridX": 11.628922119140626,
+      "gridY": 16.598212890625
+    },
+    {
+      "destination": "Ahemmusa Camp, Addammus\u0027s Yurt",
+      "gridX": 11.663858642578125,
+      "gridY": 16.3598095703125
+    },
+    {
+      "destination": "Ahemmusa Camp, Lanabi\u0027s Yurt",
+      "gridX": 11.671114501953125,
+      "gridY": 16.47109619140625
+    },
+    {
+      "destination": "Ahemmusa Camp, Assamma-Idan\u0027s Yurt",
+      "gridX": 11.7155908203125,
+      "gridY": 16.520772705078127
+    },
+    {
+      "destination": "Ahemmusa Camp, Wise Woman\u0027s Yurt",
+      "gridX": 11.469560546875,
+      "gridY": 16.512325439453125
+    },
+    {
+      "destination": "Ahemmusa Camp, Kausi\u0027s Yurt",
+      "gridX": 11.58546875,
+      "gridY": 16.547021484375
+    },
+    {
+      "destination": "Ahemmusa Camp, Nummu\u0027s Yurt",
+      "gridX": 11.515625,
+      "gridY": 16.27734375
+    },
+    {
+      "destination": "Ahemmusa Camp, Mamaea\u0027s Yurt",
+      "gridX": 11.41460205078125,
+      "gridY": 16.409324951171875
+    },
+    {
+      "destination": "Vos, Trilam Drolnor\u0027s Farmhouse",
+      "gridX": 11.5223369140625,
+      "gridY": 14.263829345703124
+    },
+    {
+      "destination": "Vos, Runethyne Andas\u0027s Farmhouse",
+      "gridX": 11.507369995117188,
+      "gridY": 14.424180908203125
+    },
+    {
+      "destination": "Vos, Thilse Aralas\u0027s Farmhouse",
+      "gridX": 11.527452392578125,
+      "gridY": 14.38908447265625
+    },
+    {
+      "destination": "Vos, Dreynos Elvul\u0027s Farmhouse",
+      "gridX": 11.449312744140625,
+      "gridY": 14.334366455078126
+    },
+    {
+      "destination": "Vos, Fanisea Irano\u0027s Farmhouse",
+      "gridX": 11.508685302734374,
+      "gridY": 14.126148681640625
+    },
+    {
+      "destination": "Vos, Ienasa Radas\u0027s Farmhouse",
+      "gridX": 11.538709716796875,
+      "gridY": 14.086890258789062
+    },
+    {
+      "destination": "Vos, Maela Kaushad\u0027s Farmhouse",
+      "gridX": 11.6267236328125,
+      "gridY": 14.098505859375
+    },
+    {
+      "destination": "Vos, Menus Felas\u0027s Farmhouse",
+      "gridX": 11.816888427734375,
+      "gridY": 14.096551513671875
+    },
+    {
+      "destination": "Vos, Ulvil Llothas\u0027s Farmhouse",
+      "gridX": 11.7916162109375,
+      "gridY": 14.1438427734375
+    },
+    {
+      "destination": "Vos, Mandyn Ralas\u0027s Farmhouse",
+      "gridX": 11.745894775390624,
+      "gridY": 14.05809326171875
+    },
+    {
+      "destination": "Vos, Vos Chapel",
+      "gridX": 11.624457397460937,
+      "gridY": 14.2182080078125
+    },
+    {
+      "destination": "Sinarralit Egg Mine",
+      "gridX": 11.492744140625,
+      "gridY": 13.4903125
+    },
+    {
+      "destination": "Firemoth, Guard Towers",
+      "gridX": -6.9644140625,
+      "gridY": -10.47712158203125
+    },
+    {
+      "destination": "Nammu",
+      "gridX": 11.222547607421875,
+      "gridY": 5.790268920898438
+    },
+    {
+      "destination": "Zenarbael",
+      "gridX": 11.6656298828125,
+      "gridY": 1.3978883056640625
+    },
+    {
+      "destination": "Arethan Ancestral Tomb",
+      "gridX": 11.891798095703125,
+      "gridY": -2.3283216552734376
+    },
+    {
+      "destination": "Mount Kand, Cavern",
+      "gridX": 11.423533935546875,
+      "gridY": -4.8129443359375
+    },
+    {
+      "destination": "Assu",
+      "gridX": 11.687122802734375,
+      "gridY": -4.397901000976563
+    },
+    {
+      "destination": "Raviro Ancestral Tomb",
+      "gridX": 11.8093896484375,
+      "gridY": -7.2293768310546875
+    },
+    {
+      "destination": "Masseranit",
+      "gridX": 11.4769482421875,
+      "gridY": -9.102353515625
+    },
+    {
+      "destination": "Rissun",
+      "gridX": 11.106051025390625,
+      "gridY": -11.3463330078125
+    },
+    {
+      "destination": "Prelude Shipwreck, Upper Level",
+      "gridX": 11.55580810546875,
+      "gridY": -11.696571044921875
+    },
+    {
+      "destination": "Prelude Shipwreck, Cabin",
+      "gridX": 11.5986474609375,
+      "gridY": -11.807584716796875
+    },
+    {
+      "destination": "Setus Egg Mine",
+      "gridX": 10.1472705078125,
+      "gridY": 19.29481201171875
+    },
+    {
+      "destination": "Sinamusa Egg Mine",
+      "gridX": 10.595765380859374,
+      "gridY": 16.350284423828125
+    },
+    {
+      "destination": "Tel Vos, Central Tower",
+      "gridX": 10.52830078125,
+      "gridY": 14.502918701171875
+    },
+    {
+      "destination": "Tel Vos, Southern Tower",
+      "gridX": 10.41909423828125,
+      "gridY": 14.394549560546874
+    },
+    {
+      "destination": "Tel Vos, Central Tower",
+      "gridX": 10.51171875,
+      "gridY": 14.57421875
+    },
+    {
+      "destination": "Tel Vos, Services Tower",
+      "gridX": 10.3949755859375,
+      "gridY": 14.693438720703124
+    },
+    {
+      "destination": "Tel Vos, Central Tower",
+      "gridX": 10.57421875,
+      "gridY": 14.55078125
+    },
+    {
+      "destination": "Tel Vos, Aryon\u0027s Chambers",
+      "gridX": 10.4541650390625,
+      "gridY": 14.410391845703124
+    },
+    {
+      "destination": "Tel Vos, Northeastern Tower",
+      "gridX": 10.668734130859375,
+      "gridY": 14.645540771484375
+    },
+    {
+      "destination": "Tel Vos, Barracks and Armory",
+      "gridX": 10.5341796875,
+      "gridY": 14.3349609375
+    },
+    {
+      "destination": "Tel Vos, Southern Tower",
+      "gridX": 10.423167724609375,
+      "gridY": 14.348037109375
+    },
+    {
+      "destination": "Tel Vos, Jail",
+      "gridX": 10.4482421875,
+      "gridY": 14.3203125
+    },
+    {
+      "destination": "Tel Vos, Barracks and Armory",
+      "gridX": 10.5703125,
+      "gridY": 14.37109375
+    },
+    {
+      "destination": "Tel Vos, Central Tower",
+      "gridX": 10.550963134765626,
+      "gridY": 14.51246337890625
+    },
+    {
+      "destination": "Yakaridan Camp, Kitbael\u0027s Yurt",
+      "gridX": 10.5949609375,
+      "gridY": 12.374110107421876
+    },
+    {
+      "destination": "Pulk",
+      "gridX": 10.5851640625,
+      "gridY": 8.633629760742188
+    },
+    {
+      "destination": "Elanius Camp, Yapal\u0027s Yurt",
+      "gridX": 10.561455688476563,
+      "gridY": 7.7714833984375
+    },
+    {
+      "destination": "Ienith Ancestral Tomb",
+      "gridX": 10.81539794921875,
+      "gridY": 7.25312744140625
+    },
+    {
+      "destination": "Andules Ancestral Tomb",
+      "gridX": 10.23080078125,
+      "gridY": 4.503953491210938
+    },
+    {
+      "destination": "Tel Uvirith, Omavel\u0027s House",
+      "gridX": 10.8767333984375,
+      "gridY": 1.1081348876953125
+    },
+    {
+      "destination": "Tel Uvirith, Seleth\u0027s House",
+      "gridX": 10.968294677734375,
+      "gridY": 1.1226236572265624
+    },
+    {
+      "destination": "Tel Uvirith, Tower Lower",
+      "gridX": 10.671519775390625,
+      "gridY": 1.229385498046875
+    },
+    {
+      "destination": "Tel Uvirith, Menas\u0027 House",
+      "gridX": 10.776396484375,
+      "gridY": 1.0436102294921874
+    },
+    {
+      "destination": "Tel Uvirith, Arelas\u0027 House",
+      "gridX": 10.71358203125,
+      "gridY": 1.32555712890625
+    },
+    {
+      "destination": "Tel Uvirith, Tower Upper",
+      "gridX": 10.796345703125,
+      "gridY": 1.1690609130859375
+    },
+    {
+      "destination": "Shushan",
+      "gridX": 10.180613525390624,
+      "gridY": 0.7810865478515625
+    },
+    {
+      "destination": "Shashurari Camp, Zennammu\u0027s Yurt",
+      "gridX": 10.355753173828125,
+      "gridY": -0.4664494140625
+    },
+    {
+      "destination": "Nchuleftingth, Upper Levels",
+      "gridX": 10.561063720703125,
+      "gridY": -2.19255810546875
+    },
+    {
+      "destination": "Mul Grotto",
+      "gridX": 10.199112548828126,
+      "gridY": -9.49912353515625
+    },
+    {
+      "destination": "Yakanalit",
+      "gridX": 10.519041748046876,
+      "gridY": -10.6388623046875
+    },
+    {
+      "destination": "Ashirbadon",
+      "gridX": 10.474105834960938,
+      "gridY": -11.5940869140625
+    },
+    {
+      "destination": "Ancient Shipwreck, Cabin",
+      "gridX": 9.00628857421875,
+      "gridY": 20.82998046875
+    },
+    {
+      "destination": "Sanni",
+      "gridX": 9.65994873046875,
+      "gridY": 19.70268798828125
+    },
+    {
+      "destination": "Kushtashpi, Shrine",
+      "gridX": 9.600645751953126,
+      "gridY": 16.503526611328127
+    },
+    {
+      "destination": "Mudan-Mul Egg Mine",
+      "gridX": 9.514943115234376,
+      "gridY": 14.485680541992188
+    },
+    {
+      "destination": "Tel Vos, Dungeon",
+      "gridX": 9.55119873046875,
+      "gridY": 14.1682958984375
+    },
+    {
+      "destination": "Venim Ancestral Tomb",
+      "gridX": 9.406763916015626,
+      "gridY": 11.625687255859376
+    },
+    {
+      "destination": "Zainab Camp, Ashkhan\u0027s Yurt",
+      "gridX": 9.346483154296875,
+      "gridY": 10.187803955078126
+    },
+    {
+      "destination": "Zainab Camp, Ashur-Dan\u0027s Yurt",
+      "gridX": 9.4123828125,
+      "gridY": 10.176741943359374
+    },
+    {
+      "destination": "Zainab Camp, Patababi\u0027s Yurt",
+      "gridX": 9.453668212890625,
+      "gridY": 10.229697265625
+    },
+    {
+      "destination": "Zainab Camp, Ashibaal\u0027s Yurt",
+      "gridX": 9.36494140625,
+      "gridY": 10.302000732421876
+    },
+    {
+      "destination": "Zainab Camp, Minassour\u0027s Yurt",
+      "gridX": 9.322568359375,
+      "gridY": 10.250517578125
+    },
+    {
+      "destination": "Zainab Camp, Wise Woman\u0027s Yurt",
+      "gridX": 9.5953779296875,
+      "gridY": 10.35623046875
+    },
+    {
+      "destination": "Zainab Camp, Tussi\u0027s Yurt",
+      "gridX": 9.5980859375,
+      "gridY": 10.230374755859375
+    },
+    {
+      "destination": "Zainab Camp, Ababael Timsar-Dadisun\u0027s Yurt",
+      "gridX": 9.353486328125,
+      "gridY": 10.4570947265625
+    },
+    {
+      "destination": "Zainab Camp, Kuda\u0027s Yurt",
+      "gridX": 9.464522705078124,
+      "gridY": 10.481826782226562
+    },
+    {
+      "destination": "Zainab Camp, Kummu\u0027s Yurt",
+      "gridX": 9.294149169921875,
+      "gridY": 10.39322265625
+    },
+    {
+      "destination": "Sethan Ancestral Tomb",
+      "gridX": 9.537872314453125,
+      "gridY": 9.812879638671875
+    },
+    {
+      "destination": "Aralen Ancestral Tomb",
+      "gridX": 9.816430053710938,
+      "gridY": 8.59018798828125
+    },
+    {
+      "destination": "Dissapla Mine",
+      "gridX": 9.7827880859375,
+      "gridY": 7.2021484375
+    },
+    {
+      "destination": "Falensarano, Propylon Chamber",
+      "gridX": 9.1875,
+      "gridY": 6.4375
+    },
+    {
+      "destination": "Falensarano, Upper Level",
+      "gridX": 9.570313720703124,
+      "gridY": 6.4581298828125
+    },
+    {
+      "destination": "Falensarano, Upper Level",
+      "gridX": 9.407593994140624,
+      "gridY": 6.5173330078125
+    },
+    {
+      "destination": "Gimothran Ancestral Tomb",
+      "gridX": 9.42531298828125,
+      "gridY": 3.880627197265625
+    },
+    {
+      "destination": "Mzanchend",
+      "gridX": 9.507421875,
+      "gridY": 2.44849658203125
+    },
+    {
+      "destination": "Mababi",
+      "gridX": 9.411221923828125,
+      "gridY": -2.454791748046875
+    },
+    {
+      "destination": "Telasero, Propylon Chamber",
+      "gridX": 9.4137373046875,
+      "gridY": -6.592290405273437
+    },
+    {
+      "destination": "Telasero, Upper Level",
+      "gridX": 9.284093017578124,
+      "gridY": -6.462704223632812
+    },
+    {
+      "destination": "Releth Ancestral Tomb",
+      "gridX": 9.664940185546875,
+      "gridY": -8.759798095703125
+    },
+    {
+      "destination": "Deserted Shipwreck, Cabin",
+      "gridX": 9.101045654296875,
+      "gridY": -10.63364501953125
+    },
+    {
+      "destination": "Deserted Shipwreck, Upper Level",
+      "gridX": 9.09413330078125,
+      "gridY": -10.514205932617188
+    },
+    {
+      "destination": "Dagon Fel, Sorkvild\u0027s Tower",
+      "gridX": 8.074259033203125,
+      "gridY": 22.153448486328124
+    },
+    {
+      "destination": "Senim Ancestral Tomb",
+      "gridX": 8.262205810546876,
+      "gridY": 21.394368896484377
+    },
+    {
+      "destination": "Ancient Shipwreck, Upper Level",
+      "gridX": 8.88631591796875,
+      "gridY": 20.814208984375
+    },
+    {
+      "destination": "Odirnamat",
+      "gridX": 8.1805908203125,
+      "gridY": 20.082509765625
+    },
+    {
+      "destination": "Shallit",
+      "gridX": 8.293929443359374,
+      "gridY": 19.24931884765625
+    },
+    {
+      "destination": "Drethan Ancestral Tomb",
+      "gridX": 8.26616943359375,
+      "gridY": 18.850419921875
+    },
+    {
+      "destination": "Favel Ancestral Tomb",
+      "gridX": 8.279842529296875,
+      "gridY": 16.199395751953126
+    },
+    {
+      "destination": "Sanit",
+      "gridX": 8.218129150390626,
+      "gridY": 15.6850048828125
+    },
+    {
+      "destination": "Nerano Ancestral Tomb",
+      "gridX": 8.868881225585938,
+      "gridY": 14.341842041015624
+    },
+    {
+      "destination": "Nchuleft",
+      "gridX": 8.0533203125,
+      "gridY": 12.721102294921875
+    },
+    {
+      "destination": "Massama Cave",
+      "gridX": 8.464531860351563,
+      "gridY": 5.72932958984375
+    },
+    {
+      "destination": "Zalkin-Sul Egg Mine",
+      "gridX": 8.38972412109375,
+      "gridY": 2.3933787841796876
+    },
+    {
+      "destination": "Serano Ancestral Tomb",
+      "gridX": 8.470244140625,
+      "gridY": 1.6295030517578124
+    },
+    {
+      "destination": "Galom Daeus, Entry",
+      "gridX": 8.350277099609375,
+      "gridY": 0.7577998046875
+    },
+    {
+      "destination": "Piran",
+      "gridX": 8.23437744140625,
+      "gridY": -2.5084864501953126
+    },
+    {
+      "destination": "Kunirai",
+      "gridX": 8.9254345703125,
+      "gridY": -5.753848510742188
+    },
+    {
+      "destination": "Vansunalit Egg Mine",
+      "gridX": 8.526966552734375,
+      "gridY": -6.5310009765625
+    },
+    {
+      "destination": "Velas Ancestral Tomb",
+      "gridX": 8.92441650390625,
+      "gridY": -7.245333618164063
+    },
+    {
+      "destination": "Minabi",
+      "gridX": 8.954147338867188,
+      "gridY": -8.143905029296874
+    },
+    {
+      "destination": "Mzahnch",
+      "gridX": 8.687850341796874,
+      "gridY": -9.087609252929688
+    },
+    {
+      "destination": "Hinnabi",
+      "gridX": 8.1182451171875,
+      "gridY": -10.21599365234375
+    },
+    {
+      "destination": "Bal Fell, Outer Shrine",
+      "gridX": 8.951138916015625,
+      "gridY": -11.78270263671875
+    },
+    {
+      "destination": "Dagon Fel, Andre Maul\u0027s Tower",
+      "gridX": 7.485841064453125,
+      "gridY": 23.561221923828125
+    },
+    {
+      "destination": "Dagon Fel, The End of the World",
+      "gridX": 7.342664794921875,
+      "gridY": 22.11416259765625
+    },
+    {
+      "destination": "Dagon Fel, Watch Tower",
+      "gridX": 7.47566162109375,
+      "gridY": 22.113834228515625
+    },
+    {
+      "destination": "Dagon Fel, Heifnir: Trader",
+      "gridX": 7.38702880859375,
+      "gridY": 22.045621337890626
+    },
+    {
+      "destination": "Dagon Fel, End of the World Renter Rooms",
+      "gridX": 7.355345703125,
+      "gridY": 22.2249658203125
+    },
+    {
+      "destination": "Dagon Fel, Fjorrod\u0027s House",
+      "gridX": 7.6403583984375,
+      "gridY": 22.28233154296875
+    },
+    {
+      "destination": "Dagon Fel, Itar the Gentle\u0027s House",
+      "gridX": 7.6563177490234375,
+      "gridY": 22.20849365234375
+    },
+    {
+      "destination": "Dagon Fel, Fanar Fork-Beard\u0027s House",
+      "gridX": 7.4941949462890625,
+      "gridY": 22.345869140625
+    },
+    {
+      "destination": "Dagon Fel, Mette\u0027s House",
+      "gridX": 7.446795654296875,
+      "gridY": 22.355191650390626
+    },
+    {
+      "destination": "Dagon Fel, Greidil Half-Troll\u0027s House",
+      "gridX": 7.1887626953125,
+      "gridY": 22.27053466796875
+    },
+    {
+      "destination": "Dagon Fel, Onmi Hard-mouth\u0027s House",
+      "gridX": 7.419779052734375,
+      "gridY": 22.436072998046875
+    },
+    {
+      "destination": "Dagon Fel, Anja Swift-Sailer\u0027s House",
+      "gridX": 7.60204833984375,
+      "gridY": 22.38501708984375
+    },
+    {
+      "destination": "Dagon Fel, Hurg\u0027s House",
+      "gridX": 7.689340087890625,
+      "gridY": 22.385443115234374
+    },
+    {
+      "destination": "Dagon Fel, Vacant Tower",
+      "gridX": 7.8642578125,
+      "gridY": 22.796875
+    },
+    {
+      "destination": "Dagon Fel, Onmi Hard-mouth\u0027s House",
+      "gridX": 7.37190576171875,
+      "gridY": 22.49232421875
+    },
+    {
+      "destination": "Arrow, Upper Level",
+      "gridX": 7.706204833984375,
+      "gridY": 22.55265869140625
+    },
+    {
+      "destination": "Arrow, Cabin",
+      "gridX": 7.603018310546875,
+      "gridY": 22.632235107421874
+    },
+    {
+      "destination": "Nchardahrk",
+      "gridX": 7.953335815429687,
+      "gridY": 20.242078857421873
+    },
+    {
+      "destination": "Punsabanit",
+      "gridX": 7.1882958984375,
+      "gridY": 19.847144775390625
+    },
+    {
+      "destination": "Dareleth Ancestral Tomb",
+      "gridX": 7.480388671875,
+      "gridY": 14.54582763671875
+    },
+    {
+      "destination": "Elith-Pal Mine",
+      "gridX": 7.111586547851562,
+      "gridY": 10.339615478515626
+    },
+    {
+      "destination": "Sur Egg Mine",
+      "gridX": 7.4644622802734375,
+      "gridY": 8.272659912109376
+    },
+    {
+      "destination": "Sandus Ancestral Tomb",
+      "gridX": 7.3766241455078125,
+      "gridY": 7.8328924560546875
+    },
+    {
+      "destination": "Maelu Egg Mine",
+      "gridX": 7.372487548828125,
+      "gridY": 6.407456909179688
+    },
+    {
+      "destination": "Dulo Ancestral Tomb",
+      "gridX": 7.642601318359375,
+      "gridY": 0.8359027099609375
+    },
+    {
+      "destination": "Aran Ancestral Tomb",
+      "gridX": 7.77521728515625,
+      "gridY": -0.978623291015625
+    },
+    {
+      "destination": "Saturan",
+      "gridX": 7.7385869140625,
+      "gridY": -5.592578125
+    },
+    {
+      "destination": "Inanius Egg Mine",
+      "gridX": 7.768144165039063,
+      "gridY": -6.968232421875
+    },
+    {
+      "destination": "Sinsibadon",
+      "gridX": 7.87586181640625,
+      "gridY": -8.879677734375
+    },
+    {
+      "destination": "Omani Manor",
+      "gridX": 7.19151611328125,
+      "gridY": -11.39543212890625
+    },
+    {
+      "destination": "Omani Manor",
+      "gridX": 7.1795111083984375,
+      "gridY": -11.316260375976562
+    },
+    {
+      "destination": "Malmus Grotto",
+      "gridX": 6.503715576171875,
+      "gridY": 24.567972412109373
+    },
+    {
+      "destination": "Mzuleft",
+      "gridX": 6.606028076171875,
+      "gridY": 21.45948486328125
+    },
+    {
+      "destination": "Surirulk",
+      "gridX": 6.6975830078125,
+      "gridY": 19.409609375
+    },
+    {
+      "destination": "Rotheran, Propylon Chamber",
+      "gridX": 6.6676435546875,
+      "gridY": 18.676292724609375
+    },
+    {
+      "destination": "Rotheran, Communal Hut",
+      "gridX": 6.4765771484375,
+      "gridY": 18.726829833984375
+    },
+    {
+      "destination": "Rotheran, Arena",
+      "gridX": 6.63639453125,
+      "gridY": 18.819112548828127
+    },
+    {
+      "destination": "Ilanipu Grotto",
+      "gridX": 6.492162719726562,
+      "gridY": 17.177222900390625
+    },
+    {
+      "destination": "Dun-Ahhe",
+      "gridX": 6.790028076171875,
+      "gridY": 14.125924072265626
+    },
+    {
+      "destination": "Cavern of the Incarnate",
+      "gridX": 6.355029541015625,
+      "gridY": 13.37233447265625
+    },
+    {
+      "destination": "Maran-Adon",
+      "gridX": 6.456428466796875,
+      "gridY": 12.425318603515626
+    },
+    {
+      "destination": "Vandus Ancestral Tomb",
+      "gridX": 6.10841748046875,
+      "gridY": -2.639866943359375
+    },
+    {
+      "destination": "Bal Ur, Shrine",
+      "gridX": 6.3442578125,
+      "gridY": -4.5311181640625
+    },
+    {
+      "destination": "Bal Ur, Shrine",
+      "gridX": 6.807969116210938,
+      "gridY": -4.608995971679687
+    },
+    {
+      "destination": "Suran, Guard Tower",
+      "gridX": 6.393992431640625,
+      "gridY": -5.97458642578125
+    },
+    {
+      "destination": "Suran, Goldyn Belaram: Pawnbroker",
+      "gridX": 6.663882202148438,
+      "gridY": -6.286563720703125
+    },
+    {
+      "destination": "Suran, Garothmuk gro-Muzgub: Smith",
+      "gridX": 6.52746630859375,
+      "gridY": -6.325806884765625
+    },
+    {
+      "destination": "Suran, Ranosa Gilvayn: Outfitter",
+      "gridX": 6.668711669921875,
+      "gridY": -6.12290771484375
+    },
+    {
+      "destination": "Suran, Ralds Oril: Trader",
+      "gridX": 6.755509887695313,
+      "gridY": -6.592011474609375
+    },
+    {
+      "destination": "Suran, Ibarnadad Assirnarari: Apothecary",
+      "gridX": 6.792346435546875,
+      "gridY": -6.710038696289063
+    },
+    {
+      "destination": "Suran, Verara Rendo: Clothier",
+      "gridX": 6.8005517578125,
+      "gridY": -6.517796997070312
+    },
+    {
+      "destination": "Suran, Verara Rendo: Clothier",
+      "gridX": 6.877042236328125,
+      "gridY": -6.49953125
+    },
+    {
+      "destination": "Suran, Ralds Oril: Trader",
+      "gridX": 6.681868041992187,
+      "gridY": -6.610688232421875
+    },
+    {
+      "destination": "Suran, Suran Tradehouse",
+      "gridX": 6.9580145263671875,
+      "gridY": -6.60703857421875
+    },
+    {
+      "destination": "Suran, Oran Manor",
+      "gridX": 6.55167431640625,
+      "gridY": -6.859197998046875
+    },
+    {
+      "destination": "Suran, Suran Slave Market",
+      "gridX": 6.864385986328125,
+      "gridY": -6.29201513671875
+    },
+    {
+      "destination": "Suran, Desele\u0027s House of Earthly Delights",
+      "gridX": 6.563388671875,
+      "gridY": -6.089940551757812
+    },
+    {
+      "destination": "Suran, Suran Tradehouse",
+      "gridX": 6.9453125,
+      "gridY": -6.53125
+    },
+    {
+      "destination": "Suran, Oran Manor",
+      "gridX": 6.54068603515625,
+      "gridY": -6.930115966796875
+    },
+    {
+      "destination": "Suran, Suran Temple",
+      "gridX": 6.8593988037109375,
+      "gridY": -6.883419555664062
+    },
+    {
+      "destination": "Ald Sotha, Upper Level",
+      "gridX": 6.76930908203125,
+      "gridY": -8.880087890625
+    },
+    {
+      "destination": "Beshara",
+      "gridX": 6.6259527587890625,
+      "gridY": -9.830975341796876
+    },
+    {
+      "destination": "Ansi",
+      "gridX": 6.614191528320313,
+      "gridY": -13.03390869140625
+    },
+    {
+      "destination": "Sarethi Ancestral Tomb",
+      "gridX": 5.537464111328125,
+      "gridY": 23.517449951171876
+    },
+    {
+      "destination": "Dralas Ancestral Tomb",
+      "gridX": 5.765272583007812,
+      "gridY": 19.701419677734375
+    },
+    {
+      "destination": "Ainab",
+      "gridX": 5.614997802734375,
+      "gridY": 16.61409423828125
+    },
+    {
+      "destination": "Zergonipal, Shrine",
+      "gridX": 5.4972601318359375,
+      "gridY": 15.511925048828125
+    },
+    {
+      "destination": "Tin-Ahhe",
+      "gridX": 5.7154755859375,
+      "gridY": 12.63240478515625
+    },
+    {
+      "destination": "Salvel Ancestral Tomb",
+      "gridX": 5.202364868164063,
+      "gridY": 11.466492919921874
+    },
+    {
+      "destination": "Helas Ancestral Tomb",
+      "gridX": 5.362911376953125,
+      "gridY": 5.4553017578125
+    },
+    {
+      "destination": "Sanabi",
+      "gridX": 5.406117919921875,
+      "gridY": 1.29627978515625
+    },
+    {
+      "destination": "Ules Manor, Slavemaster\u0027s Shack",
+      "gridX": 5.142792236328125,
+      "gridY": -5.739499145507812
+    },
+    {
+      "destination": "Ules Manor, Slave Shack",
+      "gridX": 5.138760986328125,
+      "gridY": -5.837374267578125
+    },
+    {
+      "destination": "Ules Manor",
+      "gridX": 5.5825634765625,
+      "gridY": -6.040797119140625
+    },
+    {
+      "destination": "Small Farmhouse",
+      "gridX": 5.156449340820313,
+      "gridY": -7.803828735351562
+    },
+    {
+      "destination": "Dirara\u0027s Farmhouse",
+      "gridX": 5.93736083984375,
+      "gridY": -7.25738330078125
+    },
+    {
+      "destination": "Vivec, Telvanni Waistworks",
+      "gridX": 5.384145263671875,
+      "gridY": -9.9938671875
+    },
+    {
+      "destination": "Vivec, Telvanni Waistworks",
+      "gridX": 5.222420654296875,
+      "gridY": -9.9938671875
+    },
+    {
+      "destination": "Vivec, Telvanni Waistworks",
+      "gridX": 5.383082275390625,
+      "gridY": -10.60069580078125
+    },
+    {
+      "destination": "Vivec, Telvanni Waistworks",
+      "gridX": 5.228747802734375,
+      "gridY": -10.60069580078125
+    },
+    {
+      "destination": "Vivec, Telvanni Waistworks",
+      "gridX": 5.4768671875,
+      "gridY": -10.296549072265625
+    },
+    {
+      "destination": "Vivec, Telvanni Waistworks",
+      "gridX": 5.132947998046875,
+      "gridY": -10.296427001953125
+    },
+    {
+      "destination": "Vivec, Telvanni Underworks",
+      "gridX": 5.04884033203125,
+      "gridY": -10.71435791015625
+    },
+    {
+      "destination": "Vivec, Telvanni Plaza",
+      "gridX": 5.3046875,
+      "gridY": -10.07927734375
+    },
+    {
+      "destination": "Vivec, Telvanni Plaza",
+      "gridX": 5.3046875,
+      "gridY": -10.514244995117188
+    },
+    {
+      "destination": "Nund",
+      "gridX": 5.293287353515625,
+      "gridY": -11.653753662109375
+    },
+    {
+      "destination": "Habinbaes",
+      "gridX": 4.69838427734375,
+      "gridY": 23.1573291015625
+    },
+    {
+      "destination": "Madas-Zebba Egg Mine",
+      "gridX": 4.442711181640625,
+      "gridY": 22.552701416015626
+    },
+    {
+      "destination": "Aharasaplit Camp, Zallay\u0027s Yurt",
+      "gridX": 4.295550537109375,
+      "gridY": 19.69017578125
+    },
+    {
+      "destination": "Indaren Ancestral Tomb",
+      "gridX": 4.583080322265625,
+      "gridY": 16.509212646484375
+    },
+    {
+      "destination": "Bthuand",
+      "gridX": 4.3906240234375,
+      "gridY": 15.7421875
+    },
+    {
+      "destination": "Tureynulal, Kagrenac\u0027s Library",
+      "gridX": 4.060555419921875,
+      "gridY": 9.1314287109375
+    },
+    {
+      "destination": "Yanemus Mine",
+      "gridX": 4.215565185546875,
+      "gridY": 7.607865356445313
+    },
+    {
+      "destination": "Halit Mine",
+      "gridX": 4.9245849609375,
+      "gridY": 5.621576782226563
+    },
+    {
+      "destination": "Dunirai Caverns",
+      "gridX": 4.3290771484375,
+      "gridY": 3.4136922607421876
+    },
+    {
+      "destination": "Sulipund",
+      "gridX": 4.80149462890625,
+      "gridY": -0.44520843505859375
+    },
+    {
+      "destination": "Punabi",
+      "gridX": 4.359112548828125,
+      "gridY": -1.052466064453125
+    },
+    {
+      "destination": "Marandus, Propylon Chamber",
+      "gridX": 4.61735009765625,
+      "gridY": -2.62295654296875
+    },
+    {
+      "destination": "Marandus, Upper Level",
+      "gridX": 4.370833740234375,
+      "gridY": -2.69743896484375
+    },
+    {
+      "destination": "Marandus, Dome",
+      "gridX": 4.228466552734375,
+      "gridY": -2.4711783447265625
+    },
+    {
+      "destination": "Marandus, Lower Level",
+      "gridX": 4.366940551757812,
+      "gridY": -2.545546875
+    },
+    {
+      "destination": "Sterdecan\u0027s Farmhouse",
+      "gridX": 4.260673095703125,
+      "gridY": -4.595015014648437
+    },
+    {
+      "destination": "Sterdecan\u0027s Farmhouse",
+      "gridX": 4.294955688476563,
+      "gridY": -4.530696411132812
+    },
+    {
+      "destination": "Sandas Ancestral Tomb",
+      "gridX": 4.596927490234375,
+      "gridY": -4.314786376953125
+    },
+    {
+      "destination": "Arano Plantation",
+      "gridX": 4.537838989257812,
+      "gridY": -6.10225244140625
+    },
+    {
+      "destination": "Piernette\u0027s Farmhouse",
+      "gridX": 4.543754638671875,
+      "gridY": -7.3612823486328125
+    },
+    {
+      "destination": "Nilera\u0027s Farmhouse",
+      "gridX": 4.4212188720703125,
+      "gridY": -7.860010131835938
+    },
+    {
+      "destination": "Vivec, Foreign Quarter Underworks",
+      "gridX": 4.066032470703125,
+      "gridY": -9.51386474609375
+    },
+    {
+      "destination": "Vivec, Foreign Quarter Underworks",
+      "gridX": 4.066706176757813,
+      "gridY": -9.964310302734376
+    },
+    {
+      "destination": "Vivec, Arena Waistworks",
+      "gridX": 4.157034423828125,
+      "gridY": -10.533553466796874
+    },
+    {
+      "destination": "Vivec, Arena Waistworks",
+      "gridX": 4.764559326171875,
+      "gridY": -10.5301416015625
+    },
+    {
+      "destination": "Vivec, Arena Underworks",
+      "gridX": 4.042876220703125,
+      "gridY": -10.342566528320312
+    },
+    {
+      "destination": "Vivec, Arena Waistworks",
+      "gridX": 4.157034423828125,
+      "gridY": -10.685284423828126
+    },
+    {
+      "destination": "Vivec, Arena Waistworks",
+      "gridX": 4.764559326171875,
+      "gridY": -10.690948486328125
+    },
+    {
+      "destination": "Vivec, Arena Waistworks",
+      "gridX": 4.460946044921875,
+      "gridY": -10.78159912109375
+    },
+    {
+      "destination": "Vivec, Arena Waistworks",
+      "gridX": 4.4610498046875,
+      "gridY": -10.43732177734375
+    },
+    {
+      "destination": "Vivec, Arena Pit",
+      "gridX": 4.678961181640625,
+      "gridY": -10.6092626953125
+    },
+    {
+      "destination": "Vivec, Arena Pit",
+      "gridX": 4.243188842773438,
+      "gridY": -10.609375
+    },
+    {
+      "destination": "Vivec, St. Olms Canal South-Three",
+      "gridX": 4.603104614257813,
+      "gridY": -11.66621337890625
+    },
+    {
+      "destination": "Vivec, Hall of Wisdom",
+      "gridX": 4.132723388671875,
+      "gridY": -11.927562255859375
+    },
+    {
+      "destination": "Vivec, St. Olms Waistworks",
+      "gridX": 4.764535400390625,
+      "gridY": -11.292229614257813
+    },
+    {
+      "destination": "Vivec, St. Olms Waistworks",
+      "gridX": 4.764535400390625,
+      "gridY": -11.492880859375
+    },
+    {
+      "destination": "Vivec, St. Olms Waistworks",
+      "gridX": 4.157258056640625,
+      "gridY": -11.312392578125
+    },
+    {
+      "destination": "Vivec, St. Olms Waistworks",
+      "gridX": 4.461041015625,
+      "gridY": -11.22144775390625
+    },
+    {
+      "destination": "Vivec, St. Olms Canal North-One",
+      "gridX": 4.5911798095703125,
+      "gridY": -11.11494921875
+    },
+    {
+      "destination": "Vivec, St. Olms Canal North-Three",
+      "gridX": 4.32308349609375,
+      "gridY": -11.1158203125
+    },
+    {
+      "destination": "Vivec, St. Olms Canal North-Two",
+      "gridX": 4.461600341796875,
+      "gridY": -11.11494921875
+    },
+    {
+      "destination": "Vivec, St. Olms Waist North-One",
+      "gridX": 4.583893310546875,
+      "gridY": -11.149764404296874
+    },
+    {
+      "destination": "Vivec, St. Olms Canal South-Two",
+      "gridX": 4.4556474609375,
+      "gridY": -11.6667431640625
+    },
+    {
+      "destination": "Vivec, St. Olms Canal South-One",
+      "gridX": 4.324453857421875,
+      "gridY": -11.66629638671875
+    },
+    {
+      "destination": "Vivec, St. Olms Waistworks",
+      "gridX": 4.4609150390625,
+      "gridY": -11.559248046875
+    },
+    {
+      "destination": "Vivec, St. Olms Waist South-Two",
+      "gridX": 4.5797509765625,
+      "gridY": -11.631953125
+    },
+    {
+      "destination": "Vivec, St. Olms Waistworks",
+      "gridX": 4.157258056640625,
+      "gridY": -11.4733740234375
+    },
+    {
+      "destination": "Vivec, St. Olms Waist South-One",
+      "gridX": 4.34330224609375,
+      "gridY": -11.631953125
+    },
+    {
+      "destination": "Vivec, St. Olms Underworks",
+      "gridX": 4.042876220703125,
+      "gridY": -11.642330322265625
+    },
+    {
+      "destination": "Vivec, St. Olms Waist North-Two",
+      "gridX": 4.348452514648438,
+      "gridY": -11.149764404296874
+    },
+    {
+      "destination": "Vivec, St. Olms Underworks",
+      "gridX": 4.878117065429688,
+      "gridY": -11.632422485351562
+    },
+    {
+      "destination": "Vivec, Hall Underworks",
+      "gridX": 4.22947509765625,
+      "gridY": -11.844805908203124
+    },
+    {
+      "destination": "Vivec, St. Olms Plaza",
+      "gridX": 4.243252807617187,
+      "gridY": -11.390625
+    },
+    {
+      "destination": "Vivec, St. Olms Plaza",
+      "gridX": 4.6779150390625,
+      "gridY": -11.390625
+    },
+    {
+      "destination": "Vivec, High Fane",
+      "gridX": 4.08473388671875,
+      "gridY": -12.1855126953125
+    },
+    {
+      "destination": "Vivec, Hall of Wisdom",
+      "gridX": 4.1350341796875,
+      "gridY": -12.5721630859375
+    },
+    {
+      "destination": "Vivec, Hall Underworks",
+      "gridX": 4.235895629882813,
+      "gridY": -12.65668701171875
+    },
+    {
+      "destination": "Vivec, Puzzle Canal, Level 5",
+      "gridX": 4.171827758789062,
+      "gridY": -12.750398681640625
+    },
+    {
+      "destination": "Vivec, Puzzle Canal, Level 4",
+      "gridX": 4.182627685546875,
+      "gridY": -12.84723388671875
+    },
+    {
+      "destination": "Vivec, Puzzle Canal, Level 3",
+      "gridX": 4.1514404296875,
+      "gridY": -12.910537719726562
+    },
+    {
+      "destination": "Vivec, Puzzle Canal, Level 2",
+      "gridX": 4.120106689453125,
+      "gridY": -12.972876586914062
+    },
+    {
+      "destination": "Vivec, Palace of Vivec",
+      "gridX": 4.011548461914063,
+      "gridY": -13.0626416015625
+    },
+    {
+      "destination": "Vivec, Puzzle Canal, Level 1",
+      "gridX": 4.08892724609375,
+      "gridY": -13.034842529296874
+    },
+    {
+      "destination": "Unchartered Shipwreck, Upper Level",
+      "gridX": 4.286151123046875,
+      "gridY": -14.612296142578124
+    },
+    {
+      "destination": "Unchartered Shipwreck, Cabin",
+      "gridX": 4.405619140625,
+      "gridY": -14.5964306640625
+    },
+    {
+      "destination": "Rayna Drolan\u0027s Shack",
+      "gridX": 3.660721435546875,
+      "gridY": 24.04638671875
+    },
+    {
+      "destination": "Pudai Egg Mine",
+      "gridX": 3.381550048828125,
+      "gridY": 21.611591796875
+    },
+    {
+      "destination": "Shara",
+      "gridX": 3.0637059326171876,
+      "gridY": 20.7334130859375
+    },
+    {
+      "destination": "Bensamsi",
+      "gridX": 3.1117203369140625,
+      "gridY": 15.691765747070313
+    },
+    {
+      "destination": "Odrosal, Dwemer Training Academy",
+      "gridX": 3.2104654541015627,
+      "gridY": 7.439351806640625
+    },
+    {
+      "destination": "Sharapli",
+      "gridX": 3.3201754150390625,
+      "gridY": 4.811147216796875
+    },
+    {
+      "destination": "Aryon Ancestral Tomb",
+      "gridX": 3.442433349609375,
+      "gridY": 2.572283935546875
+    },
+    {
+      "destination": "Shishara",
+      "gridX": 3.345225341796875,
+      "gridY": 1.452138916015625
+    },
+    {
+      "destination": "Ashunartes, Shrine",
+      "gridX": 3.364326171875,
+      "gridY": -2.396504150390625
+    },
+    {
+      "destination": "Ashunartes, Shrine",
+      "gridX": 3.69798828125,
+      "gridY": -2.675568115234375
+    },
+    {
+      "destination": "Manat\u0027s Farmhouse",
+      "gridX": 3.6152803955078125,
+      "gridY": -5.542836181640625
+    },
+    {
+      "destination": "Gro-Bagrat Plantation",
+      "gridX": 3.413140869140625,
+      "gridY": -7.925028076171875
+    },
+    {
+      "destination": "Hawia Egg Mine",
+      "gridX": 3.54143212890625,
+      "gridY": -8.497465087890625
+    },
+    {
+      "destination": "Vivec, Foreign Quarter Upper Waistworks",
+      "gridX": 3.38348291015625,
+      "gridY": -9.80543212890625
+    },
+    {
+      "destination": "Vivec, Foreign Quarter Lower Waistworks",
+      "gridX": 3.349306396484375,
+      "gridY": -9.78889404296875
+    },
+    {
+      "destination": "Vivec, Foreign Quarter Upper Waistworks",
+      "gridX": 3.6522197265625,
+      "gridY": -9.865360107421875
+    },
+    {
+      "destination": "Vivec, Foreign Quarter Lower Waistworks",
+      "gridX": 3.656126953125,
+      "gridY": -9.904422607421875
+    },
+    {
+      "destination": "Vivec, Foreign Quarter Lower Waistworks",
+      "gridX": 3.64738916015625,
+      "gridY": -9.5623828125
+    },
+    {
+      "destination": "Vivec, Foreign Quarter Upper Waistworks",
+      "gridX": 3.64738916015625,
+      "gridY": -9.601712646484375
+    },
+    {
+      "destination": "Vivec, Foreign Quarter Lower Waistworks",
+      "gridX": 3.94830322265625,
+      "gridY": -9.690560302734376
+    },
+    {
+      "destination": "Vivec, Foreign Quarter Upper Waistworks",
+      "gridX": 3.9133673095703125,
+      "gridY": -9.65776123046875
+    },
+    {
+      "destination": "Vivec, Foreign Quarter Lower Waistworks",
+      "gridX": 3.948236083984375,
+      "gridY": -9.782028198242188
+    },
+    {
+      "destination": "Vivec, Foreign Quarter Upper Waistworks",
+      "gridX": 3.9133673095703125,
+      "gridY": -9.809422607421874
+    },
+    {
+      "destination": "Vivec, Foreign Quarter Lower Waistworks",
+      "gridX": 3.3490457763671877,
+      "gridY": -9.685504150390624
+    },
+    {
+      "destination": "Vivec, Foreign Quarter Upper Waistworks",
+      "gridX": 3.38348291015625,
+      "gridY": -9.66306640625
+    },
+    {
+      "destination": "Vivec, Foreign Quarter Plaza",
+      "gridX": 3.827282958984375,
+      "gridY": -9.734375
+    },
+    {
+      "destination": "Vivec, Foreign Quarter Plaza",
+      "gridX": 3.46875,
+      "gridY": -9.734375
+    },
+    {
+      "destination": "Vivec, Redoran Waistworks",
+      "gridX": 3.858714111328125,
+      "gridY": -10.533484497070312
+    },
+    {
+      "destination": "Vivec, Redoran Waistworks",
+      "gridX": 3.25123291015625,
+      "gridY": -10.529761352539062
+    },
+    {
+      "destination": "Vivec, Redoran Waistworks",
+      "gridX": 3.858714111328125,
+      "gridY": -10.6837177734375
+    },
+    {
+      "destination": "Vivec, Redoran Waistworks",
+      "gridX": 3.25123291015625,
+      "gridY": -10.68814453125
+    },
+    {
+      "destination": "Vivec, Redoran Underworks",
+      "gridX": 3.972344970703125,
+      "gridY": -10.411541748046876
+    },
+    {
+      "destination": "Vivec, Redoran Underworks",
+      "gridX": 3.1368277587890625,
+      "gridY": -10.845924072265625
+    },
+    {
+      "destination": "Vivec, Redoran Plaza",
+      "gridX": 3.33658447265625,
+      "gridY": -10.609375
+    },
+    {
+      "destination": "Vivec, Redoran Plaza",
+      "gridX": 3.772043212890625,
+      "gridY": -10.609375
+    },
+    {
+      "destination": "Vivec, Redoran Waistworks",
+      "gridX": 3.5540733642578126,
+      "gridY": -10.777598876953125
+    },
+    {
+      "destination": "Vivec, Redoran Waistworks",
+      "gridX": 3.554622802734375,
+      "gridY": -10.441348876953125
+    },
+    {
+      "destination": "Vivec, St. Delyn Waistworks",
+      "gridX": 3.858477783203125,
+      "gridY": -11.2933935546875
+    },
+    {
+      "destination": "Vivec, Hall of Justice",
+      "gridX": 3.8743538818359373,
+      "gridY": -11.928063354492188
+    },
+    {
+      "destination": "Vivec, St. Delyn Waistworks",
+      "gridX": 3.858477783203125,
+      "gridY": -11.4862841796875
+    },
+    {
+      "destination": "Vivec, St. Delyn Underworks",
+      "gridX": 3.9725614013671877,
+      "gridY": -11.59765380859375
+    },
+    {
+      "destination": "Vivec, St. Delyn Canal North-Three",
+      "gridX": 3.6741495361328127,
+      "gridY": -11.1162548828125
+    },
+    {
+      "destination": "Vivec, St. Delyn Canal North-Two",
+      "gridX": 3.554560546875,
+      "gridY": -11.1162548828125
+    },
+    {
+      "destination": "Vivec, St. Delyn Waist North-One",
+      "gridX": 3.4374755859375,
+      "gridY": -11.149764404296874
+    },
+    {
+      "destination": "Vivec, St. Delyn Waistworks",
+      "gridX": 3.5507840576171876,
+      "gridY": -11.22065185546875
+    },
+    {
+      "destination": "Vivec, St. Delyn Waistworks",
+      "gridX": 3.250734375,
+      "gridY": -11.312392578125
+    },
+    {
+      "destination": "Vivec, St. Delyn Canal North-One",
+      "gridX": 3.4211513671875,
+      "gridY": -11.1158203125
+    },
+    {
+      "destination": "Vivec, St. Delyn Waist North-Two",
+      "gridX": 3.6707601318359373,
+      "gridY": -11.1510693359375
+    },
+    {
+      "destination": "Vivec, St. Delyn Waist South-Two",
+      "gridX": 3.6696749267578124,
+      "gridY": -11.631953125
+    },
+    {
+      "destination": "Vivec, St. Delyn Waistworks",
+      "gridX": 3.250734375,
+      "gridY": -11.4733740234375
+    },
+    {
+      "destination": "Vivec, St. Delyn Canal South-Three",
+      "gridX": 3.417695556640625,
+      "gridY": -11.66629638671875
+    },
+    {
+      "destination": "Vivec, St. Delyn Canal South-One",
+      "gridX": 3.5507772216796876,
+      "gridY": -11.6667431640625
+    },
+    {
+      "destination": "Vivec, St. Delyn Canal South-Two",
+      "gridX": 3.691572265625,
+      "gridY": -11.66621337890625
+    },
+    {
+      "destination": "Vivec, St. Delyn Waist South-One",
+      "gridX": 3.4489696044921874,
+      "gridY": -11.631953125
+    },
+    {
+      "destination": "Vivec, St. Delyn Waistworks",
+      "gridX": 3.554783935546875,
+      "gridY": -11.562608642578125
+    },
+    {
+      "destination": "Vivec, St. Delyn Underworks",
+      "gridX": 3.9725308837890627,
+      "gridY": -11.202373046875
+    },
+    {
+      "destination": "Vivec, St. Delyn Underworks",
+      "gridX": 3.1369991455078123,
+      "gridY": -11.625914306640626
+    },
+    {
+      "destination": "Vivec, Hall Underworks",
+      "gridX": 3.8068670654296874,
+      "gridY": -11.843262939453124
+    },
+    {
+      "destination": "Vivec, St. Delyn Plaza",
+      "gridX": 3.336820556640625,
+      "gridY": -11.390625
+    },
+    {
+      "destination": "Vivec, St. Delyn Plaza",
+      "gridX": 3.7725789794921876,
+      "gridY": -11.390625
+    },
+    {
+      "destination": "Ministry of Truth, Hall of Processing",
+      "gridX": 3.8117528076171876,
+      "gridY": -12.22973828125
+    },
+    {
+      "destination": "Vivec, High Fane",
+      "gridX": 3.9430267333984377,
+      "gridY": -12.181328735351563
+    },
+    {
+      "destination": "Vivec, Hall of Justice",
+      "gridX": 3.87648779296875,
+      "gridY": -12.572316162109376
+    },
+    {
+      "destination": "Ministry of Truth, Hall of Processing",
+      "gridX": 3.8897449951171876,
+      "gridY": -12.33921875
+    },
+    {
+      "destination": "Ministry of Truth, Hall of Processing",
+      "gridX": 3.7244400634765626,
+      "gridY": -12.15549560546875
+    },
+    {
+      "destination": "Vivec, Puzzle Canal, Level 5",
+      "gridX": 3.8426663818359375,
+      "gridY": -12.745919189453126
+    },
+    {
+      "destination": "Vivec, Puzzle Canal, Level 4",
+      "gridX": 3.838979736328125,
+      "gridY": -12.847576904296876
+    },
+    {
+      "destination": "Vivec, Puzzle Canal, Level 2",
+      "gridX": 3.901383056640625,
+      "gridY": -12.972593994140626
+    },
+    {
+      "destination": "Vivec, Puzzle Canal, Level 3",
+      "gridX": 3.870107666015625,
+      "gridY": -12.909808349609374
+    },
+    {
+      "destination": "Vivec, Puzzle Canal, Level 1",
+      "gridX": 3.932713623046875,
+      "gridY": -13.03521484375
+    },
+    {
+      "destination": "Sud",
+      "gridX": 2.6819827880859375,
+      "gridY": 22.251180419921877
+    },
+    {
+      "destination": "Orethi Ancestral Tomb",
+      "gridX": 2.7688863525390626,
+      "gridY": 20.59026123046875
+    },
+    {
+      "destination": "Ashmelech",
+      "gridX": 2.2479083251953127,
+      "gridY": 19.29503173828125
+    },
+    {
+      "destination": "Drinith Ancestral Tomb",
+      "gridX": 2.3639794921875,
+      "gridY": 15.512371826171876
+    },
+    {
+      "destination": "Kora-Dur",
+      "gridX": 2.5568759765625,
+      "gridY": 14.39888916015625
+    },
+    {
+      "destination": "Ahanibi-Malmus Egg Mine",
+      "gridX": 2.534248779296875,
+      "gridY": 13.12705517578125
+    },
+    {
+      "destination": "Assalkushalit, Shrine",
+      "gridX": 2.4963814697265625,
+      "gridY": 11.349217529296874
+    },
+    {
+      "destination": "Dagoth Ur, Outer Facility",
+      "gridX": 2.3217235107421876,
+      "gridY": 8.59154541015625
+    },
+    {
+      "destination": "Yassu Mine",
+      "gridX": 2.626110595703125,
+      "gridY": 6.287356323242188
+    },
+    {
+      "destination": "Ghostgate, Tower of Dawn",
+      "gridX": 2.656464111328125,
+      "gridY": 4.7542744140625
+    },
+    {
+      "destination": "Ghostgate, Tower of Dusk",
+      "gridX": 2.40682958984375,
+      "gridY": 4.754400634765625
+    },
+    {
+      "destination": "Odaishah",
+      "gridX": 2.242716796875,
+      "gridY": 1.6834468994140626
+    },
+    {
+      "destination": "Alof\u0027s Farmhouse",
+      "gridX": 2.0887470703125,
+      "gridY": -4.180406494140625
+    },
+    {
+      "destination": "Arvel Manor",
+      "gridX": 2.66334033203125,
+      "gridY": -5.069879150390625
+    },
+    {
+      "destination": "Arvel Manor, Slave Shack",
+      "gridX": 2.595622314453125,
+      "gridY": -5.6358828125
+    },
+    {
+      "destination": "Arvel Manor, Slavemaster\u0027s Shack",
+      "gridX": 2.5923499755859374,
+      "gridY": -5.521083984375
+    },
+    {
+      "destination": "Arvel Manor, Storage Shack",
+      "gridX": 2.663055908203125,
+      "gridY": -5.72784423828125
+    },
+    {
+      "destination": "Dren Plantation, Shipping House",
+      "gridX": 2.5595703125,
+      "gridY": -6.867919921875
+    },
+    {
+      "destination": "Dren Plantation, Dren\u0027s Villa",
+      "gridX": 2.878669921875,
+      "gridY": -6.82132080078125
+    },
+    {
+      "destination": "Dren Plantation, Guardhouse",
+      "gridX": 2.83740234375,
+      "gridY": -6.64013671875
+    },
+    {
+      "destination": "Dren Plantation, Verethi and Dralor",
+      "gridX": 2.5238309326171877,
+      "gridY": -6.680985961914063
+    },
+    {
+      "destination": "Dren Plantation, Rethan\u0027s Shack",
+      "gridX": 2.3693875732421876,
+      "gridY": -6.63403271484375
+    },
+    {
+      "destination": "Dren Plantation, Dren\u0027s Villa",
+      "gridX": 2.781551513671875,
+      "gridY": -6.825685546875
+    },
+    {
+      "destination": "Dren Plantation, Guardhouse",
+      "gridX": 2.836181640625,
+      "gridY": -6.53759765625
+    },
+    {
+      "destination": "Dren Plantation, Guardhouse",
+      "gridX": 2.796875,
+      "gridY": -6.662841796875
+    },
+    {
+      "destination": "Dren Plantation, Verethi and Dralor",
+      "gridX": 2.477114013671875,
+      "gridY": -6.62394384765625
+    },
+    {
+      "destination": "Dren Plantation, Doves\u0027 Shack",
+      "gridX": 2.275390625,
+      "gridY": -6.4765625
+    },
+    {
+      "destination": "Dren Plantation, Storage Shack",
+      "gridX": 2.416015625,
+      "gridY": -6.4765625
+    },
+    {
+      "destination": "Dren Plantation, Helvi\u0027s Shack",
+      "gridX": 2.525390625,
+      "gridY": -6.4765625
+    },
+    {
+      "destination": "Dren Plantation, Hlevala\u0027s Shack",
+      "gridX": 2.2373046875,
+      "gridY": -6.630859375
+    },
+    {
+      "destination": "Dren Plantation, Tower Shack",
+      "gridX": 2.1898751220703123,
+      "gridY": -6.913052612304687
+    },
+    {
+      "destination": "Othrelas Ancestral Tomb",
+      "gridX": 2.2364849853515625,
+      "gridY": -8.566724853515625
+    },
+    {
+      "destination": "Vivec, Hlaalu Waistworks",
+      "gridX": 2.7913768310546874,
+      "gridY": -9.992725830078125
+    },
+    {
+      "destination": "Vivec, Hlaalu Waistworks",
+      "gridX": 2.630040283203125,
+      "gridY": -9.992725830078125
+    },
+    {
+      "destination": "Vivec, Hlaalu Underworks",
+      "gridX": 2.471043701171875,
+      "gridY": -9.879178955078125
+    },
+    {
+      "destination": "Vivec, Hlaalu Waistworks",
+      "gridX": 2.54170703125,
+      "gridY": -10.296998291015624
+    },
+    {
+      "destination": "Vivec, Hlaalu Waistworks",
+      "gridX": 2.7946121826171875,
+      "gridY": -10.60044921875
+    },
+    {
+      "destination": "Vivec, Hlaalu Waistworks",
+      "gridX": 2.6307542724609374,
+      "gridY": -10.60044921875
+    },
+    {
+      "destination": "Vivec, Hlaalu Waistworks",
+      "gridX": 2.87954541015625,
+      "gridY": -10.297359619140625
+    },
+    {
+      "destination": "Vivec, Hlaalu Plaza",
+      "gridX": 2.7109375,
+      "gridY": -10.5147802734375
+    },
+    {
+      "destination": "Vivec, Hlaalu Plaza",
+      "gridX": 2.710919189453125,
+      "gridY": -10.077734375
+    },
+    {
+      "destination": "Ebonheart, East Empire South Warehouse",
+      "gridX": 2.3121707763671875,
+      "gridY": -12.260831298828125
+    },
+    {
+      "destination": "Ebonheart, East Empire South Warehouse",
+      "gridX": 2.2678466796875,
+      "gridY": -12.5740947265625
+    },
+    {
+      "destination": "Ebonheart, East Empire Company Hall",
+      "gridX": 2.2205025634765625,
+      "gridY": -12.37306640625
+    },
+    {
+      "destination": "Ebonheart, East Empire North Warehouse",
+      "gridX": 2.304932373046875,
+      "gridY": -12.3716259765625
+    },
+    {
+      "destination": "Ebonheart, East Empire South Warehouse",
+      "gridX": 2.1678681640625,
+      "gridY": -12.504972412109375
+    },
+    {
+      "destination": "Ebonheart, East Empire South Warehouse",
+      "gridX": 2.234953125,
+      "gridY": -12.572341918945312
+    },
+    {
+      "destination": "Ebonheart, East Empire Company Hall",
+      "gridX": 2.17067333984375,
+      "gridY": -12.333969116210938
+    },
+    {
+      "destination": "Chun-Ook, Cabin",
+      "gridX": 2.5771329345703125,
+      "gridY": -12.55831787109375
+    },
+    {
+      "destination": "Chun-Ook, Upper Level",
+      "gridX": 2.4529793701171876,
+      "gridY": -12.59927490234375
+    },
+    {
+      "destination": "Abandoned Shipwreck, Cabin",
+      "gridX": 1.086449462890625,
+      "gridY": 23.0514794921875
+    },
+    {
+      "destination": "Abandoned Shipwreck, Upper Level",
+      "gridX": 1.126871826171875,
+      "gridY": 22.940361328125
+    },
+    {
+      "destination": "Llirala\u0027s Shack",
+      "gridX": 1.4263763427734375,
+      "gridY": 21.18138427734375
+    },
+    {
+      "destination": "Mamshar-Disamus Camp, Maesat\u0027s Yurt",
+      "gridX": 1.7043870849609375,
+      "gridY": 14.72041015625
+    },
+    {
+      "destination": "Kogoruhn, Charma\u0027s Breath",
+      "gridX": 1.099091552734375,
+      "gridY": 11.135362548828125
+    },
+    {
+      "destination": "Ularradallaku, Shrine",
+      "gridX": 1.4192869873046876,
+      "gridY": 8.4040673828125
+    },
+    {
+      "destination": "Endusal, Kagrenac\u0027s study",
+      "gridX": 1.7625888671875,
+      "gridY": 7.476468139648437
+    },
+    {
+      "destination": "Thalas Ancestral Tomb",
+      "gridX": 1.1586031494140625,
+      "gridY": 0.55660546875
+    },
+    {
+      "destination": "Saren Ancestral Tomb",
+      "gridX": 1.9069705810546875,
+      "gridY": -0.6189542236328125
+    },
+    {
+      "destination": "Nissintu",
+      "gridX": 1.7806785888671874,
+      "gridY": -2.09108544921875
+    },
+    {
+      "destination": "Sarano Ancestral Tomb",
+      "gridX": 1.790760986328125,
+      "gridY": -3.45173583984375
+    },
+    {
+      "destination": "Desolate Shipwreck, Cabin",
+      "gridX": 1.4779180297851562,
+      "gridY": -5.604323364257812
+    },
+    {
+      "destination": "Desolate Shipwreck, Upper Level",
+      "gridX": 1.472858154296875,
+      "gridY": -5.483719848632813
+    },
+    {
+      "destination": "Punammu",
+      "gridX": 1.5514959106445312,
+      "gridY": -6.5561474609375
+    },
+    {
+      "destination": "Llovyn\u0027s Farmhouse",
+      "gridX": 1.83202978515625,
+      "gridY": -7.068970947265625
+    },
+    {
+      "destination": "Balur\u0027s Farmhouse",
+      "gridX": 1.192710205078125,
+      "gridY": -7.97277099609375
+    },
+    {
+      "destination": "Ebonheart, Underground Caves",
+      "gridX": 1.3172921142578125,
+      "gridY": -11.96457763671875
+    },
+    {
+      "destination": "Ebonheart, Hawkmoth Legion Garrison",
+      "gridX": 1.719413818359375,
+      "gridY": -12.30296875
+    },
+    {
+      "destination": "Ebonheart, Grand Council Chambers",
+      "gridX": 1.1638035888671876,
+      "gridY": -12.307375
+    },
+    {
+      "destination": "Ebonheart, Hawkmoth Legion Garrison",
+      "gridX": 1.7531590576171876,
+      "gridY": -12.33911328125
+    },
+    {
+      "destination": "Ebonheart, Hawkmoth Towers",
+      "gridX": 1.9250491943359376,
+      "gridY": -12.416278076171874
+    },
+    {
+      "destination": "Ebonheart, Hawkmoth Towers",
+      "gridX": 1.8932957763671876,
+      "gridY": -12.507378540039063
+    },
+    {
+      "destination": "Ebonheart, Hawkmoth Towers",
+      "gridX": 1.65737939453125,
+      "gridY": -12.459754028320312
+    },
+    {
+      "destination": "Ebonheart, Hawkmoth Towers",
+      "gridX": 1.55829052734375,
+      "gridY": -12.459765625
+    },
+    {
+      "destination": "Ebonheart, Hawkmoth Towers",
+      "gridX": 1.59220654296875,
+      "gridY": -12.313443603515625
+    },
+    {
+      "destination": "Ebonheart, Skyrim Mission",
+      "gridX": 1.5332237548828125,
+      "gridY": -12.559095458984375
+    },
+    {
+      "destination": "Ebonheart, Argonian Mission",
+      "gridX": 1.6008153076171876,
+      "gridY": -12.61548046875
+    },
+    {
+      "destination": "Ebonheart, Six Fishes",
+      "gridX": 1.8058934326171876,
+      "gridY": -12.403631591796875
+    },
+    {
+      "destination": "Ebonheart, Grand Council Chambers",
+      "gridX": 1.1972923583984374,
+      "gridY": -12.425244140625
+    },
+    {
+      "destination": "Ebonheart, Grand Council Chambers Tower",
+      "gridX": 1.1645970458984376,
+      "gridY": -12.251767578125
+    },
+    {
+      "destination": "Ebonheart, Grand Council Chambers Tower",
+      "gridX": 1.1219697265625,
+      "gridY": -12.21733642578125
+    },
+    {
+      "destination": "Ebonheart, Imperial Chapels",
+      "gridX": 1.0627293701171876,
+      "gridY": -12.3063984375
+    },
+    {
+      "destination": "Ebonheart, Grand Council Chambers",
+      "gridX": 1.1398778076171876,
+      "gridY": -12.28247265625
+    },
+    {
+      "destination": "Ebonheart, Hawkmoth Towers",
+      "gridX": 1.6127889404296876,
+      "gridY": -12.357965087890625
+    },
+    {
+      "destination": "Ebonheart, Hawkmoth Towers",
+      "gridX": 1.549540771484375,
+      "gridY": -12.357698974609375
+    },
+    {
+      "destination": "Nelas Ancestral Tomb",
+      "gridX": 0.7005325927734375,
+      "gridY": 24.48431396484375
+    },
+    {
+      "destination": "Vas, Entry Level",
+      "gridX": 0.9611812744140625,
+      "gridY": 22.792720947265625
+    },
+    {
+      "destination": "Assurdirapal, Shrine",
+      "gridX": 0.468583251953125,
+      "gridY": 21.121982421875
+    },
+    {
+      "destination": "Assurdirapal, Shrine",
+      "gridX": 0.072854345703125,
+      "gridY": 21.2113916015625
+    },
+    {
+      "destination": "Ebernanit, Shrine",
+      "gridX": 0.50154736328125,
+      "gridY": 17.48421142578125
+    },
+    {
+      "destination": "Omalen Ancestral Tomb",
+      "gridX": 0.80030908203125,
+      "gridY": 16.77542724609375
+    },
+    {
+      "destination": "Kogoruhn, Dome of Pollock\u0027s Eve",
+      "gridX": 0.753173828125,
+      "gridY": 14.624755859375
+    },
+    {
+      "destination": "Kogoruhn, Hall of the Watchful Touch",
+      "gridX": 0.28125,
+      "gridY": 14.61865234375
+    },
+    {
+      "destination": "Kogoruhn, Hall of Phisto",
+      "gridX": 0.4208984375,
+      "gridY": 14.6484375
+    },
+    {
+      "destination": "Kogoruhn, Temple of Fey",
+      "gridX": 0.629150390625,
+      "gridY": 14.7314453125
+    },
+    {
+      "destination": "Kogoruhn, Dome of Urso",
+      "gridX": 0.741943359375,
+      "gridY": 14.7763671875
+    },
+    {
+      "destination": "Vemynal, Outer Fortress",
+      "gridX": 0.416471435546875,
+      "gridY": 10.697669677734375
+    },
+    {
+      "destination": "Mausur Caverns",
+      "gridX": 0.23976151123046874,
+      "gridY": 9.850770263671874
+    },
+    {
+      "destination": "Fadathram Ancestral Tomb",
+      "gridX": 0.860581787109375,
+      "gridY": 6.383491455078125
+    },
+    {
+      "destination": "Panabanit-Nimawia Egg Mine",
+      "gridX": 0.92361572265625,
+      "gridY": 5.521881591796875
+    },
+    {
+      "destination": "Sudanit Mine",
+      "gridX": 0.22592578125,
+      "gridY": 4.688241455078125
+    },
+    {
+      "destination": "Assarnatamat, Shrine",
+      "gridX": 0.5714267578125,
+      "gridY": 0.6649166259765625
+    },
+    {
+      "destination": "Missamsi",
+      "gridX": 0.7933056640625,
+      "gridY": -0.7666238525390625
+    },
+    {
+      "destination": "Arkngthand, Hall of Centrifuge",
+      "gridX": 0.4337158203125,
+      "gridY": -1.9295654296875
+    },
+    {
+      "destination": "Panat",
+      "gridX": 0.731345654296875,
+      "gridY": -5.7574658203125
+    },
+    {
+      "destination": "Pelagiad, Murberius Harmevus\u0027 House",
+      "gridX": 0.23936572265625,
+      "gridY": -6.99121826171875
+    },
+    {
+      "destination": "Pelagiad, Madres Navur\u0027s House",
+      "gridX": 0.1764103271484375,
+      "gridY": -6.850496337890625
+    },
+    {
+      "destination": "Pelagiad, Halfway Tavern",
+      "gridX": 0.2905615234375,
+      "gridY": -6.8398232421875
+    },
+    {
+      "destination": "Pelagiad, Mebestien Ence: Trader",
+      "gridX": 0.345361083984375,
+      "gridY": -6.953121337890625
+    },
+    {
+      "destination": "Pelagiad, Farusea Salas\u0027 House",
+      "gridX": 0.157421142578125,
+      "gridY": -6.651217041015625
+    },
+    {
+      "destination": "Pelagiad, North Wall",
+      "gridX": 0.8132762451171875,
+      "gridY": -6.670955810546875
+    },
+    {
+      "destination": "Pelagiad, Fort Pelagiad",
+      "gridX": 0.7720184326171875,
+      "gridY": -6.795733642578125
+    },
+    {
+      "destination": "Pelagiad, North Wall",
+      "gridX": 0.6565048828125,
+      "gridY": -6.66880029296875
+    },
+    {
+      "destination": "Pelagiad, South Wall",
+      "gridX": 0.56119482421875,
+      "gridY": -6.985384033203125
+    },
+    {
+      "destination": "Pelagiad, North Wall",
+      "gridX": 0.602116943359375,
+      "gridY": -6.752467041015625
+    },
+    {
+      "destination": "Pelagiad, North Wall",
+      "gridX": 0.64139501953125,
+      "gridY": -6.689097900390625
+    },
+    {
+      "destination": "Pelagiad, Guard Tower",
+      "gridX": 0.4482564697265625,
+      "gridY": -6.795229858398438
+    },
+    {
+      "destination": "Pelagiad, Erval\u0027s House",
+      "gridX": 0.1408515625,
+      "gridY": -6.45424609375
+    },
+    {
+      "destination": "Pelagiad, Uulernil : Armorer",
+      "gridX": 0.4384055786132813,
+      "gridY": -6.93244384765625
+    },
+    {
+      "destination": "Pelagiad, Fort Pelagiad",
+      "gridX": 0.7719512939453125,
+      "gridY": -6.892366455078125
+    },
+    {
+      "destination": "Pelagiad, South Wall",
+      "gridX": 0.713945751953125,
+      "gridY": -6.84364013671875
+    },
+    {
+      "destination": "Pelagiad, Adanja\u0027s House",
+      "gridX": 0.272031494140625,
+      "gridY": -7.1483759765625
+    },
+    {
+      "destination": "Pelagiad, Dralas Gilu\u0027s House",
+      "gridX": 0.1127305908203125,
+      "gridY": -7.02606298828125
+    },
+    {
+      "destination": "Pelagiad, Ahnassi\u0027s House",
+      "gridX": 0.42382861328125,
+      "gridY": -7.038011474609375
+    },
+    {
+      "destination": "Mannammu",
+      "gridX": 0.8354799194335938,
+      "gridY": -7.84810205078125
+    },
+    {
+      "destination": "Abaesen-Pulu Egg Mine",
+      "gridX": 0.4417659912109375,
+      "gridY": -9.13181640625
+    },
+    {
+      "destination": "Assemanu",
+      "gridX": 0.16414266357421875,
+      "gridY": -10.5691064453125
+    },
+    {
+      "destination": "Mudan Grotto",
+      "gridX": 0.79409619140625,
+      "gridY": -14.352969970703125
+    },
+    {
+      "destination": "Obscure Shipwreck, Cabin",
+      "gridX": -0.7435517578125,
+      "gridY": 23.390933837890625
+    },
+    {
+      "destination": "Obscure Shipwreck, Upper Level",
+      "gridX": -0.75059423828125,
+      "gridY": 23.5097998046875
+    },
+    {
+      "destination": "Onnissiralis, Shrine",
+      "gridX": -0.26626806640625,
+      "gridY": 22.3599365234375
+    },
+    {
+      "destination": "Sargon",
+      "gridX": -0.88967529296875,
+      "gridY": 20.8893701171875
+    },
+    {
+      "destination": "Valenvaryon, Propylon Chamber",
+      "gridX": -0.2917647705078125,
+      "gridY": 18.75336669921875
+    },
+    {
+      "destination": "Valenvaryon, Lambug\u0027s Hut",
+      "gridX": -0.44972822265625,
+      "gridY": 18.561580810546875
+    },
+    {
+      "destination": "Valenvaryon, Umug\u0027s Hut",
+      "gridX": -0.6914198364257812,
+      "gridY": 18.5867919921875
+    },
+    {
+      "destination": "Valenvaryon, Lurog\u0027s Hut",
+      "gridX": -0.316228271484375,
+      "gridY": 18.627891845703125
+    },
+    {
+      "destination": "Valenvaryon, Durz\u0027s Hut",
+      "gridX": -0.6270606689453125,
+      "gridY": 18.710943603515624
+    },
+    {
+      "destination": "Valenvaryon, Gashna\u0027s Hut",
+      "gridX": -0.5596560791015625,
+      "gridY": 18.5810107421875
+    },
+    {
+      "destination": "Ald-ruhn, Braynas Hlervu\u0027s House",
+      "gridX": -0.8724501953125,
+      "gridY": 6.448492065429687
+    },
+    {
+      "destination": "Ald-ruhn, Galthragoth\u0027s House",
+      "gridX": -0.9241229248046875,
+      "gridY": 6.406588989257813
+    },
+    {
+      "destination": "Ald-ruhn, Pellecia Aurrus\u0027s House",
+      "gridX": -0.999900146484375,
+      "gridY": 6.399631958007813
+    },
+    {
+      "destination": "Ramimilk, Shrine",
+      "gridX": -0.44460782470703125,
+      "gridY": 4.5699677734375
+    },
+    {
+      "destination": "Indalen Ancestral Tomb",
+      "gridX": -0.83976708984375,
+      "gridY": 3.257375244140625
+    },
+    {
+      "destination": "Abaelun Mine",
+      "gridX": -0.088045654296875,
+      "gridY": 3.53367236328125
+    },
+    {
+      "destination": "Shushishi",
+      "gridX": -0.0491163330078125,
+      "gridY": 2.80299755859375
+    },
+    {
+      "destination": "Moonmoth Legion Fort, Interior",
+      "gridX": -0.6179252319335937,
+      "gridY": -2.2124583740234374
+    },
+    {
+      "destination": "Moonmoth Legion Fort, Prison Towers",
+      "gridX": -0.6188035034179687,
+      "gridY": -2.254337158203125
+    },
+    {
+      "destination": "Moonmoth Legion Fort, Prison Towers",
+      "gridX": -0.572265625,
+      "gridY": -2.125
+    },
+    {
+      "destination": "Moonmoth Legion Fort, Prison Towers",
+      "gridX": -0.7109375,
+      "gridY": -2.126953125
+    },
+    {
+      "destination": "Moonmoth Legion Fort, Prison Towers",
+      "gridX": -0.528642333984375,
+      "gridY": -2.126953125
+    },
+    {
+      "destination": "Moonmoth Legion Fort, Prison Towers",
+      "gridX": -0.453125,
+      "gridY": -2.2578125
+    },
+    {
+      "destination": "Pelagiad, Junal-lei\u0027s House",
+      "gridX": -0.01523974609375,
+      "gridY": -6.565546020507813
+    },
+    {
+      "destination": "Andrano Ancestral Tomb",
+      "gridX": -0.1095741943359375,
+      "gridY": -8.094741821289062
+    },
+    {
+      "destination": "Addamasartus",
+      "gridX": -0.8118350830078125,
+      "gridY": -8.162305908203125
+    },
+    {
+      "destination": "Akimaes Grotto",
+      "gridX": -0.466402099609375,
+      "gridY": -10.12892578125
+    },
+    {
+      "destination": "Remote Shipwreck, Cabin",
+      "gridX": -0.978310791015625,
+      "gridY": -10.344273681640624
+    },
+    {
+      "destination": "Big Head\u0027s Shack",
+      "gridX": -1.69869775390625,
+      "gridY": 24.679097900390627
+    },
+    {
+      "destination": "Andavel Ancestral Tomb",
+      "gridX": -1.7508926391601562,
+      "gridY": 21.34294677734375
+    },
+    {
+      "destination": "Llando Ancestral Tomb",
+      "gridX": -1.591098876953125,
+      "gridY": 17.42316650390625
+    },
+    {
+      "destination": "Akimaes-Ilanipu Egg Mine",
+      "gridX": -1.5024434814453125,
+      "gridY": 16.505032958984376
+    },
+    {
+      "destination": "Falasmaryon, Propylon Chamber",
+      "gridX": -1.317227783203125,
+      "gridY": 15.47544189453125
+    },
+    {
+      "destination": "Falasmaryon, Upper Level",
+      "gridX": -1.497858154296875,
+      "gridY": 15.291893310546875
+    },
+    {
+      "destination": "Falasmaryon, Missun Akin\u0027s Hut",
+      "gridX": -1.2949259033203124,
+      "gridY": 15.272306396484375
+    },
+    {
+      "destination": "Falasmaryon, Lower Level",
+      "gridX": -1.57409619140625,
+      "gridY": 15.42332275390625
+    },
+    {
+      "destination": "Bthanchend",
+      "gridX": -1.4660009155273437,
+      "gridY": 10.773076171875
+    },
+    {
+      "destination": "Ald-ruhn, Manor District",
+      "gridX": -1.5008065185546875,
+      "gridY": 7.062549560546875
+    },
+    {
+      "destination": "Morvayn Manor",
+      "gridX": -1.0454786376953125,
+      "gridY": 7.151509765625
+    },
+    {
+      "destination": "Ald-ruhn, The Rat In The Pot",
+      "gridX": -1.5783615112304688,
+      "gridY": 6.33626416015625
+    },
+    {
+      "destination": "Ald-ruhn, Hanarai Assutlanipal\u0027s House",
+      "gridX": -1.4133994140625,
+      "gridY": 6.7009326171875
+    },
+    {
+      "destination": "Ald-ruhn, Gindrala Hleran\u0027s House",
+      "gridX": -1.4469581298828125,
+      "gridY": 6.548855834960937
+    },
+    {
+      "destination": "Ald-ruhn, Gildan\u0027s House",
+      "gridX": -1.30313818359375,
+      "gridY": 6.6111455078125
+    },
+    {
+      "destination": "Ald-ruhn, Drinar Varyon\u0027s House",
+      "gridX": -1.7669151611328124,
+      "gridY": 6.743658447265625
+    },
+    {
+      "destination": "Ald-ruhn, Daynes Redothril: Pawnbroker",
+      "gridX": -1.6100963134765625,
+      "gridY": 6.963808959960938
+    },
+    {
+      "destination": "Ald-ruhn, Tiras Sadus: General Merchandise",
+      "gridX": -1.407825927734375,
+      "gridY": 6.866282958984375
+    },
+    {
+      "destination": "Ald-ruhn, Dandera Selaro: Smith",
+      "gridX": -1.3775494384765625,
+      "gridY": 6.954659423828125
+    },
+    {
+      "destination": "Ald-ruhn, Council Club",
+      "gridX": -1.865905029296875,
+      "gridY": 6.81601708984375
+    },
+    {
+      "destination": "Ald-ruhn, Ald Skar Inn",
+      "gridX": -1.7641658935546876,
+      "gridY": 6.839816528320313
+    },
+    {
+      "destination": "Ald-ruhn, Tauryon\u0027s House",
+      "gridX": -1.3705030517578125,
+      "gridY": 6.554939208984375
+    },
+    {
+      "destination": "Ald-ruhn, Guild of Fighters",
+      "gridX": -1.78840869140625,
+      "gridY": 6.317294067382813
+    },
+    {
+      "destination": "Ald-ruhn, Ienas Sarandas\u0027s House",
+      "gridX": -1.6732789306640625,
+      "gridY": 6.758244018554688
+    },
+    {
+      "destination": "Ald-ruhn, Bevene Releth: Clothier",
+      "gridX": -1.31088671875,
+      "gridY": 6.8920751953125
+    },
+    {
+      "destination": "Ald-ruhn, Ilmiril\u0027s House",
+      "gridX": -1.074535400390625,
+      "gridY": 6.437425537109375
+    },
+    {
+      "destination": "Ald-ruhn, Dravasa Andrethi\u0027s House",
+      "gridX": -1.1633802490234375,
+      "gridY": 6.55966064453125
+    },
+    {
+      "destination": "Ald-ruhn, Aryni Orethi\u0027s House",
+      "gridX": -1.5666268310546876,
+      "gridY": 6.644357177734375
+    },
+    {
+      "destination": "Ald-ruhn, Codus Callonus: Bookseller",
+      "gridX": -1.6133165283203126,
+      "gridY": 6.9238701171875
+    },
+    {
+      "destination": "Ald-ruhn, Guild of Mages",
+      "gridX": -1.7987008056640625,
+      "gridY": 6.495965576171875
+    },
+    {
+      "destination": "Ald-ruhn, Temple",
+      "gridX": -1.015056396484375,
+      "gridY": 6.731945556640625
+    },
+    {
+      "destination": "Buckmoth Legion Fort, Towers",
+      "gridX": -1.530280029296875,
+      "gridY": 5.402148681640625
+    },
+    {
+      "destination": "Buckmoth Legion Fort, Interior",
+      "gridX": -1.6820618896484374,
+      "gridY": 5.3149652099609375
+    },
+    {
+      "destination": "Buckmoth Legion Fort, Prison",
+      "gridX": -1.539447265625,
+      "gridY": 5.082483764648438
+    },
+    {
+      "destination": "Buckmoth Legion Fort, Towers",
+      "gridX": -1.803717529296875,
+      "gridY": 5.243945556640625
+    },
+    {
+      "destination": "Buckmoth Legion Fort, Prison",
+      "gridX": -1.640625,
+      "gridY": 5.2578125
+    },
+    {
+      "destination": "Buckmoth Legion Fort, Interior",
+      "gridX": -1.682198974609375,
+      "gridY": 5.200125244140625
+    },
+    {
+      "destination": "Caldera, Dro\u0027Shavir\u0027s House",
+      "gridX": -1.617201416015625,
+      "gridY": 2.5321707763671877
+    },
+    {
+      "destination": "Caldera, Keel-Raniur\u0027s House",
+      "gridX": -1.5224609375,
+      "gridY": 2.5244140625
+    },
+    {
+      "destination": "Caldera, Falanaamo: Clothier",
+      "gridX": -1.5478681640625,
+      "gridY": 2.3887784423828125
+    },
+    {
+      "destination": "Caldera, Nedhelas\u0027 House",
+      "gridX": -1.1934764404296876,
+      "gridY": 2.1826036376953124
+    },
+    {
+      "destination": "Caldera, Ghorak Manor",
+      "gridX": -1.1667969970703125,
+      "gridY": 2.2751810302734374
+    },
+    {
+      "destination": "Caldera, Ghorak Manor",
+      "gridX": -1.1125333251953125,
+      "gridY": 2.336375732421875
+    },
+    {
+      "destination": "Caldera, Odairan Ashummi-Ammus\u0027 House",
+      "gridX": -1.437476318359375,
+      "gridY": 2.3484261474609376
+    },
+    {
+      "destination": "Caldera, Bashuk gra-Bat\u0027s House",
+      "gridX": -1.2609801025390626,
+      "gridY": 2.4366021728515626
+    },
+    {
+      "destination": "Caldera, Irgola: Pawnbroker",
+      "gridX": -1.4166517333984374,
+      "gridY": 2.334146240234375
+    },
+    {
+      "destination": "Caldera, South Guard Towers",
+      "gridX": -1.2140625,
+      "gridY": 2.093696533203125
+    },
+    {
+      "destination": "Caldera, Canodia Felannus\u0027 House",
+      "gridX": -1.4186680908203124,
+      "gridY": 2.2286219482421874
+    },
+    {
+      "destination": "Caldera, Valvius Mevureius\u0027 House",
+      "gridX": -1.6216419677734375,
+      "gridY": 2.4347359619140625
+    },
+    {
+      "destination": "Caldera, Verick Gemain: Trader",
+      "gridX": -1.3067601318359374,
+      "gridY": 2.29997998046875
+    },
+    {
+      "destination": "Caldera, Shenk\u0027s Shovel",
+      "gridX": -1.363934814453125,
+      "gridY": 2.1561324462890625
+    },
+    {
+      "destination": "Caldera, Shenk\u0027s Shovel",
+      "gridX": -1.305353515625,
+      "gridY": 2.1960499267578126
+    },
+    {
+      "destination": "Caldera, Surane Leoriane\u0027s House",
+      "gridX": -1.454764404296875,
+      "gridY": 2.5049490966796877
+    },
+    {
+      "destination": "Caldera, South Guard Towers",
+      "gridX": -1.3193045654296875,
+      "gridY": 2.09203271484375
+    },
+    {
+      "destination": "Caldera, Governor\u0027s Hall",
+      "gridX": -1.2088011474609375,
+      "gridY": 2.6997628173828123
+    },
+    {
+      "destination": "Caldera, North Guard Towers",
+      "gridX": -1.6161878662109375,
+      "gridY": 2.5920550537109377
+    },
+    {
+      "destination": "Caldera, North Guard Towers",
+      "gridX": -1.5424559326171876,
+      "gridY": 2.66855615234375
+    },
+    {
+      "destination": "Caldera, Hodlismod: Armorer",
+      "gridX": -1.1286844482421876,
+      "gridY": 2.439992919921875
+    },
+    {
+      "destination": "Caldera, Governor\u0027s Hall",
+      "gridX": -1.2560604248046876,
+      "gridY": 2.7463333740234375
+    },
+    {
+      "destination": "Caldera, Guild of Mages",
+      "gridX": -1.62163671875,
+      "gridY": 2.3881595458984375
+    },
+    {
+      "destination": "Caldera, Elmussa Damori\u0027s House",
+      "gridX": -1.1957559814453125,
+      "gridY": 2.4676239013671877
+    },
+    {
+      "destination": "Balmora, Vorar Helas\u0027 House",
+      "gridX": -1.84512939453125,
+      "gridY": -1.609570556640625
+    },
+    {
+      "destination": "Balmora, Astius Hanotepelus\u0027 House",
+      "gridX": -1.865008544921875,
+      "gridY": -1.890373291015625
+    },
+    {
+      "destination": "Balmora, Caius Cosades\u0027 House",
+      "gridX": -1.8626800537109376,
+      "gridY": -1.544083984375
+    },
+    {
+      "destination": "Balmora, Astius Hanotepelus\u0027 House",
+      "gridX": -1.82577490234375,
+      "gridY": -1.8255565185546876
+    },
+    {
+      "destination": "Balmora, Tyermaillin\u0027s House",
+      "gridX": -1.8292464599609375,
+      "gridY": -1.7400836181640624
+    },
+    {
+      "destination": "Balmora, Rithleen\u0027s House",
+      "gridX": -1.8295711669921875,
+      "gridY": -1.7402147216796875
+    },
+    {
+      "destination": "Balmora, Nine Toes\u0027 House",
+      "gridX": -2.018382080078125,
+      "gridY": -1.7267218017578125
+    },
+    {
+      "destination": "Balmora, Dralcea Arethi\u0027s House",
+      "gridX": -1.9990272216796876,
+      "gridY": -1.7636026611328126
+    },
+    {
+      "destination": "Balmora, Eastern Guard Tower",
+      "gridX": -1.9806263427734374,
+      "gridY": -1.4158497314453125
+    },
+    {
+      "destination": "Balmora, Balyn Omarel\u0027s House",
+      "gridX": -1.97235498046875,
+      "gridY": -1.5377200927734376
+    },
+    {
+      "destination": "Adanumuran",
+      "gridX": -1.4648792724609374,
+      "gridY": -4.363167236328125
+    },
+    {
+      "destination": "Ulummusa",
+      "gridX": -1.3776292724609376,
+      "gridY": -5.90707275390625
+    },
+    {
+      "destination": "Seyda Neen, Census and Excise Office",
+      "gridX": -1.254289306640625,
+      "gridY": -8.7445849609375
+    },
+    {
+      "destination": "Seyda Neen, Census and Excise Warehouse",
+      "gridX": -1.198899169921875,
+      "gridY": -8.725213012695313
+    },
+    {
+      "destination": "Seyda Neen, Arrille\u0027s Tradehouse",
+      "gridX": -1.4341695556640626,
+      "gridY": -8.557318115234375
+    },
+    {
+      "destination": "Seyda Neen, Terurise Girvayne\u0027s House",
+      "gridX": -1.4226517333984374,
+      "gridY": -8.664395751953125
+    },
+    {
+      "destination": "Seyda Neen, Fargoth\u0027s House",
+      "gridX": -1.4597379150390626,
+      "gridY": -8.295501708984375
+    },
+    {
+      "destination": "Seyda Neen, Eldafire\u0027s House",
+      "gridX": -1.334791748046875,
+      "gridY": -8.575660400390625
+    },
+    {
+      "destination": "Seyda Neen, Census and Excise Office",
+      "gridX": -1.301166015625,
+      "gridY": -8.7823193359375
+    },
+    {
+      "destination": "Seyda Neen, Draren Thiralas\u0027 House",
+      "gridX": -1.343658935546875,
+      "gridY": -8.283631591796874
+    },
+    {
+      "destination": "Seyda Neen, Vodunius Nuccius\u0027 House",
+      "gridX": -1.2917685546875,
+      "gridY": -8.633480224609375
+    },
+    {
+      "destination": "Seyda Neen, Census and Excise Office",
+      "gridX": -1.21800927734375,
+      "gridY": -8.83109375
+    },
+    {
+      "destination": "Seyda Neen, Erene Llenim\u0027s Shack",
+      "gridX": -1.65261572265625,
+      "gridY": -8.780873291015626
+    },
+    {
+      "destination": "Seyda Neen, Fine-Mouth\u0027s Shack",
+      "gridX": -1.7296282958984375,
+      "gridY": -8.74629638671875
+    },
+    {
+      "destination": "Seyda Neen, Foryn Gilnith\u0027s Shack",
+      "gridX": -1.6437540283203125,
+      "gridY": -8.665484619140624
+    },
+    {
+      "destination": "Seyda Neen, Indrele Rathryon\u0027s Shack",
+      "gridX": -1.5735601806640624,
+      "gridY": -8.62420849609375
+    },
+    {
+      "destination": "Seyda Neen, Arrille\u0027s Tradehouse",
+      "gridX": -1.500918212890625,
+      "gridY": -8.548956909179687
+    },
+    {
+      "destination": "Seyda Neen, Census and Excise Warehouse",
+      "gridX": -1.20794873046875,
+      "gridY": -8.837647705078124
+    },
+    {
+      "destination": "Imperial Prison Ship",
+      "gridX": -1.04789453125,
+      "gridY": -8.997901000976562
+    },
+    {
+      "destination": "Seyda Neen, Census and Excise Office",
+      "gridX": -1.2456041259765624,
+      "gridY": -8.729189453125
+    },
+    {
+      "destination": "Seyda Neen, Lighthouse",
+      "gridX": -1.487071044921875,
+      "gridY": -9.08819091796875
+    },
+    {
+      "destination": "Remote Shipwreck, Upper Level",
+      "gridX": -1.009130615234375,
+      "gridY": -10.227091796875
+    },
+    {
+      "destination": "Assumanu",
+      "gridX": -2.2724979248046875,
+      "gridY": 20.62761474609375
+    },
+    {
+      "destination": "Madas Grotto",
+      "gridX": -2.9511375732421876,
+      "gridY": 19.01804931640625
+    },
+    {
+      "destination": "Urshilaku, Astral Burial",
+      "gridX": -2.64177685546875,
+      "gridY": 16.632705078125
+    },
+    {
+      "destination": "Maar Gan, Shilipuran Zama-Rasour\u0027s Hut",
+      "gridX": -2.52793701171875,
+      "gridY": 12.62648486328125
+    },
+    {
+      "destination": "Maar Gan, Kind Erushara\u0027s Hut",
+      "gridX": -2.44958447265625,
+      "gridY": 12.669091796875
+    },
+    {
+      "destination": "Maar Gan, Yeherradad\u0027s Hut",
+      "gridX": -2.53533447265625,
+      "gridY": 12.510828857421876
+    },
+    {
+      "destination": "Maar Gan, Tashpi Ashibael\u0027s Hut",
+      "gridX": -2.477723388671875,
+      "gridY": 12.532111206054687
+    },
+    {
+      "destination": "Maar Gan, Assirari Zama-Rasour\u0027s Hut",
+      "gridX": -2.628944091796875,
+      "gridY": 12.53372802734375
+    },
+    {
+      "destination": "Maar Gan, Mabrelle Geles\u0027s Hut",
+      "gridX": -2.7341888427734373,
+      "gridY": 12.704658203125
+    },
+    {
+      "destination": "Maar Gan, Ulisamsi Shaddarnuran\u0027s Hut",
+      "gridX": -2.6178660888671876,
+      "gridY": 12.757822998046874
+    },
+    {
+      "destination": "Maar Gan, Andus Tradehouse",
+      "gridX": -2.741609375,
+      "gridY": 12.87913037109375
+    },
+    {
+      "destination": "Maar Gan, Garry\u0027s Hut",
+      "gridX": -2.7417135009765623,
+      "gridY": 12.806273193359376
+    },
+    {
+      "destination": "Maar Gan, Assi Serimilk\u0027s Hut",
+      "gridX": -2.6701529541015625,
+      "gridY": 12.82693603515625
+    },
+    {
+      "destination": "Maar Gan, Outpost",
+      "gridX": -2.7681103515625,
+      "gridY": 12.53218994140625
+    },
+    {
+      "destination": "Maar Gan, Shrine",
+      "gridX": -2.2568734130859376,
+      "gridY": 12.554859619140625
+    },
+    {
+      "destination": "Maar Gan, Guard Tower 1",
+      "gridX": -2.306925048828125,
+      "gridY": 12.5183251953125
+    },
+    {
+      "destination": "Maar Gan, Guard Tower 2",
+      "gridX": -2.251547607421875,
+      "gridY": 12.736827392578125
+    },
+    {
+      "destination": "Maar Gan, Guard Tower 3",
+      "gridX": -2.1041207275390623,
+      "gridY": 12.480908203125
+    },
+    {
+      "destination": "Maar Gan, Huleen\u0027s Hut",
+      "gridX": -2.06836865234375,
+      "gridY": 12.218983642578126
+    },
+    {
+      "destination": "Maar Gan, Guard Tower 1",
+      "gridX": -2.35171630859375,
+      "gridY": 12.47197265625
+    },
+    {
+      "destination": "Maar Gan, Guard Tower 2",
+      "gridX": -2.2967972412109376,
+      "gridY": 12.77971923828125
+    },
+    {
+      "destination": "Maar Gan, Guard Tower 3",
+      "gridX": -2.04321435546875,
+      "gridY": 12.459078369140625
+    },
+    {
+      "destination": "Ald-ruhn, Guard Tower 2",
+      "gridX": -2.03617919921875,
+      "gridY": 6.507948364257812
+    },
+    {
+      "destination": "Ald-ruhn, Guard Tower 1",
+      "gridX": -2.027821044921875,
+      "gridY": 6.359791259765625
+    },
+    {
+      "destination": "Ald-ruhn, Guard Tower 2",
+      "gridX": -2.09811328125,
+      "gridY": 6.5068173828125
+    },
+    {
+      "destination": "Ald-ruhn, Guard Tower 1",
+      "gridX": -2.09331005859375,
+      "gridY": 6.358388427734375
+    },
+    {
+      "destination": "Ashanammu",
+      "gridX": -2.8206629638671874,
+      "gridY": 2.1133868408203127
+    },
+    {
+      "destination": "Caldera, Mining Company Office",
+      "gridX": -2.81962890625,
+      "gridY": 1.6196136474609375
+    },
+    {
+      "destination": "Caldera, Mining Guard Tower",
+      "gridX": -2.903115478515625,
+      "gridY": 1.1238468017578125
+    },
+    {
+      "destination": "Caldera, Slave Shack Two",
+      "gridX": -2.756630126953125,
+      "gridY": 1.137007080078125
+    },
+    {
+      "destination": "Caldera, Slave Shack One",
+      "gridX": -2.829112548828125,
+      "gridY": 1.17409521484375
+    },
+    {
+      "destination": "Caldera, Mining Bunkhouse",
+      "gridX": -2.8440928955078126,
+      "gridY": 1.2786712646484375
+    },
+    {
+      "destination": "Caldera, Mining Bunkhouse",
+      "gridX": -2.8115184326171874,
+      "gridY": 1.240501708984375
+    },
+    {
+      "destination": "Caldera Mine",
+      "gridX": -2.443671875,
+      "gridY": 1.443945556640625
+    },
+    {
+      "destination": "Balmora, Drarayne Thelas\u0027 Storage",
+      "gridX": -2.1635177001953125,
+      "gridY": -1.8448291015625
+    },
+    {
+      "destination": "Balmora, Clagius Clanler: Outfitter",
+      "gridX": -2.8740751953125,
+      "gridY": -1.75854638671875
+    },
+    {
+      "destination": "Balmora, Karlirah\u0027s House",
+      "gridX": -2.5613641357421875,
+      "gridY": -1.769184814453125
+    },
+    {
+      "destination": "Balmora, Meldor: Armorer",
+      "gridX": -2.789346435546875,
+      "gridY": -1.7018035888671874
+    },
+    {
+      "destination": "Balmora, Tsiya\u0027s House",
+      "gridX": -2.540736083984375,
+      "gridY": -1.8535125732421875
+    },
+    {
+      "destination": "Balmora, Rarayn Radarys\u0027 House",
+      "gridX": -2.018362060546875,
+      "gridY": -1.5020743408203125
+    },
+    {
+      "destination": "Balmora, Drarayne Thelas\u0027 House",
+      "gridX": -2.2071156005859374,
+      "gridY": -1.8115423583984376
+    },
+    {
+      "destination": "Balmora, Dralosa Athren\u0027s House",
+      "gridX": -2.2099619140625,
+      "gridY": -1.6551748046875
+    },
+    {
+      "destination": "Balmora, Hecerinde\u0027s House",
+      "gridX": -2.1815762939453127,
+      "gridY": -1.616734130859375
+    },
+    {
+      "destination": "Balmora, South Wall Cornerclub",
+      "gridX": -2.02801611328125,
+      "gridY": -1.923437744140625
+    },
+    {
+      "destination": "Balmora, South Wall Cornerclub",
+      "gridX": -2.002401611328125,
+      "gridY": -1.95894384765625
+    },
+    {
+      "destination": "Balmora, Tsiya\u0027s House",
+      "gridX": -2.5819091796875,
+      "gridY": -1.920515380859375
+    },
+    {
+      "destination": "Balmora, Fast Eddie\u0027s House",
+      "gridX": -2.4905758056640623,
+      "gridY": -1.4754749755859375
+    },
+    {
+      "destination": "Balmora, Vori\u0027s House",
+      "gridX": -2.510408935546875,
+      "gridY": -1.66876416015625
+    },
+    {
+      "destination": "Balmora, Itan\u0027s House",
+      "gridX": -2.4898631591796874,
+      "gridY": -1.47528759765625
+    },
+    {
+      "destination": "Balmora, Guild of Mages",
+      "gridX": -2.63552880859375,
+      "gridY": -1.7545185546875
+    },
+    {
+      "destination": "Balmora, Guild of Fighters",
+      "gridX": -2.66972021484375,
+      "gridY": -1.6745484619140625
+    },
+    {
+      "destination": "Balmora, Ra\u0027Virr: Trader",
+      "gridX": -2.711375244140625,
+      "gridY": -1.8562220458984375
+    },
+    {
+      "destination": "Balmora, Guild of Mages",
+      "gridX": -2.670869873046875,
+      "gridY": -1.7117740478515624
+    },
+    {
+      "destination": "Balmora, Eight Plates",
+      "gridX": -2.6392752685546874,
+      "gridY": -1.4747655029296876
+    },
+    {
+      "destination": "Balmora, Western Guard Tower North",
+      "gridX": -2.9332630615234376,
+      "gridY": -1.496686767578125
+    },
+    {
+      "destination": "Balmora, The Razor Hole",
+      "gridX": -2.77739453125,
+      "gridY": -1.4770679931640625
+    },
+    {
+      "destination": "Balmora, Dorisa Darvel: Bookseller",
+      "gridX": -2.79792431640625,
+      "gridY": -1.6010576171875
+    },
+    {
+      "destination": "Balmora, Western Guard Tower South",
+      "gridX": -2.932914306640625,
+      "gridY": -1.6049334716796875
+    },
+    {
+      "destination": "Balmora, Hlaalo Manor",
+      "gridX": -2.97125,
+      "gridY": -1.393287109375
+    },
+    {
+      "destination": "Balmora, Hlaalo Manor",
+      "gridX": -2.9347098388671875,
+      "gridY": -1.3673341064453124
+    },
+    {
+      "destination": "Balmora, Karlirah\u0027s House",
+      "gridX": -2.52249951171875,
+      "gridY": -1.7039063720703125
+    },
+    {
+      "destination": "Balmora, Guild of Fighters",
+      "gridX": -2.645965087890625,
+      "gridY": -1.6191741943359375
+    },
+    {
+      "destination": "Balmora, Dura gra-Bol\u0027s House",
+      "gridX": -2.160881103515625,
+      "gridY": -2.006763916015625
+    },
+    {
+      "destination": "Balmora, Temple",
+      "gridX": -2.703386962890625,
+      "gridY": -1.013983154296875
+    },
+    {
+      "destination": "Balmora, Lucky Lockup",
+      "gridX": -2.7054188232421876,
+      "gridY": -2.0365576171875
+    },
+    {
+      "destination": "Balmora, Council Club",
+      "gridX": -2.583381591796875,
+      "gridY": -2.035234375
+    },
+    {
+      "destination": "Balmora, Dura gra-Bol\u0027s House",
+      "gridX": -2.144712646484375,
+      "gridY": -2.04436474609375
+    },
+    {
+      "destination": "Hassour",
+      "gridX": -2.360748779296875,
+      "gridY": -4.655836547851562
+    },
+    {
+      "destination": "Vassir-Didanat Cave",
+      "gridX": -2.6013948974609375,
+      "gridY": -4.135091552734375
+    },
+    {
+      "destination": "Lleran Ancestral Tomb",
+      "gridX": -2.4139189453125,
+      "gridY": -6.132741455078125
+    },
+    {
+      "destination": "Nimawia Grotto",
+      "gridX": -2.77393701171875,
+      "gridY": -8.15759765625
+    },
+    {
+      "destination": "Ald Redaynia, Tower",
+      "gridX": -3.7396318359375,
+      "gridY": 21.893131103515625
+    },
+    {
+      "destination": "Urshilaku Camp, Ashkhan\u0027s Yurt",
+      "gridX": -3.320503662109375,
+      "gridY": 18.217349853515625
+    },
+    {
+      "destination": "Urshilaku Camp, Zanummu\u0027s Yurt",
+      "gridX": -3.2755899658203127,
+      "gridY": 18.266826171875
+    },
+    {
+      "destination": "Urshilaku Camp, Kurapli\u0027s Yurt",
+      "gridX": -3.297842529296875,
+      "gridY": 18.330179443359373
+    },
+    {
+      "destination": "Urshilaku Camp, Maeli\u0027s Yurt",
+      "gridX": -3.406622314453125,
+      "gridY": 18.294583740234376
+    },
+    {
+      "destination": "Urshilaku Camp, Zabamund\u0027s Yurt",
+      "gridX": -3.3861966552734377,
+      "gridY": 18.231112060546874
+    },
+    {
+      "destination": "Urshilaku Camp, Ahasour\u0027s Yurt",
+      "gridX": -3.23862890625,
+      "gridY": 18.445150146484377
+    },
+    {
+      "destination": "Urshilaku Camp, Shara\u0027s Yurt",
+      "gridX": -3.49896728515625,
+      "gridY": 18.40365234375
+    },
+    {
+      "destination": "Urshilaku Camp, Shimsun\u0027s Yurt",
+      "gridX": -3.184793212890625,
+      "gridY": 18.34917236328125
+    },
+    {
+      "destination": "Urshilaku Camp, Sakiran\u0027s Yurt",
+      "gridX": -3.5112552490234377,
+      "gridY": 18.25891357421875
+    },
+    {
+      "destination": "Urshilaku Camp, Wise Woman\u0027s Yurt",
+      "gridX": -3.294969482421875,
+      "gridY": 18.526357421875
+    },
+    {
+      "destination": "Abinabi",
+      "gridX": -3.4855263671875,
+      "gridY": 16.473382568359376
+    },
+    {
+      "destination": "Shishi",
+      "gridX": -3.467609375,
+      "gridY": 15.127701416015626
+    },
+    {
+      "destination": "Kudanat",
+      "gridX": -3.433006103515625,
+      "gridY": 2.355673583984375
+    },
+    {
+      "destination": "Uveran Ancestral Tomb",
+      "gridX": -3.2054600830078126,
+      "gridY": 0.8352276611328125
+    },
+    {
+      "destination": "Balmora, Dralasa Nithryon: Pawnbroker",
+      "gridX": -3.02362255859375,
+      "gridY": -1.9717637939453125
+    },
+    {
+      "destination": "Balmora, Hlaalu Council Manor",
+      "gridX": -3.208583984375,
+      "gridY": -1.60513037109375
+    },
+    {
+      "destination": "Balmora, Nerano Manor",
+      "gridX": -3.1091025390625,
+      "gridY": -1.3417392578125
+    },
+    {
+      "destination": "Balmora, Nerano Manor",
+      "gridX": -3.1484945068359376,
+      "gridY": -1.404218505859375
+    },
+    {
+      "destination": "Balmora, Morag Tong Guild",
+      "gridX": -3.267993408203125,
+      "gridY": -1.3801788330078124
+    },
+    {
+      "destination": "Balmora, Tyravel Manor",
+      "gridX": -3.0452847900390627,
+      "gridY": -1.6374290771484374
+    },
+    {
+      "destination": "Balmora, Hlaalu Council Manor",
+      "gridX": -3.1437744140625,
+      "gridY": -1.5341239013671875
+    },
+    {
+      "destination": "Balmora, Nalcarya of White Haven: Fine Alchemist",
+      "gridX": -3.0292193603515627,
+      "gridY": -1.2256708984375
+    },
+    {
+      "destination": "Balmora, Milie Hastien: Fine Clothier",
+      "gridX": -3.141764892578125,
+      "gridY": -1.1869112548828125
+    },
+    {
+      "destination": "Balmora, Hlaalu Council Manor",
+      "gridX": -3.145446044921875,
+      "gridY": -1.5642637939453126
+    },
+    {
+      "destination": "Tharys Ancestral Tomb",
+      "gridX": -3.330908203125,
+      "gridY": -2.4268121337890625
+    },
+    {
+      "destination": "Shulk Egg Mine",
+      "gridX": -3.87537109375,
+      "gridY": -3.3879342041015623
+    },
+    {
+      "destination": "Shurdan-Raplay Egg Mine",
+      "gridX": -3.621407958984375,
+      "gridY": -4.8994091796875
+    },
+    {
+      "destination": "Zainsipilu",
+      "gridX": -3.4939658203125,
+      "gridY": -6.265492919921875
+    },
+    {
+      "destination": "Samarys Ancestral Tomb",
+      "gridX": -3.143839111328125,
+      "gridY": -7.4017095947265625
+    },
+    {
+      "destination": "Thelas Ancestral Tomb",
+      "gridX": -3.1701806640625,
+      "gridY": -8.77875732421875
+    },
+    {
+      "destination": "Assurnabitashpi",
+      "gridX": -4.489692626953125,
+      "gridY": 18.55545654296875
+    },
+    {
+      "destination": "Assurnabitashpi, Shrine",
+      "gridX": -4.8556280517578125,
+      "gridY": 18.31673583984375
+    },
+    {
+      "destination": "Assurnabitashpi, Shrine",
+      "gridX": -4.285926513671875,
+      "gridY": 18.342681884765625
+    },
+    {
+      "destination": "Drath Ancestral Tomb",
+      "gridX": -4.2933740234375,
+      "gridY": 17.45072021484375
+    },
+    {
+      "destination": "Bthungthumz",
+      "gridX": -4.410837646484375,
+      "gridY": 16.35973388671875
+    },
+    {
+      "destination": "Hairat-Vassamsi Egg Mine",
+      "gridX": -4.5982880859375,
+      "gridY": 13.470387451171876
+    },
+    {
+      "destination": "Rothan Ancestral Tomb",
+      "gridX": -4.41335205078125,
+      "gridY": 12.446171875
+    },
+    {
+      "destination": "Indarys Manor, Manor Services",
+      "gridX": -4.169002685546875,
+      "gridY": 9.588114013671875
+    },
+    {
+      "destination": "Indarys Manor, Raram\u0027s House",
+      "gridX": -4.39963671875,
+      "gridY": 9.576805419921875
+    },
+    {
+      "destination": "Indarys Manor, Berendas\u0027 House",
+      "gridX": -4.4093603515625,
+      "gridY": 9.757703857421875
+    },
+    {
+      "destination": "Indarys Manor, Raram\u0027s House",
+      "gridX": -4.336944091796875,
+      "gridY": 9.5782470703125
+    },
+    {
+      "destination": "Indarys Manor",
+      "gridX": -4.30048828125,
+      "gridY": 9.737674560546875
+    },
+    {
+      "destination": "Odibaal",
+      "gridX": -4.946087646484375,
+      "gridY": 8.264428100585938
+    },
+    {
+      "destination": "Milk",
+      "gridX": -4.933978515625,
+      "gridY": 7.500274658203125
+    },
+    {
+      "destination": "Hleran Ancestral Tomb",
+      "gridX": -4.021846923828125,
+      "gridY": 6.12424560546875
+    },
+    {
+      "destination": "Sjorvar Horse-Mouth\u0027s House",
+      "gridX": -4.937342163085938,
+      "gridY": 4.257482055664062
+    },
+    {
+      "destination": "Band Egg Mine",
+      "gridX": -4.365491943359375,
+      "gridY": 2.58811767578125
+    },
+    {
+      "destination": "Norvayn Ancestral Tomb",
+      "gridX": -4.599696655273437,
+      "gridY": 0.167677001953125
+    },
+    {
+      "destination": "Andrethi Ancestral Tomb",
+      "gridX": -4.457735961914063,
+      "gridY": -1.4180745849609375
+    },
+    {
+      "destination": "Rethan Manor",
+      "gridX": -4.406733032226563,
+      "gridY": -4.522911376953125
+    },
+    {
+      "destination": "Rethan Manor, Tures\u0027 House",
+      "gridX": -4.379619140625,
+      "gridY": -4.645946533203125
+    },
+    {
+      "destination": "Rethan Manor, Berendas\u0027 House",
+      "gridX": -4.379619140625,
+      "gridY": -4.645946533203125
+    },
+    {
+      "destination": "Rethan Manor, Drelas\u0027 House",
+      "gridX": -4.261592407226562,
+      "gridY": -4.51170166015625
+    },
+    {
+      "destination": "Rethan Manor, Gols\u0027 House",
+      "gridX": -4.353870849609375,
+      "gridY": -4.376457275390625
+    },
+    {
+      "destination": "Unexplored Shipwreck, Upper Level",
+      "gridX": -4.940373901367187,
+      "gridY": -6.708937622070312
+    },
+    {
+      "destination": "Unexplored Shipwreck, Cabin",
+      "gridX": -4.897301025390625,
+      "gridY": -6.820387817382812
+    },
+    {
+      "destination": "Aharunartus",
+      "gridX": -4.52413330078125,
+      "gridY": -8.416312255859374
+    },
+    {
+      "destination": "Sarys Ancestral Tomb",
+      "gridX": -4.597094116210937,
+      "gridY": -8.539618530273437
+    },
+    {
+      "destination": "Ibar-Dad",
+      "gridX": -5.1905279541015625,
+      "gridY": 18.103681640625
+    },
+    {
+      "destination": "Druscashti, Upper Level",
+      "gridX": -5.58909912109375,
+      "gridY": 17.195133056640625
+    },
+    {
+      "destination": "Sha-Adnius",
+      "gridX": -5.405238647460937,
+      "gridY": 16.420865478515626
+    },
+    {
+      "destination": "Yesamsi",
+      "gridX": -5.28076171875,
+      "gridY": 15.4833984375
+    },
+    {
+      "destination": "Maelkashishi, Shrine",
+      "gridX": -5.253534301757813,
+      "gridY": 13.269737548828125
+    },
+    {
+      "destination": "Maelkashishi, Shrine, Forgotten Galleries",
+      "gridX": -5.0390009765625,
+      "gridY": 13.27011962890625
+    },
+    {
+      "destination": "Mila-Nipal, Manat\u0027s Yurt",
+      "gridX": -5.309871826171875,
+      "gridY": 10.678320922851562
+    },
+    {
+      "destination": "Randas Ancestral Tomb",
+      "gridX": -5.804395141601563,
+      "gridY": 8.297696533203125
+    },
+    {
+      "destination": "Sennananit",
+      "gridX": -5.85431884765625,
+      "gridY": 0.4729957275390625
+    },
+    {
+      "destination": "Hlormaren, Propylon Chamber",
+      "gridX": -5.6627197265625,
+      "gridY": -0.5716552734375
+    },
+    {
+      "destination": "Hlormaren, Keep, Top Level",
+      "gridX": -5.53125,
+      "gridY": -0.3502197265625
+    },
+    {
+      "destination": "Hlormaren, Dome",
+      "gridX": -5.2734375,
+      "gridY": -0.4208984375
+    },
+    {
+      "destination": "Hlormaren, Keep, Bottom Level",
+      "gridX": -5.42578125,
+      "gridY": -0.4595947265625
+    },
+    {
+      "destination": "Zanabi",
+      "gridX": -5.39814453125,
+      "gridY": -1.6840115966796876
+    },
+    {
+      "destination": "Hla Oad, Fatleg\u0027s Drop Off",
+      "gridX": -5.691864501953125,
+      "gridY": -4.5191162109375
+    },
+    {
+      "destination": "Hla Oad, Fatleg\u0027s Drop Off",
+      "gridX": -5.684613037109375,
+      "gridY": -4.592615112304688
+    },
+    {
+      "destination": "Hla Oad, Shurkul gro-Sharga\u0027s House",
+      "gridX": -5.837625732421875,
+      "gridY": -4.640791870117187
+    },
+    {
+      "destination": "Hla Oad, Okur\u0027s House",
+      "gridX": -5.599664306640625,
+      "gridY": -4.714724487304688
+    },
+    {
+      "destination": "Hla Oad, Relien Rirne\u0027s House",
+      "gridX": -5.86369140625,
+      "gridY": -4.72408447265625
+    },
+    {
+      "destination": "Hla Oad, Murudius Flaeus\u0027s House",
+      "gridX": -5.802799682617188,
+      "gridY": -4.842347412109375
+    },
+    {
+      "destination": "Hla Oad, Fadila Balvel\u0027s House",
+      "gridX": -5.685815795898438,
+      "gridY": -4.790098876953125
+    },
+    {
+      "destination": "Yasamsi",
+      "gridX": -5.203780517578125,
+      "gridY": -5.770181884765625
+    },
+    {
+      "destination": "Derelict Shipwreck, Upper Level",
+      "gridX": -6.285182495117187,
+      "gridY": 18.481533203125
+    },
+    {
+      "destination": "Derelict Shipwreck, Cabin",
+      "gridX": -6.32590087890625,
+      "gridY": 18.59236328125
+    },
+    {
+      "destination": "Alen Ancestral Tomb",
+      "gridX": -6.528575927734375,
+      "gridY": 15.34918017578125
+    },
+    {
+      "destination": "Reloth Ancestral Tomb",
+      "gridX": -6.46789306640625,
+      "gridY": 12.708665771484375
+    },
+    {
+      "destination": "Dushariran, Shrine",
+      "gridX": -6.07562158203125,
+      "gridY": 9.8273583984375
+    },
+    {
+      "destination": "Salothran Ancestral Tomb",
+      "gridX": -6.37506298828125,
+      "gridY": 7.853792724609375
+    },
+    {
+      "destination": "Drulene Falen\u0027s Hut",
+      "gridX": -6.4349365234375,
+      "gridY": 6.1578369140625
+    },
+    {
+      "destination": "Telvayn Ancestral Tomb",
+      "gridX": -6.315982299804688,
+      "gridY": 5.05145263671875
+    },
+    {
+      "destination": "Mallapi",
+      "gridX": -6.147943115234375,
+      "gridY": 4.426973388671875
+    },
+    {
+      "destination": "Abernanit",
+      "gridX": -6.403240234375,
+      "gridY": 2.78802490234375
+    },
+    {
+      "destination": "Aleft",
+      "gridX": -6.832527099609375,
+      "gridY": 1.639532958984375
+    },
+    {
+      "destination": "Hlormaren, Sewers",
+      "gridX": -6.469405151367187,
+      "gridY": -0.23755234375
+    },
+    {
+      "destination": "Shal",
+      "gridX": -6.7836846923828125,
+      "gridY": -2.9548072509765624
+    },
+    {
+      "destination": "Ashurnibibi, Shrine",
+      "gridX": -6.84611083984375,
+      "gridY": -3.651501708984375
+    },
+    {
+      "destination": "Heran Ancestral Tomb",
+      "gridX": -6.107071899414063,
+      "gridY": -5.64347509765625
+    },
+    {
+      "destination": "Grytewake, Upper Level",
+      "gridX": -6.672501586914063,
+      "gridY": -5.481510620117188
+    },
+    {
+      "destination": "Grytewake, Cabin",
+      "gridX": -6.57209228515625,
+      "gridY": -5.5652923583984375
+    },
+    {
+      "destination": "Ashir-Dan",
+      "gridX": -7.53663818359375,
+      "gridY": 17.44133056640625
+    },
+    {
+      "destination": "Panud Egg Mine",
+      "gridX": -7.70157763671875,
+      "gridY": 16.5936083984375
+    },
+    {
+      "destination": "Salothan Ancestral Tomb",
+      "gridX": -7.125882202148437,
+      "gridY": 10.70451416015625
+    },
+    {
+      "destination": "Mamaea, Sanctum of Awakening",
+      "gridX": -7.103167724609375,
+      "gridY": 9.753973388671875
+    },
+    {
+      "destination": "Ashimanu Egg Mine",
+      "gridX": -7.303382568359375,
+      "gridY": 8.8791748046875
+    },
+    {
+      "destination": "Gnaar Mok, Arenim Manor",
+      "gridX": -7.604716796875,
+      "gridY": 3.420087890625
+    },
+    {
+      "destination": "Gnaar Mok, Nadene Rotheran\u0027s Shack",
+      "gridX": -7.555110473632812,
+      "gridY": 3.19035986328125
+    },
+    {
+      "destination": "Gnaar Mok, Nadene Rotheran\u0027s Shack",
+      "gridX": -7.497681640625,
+      "gridY": 3.2366693115234373
+    },
+    {
+      "destination": "Gnaar Mok, Anglalos\u0027s Shack",
+      "gridX": -7.393692993164063,
+      "gridY": 3.169178466796875
+    },
+    {
+      "destination": "Gnaar Mok, Druegh-jigger\u0027s Rest",
+      "gridX": -7.405588623046875,
+      "gridY": 3.3609404296875
+    },
+    {
+      "destination": "Gnaar Mok, Jerian Dolbanitte\u0027s Shack",
+      "gridX": -7.329620361328125,
+      "gridY": 3.3204888916015625
+    },
+    {
+      "destination": "Gnaar Mok, Mush-Mere\u0027s Shack",
+      "gridX": -7.22953466796875,
+      "gridY": 3.31972900390625
+    },
+    {
+      "destination": "Gnaar Mok, Caryarel\u0027s Shack",
+      "gridX": -7.215949951171875,
+      "gridY": 3.1878634033203124
+    },
+    {
+      "destination": "Gnaar Mok, Rostlogi\u0027s Shack",
+      "gridX": -7.2952783203125,
+      "gridY": 3.19103125
+    },
+    {
+      "destination": "Gnaar Mok, Druegh-jigger\u0027s Rest",
+      "gridX": -7.461009521484375,
+      "gridY": 3.4096982421875
+    },
+    {
+      "destination": "Addadshashanammu, Shrine",
+      "gridX": -7.907251831054688,
+      "gridY": 0.7770623779296875
+    },
+    {
+      "destination": "Ashalmimilkala, Shrine",
+      "gridX": -7.756385498046875,
+      "gridY": -1.16023828125
+    },
+    {
+      "destination": "Khuul, Miron Garer\u0027s Shack",
+      "gridX": -8.297454833984375,
+      "gridY": 17.049461669921875
+    },
+    {
+      "destination": "Khuul, Svadstar\u0027s Shack",
+      "gridX": -8.152120361328125,
+      "gridY": 17.188331298828125
+    },
+    {
+      "destination": "Khuul, Nelmyne Andules\u0027s Shack",
+      "gridX": -8.407982788085938,
+      "gridY": 17.2427880859375
+    },
+    {
+      "destination": "Khuul, Brurid\u0027s Shack",
+      "gridX": -8.232642211914062,
+      "gridY": 17.22120849609375
+    },
+    {
+      "destination": "Khuul, Brurid\u0027s Shack",
+      "gridX": -8.299974365234375,
+      "gridY": 17.250888671875
+    },
+    {
+      "destination": "Khuul, Helga\u0027s Shack",
+      "gridX": -8.40329833984375,
+      "gridY": 17.0848193359375
+    },
+    {
+      "destination": "Khuul, Rivame Samandas\u0027s Shack",
+      "gridX": -8.50176513671875,
+      "gridY": 17.065435791015624
+    },
+    {
+      "destination": "Khuul, Endris Dilmyn\u0027s Shack",
+      "gridX": -8.542763671875,
+      "gridY": 17.196485595703123
+    },
+    {
+      "destination": "Khuul, Thongar\u0027s Tradehouse",
+      "gridX": -8.145523681640626,
+      "gridY": 17.067623291015625
+    },
+    {
+      "destination": "Khuul, Aldi\u0027s Shack",
+      "gridX": -8.495127685546874,
+      "gridY": 17.241817626953125
+    },
+    {
+      "destination": "Seran Ancestral Tomb",
+      "gridX": -8.51432861328125,
+      "gridY": 16.1880224609375
+    },
+    {
+      "destination": "Asha-Ahhe Egg Mine",
+      "gridX": -8.235327758789062,
+      "gridY": 15.6874560546875
+    },
+    {
+      "destination": "Shashmanu Camp, Anit\u0027s Yurt",
+      "gridX": -8.447669067382812,
+      "gridY": 15.289989013671875
+    },
+    {
+      "destination": "Rethandus Ancestral Tomb",
+      "gridX": -8.44623046875,
+      "gridY": 13.1345361328125
+    },
+    {
+      "destination": "Assarnud",
+      "gridX": -8.6877685546875,
+      "gridY": 11.651923217773437
+    },
+    {
+      "destination": "Veloth Ancestral Tomb",
+      "gridX": -8.665225830078125,
+      "gridY": 8.262100219726562
+    },
+    {
+      "destination": "Sarimisun-Assa Egg Mine",
+      "gridX": -8.20357421875,
+      "gridY": 7.11995263671875
+    },
+    {
+      "destination": "Andasreth, Upper Level",
+      "gridX": -8.24651611328125,
+      "gridY": 5.595035034179688
+    },
+    {
+      "destination": "Andasreth, Lower Level",
+      "gridX": -8.3515625,
+      "gridY": 5.693900634765625
+    },
+    {
+      "destination": "Andasreth, Propylon Chamber",
+      "gridX": -8.2484228515625,
+      "gridY": 5.796564575195313
+    },
+    {
+      "destination": "Ilunibi, Carcass of the Saint",
+      "gridX": -8.34111083984375,
+      "gridY": 4.240289672851563
+    },
+    {
+      "destination": "Neglected Shipwreck, Cabin",
+      "gridX": -8.988776245117187,
+      "gridY": 4.843173828125
+    },
+    {
+      "destination": "An Abandoned Shack",
+      "gridX": -8.45058154296875,
+      "gridY": 2.30804248046875
+    },
+    {
+      "destination": "Shurinbaal",
+      "gridX": -8.044195556640625,
+      "gridY": 2.696026123046875
+    },
+    {
+      "destination": "Ashalmawia, Shrine",
+      "gridX": -9.31137451171875,
+      "gridY": 15.242120361328125
+    },
+    {
+      "destination": "Palansour",
+      "gridX": -9.49291259765625,
+      "gridY": 13.5776416015625
+    },
+    {
+      "destination": "Palansour",
+      "gridX": -9.90232421875,
+      "gridY": 13.919407958984374
+    },
+    {
+      "destination": "Mat",
+      "gridX": -9.80922412109375,
+      "gridY": 12.10496044921875
+    },
+    {
+      "destination": "Gnisis, Fort Darius",
+      "gridX": -9.779725341796874,
+      "gridY": 11.061632080078125
+    },
+    {
+      "destination": "Gnisis, Eggmine",
+      "gridX": -9.859375,
+      "gridY": 11.396240234375
+    },
+    {
+      "destination": "Gnisis, Fort Darius",
+      "gridX": -9.748701171875,
+      "gridY": 11.10643310546875
+    },
+    {
+      "destination": "Gnisis, Underground Stream",
+      "gridX": -9.06567626953125,
+      "gridY": 11.168197021484374
+    },
+    {
+      "destination": "Assarnud",
+      "gridX": -9.406669921875,
+      "gridY": 11.859140625
+    },
+    {
+      "destination": "Falas Ancestral Tomb",
+      "gridX": -9.373131103515625,
+      "gridY": 10.3875830078125
+    },
+    {
+      "destination": "Berandas, Keep, Top Level",
+      "gridX": -9.3941650390625,
+      "gridY": 9.306640625
+    },
+    {
+      "destination": "Berandas, Propylon Chamber",
+      "gridX": -9.5699462890625,
+      "gridY": 9.33642578125
+    },
+    {
+      "destination": "Neglected Shipwreck, Upper Level",
+      "gridX": -9.062550048828125,
+      "gridY": 4.780361694335937
+    },
+    {
+      "destination": "Shunned Shipwreck, Upper Level",
+      "gridX": -9.222161254882813,
+      "gridY": 1.7656947021484375
+    },
+    {
+      "destination": "Shunned Shipwreck, Cabin",
+      "gridX": -9.10305419921875,
+      "gridY": 1.7793602294921875
+    },
+    {
+      "destination": "Ald Velothi, Outpost",
+      "gridX": -10.261197998046875,
+      "gridY": 15.164647216796874
+    },
+    {
+      "destination": "Ald Velothi, Fevila Bethrano\u0027s Shack",
+      "gridX": -10.365491943359375,
+      "gridY": 15.439598999023438
+    },
+    {
+      "destination": "Ald Velothi, Ganus Lloryn\u0027s Shack",
+      "gridX": -10.803482666015626,
+      "gridY": 15.491337890625
+    },
+    {
+      "destination": "Ald Velothi, Sathas Rivul\u0027s Shack",
+      "gridX": -10.581346435546875,
+      "gridY": 15.750689697265624
+    },
+    {
+      "destination": "Ald Velothi, Ienas Arvel\u0027s Shack",
+      "gridX": -10.456865234375,
+      "gridY": 15.63727783203125
+    },
+    {
+      "destination": "Ald Velothi, Ienas Arvel\u0027s Shack",
+      "gridX": -10.476456298828126,
+      "gridY": 15.70824951171875
+    },
+    {
+      "destination": "Ald Velothi, Vireveri Darethran\u0027s Shack",
+      "gridX": -10.776407470703125,
+      "gridY": 15.560311279296876
+    },
+    {
+      "destination": "Ald Velothi, Llerar Vinden\u0027s Shack",
+      "gridX": -10.680008544921876,
+      "gridY": 15.5446826171875
+    },
+    {
+      "destination": "Ald Velothi, Lledsea Relas\u0027s Shack",
+      "gridX": -10.687308349609374,
+      "gridY": 15.38598828125
+    },
+    {
+      "destination": "Ald Velothi, Outpost",
+      "gridX": -10.227410888671875,
+      "gridY": 15.217672119140625
+    },
+    {
+      "destination": "Fair Helas, Upper Level",
+      "gridX": -10.910711669921875,
+      "gridY": 15.64106201171875
+    },
+    {
+      "destination": "Fair Helas, Cabin",
+      "gridX": -10.912706298828125,
+      "gridY": 15.771676025390626
+    },
+    {
+      "destination": "Aidanat Camp, Abassel\u0027s Yurt",
+      "gridX": -10.71002197265625,
+      "gridY": 14.51314453125
+    },
+    {
+      "destination": "Llervu Ancestral Tomb",
+      "gridX": -10.519447021484375,
+      "gridY": 13.754432373046875
+    },
+    {
+      "destination": "Gnisis, Barracks",
+      "gridX": -10.0645771484375,
+      "gridY": 11.206873779296876
+    },
+    {
+      "destination": "Gnisis, Shand Hut",
+      "gridX": -10.197193603515625,
+      "gridY": 11.491627685546876
+    },
+    {
+      "destination": "Gnisis, Dinadad Hut",
+      "gridX": -10.790037841796876,
+      "gridY": 11.275170288085938
+    },
+    {
+      "destination": "Gnisis, Mantiti Cave Dwelling",
+      "gridX": -10.81353955078125,
+      "gridY": 11.844351806640624
+    },
+    {
+      "destination": "Gnisis, Lasamsi Cave Dwelling",
+      "gridX": -10.49234619140625,
+      "gridY": 11.840689697265624
+    },
+    {
+      "destination": "Gnisis, Tansumiran Cave Dwelling",
+      "gridX": -10.466803588867187,
+      "gridY": 11.637841796875
+    },
+    {
+      "destination": "Gnisis, Almu Cave Dwelling",
+      "gridX": -10.554212646484375,
+      "gridY": 11.85833544921875
+    },
+    {
+      "destination": "Gnisis, Abelmawia Hut",
+      "gridX": -10.7179248046875,
+      "gridY": 11.343692626953125
+    },
+    {
+      "destination": "Gnisis, Madach Tradehouse",
+      "gridX": -10.3151513671875,
+      "gridY": 11.140447998046875
+    },
+    {
+      "destination": "Gnisis, Shishara Hut",
+      "gridX": -10.303931884765625,
+      "gridY": 11.3883740234375
+    },
+    {
+      "destination": "Gnisis, Yahaz Hut",
+      "gridX": -10.786305419921876,
+      "gridY": 11.178970336914062
+    },
+    {
+      "destination": "Gnisis, Man-llu Hut",
+      "gridX": -10.28271240234375,
+      "gridY": 11.46592041015625
+    },
+    {
+      "destination": "Gnisis, Temple",
+      "gridX": -10.54029052734375,
+      "gridY": 11.4391455078125
+    },
+    {
+      "destination": "Gnisis, Arvs-Drelen",
+      "gridX": -10.7233203125,
+      "gridY": 11.67181884765625
+    },
+    {
+      "destination": "Koal Cave",
+      "gridX": -10.702011108398438,
+      "gridY": 9.7040673828125
+    },
+    {
+      "destination": "Subdun",
+      "gridX": -10.655355224609375,
+      "gridY": 8.493724365234375
+    },
+    {
+      "destination": "Gnisis, Vabdas Hut",
+      "gridX": -11.318572998046875,
+      "gridY": 11.216151123046876
+    },
+    {
+      "destination": "Forgotten Shipwreck",
+      "gridX": -12.212203979492188,
+      "gridY": 15.22758056640625
+    },
+    {
+      "destination": "Arkngthunch-Sturdumz",
+      "gridX": -12.692303466796876,
+      "gridY": 14.30843505859375
+    },
+    {
+      "destination": "Ginith Ancestral Tomb",
+      "gridX": -12.10975341796875,
+      "gridY": 13.50154052734375
+    },
+    {
+      "destination": "Ashinabi",
+      "gridX": -12.598795166015625,
+      "gridY": 11.471785888671874
+    },
+    {
+      "destination": "Ashinabi",
+      "gridX": -12.93763916015625,
+      "gridY": 11.519210815429688
+    },
+    {
+      "destination": "Eluba-Addon Egg Mine",
+      "gridX": -13.563599853515624,
+      "gridY": 13.159478149414063
+    },
+    {
+      "destination": "Yasammidan, Shrine",
+      "gridX": -14.453475952148438,
+      "gridY": 14.1835546875
+    },
+    {
+      "destination": "Unmarked Shipwreck, Upper Level",
+      "gridX": -14.591790161132813,
+      "gridY": 14.717242431640624
+    },
+    {
+      "destination": "Solstheim, Gyldenhul Barrow",
+      "gridX": -16.624593505859377,
+      "gridY": 24.8855517578125
+    },
+    {
+      "destination": "Solstheim, Frossel",
+      "gridX": -17.855726318359373,
+      "gridY": 25.325899658203124
+    },
+    {
+      "destination": "Solstheim, Tombs of Skaalara",
+      "gridX": -17.69221435546875,
+      "gridY": 24.514285888671875
+    },
+    {
+      "destination": "Solstheim, Connorflenge Barrow",
+      "gridX": -17.384725341796877,
+      "gridY": 21.751365966796875
+    },
+    {
+      "destination": "Solstheim, Sjobal",
+      "gridX": -18.25374755859375,
+      "gridY": 24.52378662109375
+    },
+    {
+      "destination": "Solstheim, Thirsk",
+      "gridX": -18.918837890625,
+      "gridY": 23.207750244140627
+    },
+    {
+      "destination": "Solstheim, Glenschul\u0027s Tomb",
+      "gridX": -18.2454296875,
+      "gridY": 22.5242138671875
+    },
+    {
+      "destination": "Solstheim, Lukesturm Barrow",
+      "gridX": -18.802431640625,
+      "gridY": 21.426302490234374
+    },
+    {
+      "destination": "Solstheim, Himmelhost Barrow",
+      "gridX": -18.609989013671875,
+      "gridY": 17.685009765625
+    },
+    {
+      "destination": "Skaal Village, The Greathall",
+      "gridX": -19.4274365234375,
+      "gridY": 26.053829345703125
+    },
+    {
+      "destination": "Skaal Village, Ingmar\u0027s House",
+      "gridX": -19.24952880859375,
+      "gridY": 26.023773193359375
+    },
+    {
+      "destination": "Skaal Village, Shaman\u0027s Hut",
+      "gridX": -19.762884521484374,
+      "gridY": 26.02241455078125
+    },
+    {
+      "destination": "Skaal Village, Lassnr\u0027s House",
+      "gridX": -19.80577880859375,
+      "gridY": 25.8758447265625
+    },
+    {
+      "destination": "Skaal Village, Bronrod the Roarer\u0027s House",
+      "gridX": -19.2033837890625,
+      "gridY": 25.9048388671875
+    },
+    {
+      "destination": "Skaal Village, Ice-Mane\u0027s Hut",
+      "gridX": -19.678594970703124,
+      "gridY": 25.7550048828125
+    },
+    {
+      "destination": "Skaal Village, Erna the Quiet\u0027s House",
+      "gridX": -19.63017822265625,
+      "gridY": 25.897420654296877
+    },
+    {
+      "destination": "Skaal Village, Rigmor\u0027s Hut",
+      "gridX": -19.280601806640625,
+      "gridY": 25.832506103515627
+    },
+    {
+      "destination": "Skaal village, Snedbrir the Smith",
+      "gridX": -19.3143212890625,
+      "gridY": 25.491719970703127
+    },
+    {
+      "destination": "Skaal Village, The Blodskaal\u0027s House",
+      "gridX": -19.280601806640625,
+      "gridY": 25.832506103515627
+    },
+    {
+      "destination": "Solstheim, Lair of the Udyrfrykte",
+      "gridX": -19.392601318359375,
+      "gridY": 23.134202880859377
+    },
+    {
+      "destination": "Solstheim, Caves of Fjalding",
+      "gridX": -19.92338134765625,
+      "gridY": 23.5922412109375
+    },
+    {
+      "destination": "Solstheim, Uncle Sweetshare\u0027s Workshop",
+      "gridX": -19.383846435546875,
+      "gridY": 21.282813720703125
+    },
+    {
+      "destination": "Solstheim, Valbrandr Barrow",
+      "gridX": -19.47883544921875,
+      "gridY": 20.552008056640624
+    },
+    {
+      "destination": "Solstheim, Skogsdrake Barrow",
+      "gridX": -19.760345458984375,
+      "gridY": 19.753448486328125
+    },
+    {
+      "destination": "Solstheim, Frosselmane Barrow",
+      "gridX": -19.837989501953125,
+      "gridY": 17.863118896484377
+    },
+    {
+      "destination": "Solstheim, Skygge",
+      "gridX": -20.306573486328126,
+      "gridY": 26.837701416015626
+    },
+    {
+      "destination": "Solstheim, Rimhull",
+      "gridX": -20.261416015625,
+      "gridY": 25.78426025390625
+    },
+    {
+      "destination": "Solstheim, Rimhull",
+      "gridX": -20.273973388671877,
+      "gridY": 25.08830078125
+    },
+    {
+      "destination": "Solstheim, Graring\u0027s House",
+      "gridX": -20.98039794921875,
+      "gridY": 24.670335693359377
+    },
+    {
+      "destination": "Solstheim, Kolfinna\u0027s Dwelling",
+      "gridX": -20.537998046875,
+      "gridY": 19.8340380859375
+    },
+    {
+      "destination": "Solstheim, Gandrung Caverns",
+      "gridX": -20.6612548828125,
+      "gridY": 18.233980712890624
+    },
+    {
+      "destination": "Solstheim, Legge",
+      "gridX": -21.1849365234375,
+      "gridY": 25.131431884765625
+    },
+    {
+      "destination": "Solstheim, Gloomy Cave",
+      "gridX": -21.76051513671875,
+      "gridY": 22.4622802734375
+    },
+    {
+      "destination": "Solstheim, Gronn",
+      "gridX": -21.160311279296874,
+      "gridY": 22.870340576171873
+    },
+    {
+      "destination": "Solstheim, Fjell",
+      "gridX": -21.9351904296875,
+      "gridY": 21.417056884765625
+    },
+    {
+      "destination": "Solstheim, Solvjord",
+      "gridX": -21.736280517578123,
+      "gridY": 20.345604248046875
+    },
+    {
+      "destination": "Solstheim, Halls of Penumbra",
+      "gridX": -21.66687255859375,
+      "gridY": 19.4938818359375
+    },
+    {
+      "destination": "Fort Frostmoth, Armory",
+      "gridX": -21.15673828125,
+      "gridY": 17.4208984375
+    },
+    {
+      "destination": "Fort Frostmoth, Imperial Cult Shrine",
+      "gridX": -21.3125,
+      "gridY": 17.640625
+    },
+    {
+      "destination": "Fort Frostmoth, General Quarters",
+      "gridX": -21.44116455078125,
+      "gridY": 17.50370361328125
+    },
+    {
+      "destination": "Fort Frostmoth, General Quarters",
+      "gridX": -21.44055419921875,
+      "gridY": 17.347705078125
+    },
+    {
+      "destination": "Fort Frostmoth, Armory",
+      "gridX": -21.0893212890625,
+      "gridY": 17.420888671875
+    },
+    {
+      "destination": "Fort Frostmoth, Curtain Wall",
+      "gridX": -21.48095703125,
+      "gridY": 17.2236328125
+    },
+    {
+      "destination": "Fort Frostmoth, Curtain Wall",
+      "gridX": -21.47705078125,
+      "gridY": 17.6318359375
+    },
+    {
+      "destination": "Fort Frostmoth, Curtain Wall",
+      "gridX": -21.224609375,
+      "gridY": 17.5390625
+    },
+    {
+      "destination": "Fort Frostmoth, Curtain Wall",
+      "gridX": -21.236297607421875,
+      "gridY": 17.270185546875
+    },
+    {
+      "destination": "Fort Frostmoth, Curtain Wall",
+      "gridX": -21.232421875,
+      "gridY": 17.6318359375
+    },
+    {
+      "destination": "Fort Frostmoth, Curtain Wall",
+      "gridX": -21.2236328125,
+      "gridY": 17.2431640625
+    },
+    {
+      "destination": "Fort Frostmoth, Prison",
+      "gridX": -21.40340576171875,
+      "gridY": 17.348853759765625
+    },
+    {
+      "destination": "Solstheim, Frykte",
+      "gridX": -22.647640380859375,
+      "gridY": 26.230916748046877
+    },
+    {
+      "destination": "Solstheim, Bjorn",
+      "gridX": -22.12115478515625,
+      "gridY": 24.124576416015625
+    },
+    {
+      "destination": "Solstheim, Eddard Barrow",
+      "gridX": -22.597520751953127,
+      "gridY": 21.55207763671875
+    },
+    {
+      "destination": "Solstheim, Ulfgar the Unending\u0027s Dwelling",
+      "gridX": -22.700384521484374,
+      "gridY": 20.79343994140625
+    },
+    {
+      "destination": "Solstheim, Stormpfund Barrow",
+      "gridX": -22.427818603515625,
+      "gridY": 17.98484375
+    },
+    {
+      "destination": "Solstheim, Castle Karstaag, Caverns of Karstaag",
+      "gridX": -23.747015380859374,
+      "gridY": 27.438673095703123
+    },
+    {
+      "destination": "Solstheim, Benkongerike",
+      "gridX": -23.108026123046876,
+      "gridY": 27.115604248046875
+    },
+    {
+      "destination": "Solstheim, Castle Karstaag, Throne Room",
+      "gridX": -23.720364990234376,
+      "gridY": 26.6412841796875
+    },
+    {
+      "destination": "Solstheim, Castle Karstaag, Tower",
+      "gridX": -23.73426513671875,
+      "gridY": 26.78691162109375
+    },
+    {
+      "destination": "Solstheim, Hrothmund\u0027s Barrow",
+      "gridX": -23.74485595703125,
+      "gridY": 25.58711669921875
+    },
+    {
+      "destination": "Solstheim, Jolgeirr Barrow",
+      "gridX": -23.5644775390625,
+      "gridY": 22.515262451171875
+    },
+    {
+      "destination": "Solstheim, Kjolver\u0027s Dwelling",
+      "gridX": -23.582174072265627,
+      "gridY": 21.719541015625
+    },
+    {
+      "destination": "Raven Rock, Sados Relothan\u0027s House",
+      "gridX": -23.990938720703124,
+      "gridY": 19.4514697265625
+    },
+    {
+      "destination": "Raven Rock, Bar",
+      "gridX": -23.965020751953126,
+      "gridY": 19.74877197265625
+    },
+    {
+      "destination": "Raven Rock, North Storehouse",
+      "gridX": -23.843953857421877,
+      "gridY": 19.750074462890623
+    },
+    {
+      "destination": "Raven Rock, Factor\u0027s Estate",
+      "gridX": -23.647685546875,
+      "gridY": 19.7395458984375
+    },
+    {
+      "destination": "Raven Rock, Gratian Caerellius\u0027 House",
+      "gridX": -23.668609619140625,
+      "gridY": 19.51630859375
+    },
+    {
+      "destination": "Raven Rock, Seler Favelnim\u0027s House",
+      "gridX": -23.853055419921876,
+      "gridY": 19.455810546875
+    },
+    {
+      "destination": "Raven Rock, Afer Flaccus\u0027 House",
+      "gridX": -23.43370361328125,
+      "gridY": 19.4803466796875
+    },
+    {
+      "destination": "Raven Rock, Garnas Uvalen\u0027s House",
+      "gridX": -23.472066650390627,
+      "gridY": 19.741607666015625
+    },
+    {
+      "destination": "Raven Rock, Vacant House",
+      "gridX": -23.545919189453127,
+      "gridY": 19.515228271484375
+    },
+    {
+      "destination": "Raven Rock, Factor\u0027s Estate",
+      "gridX": -23.6652490234375,
+      "gridY": 19.39836669921875
+    },
+    {
+      "destination": "Solstheim, Kolbjorn Barrow",
+      "gridX": -23.145015869140625,
+      "gridY": 17.705718994140625
+    },
+    {
+      "destination": "Solstheim, Domme",
+      "gridX": -24.89526123046875,
+      "gridY": 24.917213134765625
+    },
+    {
+      "destination": "Solstheim, Cave of Hidden Music",
+      "gridX": -24.0969873046875,
+      "gridY": 22.22541748046875
+    },
+    {
+      "destination": "Raven Rock, Factor\u0027s Estate",
+      "gridX": -24.635870361328124,
+      "gridY": 19.535379638671873
+    },
+    {
+      "destination": "Raven Rock, Uryn Maren\u0027s House",
+      "gridX": -24.277376708984374,
+      "gridY": 19.4609375
+    },
+    {
+      "destination": "Raven Rock, Mine Entrance",
+      "gridX": -24.21436279296875,
+      "gridY": 19.65214599609375
+    },
+    {
+      "destination": "Raven Rock, SouthEast Storehouse",
+      "gridX": -24.7064208984375,
+      "gridY": 19.303350830078124
+    },
+    {
+      "destination": "Raven Rock, Sabinus Oranius\u0027 House",
+      "gridX": -24.74842041015625,
+      "gridY": 19.49214599609375
+    },
+    {
+      "destination": "Raven Rock, Gidar Verothan\u0027s House",
+      "gridX": -24.439677734375,
+      "gridY": 19.460294189453126
+    },
+    {
+      "destination": "Raven Rock, Smith",
+      "gridX": -24.091070556640624,
+      "gridY": 19.49028564453125
+    },
+    {
+      "destination": "Raven Rock, Trader",
+      "gridX": -24.4294677734375,
+      "gridY": 19.683126220703127
+    },
+    {
+      "destination": "Raven Rock, South Storehouse",
+      "gridX": -24.3230224609375,
+      "gridY": 19.38528076171875
+    },
+    {
+      "destination": "Solstheim, Kelsedolk Barrow",
+      "gridX": -24.863212890625,
+      "gridY": 18.574371337890625
+    },
+    {
+      "destination": "Solstheim, Varstaad Caves",
+      "gridX": -25.3975634765625,
+      "gridY": 24.352491455078123
+    },
+    {
+      "destination": "Solstheim, Geilir the Mumbling\u0027s Dwelling",
+      "gridX": -25.77858154296875,
+      "gridY": 21.437451171875
+    },
+    {
+      "destination": "Solstheim, Bloodskal Barrow",
+      "gridX": -25.1234326171875,
+      "gridY": 20.6579052734375
+    },
+    {
+      "destination": "Solstheim, Stahlman\u0027s Gorge",
+      "gridX": -26.79951416015625,
+      "gridY": 26.539573974609375
+    },
+    {
+      "destination": "Raven Rock, Supply Ship",
+      "gridX": -26.480048828125,
+      "gridY": 21.72162841796875
+    },
+    {
+      "destination": "Raven Rock, Supply Ship",
+      "gridX": -26.506046142578125,
+      "gridY": 21.604149169921875
+    },
+    {
+      "destination": "Ebonheart, East Empire North Warehouse",
+      "gridX": 2.3121707763671875,
+      "gridY": -12.260831298828125
+    },
+    {
+      "destination": "Dubdilla",
+      "gridX": 13.176207275390626,
+      "gridY": -3.7902391357421874
+    },
+    {
+      "destination": "Firemoth, Guard Towers",
+      "gridX": -6.9644140625,
+      "gridY": -10.601416015625
+    },
+    {
+      "destination": "Firemoth, Guard Towers",
+      "gridX": -6.94667529296875,
+      "gridY": -10.608848876953125
+    },
+    {
+      "destination": "Firemoth, Guard Towers",
+      "gridX": -6.9448876953125,
+      "gridY": -10.4692333984375
+    },
+    {
+      "destination": "Firemoth, Keep",
+      "gridX": -7.725679443359375,
+      "gridY": -10.587222900390625
+    },
+    {
+      "destination": "Firemoth, Keep",
+      "gridX": -7.624094970703125,
+      "gridY": -10.45265869140625
+    },
+    {
+      "destination": "Firemoth, Keep",
+      "gridX": -7.624498901367187,
+      "gridY": -10.719267578125
+    },
+    {
+      "destination": "Firemoth, Lower Cavern",
+      "gridX": -8.27079296875,
+      "gridY": -10.511768798828125
+    }
+  ],
+  "travel": {
+    "nodes": [
+      {
+        "npcId": "Adondasi Sadalvel",
+        "npcName": "Adondasi Sadalvel",
+        "cellName": "(3, -9)",
+        "type": "SiltStrider",
+        "gridX": 3.945189453125,
+        "gridY": -8.80492431640625,
+        "isInInterior": false
+      },
+      {
+        "npcId": "Blatta Hateria",
+        "npcName": "Blatta Hateria",
+        "cellName": "(2, -13)",
+        "type": "Unknown",
+        "gridX": 2.5110028076171873,
+        "gridY": -12.367568969726562,
+        "isInInterior": false
+      },
+      {
+        "npcId": "Daynas Darys",
+        "npcName": "Daynas Darys",
+        "cellName": "(15, 4)",
+        "type": "Boat",
+        "gridX": 15.036812744140626,
+        "gridY": 4.978898559570313,
+        "isInInterior": false
+      },
+      {
+        "npcId": "Nevosi Hlan",
+        "npcName": "Nevosi Hlan",
+        "cellName": "(2, -13)",
+        "type": "Boat",
+        "gridX": 2.469846435546875,
+        "gridY": -12.6123291015625,
+        "isInInterior": false
+      },
+      {
+        "npcId": "ano andaram",
+        "npcName": "Ano Andaram",
+        "cellName": "(4, -10)",
+        "type": "Boat",
+        "gridX": 4.357039794921875,
+        "gridY": -9.074208251953126,
+        "isInInterior": false
+      },
+      {
+        "npcId": "aren maren",
+        "npcName": "Aren Maren",
+        "cellName": "(2, -11)",
+        "type": "Gondola",
+        "gridX": 2.92099365234375,
+        "gridY": -10.6857763671875,
+        "isInInterior": false
+      },
+      {
+        "npcId": "baleni salavel",
+        "npcName": "Baleni Salavel",
+        "cellName": "(-6, -5)",
+        "type": "Boat",
+        "gridX": -5.937135009765625,
+        "gridY": -4.84103271484375,
+        "isInInterior": false
+      },
+      {
+        "npcId": "dalse adren",
+        "npcName": "Dalse Adren",
+        "cellName": "(4, -11)",
+        "type": "Gondola",
+        "gridX": 4.080624633789062,
+        "gridY": -10.890313110351563,
+        "isInInterior": false
+      },
+      {
+        "npcId": "daras aryon",
+        "npcName": "Daras Aryon",
+        "cellName": "(-3, 12)",
+        "type": "SiltStrider",
+        "gridX": -2.72234912109375,
+        "gridY": 12.212823486328125,
+        "isInInterior": false
+      },
+      {
+        "npcId": "darvame hleran",
+        "npcName": "Darvame Hleran",
+        "cellName": "(-2, -9)",
+        "type": "SiltStrider",
+        "gridX": -1.05034326171875,
+        "gridY": -8.569961547851562,
+        "isInInterior": false
+      },
+      {
+        "npcId": "devas irano",
+        "npcName": "Devas Irano",
+        "cellName": "(3, -10)",
+        "type": "Gondola",
+        "gridX": 3.3614716796875,
+        "gridY": -9.412947998046874,
+        "isInInterior": false
+      },
+      {
+        "npcId": "dilami androm",
+        "npcName": "Dilami Androm",
+        "cellName": "(12, -8)",
+        "type": "SiltStrider",
+        "gridX": 12.62922119140625,
+        "gridY": -7.142989135742187,
+        "isInInterior": false
+      },
+      {
+        "npcId": "emelia duronia",
+        "npcName": "Emelia Duronia",
+        "cellName": "Caldera, Guild of Mages",
+        "type": "MagesGuild",
+        "gridX": -1.6103394775390625,
+        "gridY": 2.4001732177734376,
+        "isInInterior": true
+      },
+      {
+        "npcId": "erranil",
+        "npcName": "Erranil",
+        "cellName": "Ald-ruhn, Guild of Mages",
+        "type": "MagesGuild",
+        "gridX": -1.80687109375,
+        "gridY": 6.482230224609375,
+        "isInInterior": true
+      },
+      {
+        "npcId": "fendryn drelvi",
+        "npcName": "Fendryn Drelvi",
+        "cellName": "(5, -11)",
+        "type": "Gondola",
+        "gridX": 5.355220336914062,
+        "gridY": -10.6859716796875,
+        "isInInterior": false
+      },
+      {
+        "npcId": "flacassia fauseius",
+        "npcName": "Flacassia Fauseius",
+        "cellName": "Vivec, Guild of Mages",
+        "type": "MagesGuild",
+        "gridX": 3.84234814453125,
+        "gridY": -9.73400390625,
+        "isInInterior": true
+      },
+      {
+        "npcId": "folsi thendas",
+        "npcName": "Folsi Thendas",
+        "cellName": "(6, -6)",
+        "type": "SiltStrider",
+        "gridX": 6.488739013671875,
+        "gridY": -5.8283453369140625,
+        "isInInterior": false
+      },
+      {
+        "npcId": "gals arethi",
+        "npcName": "Gals Arethi",
+        "cellName": "(17, 4)",
+        "type": "Boat",
+        "gridX": 17.3486669921875,
+        "gridY": 4.805372680664062,
+        "isInInterior": false
+      },
+      {
+        "npcId": "haema farseer",
+        "npcName": "Haema Farseer",
+        "cellName": "(7, 22)",
+        "type": "Boat",
+        "gridX": 7.6090087890625,
+        "gridY": 22.4841552734375,
+        "isInInterior": false
+      },
+      {
+        "npcId": "iniel",
+        "npcName": "Iniel",
+        "cellName": "Sadrith Mora, Wolverine Hall: Mage\u0027s Guild",
+        "type": "MagesGuild",
+        "gridX": 18.255859375,
+        "gridY": 3.65234375,
+        "isInInterior": true
+      },
+      {
+        "npcId": "masalinie merian",
+        "npcName": "Masalinie Merian",
+        "cellName": "Balmora, Guild of Mages",
+        "type": "MagesGuild",
+        "gridX": -2.6937020263671876,
+        "gridY": -1.713895751953125,
+        "isInInterior": true
+      },
+      {
+        "npcId": "navam veran",
+        "npcName": "Navam Veran",
+        "cellName": "(-3, 6)",
+        "type": "SiltStrider",
+        "gridX": -2.155096435546875,
+        "gridY": 6.68579833984375,
+        "isInInterior": false
+      },
+      {
+        "npcId": "nireli farys",
+        "npcName": "Nireli Farys",
+        "cellName": "(14, -13)",
+        "type": "Boat",
+        "gridX": 14.55599609375,
+        "gridY": -12.464400634765624,
+        "isInInterior": false
+      },
+      {
+        "npcId": "punibi yahaz",
+        "npcName": "Punibi Yahaz",
+        "cellName": "Gnisis, Arvs-Drelen",
+        "type": "SiltStrider",
+        "gridX": -10.7070703125,
+        "gridY": 11.65576904296875,
+        "isInInterior": true
+      },
+      {
+        "npcId": "rindral dralor",
+        "npcName": "Rindral Dralor",
+        "cellName": "(13, -8)",
+        "type": "Boat",
+        "gridX": 13.8970537109375,
+        "gridY": -7.495824340820312,
+        "isInInterior": false
+      },
+      {
+        "npcId": "sedyni veran",
+        "npcName": "Sedyni Veran",
+        "cellName": "(12, 13)",
+        "type": "Boat",
+        "gridX": 12.30111328125,
+        "gridY": 13.939208984375,
+        "isInInterior": false
+      },
+      {
+        "npcId": "seldus nerendus",
+        "npcName": "Seldus Nerendus",
+        "cellName": "(-9, 16)",
+        "type": "SiltStrider",
+        "gridX": -8.049224853515625,
+        "gridY": 16.5517578125,
+        "isInInterior": false
+      },
+      {
+        "npcId": "selvil sareloth",
+        "npcName": "Selvil Sareloth",
+        "cellName": "(-3, -3)",
+        "type": "SiltStrider",
+        "gridX": -2.5911435546875,
+        "gridY": -2.232928466796875,
+        "isInInterior": false
+      },
+      {
+        "npcId": "talmeni drethan",
+        "npcName": "Talmeni Drethan",
+        "cellName": "(-9, 17)",
+        "type": "Boat",
+        "gridX": -8.491361572265625,
+        "gridY": 17.3507763671875,
+        "isInInterior": false
+      },
+      {
+        "npcId": "talsi uvayn",
+        "npcName": "Talsi Uvayn",
+        "cellName": "(3, -13)",
+        "type": "Gondola",
+        "gridX": 3.7561895751953127,
+        "gridY": -12.16298388671875,
+        "isInInterior": false
+      },
+      {
+        "npcId": "tonas telvani",
+        "npcName": "Tonas Telvani",
+        "cellName": "(13, 14)",
+        "type": "Boat",
+        "gridX": 13.070035888671875,
+        "gridY": 14.299605712890624,
+        "isInInterior": false
+      },
+      {
+        "npcId": "valveli arelas",
+        "npcName": "Valveli Arelas",
+        "cellName": "(-8, 3)",
+        "type": "Boat",
+        "gridX": -7.099971313476562,
+        "gridY": 3.24908642578125,
+        "isInInterior": false
+      },
+      {
+        "npcId": "vevrana aryon",
+        "npcName": "Vevrana Aryon",
+        "cellName": "(19, -5)",
+        "type": "Unknown",
+        "gridX": 19.5707373046875,
+        "gridY": -4.39031982421875,
+        "isInInterior": false
+      },
+      {
+        "npcId": "basks_in_the_sun",
+        "npcName": "Basks-In-The-Sun",
+        "cellName": "(-22, 16)",
+        "type": "Boat",
+        "gridX": -21.2809814453125,
+        "gridY": 16.706636962890624,
+        "isInInterior": false
+      },
+      {
+        "npcId": "s\u0027virr",
+        "npcName": "S\u0027virr",
+        "cellName": "(-9, 17)",
+        "type": "Boat",
+        "gridX": -8.4185107421875,
+        "gridY": 17.353050537109375,
+        "isInInterior": false
+      },
+      {
+        "npcId": "veresa alver",
+        "npcName": "Veresa Alver",
+        "cellName": "(-25, 19)",
+        "type": "Boat",
+        "gridX": -24.344671630859374,
+        "gridY": 19.17104736328125,
+        "isInInterior": false
+      },
+      {
+        "npcId": "cinia urtius",
+        "npcName": "Cinia Urtius",
+        "cellName": "(15, 1)",
+        "type": "Boat",
+        "gridX": 15.51448974609375,
+        "gridY": 1.84112255859375,
+        "isInInterior": false
+      },
+      {
+        "npcId": "ab01boShipmastr02",
+        "npcName": "Sansi Andrethi",
+        "cellName": "(2, -13)",
+        "type": "Boat",
+        "gridX": 2.501220703125,
+        "gridY": -12.580810546875,
+        "isInInterior": false
+      },
+      {
+        "npcId": "ab01boShipmastr03",
+        "npcName": "Rogus Othren",
+        "cellName": "(-8, 3)",
+        "type": "Boat",
+        "gridX": -7.1724853515625,
+        "gridY": 3.2906494140625,
+        "isInInterior": false
+      },
+      {
+        "npcId": "ab01boShipmastr05",
+        "npcName": "Miron Balur",
+        "cellName": "(-9, 17)",
+        "type": "Boat",
+        "gridX": -8.4989013671875,
+        "gridY": 17.4483642578125,
+        "isInInterior": false
+      },
+      {
+        "npcId": "ab01boShipmastr07",
+        "npcName": "Bralin Milar",
+        "cellName": "(17, 4)",
+        "type": "Boat",
+        "gridX": 17.5543212890625,
+        "gridY": 4.7662353515625,
+        "isInInterior": false
+      },
+      {
+        "npcId": "ab01boShipmastr20",
+        "npcName": "Marena Hlan",
+        "cellName": "(-11, 15)",
+        "type": "Boat",
+        "gridX": -10.673828125,
+        "gridY": 15.7000732421875,
+        "isInInterior": false
+      },
+      {
+        "npcId": "ab01boShipmastr21",
+        "npcName": "Captain Frand Rolston",
+        "cellName": "(-2, -9)",
+        "type": "Boat",
+        "gridX": -1.1591796875,
+        "gridY": -8.8463134765625,
+        "isInInterior": false
+      },
+      {
+        "npcId": "ab01boShipmastr22",
+        "npcName": "Rogas Tistar",
+        "cellName": "(15, 1)",
+        "type": "Boat",
+        "gridX": 15.540771484375,
+        "gridY": 1.790283203125,
+        "isInInterior": false
+      },
+      {
+        "npcId": "propylon_andasreth",
+        "npcName": "Andasreth",
+        "cellName": "Andasreth, Propylon Chamber",
+        "type": "Propylon",
+        "gridX": -8.272647705078125,
+        "gridY": 5.787895263671875,
+        "isInInterior": true
+      },
+      {
+        "npcId": "propylon_berandas",
+        "npcName": "Berandas",
+        "cellName": "Berandas, Propylon Chamber",
+        "type": "Propylon",
+        "gridX": -9.5485029296875,
+        "gridY": 9.336807250976562,
+        "isInInterior": true
+      },
+      {
+        "npcId": "propylon_falasmaryon",
+        "npcName": "Falasmaryon",
+        "cellName": "Falasmaryon, Propylon Chamber",
+        "type": "Propylon",
+        "gridX": -1.3380618896484375,
+        "gridY": 15.473721923828125,
+        "isInInterior": true
+      },
+      {
+        "npcId": "propylon_falensarano",
+        "npcName": "Falensarano",
+        "cellName": "Falensarano, Propylon Chamber",
+        "type": "Propylon",
+        "gridX": 9.196265869140625,
+        "gridY": 6.417200561523438,
+        "isInInterior": true
+      },
+      {
+        "npcId": "propylon_hlormaren",
+        "npcName": "Hlormaren",
+        "cellName": "Hlormaren, Propylon Chamber",
+        "type": "Propylon",
+        "gridX": -5.640625,
+        "gridY": -0.5625,
+        "isInInterior": true
+      },
+      {
+        "npcId": "propylon_indoranyon",
+        "npcName": "Indoranyon",
+        "cellName": "Indoranyon, Propylon Chamber",
+        "type": "Propylon",
+        "gridX": 14.501144409179688,
+        "gridY": 9.425077392578125,
+        "isInInterior": true
+      },
+      {
+        "npcId": "propylon_marandus",
+        "npcName": "Marandus",
+        "cellName": "Marandus, Propylon Chamber",
+        "type": "Propylon",
+        "gridX": 4.595577758789062,
+        "gridY": -2.6143563232421876,
+        "isInInterior": true
+      },
+      {
+        "npcId": "propylon_rotheran",
+        "npcName": "Rotheran",
+        "cellName": "Rotheran, Propylon Chamber",
+        "type": "Propylon",
+        "gridX": 6.66062158203125,
+        "gridY": 18.698236083984376,
+        "isInInterior": true
+      },
+      {
+        "npcId": "propylon_telasero",
+        "npcName": "Telasero",
+        "cellName": "Telasero, Propylon Chamber",
+        "type": "Propylon",
+        "gridX": 9.392703857421875,
+        "gridY": -6.5719140625,
+        "isInInterior": true
+      },
+      {
+        "npcId": "propylon_valenvaryon",
+        "npcName": "Valenvaryon",
+        "cellName": "Valenvaryon, Propylon Chamber",
+        "type": "Propylon",
+        "gridX": -0.3120516357421875,
+        "gridY": 18.74330322265625,
+        "isInInterior": true
+      }
+    ],
+    "routes": [
+      {
+        "fromNpcId": "Adondasi Sadalvel",
+        "toCell": "(-2, -9)",
+        "type": "SiltStrider",
+        "fromGridX": 3.945189453125,
+        "fromGridY": -8.80492431640625,
+        "toGridX": -1.05034326171875,
+        "toGridY": -8.569961547851562
+      },
+      {
+        "fromNpcId": "Adondasi Sadalvel",
+        "toCell": "(6, -6)",
+        "type": "SiltStrider",
+        "fromGridX": 3.945189453125,
+        "fromGridY": -8.80492431640625,
+        "toGridX": 6.488739013671875,
+        "toGridY": -5.8283453369140625
+      },
+      {
+        "fromNpcId": "Adondasi Sadalvel",
+        "toCell": "(12, -8)",
+        "type": "SiltStrider",
+        "fromGridX": 3.945189453125,
+        "fromGridY": -8.80492431640625,
+        "toGridX": 12.62922119140625,
+        "toGridY": -7.142989135742187
+      },
+      {
+        "fromNpcId": "Adondasi Sadalvel",
+        "toCell": "(-3, -3)",
+        "type": "SiltStrider",
+        "fromGridX": 3.945189453125,
+        "fromGridY": -8.80492431640625,
+        "toGridX": -2.5911435546875,
+        "toGridY": -2.232928466796875
+      },
+      {
+        "fromNpcId": "Blatta Hateria",
+        "toCell": "(19, -5)",
+        "type": "Unknown",
+        "fromGridX": 2.5110028076171873,
+        "fromGridY": -12.367568969726562,
+        "toGridX": 19.5707373046875,
+        "toGridY": -4.39031982421875
+      },
+      {
+        "fromNpcId": "Daynas Darys",
+        "toCell": "(12, 13)",
+        "type": "Boat",
+        "fromGridX": 15.036812744140626,
+        "fromGridY": 4.978898559570313,
+        "toGridX": 12.30111328125,
+        "toGridY": 13.939208984375
+      },
+      {
+        "fromNpcId": "Daynas Darys",
+        "toCell": "(7, 22)",
+        "type": "Boat",
+        "fromGridX": 15.036812744140626,
+        "fromGridY": 4.978898559570313,
+        "toGridX": 7.6090087890625,
+        "toGridY": 22.4841552734375
+      },
+      {
+        "fromNpcId": "Nevosi Hlan",
+        "toCell": "(4, -10)",
+        "type": "Boat",
+        "fromGridX": 2.469846435546875,
+        "fromGridY": -12.6123291015625,
+        "toGridX": 4.357039794921875,
+        "toGridY": -9.074208251953126
+      },
+      {
+        "fromNpcId": "Nevosi Hlan",
+        "toCell": "(-6, -5)",
+        "type": "Boat",
+        "fromGridX": 2.469846435546875,
+        "fromGridY": -12.6123291015625,
+        "toGridX": -5.937135009765625,
+        "toGridY": -4.84103271484375
+      },
+      {
+        "fromNpcId": "Nevosi Hlan",
+        "toCell": "(14, -13)",
+        "type": "Boat",
+        "fromGridX": 2.469846435546875,
+        "fromGridY": -12.6123291015625,
+        "toGridX": 14.55599609375,
+        "toGridY": -12.464400634765624
+      },
+      {
+        "fromNpcId": "Nevosi Hlan",
+        "toCell": "(17, 4)",
+        "type": "Boat",
+        "fromGridX": 2.469846435546875,
+        "fromGridY": -12.6123291015625,
+        "toGridX": 17.3486669921875,
+        "toGridY": 4.805372680664062
+      },
+      {
+        "fromNpcId": "ano andaram",
+        "toCell": "(-6, -5)",
+        "type": "Boat",
+        "fromGridX": 4.357039794921875,
+        "fromGridY": -9.074208251953126,
+        "toGridX": -5.937135009765625,
+        "toGridY": -4.84103271484375
+      },
+      {
+        "fromNpcId": "ano andaram",
+        "toCell": "(13, -8)",
+        "type": "Boat",
+        "fromGridX": 4.357039794921875,
+        "fromGridY": -9.074208251953126,
+        "toGridX": 13.8970537109375,
+        "toGridY": -7.495824340820312
+      },
+      {
+        "fromNpcId": "ano andaram",
+        "toCell": "(14, -13)",
+        "type": "Boat",
+        "fromGridX": 4.357039794921875,
+        "fromGridY": -9.074208251953126,
+        "toGridX": 14.55599609375,
+        "toGridY": -12.464400634765624
+      },
+      {
+        "fromNpcId": "aren maren",
+        "toCell": "(4, -11)",
+        "type": "Gondola",
+        "fromGridX": 2.92099365234375,
+        "fromGridY": -10.6857763671875,
+        "toGridX": 4.080624633789062,
+        "toGridY": -10.890313110351563
+      },
+      {
+        "fromNpcId": "aren maren",
+        "toCell": "(3, -10)",
+        "type": "Gondola",
+        "fromGridX": 2.92099365234375,
+        "fromGridY": -10.6857763671875,
+        "toGridX": 3.3614716796875,
+        "toGridY": -9.412947998046874
+      },
+      {
+        "fromNpcId": "baleni salavel",
+        "toCell": "(-8, 3)",
+        "type": "Boat",
+        "fromGridX": -5.937135009765625,
+        "fromGridY": -4.84103271484375,
+        "toGridX": -7.099971313476562,
+        "toGridY": 3.24908642578125
+      },
+      {
+        "fromNpcId": "baleni salavel",
+        "toCell": "(13, -8)",
+        "type": "Boat",
+        "fromGridX": -5.937135009765625,
+        "fromGridY": -4.84103271484375,
+        "toGridX": 13.8970537109375,
+        "toGridY": -7.495824340820312
+      },
+      {
+        "fromNpcId": "dalse adren",
+        "toCell": "(3, -13)",
+        "type": "Gondola",
+        "fromGridX": 4.080624633789062,
+        "fromGridY": -10.890313110351563,
+        "toGridX": 3.7561895751953127,
+        "toGridY": -12.16298388671875
+      },
+      {
+        "fromNpcId": "dalse adren",
+        "toCell": "(5, -11)",
+        "type": "Gondola",
+        "fromGridX": 4.080624633789062,
+        "fromGridY": -10.890313110351563,
+        "toGridX": 5.355220336914062,
+        "toGridY": -10.6859716796875
+      },
+      {
+        "fromNpcId": "daras aryon",
+        "toCell": "(-3, 6)",
+        "type": "SiltStrider",
+        "fromGridX": -2.72234912109375,
+        "fromGridY": 12.212823486328125,
+        "toGridX": -2.155096435546875,
+        "toGridY": 6.68579833984375
+      },
+      {
+        "fromNpcId": "daras aryon",
+        "toCell": "(-9, 16)",
+        "type": "SiltStrider",
+        "fromGridX": -2.72234912109375,
+        "fromGridY": 12.212823486328125,
+        "toGridX": -8.049224853515625,
+        "toGridY": 16.5517578125
+      },
+      {
+        "fromNpcId": "daras aryon",
+        "toCell": "Gnisis, Arvs-Drelen",
+        "type": "SiltStrider",
+        "fromGridX": -2.72234912109375,
+        "fromGridY": 12.212823486328125,
+        "toGridX": -10.7070703125,
+        "toGridY": 11.65576904296875
+      },
+      {
+        "fromNpcId": "darvame hleran",
+        "toCell": "(-3, -3)",
+        "type": "SiltStrider",
+        "fromGridX": -1.05034326171875,
+        "fromGridY": -8.569961547851562,
+        "toGridX": -2.5911435546875,
+        "toGridY": -2.232928466796875
+      },
+      {
+        "fromNpcId": "darvame hleran",
+        "toCell": "(6, -6)",
+        "type": "SiltStrider",
+        "fromGridX": -1.05034326171875,
+        "fromGridY": -8.569961547851562,
+        "toGridX": 6.488739013671875,
+        "toGridY": -5.8283453369140625
+      },
+      {
+        "fromNpcId": "darvame hleran",
+        "toCell": "Gnisis, Arvs-Drelen",
+        "type": "SiltStrider",
+        "fromGridX": -1.05034326171875,
+        "fromGridY": -8.569961547851562,
+        "toGridX": -10.7070703125,
+        "toGridY": 11.65576904296875
+      },
+      {
+        "fromNpcId": "devas irano",
+        "toCell": "(4, -11)",
+        "type": "Gondola",
+        "fromGridX": 3.3614716796875,
+        "fromGridY": -9.412947998046874,
+        "toGridX": 4.080624633789062,
+        "toGridY": -10.890313110351563
+      },
+      {
+        "fromNpcId": "dilami androm",
+        "toCell": "(6, -6)",
+        "type": "SiltStrider",
+        "fromGridX": 12.62922119140625,
+        "fromGridY": -7.142989135742187,
+        "toGridX": 6.488739013671875,
+        "toGridY": -5.8283453369140625
+      },
+      {
+        "fromNpcId": "emelia duronia",
+        "toCell": "Balmora, Guild of Mages",
+        "type": "MagesGuild",
+        "fromGridX": -1.6103394775390625,
+        "fromGridY": 2.4001732177734376,
+        "toGridX": -2.6937020263671876,
+        "toGridY": -1.713895751953125
+      },
+      {
+        "fromNpcId": "emelia duronia",
+        "toCell": "Ald-ruhn, Guild of Mages",
+        "type": "MagesGuild",
+        "fromGridX": -1.6103394775390625,
+        "fromGridY": 2.4001732177734376,
+        "toGridX": -1.80687109375,
+        "toGridY": 6.482230224609375
+      },
+      {
+        "fromNpcId": "emelia duronia",
+        "toCell": "Sadrith Mora, Wolverine Hall: Mage\u0027s Guild",
+        "type": "MagesGuild",
+        "fromGridX": -1.6103394775390625,
+        "fromGridY": 2.4001732177734376,
+        "toGridX": 18.255859375,
+        "toGridY": 3.65234375
+      },
+      {
+        "fromNpcId": "emelia duronia",
+        "toCell": "Vivec, Guild of Mages",
+        "type": "MagesGuild",
+        "fromGridX": -1.6103394775390625,
+        "fromGridY": 2.4001732177734376,
+        "toGridX": 3.84234814453125,
+        "toGridY": -9.73400390625
+      },
+      {
+        "fromNpcId": "erranil",
+        "toCell": "Balmora, Guild of Mages",
+        "type": "MagesGuild",
+        "fromGridX": -1.80687109375,
+        "fromGridY": 6.482230224609375,
+        "toGridX": -2.6937020263671876,
+        "toGridY": -1.713895751953125
+      },
+      {
+        "fromNpcId": "erranil",
+        "toCell": "Vivec, Guild of Mages",
+        "type": "MagesGuild",
+        "fromGridX": -1.80687109375,
+        "fromGridY": 6.482230224609375,
+        "toGridX": 3.84234814453125,
+        "toGridY": -9.73400390625
+      },
+      {
+        "fromNpcId": "erranil",
+        "toCell": "Sadrith Mora, Wolverine Hall: Mage\u0027s Guild",
+        "type": "MagesGuild",
+        "fromGridX": -1.80687109375,
+        "fromGridY": 6.482230224609375,
+        "toGridX": 18.255859375,
+        "toGridY": 3.65234375
+      },
+      {
+        "fromNpcId": "fendryn drelvi",
+        "toCell": "(2, -11)",
+        "type": "Gondola",
+        "fromGridX": 5.355220336914062,
+        "fromGridY": -10.6859716796875,
+        "toGridX": 2.92099365234375,
+        "toGridY": -10.6857763671875
+      },
+      {
+        "fromNpcId": "flacassia fauseius",
+        "toCell": "Balmora, Guild of Mages",
+        "type": "MagesGuild",
+        "fromGridX": 3.84234814453125,
+        "fromGridY": -9.73400390625,
+        "toGridX": -2.6937020263671876,
+        "toGridY": -1.713895751953125
+      },
+      {
+        "fromNpcId": "flacassia fauseius",
+        "toCell": "Sadrith Mora, Wolverine Hall: Mage\u0027s Guild",
+        "type": "MagesGuild",
+        "fromGridX": 3.84234814453125,
+        "fromGridY": -9.73400390625,
+        "toGridX": 18.255859375,
+        "toGridY": 3.65234375
+      },
+      {
+        "fromNpcId": "folsi thendas",
+        "toCell": "(-3, -3)",
+        "type": "SiltStrider",
+        "fromGridX": 6.488739013671875,
+        "fromGridY": -5.8283453369140625,
+        "toGridX": -2.5911435546875,
+        "toGridY": -2.232928466796875
+      },
+      {
+        "fromNpcId": "gals arethi",
+        "toCell": "(14, -13)",
+        "type": "Boat",
+        "fromGridX": 17.3486669921875,
+        "fromGridY": 4.805372680664062,
+        "toGridX": 14.55599609375,
+        "toGridY": -12.464400634765624
+      },
+      {
+        "fromNpcId": "gals arethi",
+        "toCell": "(12, 13)",
+        "type": "Boat",
+        "fromGridX": 17.3486669921875,
+        "fromGridY": 4.805372680664062,
+        "toGridX": 12.30111328125,
+        "toGridY": 13.939208984375
+      },
+      {
+        "fromNpcId": "gals arethi",
+        "toCell": "(7, 22)",
+        "type": "Boat",
+        "fromGridX": 17.3486669921875,
+        "fromGridY": 4.805372680664062,
+        "toGridX": 7.6090087890625,
+        "toGridY": 22.4841552734375
+      },
+      {
+        "fromNpcId": "haema farseer",
+        "toCell": "(13, 14)",
+        "type": "Boat",
+        "fromGridX": 7.6090087890625,
+        "fromGridY": 22.4841552734375,
+        "toGridX": 13.070035888671875,
+        "toGridY": 14.299605712890624
+      },
+      {
+        "fromNpcId": "haema farseer",
+        "toCell": "(-9, 17)",
+        "type": "Boat",
+        "fromGridX": 7.6090087890625,
+        "fromGridY": 22.4841552734375,
+        "toGridX": -8.491361572265625,
+        "toGridY": 17.3507763671875
+      },
+      {
+        "fromNpcId": "iniel",
+        "toCell": "Balmora, Guild of Mages",
+        "type": "MagesGuild",
+        "fromGridX": 18.255859375,
+        "fromGridY": 3.65234375,
+        "toGridX": -2.6937020263671876,
+        "toGridY": -1.713895751953125
+      },
+      {
+        "fromNpcId": "navam veran",
+        "toCell": "(-3, -3)",
+        "type": "SiltStrider",
+        "fromGridX": -2.155096435546875,
+        "fromGridY": 6.68579833984375,
+        "toGridX": -2.5911435546875,
+        "toGridY": -2.232928466796875
+      },
+      {
+        "fromNpcId": "navam veran",
+        "toCell": "(-9, 16)",
+        "type": "SiltStrider",
+        "fromGridX": -2.155096435546875,
+        "fromGridY": 6.68579833984375,
+        "toGridX": -8.049224853515625,
+        "toGridY": 16.5517578125
+      },
+      {
+        "fromNpcId": "navam veran",
+        "toCell": "Gnisis, Arvs-Drelen",
+        "type": "SiltStrider",
+        "fromGridX": -2.155096435546875,
+        "fromGridY": 6.68579833984375,
+        "toGridX": -10.7070703125,
+        "toGridY": 11.65576904296875
+      },
+      {
+        "fromNpcId": "nireli farys",
+        "toCell": "(13, -8)",
+        "type": "Boat",
+        "fromGridX": 14.55599609375,
+        "fromGridY": -12.464400634765624,
+        "toGridX": 13.8970537109375,
+        "toGridY": -7.495824340820312
+      },
+      {
+        "fromNpcId": "punibi yahaz",
+        "toCell": "(-9, 16)",
+        "type": "SiltStrider",
+        "fromGridX": -10.7070703125,
+        "fromGridY": 11.65576904296875,
+        "toGridX": -8.049224853515625,
+        "toGridY": 16.5517578125
+      },
+      {
+        "fromNpcId": "rindral dralor",
+        "toCell": "",
+        "type": "Boat",
+        "fromGridX": 13.8970537109375,
+        "fromGridY": -7.495824340820312,
+        "toGridX": 2.485983154296875,
+        "toGridY": -12.502166748046875
+      },
+      {
+        "fromNpcId": "sedyni veran",
+        "toCell": "(13, 14)",
+        "type": "Boat",
+        "fromGridX": 12.30111328125,
+        "fromGridY": 13.939208984375,
+        "toGridX": 13.070035888671875,
+        "toGridY": 14.299605712890624
+      },
+      {
+        "fromNpcId": "talmeni drethan",
+        "toCell": "(-8, 3)",
+        "type": "Boat",
+        "fromGridX": -8.491361572265625,
+        "fromGridY": 17.3507763671875,
+        "toGridX": -7.099971313476562,
+        "toGridY": 3.24908642578125
+      },
+      {
+        "fromNpcId": "talsi uvayn",
+        "toCell": "(2, -11)",
+        "type": "Gondola",
+        "fromGridX": 3.7561895751953127,
+        "fromGridY": -12.16298388671875,
+        "toGridX": 2.92099365234375,
+        "toGridY": -10.6857763671875
+      },
+      {
+        "fromNpcId": "tonas telvani",
+        "toCell": "(17, 4)",
+        "type": "Boat",
+        "fromGridX": 13.070035888671875,
+        "fromGridY": 14.299605712890624,
+        "toGridX": 17.3486669921875,
+        "toGridY": 4.805372680664062
+      },
+      {
+        "fromNpcId": "tonas telvani",
+        "toCell": "(15, 4)",
+        "type": "Boat",
+        "fromGridX": 13.070035888671875,
+        "fromGridY": 14.299605712890624,
+        "toGridX": 15.036812744140626,
+        "toGridY": 4.978898559570313
+      },
+      {
+        "fromNpcId": "basks_in_the_sun",
+        "toCell": "(-9, 17)",
+        "type": "Boat",
+        "fromGridX": -21.2809814453125,
+        "fromGridY": 16.706636962890624,
+        "toGridX": -8.4185107421875,
+        "toGridY": 17.353050537109375
+      },
+      {
+        "fromNpcId": "basks_in_the_sun",
+        "toCell": "(-25, 19)",
+        "type": "Boat",
+        "fromGridX": -21.2809814453125,
+        "fromGridY": 16.706636962890624,
+        "toGridX": -24.344671630859374,
+        "toGridY": 19.17104736328125
+      },
+      {
+        "fromNpcId": "cinia urtius",
+        "toCell": "(17, 4)",
+        "type": "Boat",
+        "fromGridX": 15.51448974609375,
+        "fromGridY": 1.84112255859375,
+        "toGridX": 17.5543212890625,
+        "toGridY": 4.7662353515625
+      },
+      {
+        "fromNpcId": "cinia urtius",
+        "toCell": "(15, 4)",
+        "type": "Boat",
+        "fromGridX": 15.51448974609375,
+        "fromGridY": 1.84112255859375,
+        "toGridX": 15.036812744140626,
+        "toGridY": 4.978898559570313
+      },
+      {
+        "fromNpcId": "ab01boShipmastr02",
+        "toCell": "",
+        "type": "Boat",
+        "fromGridX": 2.501220703125,
+        "fromGridY": -12.580810546875,
+        "toGridX": -8.43798828125,
+        "toGridY": 17.417724609375
+      },
+      {
+        "fromNpcId": "ab01boShipmastr02",
+        "toCell": "",
+        "type": "Boat",
+        "fromGridX": 2.501220703125,
+        "fromGridY": -12.580810546875,
+        "toGridX": -7.1629638671875,
+        "toGridY": 3.2330322265625
+      },
+      {
+        "fromNpcId": "ab01boShipmastr03",
+        "toCell": "(-11, 15)",
+        "type": "Boat",
+        "fromGridX": -7.1724853515625,
+        "fromGridY": 3.2906494140625,
+        "toGridX": -10.673828125,
+        "toGridY": 15.7000732421875
+      },
+      {
+        "fromNpcId": "ab01boShipmastr05",
+        "toCell": "(-11, 15)",
+        "type": "Boat",
+        "fromGridX": -8.4989013671875,
+        "fromGridY": 17.4483642578125,
+        "toGridX": -10.673828125,
+        "toGridY": 15.7000732421875
+      },
+      {
+        "fromNpcId": "ab01boShipmastr21",
+        "toCell": "",
+        "type": "Boat",
+        "fromGridX": -1.1591796875,
+        "fromGridY": -8.8463134765625,
+        "toGridX": 2.493896484375,
+        "toGridY": -12.5028076171875
+      }
+    ]
+  }
+}
