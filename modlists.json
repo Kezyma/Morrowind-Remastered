@@ -68,7 +68,7 @@
     "DisplayVersionOnlyInInstallerView": false,
     "force_down": false,
     "links": {
-      "image": "https://raw.githubusercontent.com/Kezyma/Morrowind-Remastered/main/Images/Nexus%20Header%20Image.webp",
+      "image": "https://raw.githubusercontent.com/Kezyma/Morrowind-Remastered/main/Images/Nexus%20Header%20Image.png",
       "readme": "https://github.com/Kezyma/Morrowind-Remastered/blob/main/README.md",
       "download": "https://authored-files.wabbajack.org/Morrowind Remastered.wabbajack_71c032de-eb37-4088-bc1d-868200a024bb",
       "machineURL": "MorrowindRemasteredOpenMWEdition",
