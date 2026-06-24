@@ -70,7 +70,7 @@
     "links": {
       "image": "https://raw.githubusercontent.com/Kezyma/Morrowind-Remastered/main/Images/Nexus%20Header%20Image.png",
       "readme": "https://github.com/Kezyma/Morrowind-Remastered/blob/main/README.md",
-      "download": "https://authored-files.wabbajack.org/Morrowind Remastered.wabbajack_71c032de-eb37-4088-bc1d-868200a024bb",
+      "download": "https://authored-files.wabbajack.org/Morrowind Remastered.wabbajack_d6f3beba-10e0-454b-aa0c-028212ea5103",
       "machineURL": "MorrowindRemasteredOpenMWEdition",
       "discordURL": "https://discord.com/invite/kPA3RrxAYz",
       "websiteURL": "",
@@ -82,17 +82,17 @@
       }
     },
     "download_metadata": {
-      "Hash": "BZtGk28fHvc=",
-      "Size": 25135142,
-      "NumberOfArchives": 393,
-      "SizeOfArchives": 42866379317,
-      "NumberOfInstalledFiles": 98151,
-      "SizeOfInstalledFiles": 53874138364,
-      "TotalSize": 96740517681
+      "Hash": "apPfNb3YCvs=",
+      "Size": 25160791,
+      "NumberOfArchives": 389,
+      "SizeOfArchives": 42674384467,
+      "NumberOfInstalledFiles": 98936,
+      "SizeOfInstalledFiles": 53974789906,
+      "TotalSize": 96649174373
     },
-    "version": "3.1.3",
+    "version": "3.1.4",
     "dateCreated": "1970-01-01T00:00:00Z",
-    "dateUpdated": "2026-06-16T12:19:43.4302407Z",
+    "dateUpdated": "2026-06-24T08:09:02.9362219Z",
     "repositoryName": ""
   }
 ]
